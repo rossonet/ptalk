@@ -1,0 +1,136 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    jcenter()
+    gradlePluginPortal()
+    maven { url "https://plugins.gradle.org/m2/" }
+  }
+  dependencies {
+    classpath "com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.0"
+    classpath 'de.undercouch:gradle-download-task:5.3.0'
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: "com.gorylenko.gradle-git-properties"
+apply plugin: 'base'
+apply plugin: 'signing'
+apply plugin: 'maven-publish'
+apply plugin: 'java-library'
+apply plugin: 'distribution'
+apply plugin: 'jacoco'
+apply plugin: 'com.palantir.docker'
+
+description = "Ptalk GRPC channel"
+group = rootProject.group
+version = rootProject.version
+
+ext {
+  sourceCompatibility = 1.8
+  packageName = 'ptalk-nlu-api'
+}
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  project(':ptalk-channel-api')
+}
+
+test {
+  useJUnitPlatform()
+}
+
+eclipse {
+  classpath {
+    downloadJavadoc = true
+    downloadSources = true
+  }
+}
+
+task eclipseClosedDependencies {}
+
+task eclipseClosedDependencies_ {}
+
+java {
+  withJavadocJar()
+  withSourcesJar()
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication){
+      artifactId = "${project.name}"
+      from components.java
+      versionMapping {
+        usage('java-api') {
+          fromResolutionOf('runtimeClasspath')
+        }
+        usage('java-runtime') {
+          fromResolutionResult()
+        }
+      }
+      pom {
+        name = "${project.name}"
+        description = "${project.description}"
+        url = 'https://app.rossonet.net/'
+        licenses {
+          license {
+            name = 'Apache-2.0 license'
+            url = 'https://www.apache.org/licenses/LICENSE-2.0'
+          }
+        }
+        developers {
+          developer {
+            id = 'ar4k'
+            name = 'Andrea Ambrosini'
+            email = 'andrea.ambrosini@rossonet.org'
+          }
+        }
+        scm {
+          connection = 'scm:git:git://github.com/rossonet/TemplateEdgeAgentAr4k.git'
+          developerConnection = 'scm:git:ssh://github.com:rossonet/TemplateEdgeAgentAr4k.git'
+          url = 'https://github.com/rossonet/TemplateEdgeAgentAr4k/tree/master'
+        }
+      }
+    }
+  }
+  repositories {
+    maven {
+      url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+      name = "sonatype"
+      credentials {
+        username "rossonet"
+        password "${ossrhPassword}"
+      }
+    }
+  }
+}
+
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+gitProperties {
+  failOnNoGitDirectory = false
+  customProperty 'component', "${project.name}"
+  customProperty 'version', "${version}"
+  dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+  dateFormatTimeZone = 'GMT'
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+    html.enabled false
+  }
+}
+
+javadoc{
+  destinationDir = file("${rootProject.buildDir}/docs/javadoc/${project.name}/")
+  failOnError=true
+}
