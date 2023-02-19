@@ -66,5 +66,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-vagrant/LabOpenShift/crc-linux-amd64.tar.xz
-./src/main/java/net/rossonet/ptalk/channel/grpc
