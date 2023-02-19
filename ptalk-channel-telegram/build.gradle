@@ -91,9 +91,9 @@ publishing {
           }
         }
         scm {
-          connection = 'scm:git:git://github.com/rossonet/TemplateEdgeAgentAr4k.git'
-          developerConnection = 'scm:git:ssh://github.com:rossonet/TemplateEdgeAgentAr4k.git'
-          url = 'https://github.com/rossonet/TemplateEdgeAgentAr4k/tree/master'
+          connection = 'scm:git:git://github.com/rossonet/ptalk.git'
+          developerConnection = 'scm:git:ssh://github.com:rossonet/ptalk.git'
+          url = 'https://github.com/rossonet/ptalk/tree/master'
         }
       }
     }

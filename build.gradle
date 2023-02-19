@@ -12,11 +12,7 @@ buildscript {
   }
 }
 
- plugins {
-    id 'org.graalvm.buildtools.native' version '0.9.14'
- }
-
-description = "Ptalk - rossonet chatbot"
+description = "Ptalk - Rossonet chatbot"
 group = 'net.rossonet.ptalk'
 version = '0.0.1'
 

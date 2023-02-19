@@ -29,6 +29,10 @@ description = "Ptalk NLU API"
 group = rootProject.group
 version = rootProject.version
 
+def grpcVersion = '1.53.0'
+def protobufVersion = '3.21.7'
+def protocVersion = protobufVersion
+
 ext {
   sourceCompatibility = 1.8
   packageName = 'ptalk-nlu-api'
@@ -40,6 +44,12 @@ repositories {
 }
 
 dependencies {
+  api "io.grpc:grpc-protobuf:${grpcVersion}"
+  api "io.grpc:grpc-stub:${grpcVersion}"
+  compileOnly "org.apache.tomcat:annotations-api:6.0.53"
+  implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+  api "io.grpc:grpc-netty-shaded:${grpcVersion}"
+  testImplementation "io.grpc:grpc-testing:${grpcVersion}"
 }
 
 test {
@@ -93,9 +103,9 @@ publishing {
           }
         }
         scm {
-          connection = 'scm:git:git://github.com/rossonet/TemplateEdgeAgentAr4k.git'
-          developerConnection = 'scm:git:ssh://github.com:rossonet/TemplateEdgeAgentAr4k.git'
-          url = 'https://github.com/rossonet/TemplateEdgeAgentAr4k/tree/master'
+          connection = 'scm:git:git://github.com/rossonet/ptalk.git'
+          developerConnection = 'scm:git:ssh://github.com:rossonet/ptalk.git'
+          url = 'https://github.com/rossonet/ptalk/tree/master'
         }
       }
     }
@@ -139,11 +149,11 @@ javadoc{
 
 protobuf {
   protoc {
-    artifact = "com.google.protobuf:protoc:3.22.0"
+    artifact = "com.google.protobuf:protoc:${protocVersion}"
     generatedFilesBaseDir = "$projectDir/src"
   }
   plugins {
-    grpc { artifact = 'io.grpc:protoc-gen-grpc-java:1.53.0' }
+    grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
   }
   generateProtoTasks {
     all().each { task ->
