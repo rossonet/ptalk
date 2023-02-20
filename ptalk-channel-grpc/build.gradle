@@ -26,6 +26,7 @@ apply plugin: 'java-library'
 apply plugin: 'distribution'
 apply plugin: 'jacoco'
 apply plugin: 'com.palantir.docker'
+apply plugin: 'application'
 
 description = "Ptalk channel GRPC"
 group = rootProject.group
@@ -47,6 +48,11 @@ repositories {
 
 dependencies {
   implementation project(':ptalk-channel-api')
+  implementation "io.grpc:grpc-protobuf:${grpcVersion}"
+  implementation "io.grpc:grpc-stub:${grpcVersion}"
+  compileOnly "org.apache.tomcat:annotations-api:6.0.53"
+  implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+  implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
   implementation group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
   implementation group: 'org.json', name: 'json', version: '20220924'
   implementation group: 'org.yaml', name: 'snakeyaml', version: '1.30'
@@ -54,6 +60,7 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
+  testImplementation "io.grpc:grpc-testing:${grpcVersion}"
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
   testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
@@ -129,9 +136,8 @@ publishing {
   }
 }
 
-
 signing {
-    sign publishing.publications.mavenJava
+  sign publishing.publications.mavenJava
 }
 
 gitProperties {
@@ -178,4 +184,27 @@ clean {
   println("starting clean in ${projectDir}")
   delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/channel/grpc/*.java' }
   delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/channel/protobuf/server/grpc/*.java' }
+}
+
+
+compileJava {
+  doFirst {
+      delete fileTree(projectDir) { include 'build/generated/source/proto/main/java/net/rossonet/ptalk/channel/grpc/*.java' }
+      delete fileTree(projectDir) { include 'build/generated/source/proto/main/java/net/rossonet/ptalk/channel/protobuf/server/grpc/*.java' }
+  }
+}
+
+docker {
+  name "rossonet.net/${project.name}:latest"
+  dockerfile file('Dockerfile_gradle')
+  files "$buildDir/distributions/${project.name}-${version}.tar"
+}
+
+task buildDocker() {
+  buildDocker.dependsOn("distTar")
+  buildDocker.finalizedBy("docker")
+}
+
+application {
+  mainClass = 'net.rossonet.ptalk.MainApp'
 }

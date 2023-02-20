@@ -1,8 +1,47 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/rossonet/TemplateEdgeAgentAr4k)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/1fe4b5ad3b92495ca581b02926af62a8)](https://www.codacy.com/gh/rossonet/TemplateEdgeAgentAr4k/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=rossonet/TemplateEdgeAgentAr4k&amp;utm_campaign=Badge_Grade)
-[![Test on master branch with Gradle](https://github.com/rossonet/TemplateEdgeAgentAr4k/actions/workflows/test-on-master-with-gradle.yml/badge.svg)](https://github.com/rossonet/TemplateEdgeAgentAr4k/actions/workflows/test-on-master-with-gradle.yml)
 
-# Template Edge app Rossonet
+# PTalk - ChatBOT Rossonet
+
+## Develop enviroment with docker compose
+
+```
+[andrea@legion-rossonet-com ptalk]$ docker-compose up -d
+Starting ptalk_hazelcast_1 ... done
+Starting ptalk_ptalk-engine_1 ... done
+Starting ptalk_ptalk-channel-mqtt_1         ... done
+Starting ptalk_ptalk-channel-http_1         ... done
+Starting ptalk_ptalk-nlu-watson_1           ... done
+Starting ptalk_ptalk-channel-grpc_1         ... done
+Starting ptalk_ptalk-ability-homunculus_1   ... done
+Starting ptalk_ptalk-ability-processmaker_1 ... done
+Starting ptalk_ptalk-channel-telegram_1     ... done
+```
+
+## Deploy Bottegaio Terminal Client
+
+```
+[andrea@legion-rossonet-com ptalk]$ ./gradlew clean buildBottegaioTerminalClient
+
+> Configure project :ptalk-ability-api
+starting clean in /home/andrea/git/ptalk/ptalk-ability-api
+
+> Configure project :ptalk-channel-api
+starting clean in /home/andrea/git/ptalk/ptalk-channel-api
+
+> Configure project :ptalk-channel-grpc
+starting clean in /home/andrea/git/ptalk/ptalk-channel-grpc
+
+> Configure project :ptalk-nlu-api
+starting clean in /home/andrea/git/ptalk/ptalk-nlu-api
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.4/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 8s
+31 actionable tasks: 23 executed, 8 up-to-date
+```
 
 ## Reference
 

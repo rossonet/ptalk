@@ -172,3 +172,9 @@ clean {
   delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/nlu/grpc/*.java' }
 }
 
+compileJava {
+  doFirst {
+      delete fileTree(projectDir) { include 'build/generated/source/proto/main/java/net/rossonet/ptalk/nlu/grpc/*.java' }
+  }
+}
+

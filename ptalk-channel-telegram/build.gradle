@@ -22,6 +22,7 @@ apply plugin: 'java-library'
 apply plugin: 'distribution'
 apply plugin: 'jacoco'
 apply plugin: 'com.palantir.docker'
+apply plugin: 'application'
 
 description = "Ptalk channel Telegram"
 group = rootProject.group
@@ -122,9 +123,8 @@ publishing {
   }
 }
 
-
 signing {
-    sign publishing.publications.mavenJava
+  sign publishing.publications.mavenJava
 }
 
 gitProperties {
@@ -145,4 +145,20 @@ jacocoTestReport {
 javadoc{
   destinationDir = file("${rootProject.buildDir}/docs/javadoc/${project.name}/")
   failOnError=true
+}
+
+
+docker {
+  name "rossonet.net/${project.name}:latest"
+  dockerfile file('Dockerfile_gradle')
+  files "$buildDir/distributions/${project.name}-${version}.tar"
+}
+
+task buildDocker() {
+  buildDocker.dependsOn("distTar")
+  buildDocker.finalizedBy("docker")
+}
+
+application {
+  mainClass = 'net.rossonet.ptalk.MainApp'
 }

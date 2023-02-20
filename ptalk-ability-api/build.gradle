@@ -43,6 +43,10 @@ repositories {
   jcenter()
 }
 
+compileJava {
+    excludes = ["${projectDir}/build/generated/**"]
+}
+
 dependencies {
   api "io.grpc:grpc-protobuf:${grpcVersion}"
   api "io.grpc:grpc-stub:${grpcVersion}"
@@ -171,4 +175,11 @@ clean {
   println("starting clean in ${projectDir}")
   delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/ability/grpc/*.java' }
 }
+
+compileJava {
+  doFirst {
+      delete fileTree(projectDir) { include 'build/generated/source/proto/main/java/net/rossonet/ptalk/ability/grpc/*.java' }
+  }
+}
+
 

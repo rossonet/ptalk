@@ -2,14 +2,16 @@ version: '3'
 services:
     ptalk-engine:
         build:
-          context: ./ptalk-engine
+          context: .
+          args:
+            COMPONENT: ptalk-engine
           dockerfile: Dockerfile
         image: rossonet/ptalk-engine:dev
         restart: unless-stopped
         ports:
-            - 2045:2045'
+            - 2045:2045
         environment:
-            DEBUG: true
+            DEBUG: 'true'
             HAZELCAST_SERVICE: 'hazelcast'
             PTALK_SELF_ABILITY_SERVICE: 'ptalk-homunculus'
         networks:
@@ -18,14 +20,16 @@ services:
             - hazelcast
     ptalk-channel-telegram:
         build:
-          context: ./ptalk-channel-telegram
+          context: .
+          args:
+            COMPONENT: ptalk-channel-telegram
           dockerfile: Dockerfile
         image: rossonet/ptalk-channel-telegram:dev
         restart: unless-stopped
         ports:
-            - 2045:2045'
+            - 2046:2045
         environment:
-            DEBUG: true
+            DEBUG: 'true'
             PTALK_ENGINE: 'ptalk-engine'
         networks:
             - ptalk-net
@@ -33,14 +37,16 @@ services:
             - ptalk-engine
     ptalk-channel-grpc:
         build:
-          context: ./ptalk-channel-grpc
+          context: .
+          args:
+            COMPONENT: ptalk-channel-grpc
           dockerfile: Dockerfile
         image: rossonet/ptalk-channel-grpc:dev
         restart: unless-stopped
         ports:
-            - 2045:2045'
+            - 2047:2045
         environment:
-            DEBUG: true
+            DEBUG: 'true'
             PTALK_ENGINE: 'ptalk-engine'
         networks:
             - ptalk-net
@@ -48,14 +54,33 @@ services:
             - ptalk-engine
     ptalk-channel-http:
         build:
-          context: ./ptalk-channel-http
+          context: .
+          args:
+            COMPONENT: ptalk-channel-http
           dockerfile: Dockerfile
         image: rossonet/ptalk-channel-http:dev
         restart: unless-stopped
         ports:
-            - 2045:2045'
+            - 2048:2045
         environment:
-            DEBUG: true
+            DEBUG: 'true'
+            PTALK_ENGINE: 'ptalk-engine'
+        networks:
+            - ptalk-net
+        depends_on:
+            - ptalk-engine
+    ptalk-channel-mqtt:
+        build:
+          context: .
+          args:
+            COMPONENT: ptalk-channel-mqtt
+          dockerfile: Dockerfile
+        image: rossonet/ptalk-channel-mqtt:dev
+        restart: unless-stopped
+        ports:
+            - 2049:2045
+        environment:
+            DEBUG: 'true'
             PTALK_ENGINE: 'ptalk-engine'
         networks:
             - ptalk-net
@@ -63,14 +88,33 @@ services:
             - ptalk-engine
     ptalk-ability-homunculus:
         build:
-          context: ./ptalk-ability-homunculus
+          context: .
+          args:
+            COMPONENT: ptalk-ability-homunculus
           dockerfile: Dockerfile
         image: rossonet/ptalk-ability-homunculus:dev
         restart: unless-stopped
         ports:
-            - 2045:2045'
+            - 2050:2045
         environment:
-            DEBUG: true
+            DEBUG: 'true'
+            PTALK_ENGINE: 'ptalk-engine'
+        networks:
+            - ptalk-net
+        depends_on:
+            - ptalk-engine
+    ptalk-ability-processmaker:
+        build:
+          context: .
+          args:
+            COMPONENT: ptalk-ability-processmaker
+          dockerfile: Dockerfile
+        image: rossonet/ptalk-ability-processmaker:dev
+        restart: unless-stopped
+        ports:
+            - 2051:2045
+        environment:
+            DEBUG: 'true'
             PTALK_ENGINE: 'ptalk-engine'
         networks:
             - ptalk-net
@@ -78,14 +122,16 @@ services:
             - ptalk-engine
     ptalk-nlu-watson:
         build:
-          context: ./ptalk-nlu-watson
+          context: .
+          args:
+            COMPONENT: ptalk-nlu-watson
           dockerfile: Dockerfile
         image: rossonet/ptalk-nlu-watson:dev
         restart: unless-stopped
         ports:
-            - 2045:2045'
+            - 2052:2045
         environment:
-            DEBUG: true
+            DEBUG: 'true'
             PTALK_ENGINE: 'ptalk-engine'
         networks:
             - ptalk-net
@@ -95,10 +141,10 @@ services:
         image: hazelcast/hazelcast:5.2.2
         restart: unless-stopped
         ports:
-          - '5701:5701'
+          - 5701:5701
         environment:
-            LOGGING_LEVEL: DEBUG
-            HZ_NETWORK_PORT_AUTOINCREMENT: true
+            LOGGING_LEVEL: 'DEBUG'
+            HZ_NETWORK_PORT_AUTOINCREMENT: 'true'
             HZ_NETWORK_PORT_PORTCOUNT: 100
             HZ_NETWORK_PORT_PORT: 5701
         networks:
