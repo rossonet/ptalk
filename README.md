@@ -1,7 +1,7 @@
 
 # PTalk - ChatBOT Rossonet
 
-## Develop enviroment with docker compose
+## Develop enviroment with Docker Compose
 
 ```
 [andrea@legion-rossonet-com ptalk]$ docker-compose up -d
