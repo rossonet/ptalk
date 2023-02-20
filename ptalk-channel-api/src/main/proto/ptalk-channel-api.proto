@@ -3,11 +3,11 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "net.rossonet.ptalk.nlu.grpc";
-option java_outer_classname = "PtalkNluApi";
+option java_package = "net.rossonet.ptalk.channel.grpc";
+option java_outer_classname = "PtaskChannelApi";
 option objc_class_prefix = "PTALK";
 
-package nlu;
+package channel;
 
 service RpcServiceV1 {
   rpc Register (RegisterRequest) returns (RegisterReply) {}

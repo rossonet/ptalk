@@ -6,15 +6,13 @@ buildscript {
   }
   dependencies {
     classpath "com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.0"
-    classpath 'com.netflix.nebula:gradle-ospackage-plugin:8.4.1'
     classpath 'de.undercouch:gradle-download-task:3.1.1'
-    classpath "com.palantir.gradle.docker:gradle-docker:0.32.0"
   }
 }
 
 description = "Ptalk - Rossonet chatbot"
 group = 'net.rossonet.ptalk'
-version = '0.0.1'
+version = '0.0.2'
 
 ext {
   sourceCompatibility = 1.8
@@ -24,15 +22,12 @@ ext {
 }
 
 repositories {
-	mavenCentral()
-	jcenter()
+  mavenCentral()
+  jcenter()
 }
 
-apply plugin: 'com.palantir.docker'
 apply plugin: 'eclipse'
 apply plugin: "com.gorylenko.gradle-git-properties"
-apply plugin: "nebula.rpm"
-apply plugin: 'nebula.deb'
 
 task eclipseClosedDependencies {}
 
@@ -45,20 +40,7 @@ eclipse {
   }
 }
 
-docker {
-  name "rossonet/${project.name}:latest"
-  dockerfile file('Dockerfile.gradle')
-  files "$buildDir/libs/${project.name}-${version}-all.jar"
-}
-
 task view { doLast { println "Working on project ${project.name} [ ${project.description} ]" } }
-
-task buildDocker() {
-  group "Docker Container Build"
-  description 'Build Docker image'
-  buildDocker.dependsOn("shadowJar")
-  buildDocker.finalizedBy("docker")
-}
 
 gitProperties {
   failOnNoGitDirectory = false

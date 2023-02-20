@@ -47,7 +47,7 @@ dependencies {
   api "io.grpc:grpc-protobuf:${grpcVersion}"
   api "io.grpc:grpc-stub:${grpcVersion}"
   compileOnly "org.apache.tomcat:annotations-api:6.0.53"
-  implementation "com.google.protobuf:protobuf-java-util:${protobufVersion}"
+  api "com.google.protobuf:protobuf-java-util:${protobufVersion}"
   api "io.grpc:grpc-netty-shaded:${grpcVersion}"
   testImplementation "io.grpc:grpc-testing:${grpcVersion}"
 }
@@ -165,5 +165,10 @@ protobuf {
       }
     }
   }
+}
+
+clean {
+  println("starting clean in ${projectDir}")
+  delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/nlu/grpc/*.java' }
 }
 

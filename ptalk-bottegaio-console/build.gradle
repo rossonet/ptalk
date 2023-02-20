@@ -8,7 +8,13 @@ buildscript {
   dependencies {
     classpath "com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.0"
     classpath 'de.undercouch:gradle-download-task:5.3.0'
+    classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
+    classpath 'com.netflix.nebula:gradle-ospackage-plugin:8.4.1'
   }
+}
+
+plugins {
+   id 'org.graalvm.buildtools.native' version '0.9.14'
 }
 
 apply plugin: 'java'
@@ -20,15 +26,18 @@ apply plugin: 'maven-publish'
 apply plugin: 'java-library'
 apply plugin: 'distribution'
 apply plugin: 'jacoco'
-apply plugin: 'com.palantir.docker'
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: "nebula.rpm"
+apply plugin: 'nebula.deb'
+apply plugin: 'application'
 
-description = "Ptalk GRPC channel"
+description = "Ptalk Terminal Client Console - bottegaio"
 group = rootProject.group
 version = rootProject.version
 
 ext {
   sourceCompatibility = 1.8
-  packageName = 'ptalk-nlu-api'
+  packageName = 'ptalk-console-bottegaio'
 }
 
 repositories {
@@ -37,7 +46,17 @@ repositories {
 }
 
 dependencies {
-  api project(':ptalk-channel-grpc')
+  implementation project(':ptalk-channel-grpc')
+  implementation group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
+  implementation group: 'org.json', name: 'json', version: '20220924'
+  implementation group: 'org.yaml', name: 'snakeyaml', version: '1.30'
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+  testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
 test {
@@ -134,3 +153,27 @@ javadoc{
   destinationDir = file("${rootProject.buildDir}/docs/javadoc/${project.name}/")
   failOnError=true
 }
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'net.rossonet.beacon.beaconctl.Beaconctl'
+  }
+}
+
+application {
+    mainClass = 'net.rossonet.beacon.beaconctl.Beaconctl'
+}
+
+graalvmNative {
+    toolchainDetection = false
+    binaries {
+        main {
+            verbose = true
+            sharedLibrary = false
+            buildArgs.add("--initialize-at-build-time=org.slf4j.LoggerFactory")
+            buildArgs.add("--initialize-at-build-time=org.slf4j.simple.SimpleLogger")
+            buildArgs.add("--initialize-at-build-time=org.slf4j.impl.StaticLoggerBinder")
+        }
+    }
+}
+
