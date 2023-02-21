@@ -99,3 +99,20 @@ task buildBottegaioTerminalClient() {
   dependsOn ":ptalk-bottegaio-console:shadowJar"
 }
 
+task copyProtoToJupyter() {
+  group "Jupyter tasks"
+  description 'Copy proto file to Jupyter directories'
+  copy {
+    from 'ptalk-channel-api/src/main/proto/ptalk-channel-api.proto'
+    into 'tools/jupyter/channel/'
+  }
+  copy {
+    from 'ptalk-nlu-api/src/main/proto/ptalk-nlu-api.proto'
+    into 'tools/jupyter/nlu/'
+  }
+  copy {
+    from 'ptalk-ability-api/src/main/proto/ptalk-ability-api.proto'
+    into 'tools/jupyter/ability/'
+  }
+}
+
