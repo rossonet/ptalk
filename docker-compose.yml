@@ -142,11 +142,14 @@ services:
         restart: unless-stopped
         ports:
           - 5701:5701
+          - 5702:5702
         environment:
-            LOGGING_LEVEL: 'DEBUG'
+            LOGGING_LEVEL: 'INFO'
+            PROMETHEUS_PORT: 5702
             HZ_NETWORK_PORT_AUTOINCREMENT: 'true'
             HZ_NETWORK_PORT_PORTCOUNT: 100
             HZ_NETWORK_PORT_PORT: 5701
+            HZ_USERCODEDEPLOYMENT_ENABLED: 'true'
         networks:
             - ptalk-net
 
