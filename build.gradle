@@ -73,7 +73,7 @@ task theiaIdeBackendCopy(type: Exec) {
 task theiaIdeBackendStart(type: Exec) {
   description 'Run Theia IDE container with docker'
   theiaIdeBackendStart.dependsOn("theiaIdeBackendCopy")
-  group "Theia IDE on Docker Container"
+  group "IDE"
   workingDir "./"
   commandLine 'docker', 'exec', '-u', 'root', "docker-ide-${project.name}", '/bin/chown', '-R', 'theia:theia', '/home/project'
   commandLine 'docker', 'exec', '-u', 'root', "docker-ide-${project.name}", '/bin/chown', '-R', 'theia:theia', '/home/theia'
@@ -87,7 +87,7 @@ task printTheiaIdeBackendDockerCommand(type: Exec) {
 }
 
 task theiaIdeLocalBrowser(type: Exec) {
-  group "Theia IDE on Docker Container"
+  group "IDE"
   description 'Open browser to local Theia IDE'
   workingDir "./"
   commandLine 'xdg-open', 'http://localhost:3000'
@@ -99,9 +99,36 @@ task buildBottegaioTerminalClient() {
   dependsOn ":ptalk-bottegaio-console:shadowJar"
 }
 
-task copyProtoToJupyter() {
-  group "Jupyter tasks"
+gradle.taskGraph.beforeTask { Task task ->
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'ptalk-channel-api/src/main/proto/'
+  }
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'ptalk-nlu-api/src/main/proto/'
+  }
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'ptalk-ability-api/src/main/proto/'
+  }
+}
+
+task copyProtosToJupyter() {
+  group "GRPC ProtoBuf"
   description 'Copy proto file to Jupyter directories'
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'tools/jupyter/channel/'
+  }
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'tools/jupyter/nlu/'
+  }
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'tools/jupyter/ability/'
+  }
   copy {
     from 'ptalk-channel-api/src/main/proto/ptalk-channel-api.proto'
     into 'tools/jupyter/channel/'

@@ -40,6 +40,7 @@ repositories {
 
 dependencies {
   implementation project(':ptalk-ability-api')
+  implementation project(':ptalk-channel-api')
   // https://mvnrepository.com/artifact/net.rossonet.pmos/pmos-java-api
   implementation 'net.rossonet.pmos:pmos-java-api:0.0.1'
   implementation group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
