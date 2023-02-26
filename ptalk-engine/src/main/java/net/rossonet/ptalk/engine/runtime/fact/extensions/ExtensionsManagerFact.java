@@ -8,4 +8,7 @@ public class ExtensionsManagerFact {
 		this.traceId = traceId;
 	}
 
+	public String getTraceId() {
+		return traceId;
+	}
 }

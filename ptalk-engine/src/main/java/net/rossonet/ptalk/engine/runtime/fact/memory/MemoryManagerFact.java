@@ -8,4 +8,7 @@ public class MemoryManagerFact {
 		this.traceId = traceId;
 	}
 
+	public String getTraceId() {
+		return traceId;
+	}
 }

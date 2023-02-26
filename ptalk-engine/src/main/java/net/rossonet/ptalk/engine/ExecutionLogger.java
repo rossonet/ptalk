@@ -1,5 +1,7 @@
-package net.rossonet.ptalk.engine.runtime;
+package net.rossonet.ptalk.engine;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.jeasy.rules.api.Facts;
@@ -8,24 +10,15 @@ import org.jeasy.rules.api.Rules;
 import org.rossonet.utils.LogHelper;
 
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
+import net.rossonet.ptalk.engine.runtime.Task;
 
-public class ExecutionLogger {
-
-	private static final ExecutionLogger INSTANCE = new ExecutionLogger();
+public class ExecutionLogger implements Closeable {
 
 	private static final Logger logger = Logger.getLogger(ExecutionLogger.class.getName());
+	private final PTalkEngineRuntime pTalkEngineRuntime;
 
-	public static ExecutionLogger getTraceLogger(Task rulesEngineTask) {
-		logger.info(
-				"logger called from " + rulesEngineTask.getTraceId() + " with name " + rulesEngineTask.getTaskName());
-		return INSTANCE;
-	}
-
-	public static ExecutionLogger getTraceLoggerFor(String rulesEngineTask) {
-		return INSTANCE;
-	}
-
-	private ExecutionLogger() {
+	ExecutionLogger(PTalkEngineRuntime pTalkEngineRuntime) {
+		this.pTalkEngineRuntime = pTalkEngineRuntime;
 	}
 
 	public void addedNextHop(String rulesEngineTask, String target) {
@@ -54,6 +47,12 @@ public class ExecutionLogger {
 		logger.info("beforeExecute " + rulesEngineTask.getTraceId() + "\nrule:" + rule + "\nfacts:" + facts);
 	}
 
+	@Override
+	public void close() throws IOException {
+		// pulizia
+
+	}
+
 	public void completedInstant(Task rulesEngineTask) {
 		logger.info("completedInstant " + rulesEngineTask.getTraceId());
 	}
@@ -67,6 +66,15 @@ public class ExecutionLogger {
 	public void executionParameters(Task rulesEngineTask, String executionParameters) {
 		logger.info(
 				"executionParameters " + rulesEngineTask.getTraceId() + "\nexecutionParameters" + executionParameters);
+
+	}
+
+	public PTalkEngineRuntime getpTalkEngineRuntime() {
+		return pTalkEngineRuntime;
+	}
+
+	public void logGlobalException(Exception exception) {
+		logger.info("logGlobalException\nstacktrace" + LogHelper.stackTraceToString(exception));
 
 	}
 

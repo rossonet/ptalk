@@ -1,4 +1,4 @@
-package net.rossonet.ptalk.engine;
+package net.rossonet.ptalk.engine.parameter;
 
 import java.io.Serializable;
 

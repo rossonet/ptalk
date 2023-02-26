@@ -1,13 +1,13 @@
 package net.rossonet.ptalk.engine.runtime;
 
 import java.util.Collection;
+import java.util.concurrent.ExecutorService;
 
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.RuleListener;
 import org.jeasy.rules.api.RulesEngineListener;
 
-import com.hazelcast.spi.impl.executionservice.ExecutionService;
-
+import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
 
@@ -19,9 +19,9 @@ public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 		MAIN_EXECUTION_FAULTED, MAIN_EXECUTION_RUNNING
 	}
 
-	public static Task fire(NextHop request, String taskName, Facts inputFacts, ExecutionService executionService)
-			throws TaskManagerException {
-		final RulesEngineTask rulesEngineTask = new RulesEngineTask(request, taskName, inputFacts);
+	public static Task fire(PTalkEngineRuntime pTalkEngineRuntime, NextHop request, String taskName, Facts inputFacts,
+			ExecutorService executionService) throws TaskManagerException {
+		final RulesEngineTask rulesEngineTask = new RulesEngineTask(pTalkEngineRuntime, request, inputFacts);
 		rulesEngineTask.loadRules();
 		rulesEngineTask.fire(executionService);
 		return rulesEngineTask;

@@ -8,4 +8,8 @@ public class NluCommunicationFact {
 		this.traceId = traceId;
 	}
 
+	public String getTraceId() {
+		return traceId;
+	}
+
 }

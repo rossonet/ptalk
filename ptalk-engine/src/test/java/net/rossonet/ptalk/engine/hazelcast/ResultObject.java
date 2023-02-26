@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class ResultObject implements Serializable {
 
+	private static final long serialVersionUID = 7800075225699428294L;
 	private long firstParameter = 0;
 	private long secondParameter = 0;
 

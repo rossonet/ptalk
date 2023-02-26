@@ -8,4 +8,7 @@ public class AiManagerFact {
 		this.traceId = traceId;
 	}
 
+	public String getTraceId() {
+		return traceId;
+	}
 }

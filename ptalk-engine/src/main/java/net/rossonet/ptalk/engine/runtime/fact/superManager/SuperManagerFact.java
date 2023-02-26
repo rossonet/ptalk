@@ -8,4 +8,7 @@ public class SuperManagerFact {
 		this.traceId = traceId;
 	}
 
+	public String getTraceId() {
+		return traceId;
+	}
 }

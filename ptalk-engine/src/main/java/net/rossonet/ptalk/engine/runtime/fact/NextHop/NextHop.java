@@ -4,10 +4,16 @@ public class NextHop {
 
 	private final String target;
 	private final String origin;
+	private final NextHopSchedulerType nextHopSchedulerType;
 
-	public NextHop(String target, String origin) {
+	public NextHop(NextHopSchedulerType nextHopSchedulerType, String target, String origin) {
 		this.target = target;
 		this.origin = origin;
+		this.nextHopSchedulerType = nextHopSchedulerType;
+	}
+
+	public NextHopSchedulerType getNextHopSchedulerType() {
+		return nextHopSchedulerType;
 	}
 
 	public String getOrigin() {
@@ -25,6 +31,8 @@ public class NextHop {
 		builder.append(target);
 		builder.append(", origin=");
 		builder.append(origin);
+		builder.append(", nextHopSchedulerType=");
+		builder.append(nextHopSchedulerType);
 		builder.append("]");
 		return builder.toString();
 	}
