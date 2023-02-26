@@ -21,8 +21,9 @@ public class ExecutionLogger implements Closeable {
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
 	}
 
-	public void addedNextHop(String rulesEngineTask, String target) {
-		logger.info("addedNextHop " + rulesEngineTask + "\ntarget" + target);
+	public void addedNextHop(String rulesEngineTask, String target, String scheduler, boolean debug) {
+		logger.info("addedNextHop " + rulesEngineTask + "\ntarget" + target + "\nscheduler" + scheduler + "\ndebug"
+				+ debug);
 
 	}
 

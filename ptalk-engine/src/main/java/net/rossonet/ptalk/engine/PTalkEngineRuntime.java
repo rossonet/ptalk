@@ -1,10 +1,15 @@
 package net.rossonet.ptalk.engine;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+import org.jeasy.rules.api.Facts;
 
 import net.rossonet.ptalk.base.grpc.LifecycleStatus;
 import net.rossonet.ptalk.engine.grpc.GrpcCoreService;
+import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopSchedulerType;
 
 public class PTalkEngineRuntime {
 
@@ -177,6 +182,28 @@ public class PTalkEngineRuntime {
 		}
 		lifecycleStatus = LifecycleStatus.STOPPED;
 		notify();
+	}
+
+	public Future<Facts> submit(NextHopSchedulerType nextHopSchedulerType, Callable<Facts> task) {
+		Future<Facts> result;
+		switch (nextHopSchedulerType) {
+		case HAZELCAST:
+			result = hazelcastInstanceBuilder.getScheduler().submit(task);
+			break;
+		case LOCAL:
+			result = normalScheduler.submit(task);
+			break;
+		case LOCAL_HIGH_PRIORITY:
+			result = hightScheduler.submit(task);
+			break;
+		case LOCAL_LOW_PRIORITY:
+			result = lowScheduler.submit(task);
+			break;
+		default:
+			result = normalScheduler.submit(task);
+			break;
+		}
+		return result;
 	}
 
 }

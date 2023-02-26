@@ -1,7 +1,6 @@
 package net.rossonet.ptalk.engine.runtime;
 
 import java.util.Collection;
-import java.util.concurrent.ExecutorService;
 
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.RuleListener;
@@ -19,11 +18,11 @@ public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 		MAIN_EXECUTION_FAULTED, MAIN_EXECUTION_RUNNING
 	}
 
-	public static Task fire(PTalkEngineRuntime pTalkEngineRuntime, NextHop request, String taskName, Facts inputFacts,
-			ExecutorService executionService) throws TaskManagerException {
+	public static Task fire(PTalkEngineRuntime pTalkEngineRuntime, NextHop request, String taskName, Facts inputFacts)
+			throws TaskManagerException {
 		final RulesEngineTask rulesEngineTask = new RulesEngineTask(pTalkEngineRuntime, request, inputFacts);
 		rulesEngineTask.loadRules();
-		rulesEngineTask.fire(executionService);
+		rulesEngineTask.fire();
 		return rulesEngineTask;
 	}
 
@@ -37,8 +36,6 @@ public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 
 	Facts getWorkingFacts();
 
-	boolean isDebug();
-
-	void setDebug(boolean debug);
+	boolean isTraceOnLog();
 
 }

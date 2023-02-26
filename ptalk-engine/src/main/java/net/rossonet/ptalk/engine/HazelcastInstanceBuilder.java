@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.durableexecutor.DurableExecutorService;
 import com.hazelcast.replicatedmap.ReplicatedMap;
 
 import net.rossonet.ptalk.engine.parameter.TaskModel;
@@ -13,10 +14,12 @@ import net.rossonet.ptalk.engine.parameter.TaskModel;
 public class HazelcastInstanceBuilder implements Closeable {
 
 	private static final String TASK_MODEL_MAP_NAME = "task-model";
+	private static final String SCHEDULER_MAP_NAME = "task-scheduler";
 	private HazelcastInstance hzServer = null;
 	private final PTalkEngineRuntime pTalkEngineRuntime;
 
 	private ReplicatedMap<String, TaskModel> taskModelRepository;
+	private DurableExecutorService scheduler;
 
 	HazelcastInstanceBuilder(PTalkEngineRuntime pTalkEngineRuntime) {
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
@@ -41,12 +44,12 @@ public class HazelcastInstanceBuilder implements Closeable {
 		clusterConfig.getJetConfig().setEnabled(true);
 		clusterConfig.getUserCodeDeploymentConfig().setEnabled(true);
 		hzServer = Hazelcast.newHazelcastInstance(clusterConfig);
-		createMaps();
+		createMapsAndScheduler();
 	}
 
-	private void createMaps() {
+	private void createMapsAndScheduler() {
 		taskModelRepository = hzServer.getReplicatedMap(TASK_MODEL_MAP_NAME);
-
+		scheduler = hzServer.getDurableExecutorService(SCHEDULER_MAP_NAME);
 	}
 
 	public HazelcastInstance getHazelcastInstance() {
@@ -54,8 +57,13 @@ public class HazelcastInstanceBuilder implements Closeable {
 		return hzServer;
 	}
 
-	public PTalkEngineRuntime getpTalkEngineRuntime() {
+	public PTalkEngineRuntime getPTalkEngineRuntime() {
 		return pTalkEngineRuntime;
+	}
+
+	public DurableExecutorService getScheduler() {
+		checkCreated();
+		return scheduler;
 	}
 
 	public ReplicatedMap<String, TaskModel> getTaskModelRepository() {

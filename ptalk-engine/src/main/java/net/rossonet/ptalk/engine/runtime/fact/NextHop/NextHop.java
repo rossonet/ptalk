@@ -5,11 +5,17 @@ public class NextHop {
 	private final String target;
 	private final String origin;
 	private final NextHopSchedulerType nextHopSchedulerType;
+	private final boolean trace;
 
-	public NextHop(NextHopSchedulerType nextHopSchedulerType, String target, String origin) {
+	public NextHop(NextHopSchedulerType nextHopSchedulerType, String target, String origin, boolean trace) {
 		this.target = target;
 		this.origin = origin;
+		this.trace = trace;
 		this.nextHopSchedulerType = nextHopSchedulerType;
+	}
+
+	public boolean isTraceOnLog() {
+		return trace;
 	}
 
 	public NextHopSchedulerType getNextHopSchedulerType() {
@@ -22,19 +28,6 @@ public class NextHop {
 
 	public String getTarget() {
 		return target;
-	}
-
-	@Override
-	public String toString() {
-		final StringBuilder builder = new StringBuilder();
-		builder.append("NextHop [target=");
-		builder.append(target);
-		builder.append(", origin=");
-		builder.append(origin);
-		builder.append(", nextHopSchedulerType=");
-		builder.append(nextHopSchedulerType);
-		builder.append("]");
-		return builder.toString();
 	}
 
 }

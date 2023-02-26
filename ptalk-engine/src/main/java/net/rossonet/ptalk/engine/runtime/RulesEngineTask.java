@@ -3,7 +3,6 @@ package net.rossonet.ptalk.engine.runtime;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
@@ -44,7 +43,7 @@ class RulesEngineTask implements Task {
 
 	private ExecutionStatus executionStatus = ExecutionStatus.INIT;
 
-	private boolean debug = false;
+	private boolean traceLog = false;
 
 	private final String traceId;
 
@@ -71,6 +70,7 @@ class RulesEngineTask implements Task {
 		}
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
 		executionStatus = ExecutionStatus.INIT;
+		traceLog = request.isTraceOnLog();
 		pTalkEngineRuntime.getExecutionLogger().startInstant(this);
 	}
 
@@ -98,21 +98,21 @@ class RulesEngineTask implements Task {
 
 	@Override
 	public void afterEvaluate(Rule rule, Facts facts, boolean evaluationResult) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().afterEvaluate(this, rule, facts, evaluationResult);
 		}
 	}
 
 	@Override
 	public void afterExecute(Rules rules, Facts facts) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().afterExecute(this, rules, facts);
 		}
 	}
 
 	@Override
 	public boolean beforeEvaluate(Rule rule, Facts facts) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().beforeEvaluate(this, rule, facts);
 		}
 		return true;
@@ -120,14 +120,14 @@ class RulesEngineTask implements Task {
 
 	@Override
 	public void beforeEvaluate(Rules rules, Facts facts) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().beforeEvaluate(this, rules, facts);
 		}
 	}
 
 	@Override
 	public void beforeExecute(Rule rule, Facts facts) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().beforeExecute(this, rule, facts);
 		}
 	}
@@ -137,10 +137,10 @@ class RulesEngineTask implements Task {
 		pTalkEngineRuntime.getExecutionLogger().completedInstant(this);
 	}
 
-	void fire(ExecutorService executionService) throws TaskManagerException {
-		preFire(executionService);
-		mainFire(executionService);
-		postFire(executionService);
+	void fire() throws TaskManagerException {
+		preFire();
+		mainFire();
+		postFire();
 	}
 
 	@Override
@@ -151,6 +151,10 @@ class RulesEngineTask implements Task {
 	@Override
 	public Collection<NextHop> getNextHops() {
 		return nextHops;
+	}
+
+	public NextHop getRequest() {
+		return request;
 	}
 
 	@Override
@@ -169,8 +173,8 @@ class RulesEngineTask implements Task {
 	}
 
 	@Override
-	public boolean isDebug() {
-		return debug;
+	public boolean isTraceOnLog() {
+		return traceLog;
 	}
 
 	void loadRules() throws TaskManagerException {
@@ -181,7 +185,7 @@ class RulesEngineTask implements Task {
 			for (final Rule preRule : pTalkEngineRuntime.getGlobalConfiguration().getPreRulesAsJson(this)) {
 				preExecutionRules.register(preRule);
 			}
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().preRules(this,
 						pTalkEngineRuntime.getGlobalConfiguration().getPreRulesAsString(this));
 			}
@@ -189,7 +193,7 @@ class RulesEngineTask implements Task {
 			executionStatus = ExecutionStatus.LOAD_FAULT;
 			final LoadingTaskRulesException loadingTaskRulesException = new LoadingTaskRulesException(
 					"loading pre rules", e);
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().exceptionLog(this, loadingTaskRulesException);
 			}
 			throw loadingTaskRulesException;
@@ -199,7 +203,7 @@ class RulesEngineTask implements Task {
 				executionRules.register(preRule);
 			}
 			executionParameters = pTalkEngineRuntime.getGlobalConfiguration().getExecutionParameters(this);
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().mainRules(this,
 						pTalkEngineRuntime.getGlobalConfiguration().getMainRulesAsString(this));
 				pTalkEngineRuntime.getExecutionLogger().executionParameters(this, executionParameters.toString());
@@ -208,7 +212,7 @@ class RulesEngineTask implements Task {
 			executionStatus = ExecutionStatus.LOAD_FAULT;
 			final LoadingTaskRulesException loadingTaskRulesException = new LoadingTaskRulesException(
 					"loading main rules", e);
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().exceptionLog(this, loadingTaskRulesException);
 			}
 			throw loadingTaskRulesException;
@@ -217,7 +221,7 @@ class RulesEngineTask implements Task {
 			for (final Rule preRule : pTalkEngineRuntime.getGlobalConfiguration().getPostRulesAsJson(this)) {
 				postExecutionRules.register(preRule);
 			}
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().postRules(this,
 						pTalkEngineRuntime.getGlobalConfiguration().getPostRulesAsString(this));
 			}
@@ -225,7 +229,7 @@ class RulesEngineTask implements Task {
 			executionStatus = ExecutionStatus.LOAD_FAULT;
 			final LoadingTaskRulesException loadingTaskRulesException = new LoadingTaskRulesException(
 					"loading post rules", e);
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().exceptionLog(this, loadingTaskRulesException);
 			}
 			throw loadingTaskRulesException;
@@ -233,75 +237,75 @@ class RulesEngineTask implements Task {
 		executionStatus = ExecutionStatus.LOADED;
 	}
 
-	private void mainFire(ExecutorService executionService) throws TaskManagerException {
+	private void mainFire() throws TaskManagerException {
 		removePreFireFacts();
 		if (executionStatus != ExecutionStatus.PRE_EXECUTION_COMPLETED) {
 			throw new BadTaskOrderExecution("try to fire main rules in a task with status " + executionStatus.name());
 		}
 		executionStatus = ExecutionStatus.MAIN_EXECUTION_RUNNING;
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().mainFireFacts(this, workingFacts);
 		}
 		final Callable<Facts> mainRunner = new RulesEngineRunnerCallable(this, executionRules, workingFacts);
 		try {
-			mainRunFuture = executionService.submit(mainRunner);
+			mainRunFuture = pTalkEngineRuntime.submit(request.getNextHopSchedulerType(), mainRunner);
 			mainRunFuture.get(Long.valueOf(executionParameters.getTimeoutMainExecution()),
 					TimeUnit.valueOf(executionParameters.getTimeoutMainExecutionTimeUnit()));
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.MAIN_EXECUTION_FAULTED;
 			final FireException fireException = new FireException("firing main rules", e);
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().exceptionLog(this, fireException);
 			}
 			throw fireException;
 		}
 		addPostFireFacts();
 		executionStatus = ExecutionStatus.MAIN_EXECUTION_COMPLETED;
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().mainFireCompletedFacts(this, workingFacts);
 		}
 	}
 
 	@Override
 	public void onEvaluationError(Rule rule, Facts facts, Exception exception) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().onEvaluationError(this, rule, facts, exception);
 		}
 	}
 
 	@Override
 	public void onFailure(Rule rule, Facts facts, Exception exception) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().onFailure(this, rule, facts, exception);
 		}
 	}
 
 	@Override
 	public void onSuccess(Rule rule, Facts facts) {
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().onSuccess(this, rule, facts);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private void postFire(ExecutorService executionService) throws TaskManagerException {
+	private void postFire() throws TaskManagerException {
 		if (executionStatus != ExecutionStatus.MAIN_EXECUTION_COMPLETED) {
 			throw new BadTaskOrderExecution("try to fire post rules in a task with status " + executionStatus.name());
 		}
 		executionStatus = ExecutionStatus.POST_EXECUTION_RUNNING;
 		addPostFireFacts();
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().postFireFacts(this, workingFacts);
 		}
 		final Callable<Facts> postRunner = new RulesEngineRunnerCallable(this, postExecutionRules, workingFacts);
 		try {
-			postRunFuture = executionService.submit(postRunner);
+			postRunFuture = pTalkEngineRuntime.submit(request.getNextHopSchedulerType(), postRunner);
 			postRunFuture.get(Long.valueOf(executionParameters.getTimeoutPostExecution()),
 					TimeUnit.valueOf(executionParameters.getTimeoutPostExecutionTimeUnit()));
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.POST_EXECUTION_FAULTED;
 			final FireException fireException = new FireException("firing post rules", e);
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().exceptionLog(this, fireException);
 			}
 			throw fireException;
@@ -313,24 +317,24 @@ class RulesEngineTask implements Task {
 
 	}
 
-	private void preFire(ExecutorService executionService) throws TaskManagerException {
+	private void preFire() throws TaskManagerException {
 		if (executionStatus != ExecutionStatus.LOADED) {
 			throw new BadTaskOrderExecution("try to fire pre rules in a task with status " + executionStatus.name());
 		}
 		executionStatus = ExecutionStatus.PRE_EXECUTION_RUNNING;
 		addPreFireFacts();
-		if (debug) {
+		if (traceLog) {
 			pTalkEngineRuntime.getExecutionLogger().preFireFacts(this, workingFacts);
 		}
 		final Callable<Facts> preRunner = new RulesEngineRunnerCallable(this, preExecutionRules, workingFacts);
 		try {
-			preRunFuture = executionService.submit(preRunner);
+			preRunFuture = pTalkEngineRuntime.submit(request.getNextHopSchedulerType(), preRunner);
 			preRunFuture.get(Long.valueOf(executionParameters.getTimeoutPreExecution()),
 					TimeUnit.valueOf(executionParameters.getTimeoutPreExecutionTimeUnit()));
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.PRE_EXECUTION_FAULTED;
 			final FireException fireException = new FireException("firing pre rules", e);
-			if (debug) {
+			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().exceptionLog(this, fireException);
 			}
 			throw fireException;
@@ -357,15 +361,6 @@ class RulesEngineTask implements Task {
 
 	private void removePreFireFacts() {
 		workingFacts.remove(executionParameters.getSuperManagerFactLabel());
-	}
-
-	@Override
-	public void setDebug(boolean debug) {
-		this.debug = debug;
-	}
-
-	public NextHop getRequest() {
-		return request;
 	}
 
 }

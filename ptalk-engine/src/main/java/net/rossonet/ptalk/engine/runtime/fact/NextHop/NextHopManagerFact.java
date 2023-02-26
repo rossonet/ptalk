@@ -17,9 +17,9 @@ public class NextHopManagerFact {
 		this.traceId = traceId;
 	}
 
-	public void addNextHop(String target, String scheduler) {
-		pTalkEngineRuntime.getExecutionLogger().addedNextHop(traceId, target);
-		nextHops.add(new NextHop(NextHopSchedulerType.valueOf(scheduler), target, traceId));
+	public void addNextHop(String target, String scheduler, boolean trace) {
+		pTalkEngineRuntime.getExecutionLogger().addedNextHop(traceId, target, scheduler, trace);
+		nextHops.add(new NextHop(NextHopSchedulerType.valueOf(scheduler), target, traceId, trace));
 	}
 
 	public Collection<NextHop> getNextHops() {
