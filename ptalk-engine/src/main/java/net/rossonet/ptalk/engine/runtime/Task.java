@@ -1,5 +1,7 @@
 package net.rossonet.ptalk.engine.runtime;
 
+import java.util.Collection;
+
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.RuleListener;
 import org.jeasy.rules.api.RulesEngineListener;
@@ -7,7 +9,7 @@ import org.jeasy.rules.api.RulesEngineListener;
 import com.hazelcast.spi.impl.executionservice.ExecutionService;
 
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
-import net.rossonet.ptalk.engine.parameter.NextHops;
+import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
 
 public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 
@@ -17,7 +19,7 @@ public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 		MAIN_EXECUTION_FAULTED, MAIN_EXECUTION_RUNNING
 	}
 
-	public static Task fire(NextHops request, String taskName, Facts inputFacts, ExecutionService executionService)
+	public static Task fire(NextHop request, String taskName, Facts inputFacts, ExecutionService executionService)
 			throws TaskManagerException {
 		final RulesEngineTask rulesEngineTask = new RulesEngineTask(request, taskName, inputFacts);
 		rulesEngineTask.loadRules();
@@ -27,7 +29,7 @@ public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 
 	ExecutionStatus getExecutionStatus();
 
-	NextHops getNextHops();
+	Collection<NextHop> getNextHops();
 
 	String getTaskName();
 

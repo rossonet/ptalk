@@ -1,6 +1,6 @@
 package net.rossonet.ptalk.engine.runtime;
 
-import java.io.StringReader;
+import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
@@ -10,9 +10,6 @@ import org.jeasy.rules.api.Fact;
 import org.jeasy.rules.api.Facts;
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;
-import org.jeasy.rules.jexl.JexlRuleFactory;
-import org.jeasy.rules.support.reader.JsonRuleDefinitionReader;
-import org.json.JSONObject;
 
 import com.hazelcast.spi.impl.executionservice.ExecutionService;
 
@@ -22,15 +19,22 @@ import net.rossonet.ptalk.engine.exceptions.LoadingTaskRulesException;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.parameter.ExecutionParameters;
 import net.rossonet.ptalk.engine.parameter.GlobalConfiguration;
-import net.rossonet.ptalk.engine.parameter.NextHops;
 import net.rossonet.ptalk.engine.runtime.callable.RulesEngineRunnerCallable;
-import net.rossonet.ptalk.engine.runtime.fact.AbilityCommunicationFact;
-import net.rossonet.ptalk.engine.runtime.fact.AiManagerFact;
-import net.rossonet.ptalk.engine.runtime.fact.ExtensionsManagerFact;
-import net.rossonet.ptalk.engine.runtime.fact.MemoryManagerFact;
-import net.rossonet.ptalk.engine.runtime.fact.NextHopManagerFact;
-import net.rossonet.ptalk.engine.runtime.fact.NluCommunicationFact;
-import net.rossonet.ptalk.engine.runtime.fact.SuperManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
+import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopManagerFactFactory;
+import net.rossonet.ptalk.engine.runtime.fact.ability.AbilityCommunicationFact;
+import net.rossonet.ptalk.engine.runtime.fact.ability.AbilityCommunicationFactFactory;
+import net.rossonet.ptalk.engine.runtime.fact.ai.AiManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.ai.AiManagerFactFactory;
+import net.rossonet.ptalk.engine.runtime.fact.extensions.ExtensionsManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.extensions.ExtensionsManagerFactFactory;
+import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryManagerFactFactory;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluCommunicationFact;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluCommunicationFactFactory;
+import net.rossonet.ptalk.engine.runtime.fact.superManager.SuperManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.superManager.SuperManagerFactFactory;
 
 class RulesEngineTask implements Task {
 
@@ -38,7 +42,7 @@ class RulesEngineTask implements Task {
 
 	private final Rules executionRules = new Rules();
 
-	private final ExecutionParameters executionParameters = null;
+	private ExecutionParameters executionParameters = null;
 
 	private final Rules postExecutionRules = new Rules();
 
@@ -61,9 +65,9 @@ class RulesEngineTask implements Task {
 	private Future<Facts> mainRunFuture = null;
 
 	private Future<Facts> postRunFuture = null;
-	private NextHops nextHops = null;
+	private Collection<NextHop> nextHops = null;
 
-	RulesEngineTask(NextHops request, String taskName, Facts inputFacts) throws TaskManagerException {
+	RulesEngineTask(NextHop request, String taskName, Facts inputFacts) throws TaskManagerException {
 		traceLogger = ExecutionLogger.getTraceLogger(this);
 		this.taskName = taskName;
 		if (inputFacts != null) {
@@ -71,24 +75,31 @@ class RulesEngineTask implements Task {
 		} else {
 			this.workingFacts = new Facts();
 		}
-		this.configuration = GlobalConfiguration.getInstance(request, this);
+		this.configuration = GlobalConfiguration.getInstance();
 		executionStatus = ExecutionStatus.INIT;
 		traceLogger.startInstant(this);
 	}
 
-	private void addSuperManagerFacts() {
+	private void addPostFireFacts() {
 		workingFacts.add(new Fact<SuperManagerFact>(executionParameters.getSuperManagerFactLabel(),
-				SuperManagerFact.getInstance(this)));
+				SuperManagerFactFactory.getInstance(this)));
+		workingFacts.add(new Fact<NextHopManagerFact>(executionParameters.getNextHopFactLabel(),
+				NextHopManagerFactFactory.getInstance(this)));
+	}
+
+	private void addPreFireFacts() {
+		workingFacts.add(new Fact<SuperManagerFact>(executionParameters.getSuperManagerFactLabel(),
+				SuperManagerFactFactory.getInstance(this)));
 		workingFacts.add(new Fact<MemoryManagerFact>(executionParameters.getMemoryManagerFactLabel(),
-				MemoryManagerFact.getInstance(this)));
-		workingFacts.add(
-				new Fact<AiManagerFact>(executionParameters.getAiManagerFactLabel(), AiManagerFact.getInstance(this)));
+				MemoryManagerFactFactory.getInstance(this)));
+		workingFacts.add(new Fact<AiManagerFact>(executionParameters.getAiManagerFactLabel(),
+				AiManagerFactFactory.getInstance(this)));
 		workingFacts.add(new Fact<ExtensionsManagerFact>(executionParameters.getExtensionsManagerFactLabel(),
-				ExtensionsManagerFact.getInstance(this)));
+				ExtensionsManagerFactFactory.getInstance(this)));
 		workingFacts.add(new Fact<AbilityCommunicationFact>(executionParameters.getAbilityCommunicationFactLabel(),
-				AbilityCommunicationFact.getInstance(this)));
+				AbilityCommunicationFactFactory.getInstance(this)));
 		workingFacts.add(new Fact<NluCommunicationFact>(executionParameters.getNluCommunicationFactLabel(),
-				NluCommunicationFact.getInstance(this)));
+				NluCommunicationFactFactory.getInstance(this)));
 	}
 
 	@Override
@@ -144,7 +155,7 @@ class RulesEngineTask implements Task {
 	}
 
 	@Override
-	public NextHops getNextHops() {
+	public Collection<NextHop> getNextHops() {
 		return nextHops;
 	}
 
@@ -172,14 +183,12 @@ class RulesEngineTask implements Task {
 		if (executionStatus != ExecutionStatus.INIT) {
 			throw new BadTaskOrderExecution("try to load rules in a task with status " + executionStatus.name());
 		}
-		final JexlRuleFactory ruleFactory = new JexlRuleFactory(new JsonRuleDefinitionReader());
 		try {
-			final String preRulesAsJson = configuration.getPreRulesAsJson(this);
-			for (final Rule preRule : ruleFactory.createRules(new StringReader(preRulesAsJson))) {
+			for (final Rule preRule : configuration.getPreRulesAsJson(this)) {
 				preExecutionRules.register(preRule);
 			}
 			if (debug) {
-				traceLogger.preRules(this, preRulesAsJson);
+				traceLogger.preRules(this, configuration.getPreRulesAsString(this));
 			}
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.LOAD_FAULT;
@@ -191,14 +200,13 @@ class RulesEngineTask implements Task {
 			throw loadingTaskRulesException;
 		}
 		try {
-			final String rulesAsJson = configuration.getMainRulesAsJson(this);
-			for (final Rule preRule : ruleFactory.createRules(new StringReader(rulesAsJson))) {
+			for (final Rule preRule : configuration.getMainRulesAsJson(this)) {
 				executionRules.register(preRule);
 			}
-			executionParameters.fromJson(new JSONObject(configuration.getBaseExecutionParametersAsJson()));
+			executionParameters = configuration.getExecutionParameters(this);
 			if (debug) {
-				traceLogger.mainRules(this, rulesAsJson);
-				traceLogger.executionParameters(this, executionParameters.toJson().toString(2));
+				traceLogger.mainRules(this, configuration.getMainRulesAsString(this));
+				traceLogger.executionParameters(this, executionParameters.toString());
 			}
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.LOAD_FAULT;
@@ -210,12 +218,11 @@ class RulesEngineTask implements Task {
 			throw loadingTaskRulesException;
 		}
 		try {
-			final String postRulesAsJson = configuration.getPostRulesAsJson(this);
-			for (final Rule preRule : ruleFactory.createRules(new StringReader(postRulesAsJson))) {
+			for (final Rule preRule : configuration.getPostRulesAsJson(this)) {
 				postExecutionRules.register(preRule);
 			}
 			if (debug) {
-				traceLogger.postRules(this, postRulesAsJson);
+				traceLogger.postRules(this, configuration.getPostRulesAsString(this));
 			}
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.LOAD_FAULT;
@@ -230,7 +237,7 @@ class RulesEngineTask implements Task {
 	}
 
 	private void mainFire(ExecutionService executionService) throws TaskManagerException {
-		workingFacts.remove(executionParameters.getSuperManagerFactLabel());
+		removePreFireFacts();
 		if (executionStatus != ExecutionStatus.PRE_EXECUTION_COMPLETED) {
 			throw new BadTaskOrderExecution("try to fire main rules in a task with status " + executionStatus.name());
 		}
@@ -251,10 +258,7 @@ class RulesEngineTask implements Task {
 			}
 			throw fireException;
 		}
-		workingFacts.add(new Fact<SuperManagerFact>(executionParameters.getSuperManagerFactLabel(),
-				SuperManagerFact.getInstance(this)));
-		workingFacts.add(new Fact<NextHopManagerFact>(executionParameters.getNextHopFactLabel(),
-				NextHopManagerFact.getInstance(this)));
+		addPostFireFacts();
 		executionStatus = ExecutionStatus.MAIN_EXECUTION_COMPLETED;
 		if (debug) {
 			traceLogger.mainFireCompletedFacts(this, workingFacts);
@@ -288,9 +292,7 @@ class RulesEngineTask implements Task {
 			throw new BadTaskOrderExecution("try to fire post rules in a task with status " + executionStatus.name());
 		}
 		executionStatus = ExecutionStatus.POST_EXECUTION_RUNNING;
-		addSuperManagerFacts();
-		workingFacts.add(new Fact<NextHopManagerFact>(executionParameters.getNextHopFactLabel(),
-				NextHopManagerFact.getInstance(this)));
+		addPostFireFacts();
 		if (debug) {
 			traceLogger.postFireFacts(this, workingFacts);
 		}
@@ -309,8 +311,7 @@ class RulesEngineTask implements Task {
 		}
 		nextHops = ((Fact<NextHopManagerFact>) workingFacts.getFact(executionParameters.getNextHopFactLabel()))
 				.getValue().getNextHops();
-		nextHops.setCallerTask(getTraceId());
-		removeSuperManagerFacts();
+		removeAllManagerFactsAfterPostFire();
 		executionStatus = ExecutionStatus.POST_EXECUTION_COMPLETED;
 
 	}
@@ -320,7 +321,7 @@ class RulesEngineTask implements Task {
 			throw new BadTaskOrderExecution("try to fire pre rules in a task with status " + executionStatus.name());
 		}
 		executionStatus = ExecutionStatus.PRE_EXECUTION_RUNNING;
-		addSuperManagerFacts();
+		addPreFireFacts();
 		if (debug) {
 			traceLogger.preFireFacts(this, workingFacts);
 		}
@@ -337,11 +338,11 @@ class RulesEngineTask implements Task {
 			}
 			throw fireException;
 		}
-		workingFacts.remove(executionParameters.getSuperManagerFactLabel());
+		removePreFireFacts();
 		executionStatus = ExecutionStatus.PRE_EXECUTION_COMPLETED;
 	}
 
-	private void removeSuperManagerFacts() {
+	private void removeAllManagerFactsAfterPostFire() {
 		workingFacts.remove(executionParameters.getSuperManagerFactLabel());
 		workingFacts.remove(executionParameters.getMemoryManagerFactLabel());
 		workingFacts.remove(executionParameters.getAiManagerFactLabel());
@@ -349,6 +350,16 @@ class RulesEngineTask implements Task {
 		workingFacts.remove(executionParameters.getAbilityCommunicationFactLabel());
 		workingFacts.remove(executionParameters.getNluCommunicationFactLabel());
 		workingFacts.remove(executionParameters.getNextHopFactLabel());
+		SuperManagerFactFactory.terminate(this);
+		MemoryManagerFactFactory.terminate(this);
+		AiManagerFactFactory.terminate(this);
+		ExtensionsManagerFactFactory.terminate(this);
+		AbilityCommunicationFactFactory.terminate(this);
+		NluCommunicationFactFactory.terminate(this);
+	}
+
+	private void removePreFireFacts() {
+		workingFacts.remove(executionParameters.getSuperManagerFactLabel());
 	}
 
 	@Override

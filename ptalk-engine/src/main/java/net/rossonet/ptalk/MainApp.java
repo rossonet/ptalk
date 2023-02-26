@@ -14,10 +14,10 @@ public class MainApp {
 	}
 
 	public static void main(final String[] args) {
-		runApp();
+		runApp(false);
 	}
 
-	public static void runApp() {
+	public static void runApp(boolean hazelcastEmbedded) {
 		logger.info("system started");
 		Thread.currentThread().setName("main");
 		while (running) {
@@ -28,6 +28,7 @@ public class MainApp {
 				e.printStackTrace();
 			}
 		}
+		logger.info("system shutdown completed");
 	}
 
 	public static void setRunning(boolean running) {

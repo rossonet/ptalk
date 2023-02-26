@@ -41,6 +41,9 @@ repositories {
 dependencies {
   api project(':ptalk-ability-api')
   api project(':ptalk-channel-api')
+  api 'org.eclipse.jgit:org.eclipse.jgit:6.4.0.202211300538-r'
+  api 'org.eclipse.jgit:org.eclipse.jgit.ssh.jsch:6.4.0.202211300538-r'
+  api 'org.eclipse.jgit:org.eclipse.jgit.http.apache:6.4.0.202211300538-r'
   api group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
   api group: 'org.json', name: 'json', version: '20220924'
   api group: 'org.yaml', name: 'snakeyaml', version: '1.30'

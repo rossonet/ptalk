@@ -1,7 +1,5 @@
 package net.rossonet.ptalk.engine.parameter;
 
-import org.json.JSONObject;
-
 public class ExecutionParameters {
 
 	private static final String AI_MANAGER_FACT_LABEL = "ai-manager";
@@ -18,9 +16,22 @@ public class ExecutionParameters {
 
 	private static final String SUPER_MANAGER_FACT_LABEL = "super-manager";
 
-	public void fromJson(JSONObject jsonObject) {
-		// TODO Auto-generated method stub
+	private static final String DEFAULT_TIME_UNIT = "milliseconds";
 
+	private static final String DEFAULT_TIMEOUT_PRE_EXECUTION_MS = "60000";
+
+	private static final String DEFAULT_TIMEOUT_POST_EXECUTION_MS = "60000";
+
+	private static final String DEFAULT_TIMEOUT_MAIN_EXECUTION_MS = "60000";
+
+	public static ExecutionParameters fromJson(String executionParameters) {
+		// TODO fromJson
+		return null;
+	}
+
+	public static String toJson(ExecutionParameters executionParameters) {
+		// TODO toJson
+		return null;
 	}
 
 	public String getAbilityCommunicationFactLabel() {
@@ -52,38 +63,27 @@ public class ExecutionParameters {
 	}
 
 	public String getTimeoutMainExecution() {
-		// TODO Auto-generated method stub
-		return null;
+		return DEFAULT_TIMEOUT_MAIN_EXECUTION_MS;
 	}
 
 	public String getTimeoutMainExecutionTimeUnit() {
-		// TODO Auto-generated method stub
-		return null;
+		return DEFAULT_TIME_UNIT;
 	}
 
 	public String getTimeoutPostExecution() {
-		// TODO Auto-generated method stub
-		return null;
+		return DEFAULT_TIMEOUT_POST_EXECUTION_MS;
 	}
 
 	public String getTimeoutPostExecutionTimeUnit() {
-		// TODO Auto-generated method stub
-		return null;
+		return DEFAULT_TIME_UNIT;
 	}
 
 	public String getTimeoutPreExecution() {
-		// TODO Auto-generated method stub
-		return null;
+		return DEFAULT_TIMEOUT_PRE_EXECUTION_MS;
 	}
 
 	public String getTimeoutPreExecutionTimeUnit() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public JSONObject toJson() {
-		// TODO Auto-generated method stub
-		return null;
+		return DEFAULT_TIME_UNIT;
 	}
 
 }
