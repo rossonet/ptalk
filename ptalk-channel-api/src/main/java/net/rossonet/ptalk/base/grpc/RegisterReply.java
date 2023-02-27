@@ -362,6 +362,32 @@ private static final long serialVersionUID = 0L;
     return tags_.get(index);
   }
 
+  public static final int TIMESTAMP_FIELD_NUMBER = 11;
+  private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+  /**
+   * <code>.base.Timestamp timestamp = 11;</code>
+   * @return Whether the timestamp field is set.
+   */
+  @java.lang.Override
+  public boolean hasTimestamp() {
+    return timestamp_ != null;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 11;</code>
+   * @return The timestamp.
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+    return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 11;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+    return getTimestamp();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -405,6 +431,9 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < tags_.size(); i++) {
       output.writeMessage(10, tags_.get(i));
+    }
+    if (timestamp_ != null) {
+      output.writeMessage(11, getTimestamp());
     }
     getUnknownFields().writeTo(output);
   }
@@ -450,6 +479,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(10, tags_.get(i));
     }
+    if (timestamp_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(11, getTimestamp());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -484,6 +517,11 @@ private static final long serialVersionUID = 0L;
         .equals(other.getAdditionalDatasList())) return false;
     if (!getTagsList()
         .equals(other.getTagsList())) return false;
+    if (hasTimestamp() != other.hasTimestamp()) return false;
+    if (hasTimestamp()) {
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -519,6 +557,10 @@ private static final long serialVersionUID = 0L;
     if (getTagsCount() > 0) {
       hash = (37 * hash) + TAGS_FIELD_NUMBER;
       hash = (53 * hash) + getTagsList().hashCode();
+    }
+    if (hasTimestamp()) {
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -678,6 +720,12 @@ private static final long serialVersionUID = 0L;
         tagsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000002);
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
       return this;
     }
 
@@ -730,6 +778,11 @@ private static final long serialVersionUID = 0L;
         result.tags_ = tags_;
       } else {
         result.tags_ = tagsBuilder_.build();
+      }
+      if (timestampBuilder_ == null) {
+        result.timestamp_ = timestamp_;
+      } else {
+        result.timestamp_ = timestampBuilder_.build();
       }
       onBuilt();
       return result;
@@ -860,6 +913,9 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      if (other.hasTimestamp()) {
+        mergeTimestamp(other.getTimestamp());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -952,6 +1008,13 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 82
+            case 90: {
+              input.readMessage(
+                  getTimestampFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 90
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1943,6 +2006,125 @@ private static final long serialVersionUID = 0L;
         tags_ = null;
       }
       return tagsBuilder_;
+    }
+
+    private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> timestampBuilder_;
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     * @return Whether the timestamp field is set.
+     */
+    public boolean hasTimestamp() {
+      return timestampBuilder_ != null || timestamp_ != null;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     * @return The timestamp.
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+      if (timestampBuilder_ == null) {
+        return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      } else {
+        return timestampBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     */
+    public Builder setTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        timestamp_ = value;
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     */
+    public Builder setTimestamp(
+        net.rossonet.ptalk.base.grpc.Timestamp.Builder builderForValue) {
+      if (timestampBuilder_ == null) {
+        timestamp_ = builderForValue.build();
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     */
+    public Builder mergeTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (timestamp_ != null) {
+          timestamp_ =
+            net.rossonet.ptalk.base.grpc.Timestamp.newBuilder(timestamp_).mergeFrom(value).buildPartial();
+        } else {
+          timestamp_ = value;
+        }
+        onChanged();
+      } else {
+        timestampBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     */
+    public Builder clearTimestamp() {
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+        onChanged();
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp.Builder getTimestampBuilder() {
+      
+      onChanged();
+      return getTimestampFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+      if (timestampBuilder_ != null) {
+        return timestampBuilder_.getMessageOrBuilder();
+      } else {
+        return timestamp_ == null ?
+            net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 11;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> 
+        getTimestampFieldBuilder() {
+      if (timestampBuilder_ == null) {
+        timestampBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder>(
+                getTimestamp(),
+                getParentForChildren(),
+                isClean());
+        timestamp_ = null;
+      }
+      return timestampBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

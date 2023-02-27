@@ -6,4 +6,202 @@ package net.rossonet.ptalk.channel.grpc;
 public interface ChannelMessageRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:channel.ChannelMessageRequest)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  java.lang.String getFlowReference();
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  com.google.protobuf.ByteString
+      getFlowReferenceBytes();
+
+  /**
+   * <code>string messageReference = 2;</code>
+   * @return The messageReference.
+   */
+  java.lang.String getMessageReference();
+  /**
+   * <code>string messageReference = 2;</code>
+   * @return The bytes for messageReference.
+   */
+  com.google.protobuf.ByteString
+      getMessageReferenceBytes();
+
+  /**
+   * <code>string originContext = 3;</code>
+   * @return The originContext.
+   */
+  java.lang.String getOriginContext();
+  /**
+   * <code>string originContext = 3;</code>
+   * @return The bytes for originContext.
+   */
+  com.google.protobuf.ByteString
+      getOriginContextBytes();
+
+  /**
+   * <code>string channelUniqueName = 4;</code>
+   * @return The channelUniqueName.
+   */
+  java.lang.String getChannelUniqueName();
+  /**
+   * <code>string channelUniqueName = 4;</code>
+   * @return The bytes for channelUniqueName.
+   */
+  com.google.protobuf.ByteString
+      getChannelUniqueNameBytes();
+
+  /**
+   * <code>string channelUniqueMessageId = 5;</code>
+   * @return The channelUniqueMessageId.
+   */
+  java.lang.String getChannelUniqueMessageId();
+  /**
+   * <code>string channelUniqueMessageId = 5;</code>
+   * @return The bytes for channelUniqueMessageId.
+   */
+  com.google.protobuf.ByteString
+      getChannelUniqueMessageIdBytes();
+
+  /**
+   * <code>string replyTask = 6;</code>
+   * @return The replyTask.
+   */
+  java.lang.String getReplyTask();
+  /**
+   * <code>string replyTask = 6;</code>
+   * @return The bytes for replyTask.
+   */
+  com.google.protobuf.ByteString
+      getReplyTaskBytes();
+
+  /**
+   * <code>.base.Data message = 7;</code>
+   * @return Whether the message field is set.
+   */
+  boolean hasMessage();
+  /**
+   * <code>.base.Data message = 7;</code>
+   * @return The message.
+   */
+  net.rossonet.ptalk.base.grpc.Data getMessage();
+  /**
+   * <code>.base.Data message = 7;</code>
+   */
+  net.rossonet.ptalk.base.grpc.DataOrBuilder getMessageOrBuilder();
+
+  /**
+   * <code>string contextJson = 8;</code>
+   * @return The contextJson.
+   */
+  java.lang.String getContextJson();
+  /**
+   * <code>string contextJson = 8;</code>
+   * @return The bytes for contextJson.
+   */
+  com.google.protobuf.ByteString
+      getContextJsonBytes();
+
+  /**
+   * <code>repeated .base.Data additionalDatas = 9;</code>
+   */
+  java.util.List<net.rossonet.ptalk.base.grpc.Data> 
+      getAdditionalDatasList();
+  /**
+   * <code>repeated .base.Data additionalDatas = 9;</code>
+   */
+  net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index);
+  /**
+   * <code>repeated .base.Data additionalDatas = 9;</code>
+   */
+  int getAdditionalDatasCount();
+  /**
+   * <code>repeated .base.Data additionalDatas = 9;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getAdditionalDatasOrBuilderList();
+  /**
+   * <code>repeated .base.Data additionalDatas = 9;</code>
+   */
+  net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
+      int index);
+
+  /**
+   * <code>repeated .base.Tag tags = 10;</code>
+   */
+  java.util.List<net.rossonet.ptalk.base.grpc.Tag> 
+      getTagsList();
+  /**
+   * <code>repeated .base.Tag tags = 10;</code>
+   */
+  net.rossonet.ptalk.base.grpc.Tag getTags(int index);
+  /**
+   * <code>repeated .base.Tag tags = 10;</code>
+   */
+  int getTagsCount();
+  /**
+   * <code>repeated .base.Tag tags = 10;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.base.grpc.TagOrBuilder> 
+      getTagsOrBuilderList();
+  /**
+   * <code>repeated .base.Tag tags = 10;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(
+      int index);
+
+  /**
+   * <code>int32 priority = 11;</code>
+   * @return The priority.
+   */
+  int getPriority();
+
+  /**
+   * <code>bool traceLog = 12;</code>
+   * @return The traceLog.
+   */
+  boolean getTraceLog();
+
+  /**
+   * <code>.base.Timestamp timestamp = 13;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 13;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 13;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
+
+  /**
+   * <code>repeated .base.Data traceData = 14;</code>
+   */
+  java.util.List<net.rossonet.ptalk.base.grpc.Data> 
+      getTraceDataList();
+  /**
+   * <code>repeated .base.Data traceData = 14;</code>
+   */
+  net.rossonet.ptalk.base.grpc.Data getTraceData(int index);
+  /**
+   * <code>repeated .base.Data traceData = 14;</code>
+   */
+  int getTraceDataCount();
+  /**
+   * <code>repeated .base.Data traceData = 14;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getTraceDataOrBuilderList();
+  /**
+   * <code>repeated .base.Data traceData = 14;</code>
+   */
+  net.rossonet.ptalk.base.grpc.DataOrBuilder getTraceDataOrBuilder(
+      int index);
 }

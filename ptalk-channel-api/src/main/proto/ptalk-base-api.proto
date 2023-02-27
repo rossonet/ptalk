@@ -105,6 +105,7 @@ message GenericMessageRequest {
   string messageReference = 2;
   repeated Data additionalDatas = 3;
   repeated Tag tags = 4;
+  Timestamp timestamp = 5;
 }
 
 message GenericMessageReply {
@@ -113,6 +114,7 @@ message GenericMessageReply {
   StatusValue generalStatus = 3;
   repeated Data additionalDatas = 4;
   repeated Tag tags = 5;
+  Timestamp timestamp = 6;
 }
 
 message RegisterRequest {
@@ -127,6 +129,7 @@ message RegisterRequest {
   repeated Data additionalDatas = 9;
   repeated Tag tags = 10;
   string selfSuperAbilityCode = 11;
+  Timestamp timestamp = 12;
 }
 
 message RegisterReply {
@@ -140,13 +143,16 @@ message RegisterReply {
   string otpSeed = 8;
   repeated Data additionalDatas = 9;
   repeated Tag tags = 10;
+  Timestamp timestamp = 11;
 }
 
 message HealthRequest {
-  string unitUniqueName = 1;
-  string jsonHardwareInfo = 2;
-  StatusValue status = 3;
-  LifecycleStatus lifecycleStatus = 4;
+  string flowReference = 1;
+  string unitUniqueName = 2;
+  string jsonHardwareInfo = 3;
+  StatusValue status = 4;
+  LifecycleStatus lifecycleStatus = 5;
+  Timestamp timestamp = 6;
 }
 
 message StackTraceLine {
@@ -158,14 +164,15 @@ message StackTraceLine {
 }
 
 message LogRequest {
-  string unitUniqueName = 1;
-  LogSeverity severity = 2;
-  string logLine = 3;
-  string flowReference = 4;
-  string messageReference = 5;
-  repeated StackTraceLine stacktrace = 6;
-  StatusValue status = 7;
-  LifecycleStatus lifecycleStatus = 8;
+  string flowReference = 1;
+  string unitUniqueName = 2;
+  LogSeverity severity = 3;
+  string logLine = 4;
+  string messageReference = 6;
+  repeated StackTraceLine stacktrace = 7;
+  StatusValue status = 8;
+  LifecycleStatus lifecycleStatus = 9;
+  Timestamp timestamp = 10;
 }
 
 service RpcCoreV1 {

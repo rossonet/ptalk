@@ -6,4 +6,57 @@ package net.rossonet.ptalk.ability.grpc;
 public interface RegisterRulesReplyOrBuilder extends
     // @@protoc_insertion_point(interface_extends:ability.RegisterRulesReply)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  java.lang.String getFlowReference();
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  com.google.protobuf.ByteString
+      getFlowReferenceBytes();
+
+  /**
+   * <code>.ability.Rule rule = 2;</code>
+   * @return Whether the rule field is set.
+   */
+  boolean hasRule();
+  /**
+   * <code>.ability.Rule rule = 2;</code>
+   * @return The rule.
+   */
+  net.rossonet.ptalk.ability.grpc.Rule getRule();
+  /**
+   * <code>.ability.Rule rule = 2;</code>
+   */
+  net.rossonet.ptalk.ability.grpc.RuleOrBuilder getRuleOrBuilder();
+
+  /**
+   * <code>.base.StatusValue status = 3;</code>
+   * @return The enum numeric value on the wire for status.
+   */
+  int getStatusValue();
+  /**
+   * <code>.base.StatusValue status = 3;</code>
+   * @return The status.
+   */
+  net.rossonet.ptalk.base.grpc.StatusValue getStatus();
+
+  /**
+   * <code>.base.Timestamp timestamp = 4;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 4;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 4;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

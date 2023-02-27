@@ -32,28 +32,31 @@ public interface NluMessageRequestOrBuilder extends
       getMessageReferenceBytes();
 
   /**
-   * <code>string model = 3;</code>
-   * @return The model.
+   * <code>string originContext = 3;</code>
+   * @return The originContext.
    */
-  java.lang.String getModel();
+  java.lang.String getOriginContext();
   /**
-   * <code>string model = 3;</code>
-   * @return The bytes for model.
+   * <code>string originContext = 3;</code>
+   * @return The bytes for originContext.
    */
   com.google.protobuf.ByteString
-      getModelBytes();
+      getOriginContextBytes();
 
   /**
-   * <code>string modelVersion = 4;</code>
-   * @return The modelVersion.
+   * <code>.nlu.NluModel model = 4;</code>
+   * @return Whether the model field is set.
    */
-  java.lang.String getModelVersion();
+  boolean hasModel();
   /**
-   * <code>string modelVersion = 4;</code>
-   * @return The bytes for modelVersion.
+   * <code>.nlu.NluModel model = 4;</code>
+   * @return The model.
    */
-  com.google.protobuf.ByteString
-      getModelVersionBytes();
+  net.rossonet.ptalk.nlu.grpc.NluModel getModel();
+  /**
+   * <code>.nlu.NluModel model = 4;</code>
+   */
+  net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder();
 
   /**
    * <code>string replyTask = 5;</code>
@@ -141,4 +144,25 @@ public interface NluMessageRequestOrBuilder extends
    */
   net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(
       int index);
+
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
+
+  /**
+   * <code>bool traceLog = 11;</code>
+   * @return The traceLog.
+   */
+  boolean getTraceLog();
 }

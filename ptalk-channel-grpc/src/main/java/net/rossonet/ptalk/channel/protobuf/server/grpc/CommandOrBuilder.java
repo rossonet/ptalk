@@ -8,29 +8,26 @@ public interface CommandOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.channelGrpc.Agent agentSender = 1;</code>
-   * @return Whether the agentSender field is set.
-   */
-  boolean hasAgentSender();
-  /**
-   * <code>.channelGrpc.Agent agentSender = 1;</code>
-   * @return The agentSender.
-   */
-  net.rossonet.ptalk.channel.protobuf.server.grpc.Agent getAgentSender();
-  /**
-   * <code>.channelGrpc.Agent agentSender = 1;</code>
-   */
-  net.rossonet.ptalk.channel.protobuf.server.grpc.AgentOrBuilder getAgentSenderOrBuilder();
-
-  /**
-   * <code>string command = 2;</code>
+   * <code>string command = 1;</code>
    * @return The command.
    */
   java.lang.String getCommand();
   /**
-   * <code>string command = 2;</code>
+   * <code>string command = 1;</code>
    * @return The bytes for command.
    */
   com.google.protobuf.ByteString
       getCommandBytes();
+
+  /**
+   * <code>string language = 2;</code>
+   * @return The language.
+   */
+  java.lang.String getLanguage();
+  /**
+   * <code>string language = 2;</code>
+   * @return The bytes for language.
+   */
+  com.google.protobuf.ByteString
+      getLanguageBytes();
 }

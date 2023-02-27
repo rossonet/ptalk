@@ -6,4 +6,66 @@ package net.rossonet.ptalk.channel.grpc;
 public interface ChannelMessageReplyOrBuilder extends
     // @@protoc_insertion_point(interface_extends:channel.ChannelMessageReply)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  java.lang.String getFlowReference();
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  com.google.protobuf.ByteString
+      getFlowReferenceBytes();
+
+  /**
+   * <code>.base.StatusValue status = 2;</code>
+   * @return The enum numeric value on the wire for status.
+   */
+  int getStatusValue();
+  /**
+   * <code>.base.StatusValue status = 2;</code>
+   * @return The status.
+   */
+  net.rossonet.ptalk.base.grpc.StatusValue getStatus();
+
+  /**
+   * <code>.base.Timestamp timestamp = 3;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 3;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 3;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
+
+  /**
+   * <code>repeated .base.Data traceData = 4;</code>
+   */
+  java.util.List<net.rossonet.ptalk.base.grpc.Data> 
+      getTraceDataList();
+  /**
+   * <code>repeated .base.Data traceData = 4;</code>
+   */
+  net.rossonet.ptalk.base.grpc.Data getTraceData(int index);
+  /**
+   * <code>repeated .base.Data traceData = 4;</code>
+   */
+  int getTraceDataCount();
+  /**
+   * <code>repeated .base.Data traceData = 4;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getTraceDataOrBuilderList();
+  /**
+   * <code>repeated .base.Data traceData = 4;</code>
+   */
+  net.rossonet.ptalk.base.grpc.DataOrBuilder getTraceDataOrBuilder(
+      int index);
 }

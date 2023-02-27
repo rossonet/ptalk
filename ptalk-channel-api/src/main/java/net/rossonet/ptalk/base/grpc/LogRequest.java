@@ -16,10 +16,10 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LogRequest() {
+    flowReference_ = "";
     unitUniqueName_ = "";
     severity_ = 0;
     logLine_ = "";
-    flowReference_ = "";
     messageReference_ = "";
     stacktrace_ = java.util.Collections.emptyList();
     status_ = 0;
@@ -51,105 +51,10 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.base.grpc.LogRequest.class, net.rossonet.ptalk.base.grpc.LogRequest.Builder.class);
   }
 
-  public static final int UNITUNIQUENAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object unitUniqueName_;
-  /**
-   * <code>string unitUniqueName = 1;</code>
-   * @return The unitUniqueName.
-   */
-  @java.lang.Override
-  public java.lang.String getUnitUniqueName() {
-    java.lang.Object ref = unitUniqueName_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      unitUniqueName_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string unitUniqueName = 1;</code>
-   * @return The bytes for unitUniqueName.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getUnitUniqueNameBytes() {
-    java.lang.Object ref = unitUniqueName_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      unitUniqueName_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int SEVERITY_FIELD_NUMBER = 2;
-  private int severity_;
-  /**
-   * <code>.base.LogSeverity severity = 2;</code>
-   * @return The enum numeric value on the wire for severity.
-   */
-  @java.lang.Override public int getSeverityValue() {
-    return severity_;
-  }
-  /**
-   * <code>.base.LogSeverity severity = 2;</code>
-   * @return The severity.
-   */
-  @java.lang.Override public net.rossonet.ptalk.base.grpc.LogSeverity getSeverity() {
-    @SuppressWarnings("deprecation")
-    net.rossonet.ptalk.base.grpc.LogSeverity result = net.rossonet.ptalk.base.grpc.LogSeverity.valueOf(severity_);
-    return result == null ? net.rossonet.ptalk.base.grpc.LogSeverity.UNRECOGNIZED : result;
-  }
-
-  public static final int LOGLINE_FIELD_NUMBER = 3;
-  private volatile java.lang.Object logLine_;
-  /**
-   * <code>string logLine = 3;</code>
-   * @return The logLine.
-   */
-  @java.lang.Override
-  public java.lang.String getLogLine() {
-    java.lang.Object ref = logLine_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      logLine_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string logLine = 3;</code>
-   * @return The bytes for logLine.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getLogLineBytes() {
-    java.lang.Object ref = logLine_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      logLine_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int FLOWREFERENCE_FIELD_NUMBER = 4;
+  public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
   private volatile java.lang.Object flowReference_;
   /**
-   * <code>string flowReference = 4;</code>
+   * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
   @java.lang.Override
@@ -166,7 +71,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string flowReference = 4;</code>
+   * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
   @java.lang.Override
@@ -184,10 +89,105 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int MESSAGEREFERENCE_FIELD_NUMBER = 5;
+  public static final int UNITUNIQUENAME_FIELD_NUMBER = 2;
+  private volatile java.lang.Object unitUniqueName_;
+  /**
+   * <code>string unitUniqueName = 2;</code>
+   * @return The unitUniqueName.
+   */
+  @java.lang.Override
+  public java.lang.String getUnitUniqueName() {
+    java.lang.Object ref = unitUniqueName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      unitUniqueName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string unitUniqueName = 2;</code>
+   * @return The bytes for unitUniqueName.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getUnitUniqueNameBytes() {
+    java.lang.Object ref = unitUniqueName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      unitUniqueName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SEVERITY_FIELD_NUMBER = 3;
+  private int severity_;
+  /**
+   * <code>.base.LogSeverity severity = 3;</code>
+   * @return The enum numeric value on the wire for severity.
+   */
+  @java.lang.Override public int getSeverityValue() {
+    return severity_;
+  }
+  /**
+   * <code>.base.LogSeverity severity = 3;</code>
+   * @return The severity.
+   */
+  @java.lang.Override public net.rossonet.ptalk.base.grpc.LogSeverity getSeverity() {
+    @SuppressWarnings("deprecation")
+    net.rossonet.ptalk.base.grpc.LogSeverity result = net.rossonet.ptalk.base.grpc.LogSeverity.valueOf(severity_);
+    return result == null ? net.rossonet.ptalk.base.grpc.LogSeverity.UNRECOGNIZED : result;
+  }
+
+  public static final int LOGLINE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object logLine_;
+  /**
+   * <code>string logLine = 4;</code>
+   * @return The logLine.
+   */
+  @java.lang.Override
+  public java.lang.String getLogLine() {
+    java.lang.Object ref = logLine_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      logLine_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string logLine = 4;</code>
+   * @return The bytes for logLine.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getLogLineBytes() {
+    java.lang.Object ref = logLine_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      logLine_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MESSAGEREFERENCE_FIELD_NUMBER = 6;
   private volatile java.lang.Object messageReference_;
   /**
-   * <code>string messageReference = 5;</code>
+   * <code>string messageReference = 6;</code>
    * @return The messageReference.
    */
   @java.lang.Override
@@ -204,7 +204,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string messageReference = 5;</code>
+   * <code>string messageReference = 6;</code>
    * @return The bytes for messageReference.
    */
   @java.lang.Override
@@ -222,17 +222,17 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int STACKTRACE_FIELD_NUMBER = 6;
+  public static final int STACKTRACE_FIELD_NUMBER = 7;
   private java.util.List<net.rossonet.ptalk.base.grpc.StackTraceLine> stacktrace_;
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   @java.lang.Override
   public java.util.List<net.rossonet.ptalk.base.grpc.StackTraceLine> getStacktraceList() {
     return stacktrace_;
   }
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   @java.lang.Override
   public java.util.List<? extends net.rossonet.ptalk.base.grpc.StackTraceLineOrBuilder> 
@@ -240,21 +240,21 @@ private static final long serialVersionUID = 0L;
     return stacktrace_;
   }
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   @java.lang.Override
   public int getStacktraceCount() {
     return stacktrace_.size();
   }
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   @java.lang.Override
   public net.rossonet.ptalk.base.grpc.StackTraceLine getStacktrace(int index) {
     return stacktrace_.get(index);
   }
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   @java.lang.Override
   public net.rossonet.ptalk.base.grpc.StackTraceLineOrBuilder getStacktraceOrBuilder(
@@ -262,17 +262,17 @@ private static final long serialVersionUID = 0L;
     return stacktrace_.get(index);
   }
 
-  public static final int STATUS_FIELD_NUMBER = 7;
+  public static final int STATUS_FIELD_NUMBER = 8;
   private int status_;
   /**
-   * <code>.base.StatusValue status = 7;</code>
+   * <code>.base.StatusValue status = 8;</code>
    * @return The enum numeric value on the wire for status.
    */
   @java.lang.Override public int getStatusValue() {
     return status_;
   }
   /**
-   * <code>.base.StatusValue status = 7;</code>
+   * <code>.base.StatusValue status = 8;</code>
    * @return The status.
    */
   @java.lang.Override public net.rossonet.ptalk.base.grpc.StatusValue getStatus() {
@@ -281,23 +281,49 @@ private static final long serialVersionUID = 0L;
     return result == null ? net.rossonet.ptalk.base.grpc.StatusValue.UNRECOGNIZED : result;
   }
 
-  public static final int LIFECYCLESTATUS_FIELD_NUMBER = 8;
+  public static final int LIFECYCLESTATUS_FIELD_NUMBER = 9;
   private int lifecycleStatus_;
   /**
-   * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+   * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
    * @return The enum numeric value on the wire for lifecycleStatus.
    */
   @java.lang.Override public int getLifecycleStatusValue() {
     return lifecycleStatus_;
   }
   /**
-   * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+   * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
    * @return The lifecycleStatus.
    */
   @java.lang.Override public net.rossonet.ptalk.base.grpc.LifecycleStatus getLifecycleStatus() {
     @SuppressWarnings("deprecation")
     net.rossonet.ptalk.base.grpc.LifecycleStatus result = net.rossonet.ptalk.base.grpc.LifecycleStatus.valueOf(lifecycleStatus_);
     return result == null ? net.rossonet.ptalk.base.grpc.LifecycleStatus.UNRECOGNIZED : result;
+  }
+
+  public static final int TIMESTAMP_FIELD_NUMBER = 10;
+  private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return Whether the timestamp field is set.
+   */
+  @java.lang.Override
+  public boolean hasTimestamp() {
+    return timestamp_ != null;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return The timestamp.
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+    return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+    return getTimestamp();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -314,29 +340,32 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, flowReference_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(unitUniqueName_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, unitUniqueName_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, unitUniqueName_);
     }
     if (severity_ != net.rossonet.ptalk.base.grpc.LogSeverity.DEFAULT.getNumber()) {
-      output.writeEnum(2, severity_);
+      output.writeEnum(3, severity_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(logLine_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, logLine_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, flowReference_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, logLine_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(messageReference_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, messageReference_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, messageReference_);
     }
     for (int i = 0; i < stacktrace_.size(); i++) {
-      output.writeMessage(6, stacktrace_.get(i));
+      output.writeMessage(7, stacktrace_.get(i));
     }
     if (status_ != net.rossonet.ptalk.base.grpc.StatusValue.STATUS_GOOD.getNumber()) {
-      output.writeEnum(7, status_);
+      output.writeEnum(8, status_);
     }
     if (lifecycleStatus_ != net.rossonet.ptalk.base.grpc.LifecycleStatus.INIT.getNumber()) {
-      output.writeEnum(8, lifecycleStatus_);
+      output.writeEnum(9, lifecycleStatus_);
+    }
+    if (timestamp_ != null) {
+      output.writeMessage(10, getTimestamp());
     }
     getUnknownFields().writeTo(output);
   }
@@ -347,33 +376,37 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, flowReference_);
+    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(unitUniqueName_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, unitUniqueName_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, unitUniqueName_);
     }
     if (severity_ != net.rossonet.ptalk.base.grpc.LogSeverity.DEFAULT.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(2, severity_);
+        .computeEnumSize(3, severity_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(logLine_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, logLine_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, flowReference_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, logLine_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(messageReference_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, messageReference_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, messageReference_);
     }
     for (int i = 0; i < stacktrace_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, stacktrace_.get(i));
+        .computeMessageSize(7, stacktrace_.get(i));
     }
     if (status_ != net.rossonet.ptalk.base.grpc.StatusValue.STATUS_GOOD.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(7, status_);
+        .computeEnumSize(8, status_);
     }
     if (lifecycleStatus_ != net.rossonet.ptalk.base.grpc.LifecycleStatus.INIT.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(8, lifecycleStatus_);
+        .computeEnumSize(9, lifecycleStatus_);
+    }
+    if (timestamp_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(10, getTimestamp());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -390,19 +423,24 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.base.grpc.LogRequest other = (net.rossonet.ptalk.base.grpc.LogRequest) obj;
 
+    if (!getFlowReference()
+        .equals(other.getFlowReference())) return false;
     if (!getUnitUniqueName()
         .equals(other.getUnitUniqueName())) return false;
     if (severity_ != other.severity_) return false;
     if (!getLogLine()
         .equals(other.getLogLine())) return false;
-    if (!getFlowReference()
-        .equals(other.getFlowReference())) return false;
     if (!getMessageReference()
         .equals(other.getMessageReference())) return false;
     if (!getStacktraceList()
         .equals(other.getStacktraceList())) return false;
     if (status_ != other.status_) return false;
     if (lifecycleStatus_ != other.lifecycleStatus_) return false;
+    if (hasTimestamp() != other.hasTimestamp()) return false;
+    if (hasTimestamp()) {
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -414,14 +452,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + FLOWREFERENCE_FIELD_NUMBER;
+    hash = (53 * hash) + getFlowReference().hashCode();
     hash = (37 * hash) + UNITUNIQUENAME_FIELD_NUMBER;
     hash = (53 * hash) + getUnitUniqueName().hashCode();
     hash = (37 * hash) + SEVERITY_FIELD_NUMBER;
     hash = (53 * hash) + severity_;
     hash = (37 * hash) + LOGLINE_FIELD_NUMBER;
     hash = (53 * hash) + getLogLine().hashCode();
-    hash = (37 * hash) + FLOWREFERENCE_FIELD_NUMBER;
-    hash = (53 * hash) + getFlowReference().hashCode();
     hash = (37 * hash) + MESSAGEREFERENCE_FIELD_NUMBER;
     hash = (53 * hash) + getMessageReference().hashCode();
     if (getStacktraceCount() > 0) {
@@ -432,6 +470,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + status_;
     hash = (37 * hash) + LIFECYCLESTATUS_FIELD_NUMBER;
     hash = (53 * hash) + lifecycleStatus_;
+    if (hasTimestamp()) {
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -560,13 +602,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      flowReference_ = "";
+
       unitUniqueName_ = "";
 
       severity_ = 0;
 
       logLine_ = "";
-
-      flowReference_ = "";
 
       messageReference_ = "";
 
@@ -581,6 +623,12 @@ private static final long serialVersionUID = 0L;
 
       lifecycleStatus_ = 0;
 
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
       return this;
     }
 
@@ -608,10 +656,10 @@ private static final long serialVersionUID = 0L;
     public net.rossonet.ptalk.base.grpc.LogRequest buildPartial() {
       net.rossonet.ptalk.base.grpc.LogRequest result = new net.rossonet.ptalk.base.grpc.LogRequest(this);
       int from_bitField0_ = bitField0_;
+      result.flowReference_ = flowReference_;
       result.unitUniqueName_ = unitUniqueName_;
       result.severity_ = severity_;
       result.logLine_ = logLine_;
-      result.flowReference_ = flowReference_;
       result.messageReference_ = messageReference_;
       if (stacktraceBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -624,6 +672,11 @@ private static final long serialVersionUID = 0L;
       }
       result.status_ = status_;
       result.lifecycleStatus_ = lifecycleStatus_;
+      if (timestampBuilder_ == null) {
+        result.timestamp_ = timestamp_;
+      } else {
+        result.timestamp_ = timestampBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -672,6 +725,10 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.base.grpc.LogRequest other) {
       if (other == net.rossonet.ptalk.base.grpc.LogRequest.getDefaultInstance()) return this;
+      if (!other.getFlowReference().isEmpty()) {
+        flowReference_ = other.flowReference_;
+        onChanged();
+      }
       if (!other.getUnitUniqueName().isEmpty()) {
         unitUniqueName_ = other.unitUniqueName_;
         onChanged();
@@ -681,10 +738,6 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getLogLine().isEmpty()) {
         logLine_ = other.logLine_;
-        onChanged();
-      }
-      if (!other.getFlowReference().isEmpty()) {
-        flowReference_ = other.flowReference_;
         onChanged();
       }
       if (!other.getMessageReference().isEmpty()) {
@@ -723,6 +776,9 @@ private static final long serialVersionUID = 0L;
       if (other.lifecycleStatus_ != 0) {
         setLifecycleStatusValue(other.getLifecycleStatusValue());
       }
+      if (other.hasTimestamp()) {
+        mergeTimestamp(other.getTimestamp());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -750,31 +806,31 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              unitUniqueName_ = input.readStringRequireUtf8();
-
-              break;
-            } // case 10
-            case 16: {
-              severity_ = input.readEnum();
-
-              break;
-            } // case 16
-            case 26: {
-              logLine_ = input.readStringRequireUtf8();
-
-              break;
-            } // case 26
-            case 34: {
               flowReference_ = input.readStringRequireUtf8();
 
               break;
+            } // case 10
+            case 18: {
+              unitUniqueName_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 18
+            case 24: {
+              severity_ = input.readEnum();
+
+              break;
+            } // case 24
+            case 34: {
+              logLine_ = input.readStringRequireUtf8();
+
+              break;
             } // case 34
-            case 42: {
+            case 50: {
               messageReference_ = input.readStringRequireUtf8();
 
               break;
-            } // case 42
-            case 50: {
+            } // case 50
+            case 58: {
               net.rossonet.ptalk.base.grpc.StackTraceLine m =
                   input.readMessage(
                       net.rossonet.ptalk.base.grpc.StackTraceLine.parser(),
@@ -786,17 +842,24 @@ private static final long serialVersionUID = 0L;
                 stacktraceBuilder_.addMessage(m);
               }
               break;
-            } // case 50
-            case 56: {
+            } // case 58
+            case 64: {
               status_ = input.readEnum();
 
               break;
-            } // case 56
-            case 64: {
+            } // case 64
+            case 72: {
               lifecycleStatus_ = input.readEnum();
 
               break;
-            } // case 64
+            } // case 72
+            case 82: {
+              input.readMessage(
+                  getTimestampFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 82
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -814,9 +877,85 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
+    private java.lang.Object flowReference_ = "";
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The flowReference.
+     */
+    public java.lang.String getFlowReference() {
+      java.lang.Object ref = flowReference_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        flowReference_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The bytes for flowReference.
+     */
+    public com.google.protobuf.ByteString
+        getFlowReferenceBytes() {
+      java.lang.Object ref = flowReference_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        flowReference_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReference(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFlowReference() {
+      
+      flowReference_ = getDefaultInstance().getFlowReference();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The bytes for flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReferenceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object unitUniqueName_ = "";
     /**
-     * <code>string unitUniqueName = 1;</code>
+     * <code>string unitUniqueName = 2;</code>
      * @return The unitUniqueName.
      */
     public java.lang.String getUnitUniqueName() {
@@ -832,7 +971,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string unitUniqueName = 1;</code>
+     * <code>string unitUniqueName = 2;</code>
      * @return The bytes for unitUniqueName.
      */
     public com.google.protobuf.ByteString
@@ -849,7 +988,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string unitUniqueName = 1;</code>
+     * <code>string unitUniqueName = 2;</code>
      * @param value The unitUniqueName to set.
      * @return This builder for chaining.
      */
@@ -864,7 +1003,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string unitUniqueName = 1;</code>
+     * <code>string unitUniqueName = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearUnitUniqueName() {
@@ -874,7 +1013,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string unitUniqueName = 1;</code>
+     * <code>string unitUniqueName = 2;</code>
      * @param value The bytes for unitUniqueName to set.
      * @return This builder for chaining.
      */
@@ -892,14 +1031,14 @@ private static final long serialVersionUID = 0L;
 
     private int severity_ = 0;
     /**
-     * <code>.base.LogSeverity severity = 2;</code>
+     * <code>.base.LogSeverity severity = 3;</code>
      * @return The enum numeric value on the wire for severity.
      */
     @java.lang.Override public int getSeverityValue() {
       return severity_;
     }
     /**
-     * <code>.base.LogSeverity severity = 2;</code>
+     * <code>.base.LogSeverity severity = 3;</code>
      * @param value The enum numeric value on the wire for severity to set.
      * @return This builder for chaining.
      */
@@ -910,7 +1049,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.LogSeverity severity = 2;</code>
+     * <code>.base.LogSeverity severity = 3;</code>
      * @return The severity.
      */
     @java.lang.Override
@@ -920,7 +1059,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? net.rossonet.ptalk.base.grpc.LogSeverity.UNRECOGNIZED : result;
     }
     /**
-     * <code>.base.LogSeverity severity = 2;</code>
+     * <code>.base.LogSeverity severity = 3;</code>
      * @param value The severity to set.
      * @return This builder for chaining.
      */
@@ -934,7 +1073,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.LogSeverity severity = 2;</code>
+     * <code>.base.LogSeverity severity = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearSeverity() {
@@ -946,7 +1085,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object logLine_ = "";
     /**
-     * <code>string logLine = 3;</code>
+     * <code>string logLine = 4;</code>
      * @return The logLine.
      */
     public java.lang.String getLogLine() {
@@ -962,7 +1101,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string logLine = 3;</code>
+     * <code>string logLine = 4;</code>
      * @return The bytes for logLine.
      */
     public com.google.protobuf.ByteString
@@ -979,7 +1118,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string logLine = 3;</code>
+     * <code>string logLine = 4;</code>
      * @param value The logLine to set.
      * @return This builder for chaining.
      */
@@ -994,7 +1133,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string logLine = 3;</code>
+     * <code>string logLine = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearLogLine() {
@@ -1004,7 +1143,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string logLine = 3;</code>
+     * <code>string logLine = 4;</code>
      * @param value The bytes for logLine to set.
      * @return This builder for chaining.
      */
@@ -1020,85 +1159,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object flowReference_ = "";
-    /**
-     * <code>string flowReference = 4;</code>
-     * @return The flowReference.
-     */
-    public java.lang.String getFlowReference() {
-      java.lang.Object ref = flowReference_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        flowReference_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string flowReference = 4;</code>
-     * @return The bytes for flowReference.
-     */
-    public com.google.protobuf.ByteString
-        getFlowReferenceBytes() {
-      java.lang.Object ref = flowReference_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        flowReference_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string flowReference = 4;</code>
-     * @param value The flowReference to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFlowReference(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      flowReference_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string flowReference = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearFlowReference() {
-      
-      flowReference_ = getDefaultInstance().getFlowReference();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string flowReference = 4;</code>
-     * @param value The bytes for flowReference to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFlowReferenceBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      flowReference_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object messageReference_ = "";
     /**
-     * <code>string messageReference = 5;</code>
+     * <code>string messageReference = 6;</code>
      * @return The messageReference.
      */
     public java.lang.String getMessageReference() {
@@ -1114,7 +1177,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string messageReference = 5;</code>
+     * <code>string messageReference = 6;</code>
      * @return The bytes for messageReference.
      */
     public com.google.protobuf.ByteString
@@ -1131,7 +1194,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string messageReference = 5;</code>
+     * <code>string messageReference = 6;</code>
      * @param value The messageReference to set.
      * @return This builder for chaining.
      */
@@ -1146,7 +1209,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string messageReference = 5;</code>
+     * <code>string messageReference = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearMessageReference() {
@@ -1156,7 +1219,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string messageReference = 5;</code>
+     * <code>string messageReference = 6;</code>
      * @param value The bytes for messageReference to set.
      * @return This builder for chaining.
      */
@@ -1185,7 +1248,7 @@ private static final long serialVersionUID = 0L;
         net.rossonet.ptalk.base.grpc.StackTraceLine, net.rossonet.ptalk.base.grpc.StackTraceLine.Builder, net.rossonet.ptalk.base.grpc.StackTraceLineOrBuilder> stacktraceBuilder_;
 
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.StackTraceLine> getStacktraceList() {
       if (stacktraceBuilder_ == null) {
@@ -1195,7 +1258,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public int getStacktraceCount() {
       if (stacktraceBuilder_ == null) {
@@ -1205,7 +1268,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public net.rossonet.ptalk.base.grpc.StackTraceLine getStacktrace(int index) {
       if (stacktraceBuilder_ == null) {
@@ -1215,7 +1278,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder setStacktrace(
         int index, net.rossonet.ptalk.base.grpc.StackTraceLine value) {
@@ -1232,7 +1295,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder setStacktrace(
         int index, net.rossonet.ptalk.base.grpc.StackTraceLine.Builder builderForValue) {
@@ -1246,7 +1309,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder addStacktrace(net.rossonet.ptalk.base.grpc.StackTraceLine value) {
       if (stacktraceBuilder_ == null) {
@@ -1262,7 +1325,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder addStacktrace(
         int index, net.rossonet.ptalk.base.grpc.StackTraceLine value) {
@@ -1279,7 +1342,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder addStacktrace(
         net.rossonet.ptalk.base.grpc.StackTraceLine.Builder builderForValue) {
@@ -1293,7 +1356,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder addStacktrace(
         int index, net.rossonet.ptalk.base.grpc.StackTraceLine.Builder builderForValue) {
@@ -1307,7 +1370,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder addAllStacktrace(
         java.lang.Iterable<? extends net.rossonet.ptalk.base.grpc.StackTraceLine> values) {
@@ -1322,7 +1385,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder clearStacktrace() {
       if (stacktraceBuilder_ == null) {
@@ -1335,7 +1398,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public Builder removeStacktrace(int index) {
       if (stacktraceBuilder_ == null) {
@@ -1348,14 +1411,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public net.rossonet.ptalk.base.grpc.StackTraceLine.Builder getStacktraceBuilder(
         int index) {
       return getStacktraceFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public net.rossonet.ptalk.base.grpc.StackTraceLineOrBuilder getStacktraceOrBuilder(
         int index) {
@@ -1365,7 +1428,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public java.util.List<? extends net.rossonet.ptalk.base.grpc.StackTraceLineOrBuilder> 
          getStacktraceOrBuilderList() {
@@ -1376,14 +1439,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public net.rossonet.ptalk.base.grpc.StackTraceLine.Builder addStacktraceBuilder() {
       return getStacktraceFieldBuilder().addBuilder(
           net.rossonet.ptalk.base.grpc.StackTraceLine.getDefaultInstance());
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public net.rossonet.ptalk.base.grpc.StackTraceLine.Builder addStacktraceBuilder(
         int index) {
@@ -1391,7 +1454,7 @@ private static final long serialVersionUID = 0L;
           index, net.rossonet.ptalk.base.grpc.StackTraceLine.getDefaultInstance());
     }
     /**
-     * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+     * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.StackTraceLine.Builder> 
          getStacktraceBuilderList() {
@@ -1414,14 +1477,14 @@ private static final long serialVersionUID = 0L;
 
     private int status_ = 0;
     /**
-     * <code>.base.StatusValue status = 7;</code>
+     * <code>.base.StatusValue status = 8;</code>
      * @return The enum numeric value on the wire for status.
      */
     @java.lang.Override public int getStatusValue() {
       return status_;
     }
     /**
-     * <code>.base.StatusValue status = 7;</code>
+     * <code>.base.StatusValue status = 8;</code>
      * @param value The enum numeric value on the wire for status to set.
      * @return This builder for chaining.
      */
@@ -1432,7 +1495,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.StatusValue status = 7;</code>
+     * <code>.base.StatusValue status = 8;</code>
      * @return The status.
      */
     @java.lang.Override
@@ -1442,7 +1505,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? net.rossonet.ptalk.base.grpc.StatusValue.UNRECOGNIZED : result;
     }
     /**
-     * <code>.base.StatusValue status = 7;</code>
+     * <code>.base.StatusValue status = 8;</code>
      * @param value The status to set.
      * @return This builder for chaining.
      */
@@ -1456,7 +1519,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.StatusValue status = 7;</code>
+     * <code>.base.StatusValue status = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearStatus() {
@@ -1468,14 +1531,14 @@ private static final long serialVersionUID = 0L;
 
     private int lifecycleStatus_ = 0;
     /**
-     * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+     * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
      * @return The enum numeric value on the wire for lifecycleStatus.
      */
     @java.lang.Override public int getLifecycleStatusValue() {
       return lifecycleStatus_;
     }
     /**
-     * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+     * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
      * @param value The enum numeric value on the wire for lifecycleStatus to set.
      * @return This builder for chaining.
      */
@@ -1486,7 +1549,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+     * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
      * @return The lifecycleStatus.
      */
     @java.lang.Override
@@ -1496,7 +1559,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? net.rossonet.ptalk.base.grpc.LifecycleStatus.UNRECOGNIZED : result;
     }
     /**
-     * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+     * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
      * @param value The lifecycleStatus to set.
      * @return This builder for chaining.
      */
@@ -1510,7 +1573,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+     * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
      * @return This builder for chaining.
      */
     public Builder clearLifecycleStatus() {
@@ -1518,6 +1581,125 @@ private static final long serialVersionUID = 0L;
       lifecycleStatus_ = 0;
       onChanged();
       return this;
+    }
+
+    private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> timestampBuilder_;
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     * @return Whether the timestamp field is set.
+     */
+    public boolean hasTimestamp() {
+      return timestampBuilder_ != null || timestamp_ != null;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     * @return The timestamp.
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+      if (timestampBuilder_ == null) {
+        return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      } else {
+        return timestampBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder setTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        timestamp_ = value;
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder setTimestamp(
+        net.rossonet.ptalk.base.grpc.Timestamp.Builder builderForValue) {
+      if (timestampBuilder_ == null) {
+        timestamp_ = builderForValue.build();
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder mergeTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (timestamp_ != null) {
+          timestamp_ =
+            net.rossonet.ptalk.base.grpc.Timestamp.newBuilder(timestamp_).mergeFrom(value).buildPartial();
+        } else {
+          timestamp_ = value;
+        }
+        onChanged();
+      } else {
+        timestampBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder clearTimestamp() {
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+        onChanged();
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp.Builder getTimestampBuilder() {
+      
+      onChanged();
+      return getTimestampFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+      if (timestampBuilder_ != null) {
+        return timestampBuilder_.getMessageOrBuilder();
+      } else {
+        return timestamp_ == null ?
+            net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> 
+        getTimestampFieldBuilder() {
+      if (timestampBuilder_ == null) {
+        timestampBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder>(
+                getTimestamp(),
+                getParentForChildren(),
+                isClean());
+        timestamp_ = null;
+      }
+      return timestampBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

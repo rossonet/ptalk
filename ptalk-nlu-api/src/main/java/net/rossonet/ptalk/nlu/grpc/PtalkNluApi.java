@@ -15,6 +15,11 @@ public final class PtalkNluApi {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_nlu_NluModel_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_nlu_NluModel_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_nlu_NluMessageRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -64,92 +69,122 @@ public final class PtalkNluApi {
   static {
     java.lang.String[] descriptorData = {
       "\n\023ptalk-nlu-api.proto\022\003nlu\032\024ptalk-base-a" +
-      "pi.proto\"\354\001\n\021NluMessageRequest\022\025\n\rflowRe" +
-      "ference\030\001 \001(\t\022\030\n\020messageReference\030\002 \001(\t\022" +
-      "\r\n\005model\030\003 \001(\t\022\024\n\014modelVersion\030\004 \001(\t\022\021\n\t" +
-      "replyTask\030\005 \001(\t\022\033\n\007message\030\006 \001(\0132\n.base." +
-      "Data\022\023\n\013contextJson\030\007 \001(\t\022#\n\017additionalD" +
-      "atas\030\010 \003(\0132\n.base.Data\022\027\n\004tags\030\t \003(\0132\t.b" +
-      "ase.Tag\"\206\002\n\017NluMessageReply\022\025\n\rflowRefer" +
-      "ence\030\001 \001(\t\022\030\n\020messageReference\030\002 \001(\t\022\r\n\005" +
-      "model\030\003 \001(\t\022\024\n\014modelVersion\030\004 \001(\t\022\014\n\004tas" +
-      "k\030\005 \001(\t\022\031\n\005reply\030\006 \001(\0132\n.base.Data\022\023\n\013co" +
-      "ntextJson\030\007 \001(\t\022!\n\006status\030\010 \001(\0162\021.base.S" +
-      "tatusValue\022#\n\017additionalDatas\030\t \003(\0132\n.ba" +
-      "se.Data\022\027\n\004tags\030\n \003(\0132\t.base.Tag\"\031\n\027NluT" +
-      "rainingModelRequest\"\027\n\025NluTrainingModelR" +
-      "eply\"\026\n\024NluListModelsRequest\"\024\n\022NluListM" +
-      "odelsReply\"\027\n\025NluDeleteModelRequest\"\025\n\023N" +
-      "luDeleteModelReply2\215\001\n\014RpcNluCoreV1\0226\n\016R" +
-      "eplyCallAsync\022\024.nlu.NluMessageReply\032\014.ba" +
-      "se.Status\"\000\022E\n\027ReplyTrainingModelAsync\022\032" +
-      ".nlu.NluTrainingModelReply\032\014.base.Status" +
-      "\"\0002\231\003\n\014RpcNluUnitV1\022:\n\010CallSync\022\026.nlu.Nl" +
-      "uMessageRequest\032\024.nlu.NluMessageReply\"\000\022" +
-      "3\n\tCallAsync\022\026.nlu.NluMessageRequest\032\014.b" +
-      "ase.Status\"\000\022L\n\016TrainModelSync\022\034.nlu.Nlu" +
-      "TrainingModelRequest\032\032.nlu.NluTrainingMo" +
-      "delReply\"\000\022?\n\017TrainModelAsync\022\034.nlu.NluT" +
-      "rainingModelRequest\032\014.base.Status\"\000\022B\n\nL" +
-      "istModels\022\031.nlu.NluListModelsRequest\032\027.n" +
-      "lu.NluListModelsReply\"\000\022E\n\013DeleteModel\022\032" +
-      ".nlu.NluDeleteModelRequest\032\030.nlu.NluDele" +
-      "teModelReply\"\000B,\n\033net.rossonet.ptalk.nlu" +
-      ".grpcB\013PtalkNluApiP\001b\006proto3"
+      "pi.proto\"C\n\010NluModel\022\022\n\ncapability\030\001 \001(\t" +
+      "\022\r\n\005model\030\002 \001(\t\022\024\n\014modelVersion\030\003 \001(\t\"\262\002" +
+      "\n\021NluMessageRequest\022\025\n\rflowReference\030\001 \001" +
+      "(\t\022\030\n\020messageReference\030\002 \001(\t\022\025\n\roriginCo" +
+      "ntext\030\003 \001(\t\022\034\n\005model\030\004 \001(\0132\r.nlu.NluMode" +
+      "l\022\021\n\treplyTask\030\005 \001(\t\022\033\n\007message\030\006 \001(\0132\n." +
+      "base.Data\022\023\n\013contextJson\030\007 \001(\t\022#\n\017additi" +
+      "onalDatas\030\010 \003(\0132\n.base.Data\022\027\n\004tags\030\t \003(" +
+      "\0132\t.base.Tag\022\"\n\ttimestamp\030\n \001(\0132\017.base.T" +
+      "imestamp\022\020\n\010traceLog\030\013 \001(\010\"\314\002\n\017NluMessag" +
+      "eReply\022\025\n\rflowReference\030\001 \001(\t\022\030\n\020message" +
+      "Reference\030\002 \001(\t\022\025\n\roriginContext\030\003 \001(\t\022\034" +
+      "\n\005model\030\004 \001(\0132\r.nlu.NluModel\022\014\n\004task\030\005 \001" +
+      "(\t\022\031\n\005reply\030\006 \001(\0132\n.base.Data\022\023\n\013context" +
+      "Json\030\007 \001(\t\022!\n\006status\030\010 \001(\0162\021.base.Status" +
+      "Value\022#\n\017additionalDatas\030\t \003(\0132\n.base.Da" +
+      "ta\022\027\n\004tags\030\n \003(\0132\t.base.Tag\022\"\n\ttimestamp" +
+      "\030\013 \001(\0132\017.base.Timestamp\022\020\n\010traceLog\030\014 \001(" +
+      "\010\"\370\001\n\027NluTrainingModelRequest\022\025\n\rflowRef" +
+      "erence\030\001 \001(\t\022\034\n\005model\030\002 \001(\0132\r.nlu.NluMod" +
+      "el\022\027\n\017trainingCommand\030\003 \001(\t\022\023\n\013testComma" +
+      "nd\030\004 \001(\t\022 \n\014trainingData\030\005 \003(\0132\n.base.Da" +
+      "ta\022\034\n\010testData\030\006 \003(\0132\n.base.Data\022\026\n\016time" +
+      "outMinutes\030\007 \001(\005\022\"\n\ttimestamp\030\010 \001(\0132\017.ba" +
+      "se.Timestamp\"\273\001\n\025NluTrainingModelReply\022\025" +
+      "\n\rflowReference\030\001 \001(\t\022\034\n\005model\030\002 \001(\0132\r.n" +
+      "lu.NluModel\022!\n\006status\030\003 \001(\0162\021.base.Statu" +
+      "sValue\022\024\n\014trainingTime\030\004 \001(\003\022\020\n\010testTime" +
+      "\030\005 \001(\003\022\"\n\ttimestamp\030\006 \001(\0132\017.base.Timesta" +
+      "mp\"Q\n\024NluListModelsRequest\022\025\n\rflowRefere" +
+      "nce\030\001 \001(\t\022\"\n\ttimestamp\030\002 \001(\0132\017.base.Time" +
+      "stamp\"\220\001\n\022NluListModelsReply\022\025\n\rflowRefe" +
+      "rence\030\001 \001(\t\022\034\n\005model\030\002 \003(\0132\r.nlu.NluMode" +
+      "l\022!\n\006status\030\003 \001(\0162\021.base.StatusValue\022\"\n\t" +
+      "timestamp\030\004 \001(\0132\017.base.Timestamp\"p\n\025NluD" +
+      "eleteModelRequest\022\025\n\rflowReference\030\001 \001(\t" +
+      "\022\034\n\005model\030\002 \001(\0132\r.nlu.NluModel\022\"\n\ttimest" +
+      "amp\030\003 \001(\0132\017.base.Timestamp\"s\n\023NluDeleteM" +
+      "odelReply\022\025\n\rflowReference\030\001 \001(\t\022!\n\006stat" +
+      "us\030\002 \001(\0162\021.base.StatusValue\022\"\n\ttimestamp" +
+      "\030\003 \001(\0132\017.base.Timestamp2\215\001\n\014RpcNluCoreV1" +
+      "\0226\n\016ReplyCallAsync\022\024.nlu.NluMessageReply" +
+      "\032\014.base.Status\"\000\022E\n\027ReplyTrainingModelAs" +
+      "ync\022\032.nlu.NluTrainingModelReply\032\014.base.S" +
+      "tatus\"\0002\231\003\n\014RpcNluUnitV1\022:\n\010CallSync\022\026.n" +
+      "lu.NluMessageRequest\032\024.nlu.NluMessageRep" +
+      "ly\"\000\0223\n\tCallAsync\022\026.nlu.NluMessageReques" +
+      "t\032\014.base.Status\"\000\022L\n\016TrainModelSync\022\034.nl" +
+      "u.NluTrainingModelRequest\032\032.nlu.NluTrain" +
+      "ingModelReply\"\000\022?\n\017TrainModelAsync\022\034.nlu" +
+      ".NluTrainingModelRequest\032\014.base.Status\"\000" +
+      "\022B\n\nListModels\022\031.nlu.NluListModelsReques" +
+      "t\032\027.nlu.NluListModelsReply\"\000\022E\n\013DeleteMo" +
+      "del\022\032.nlu.NluDeleteModelRequest\032\030.nlu.Nl" +
+      "uDeleteModelReply\"\000B,\n\033net.rossonet.ptal" +
+      "k.nlu.grpcB\013PtalkNluApiP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           net.rossonet.ptalk.base.grpc.PtalkBaseObject.getDescriptor(),
         });
-    internal_static_nlu_NluMessageRequest_descriptor =
+    internal_static_nlu_NluModel_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_nlu_NluModel_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_nlu_NluModel_descriptor,
+        new java.lang.String[] { "Capability", "Model", "ModelVersion", });
+    internal_static_nlu_NluMessageRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_nlu_NluMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluMessageRequest_descriptor,
-        new java.lang.String[] { "FlowReference", "MessageReference", "Model", "ModelVersion", "ReplyTask", "Message", "ContextJson", "AdditionalDatas", "Tags", });
+        new java.lang.String[] { "FlowReference", "MessageReference", "OriginContext", "Model", "ReplyTask", "Message", "ContextJson", "AdditionalDatas", "Tags", "Timestamp", "TraceLog", });
     internal_static_nlu_NluMessageReply_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_nlu_NluMessageReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluMessageReply_descriptor,
-        new java.lang.String[] { "FlowReference", "MessageReference", "Model", "ModelVersion", "Task", "Reply", "ContextJson", "Status", "AdditionalDatas", "Tags", });
+        new java.lang.String[] { "FlowReference", "MessageReference", "OriginContext", "Model", "Task", "Reply", "ContextJson", "Status", "AdditionalDatas", "Tags", "Timestamp", "TraceLog", });
     internal_static_nlu_NluTrainingModelRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_nlu_NluTrainingModelRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluTrainingModelRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Model", "TrainingCommand", "TestCommand", "TrainingData", "TestData", "TimeoutMinutes", "Timestamp", });
     internal_static_nlu_NluTrainingModelReply_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_nlu_NluTrainingModelReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluTrainingModelReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Model", "Status", "TrainingTime", "TestTime", "Timestamp", });
     internal_static_nlu_NluListModelsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_nlu_NluListModelsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluListModelsRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Timestamp", });
     internal_static_nlu_NluListModelsReply_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_nlu_NluListModelsReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluListModelsReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Model", "Status", "Timestamp", });
     internal_static_nlu_NluDeleteModelRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_nlu_NluDeleteModelRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluDeleteModelRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Model", "Timestamp", });
     internal_static_nlu_NluDeleteModelReply_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_nlu_NluDeleteModelReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluDeleteModelReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Status", "Timestamp", });
     net.rossonet.ptalk.base.grpc.PtalkBaseObject.getDescriptor();
   }
 

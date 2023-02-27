@@ -174,4 +174,19 @@ public interface RegisterRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getSelfSuperAbilityCodeBytes();
+
+  /**
+   * <code>.base.Timestamp timestamp = 12;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 12;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 12;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

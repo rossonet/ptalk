@@ -10,53 +10,83 @@ import "ptalk-base-api.proto";
 
 package nlu;
 
+message NluModel {
+  string capability = 1;
+  string model = 2;
+  string modelVersion = 3;
+}
+
 message NluMessageRequest {
   string flowReference = 1;
   string messageReference = 2;
-  string model = 3;
-  string modelVersion = 4;
+  string originContext = 3;
+  NluModel model = 4;
   string replyTask = 5;
   base.Data message = 6;
   string contextJson = 7;
   repeated base.Data additionalDatas = 8;
   repeated base.Tag tags = 9;
+  base.Timestamp timestamp = 10;
+  bool traceLog = 11;
 }
 
 message NluMessageReply {
   string flowReference = 1;
   string messageReference = 2;
-  string model = 3;
-  string modelVersion = 4;
+  string originContext = 3;
+  NluModel model = 4;
   string task = 5;
   base.Data reply = 6;
   string contextJson = 7;
   base.StatusValue status = 8;
   repeated base.Data additionalDatas = 9;
   repeated base.Tag tags = 10;
+  base.Timestamp timestamp = 11;
+  bool traceLog = 12;
 }
 
 message NluTrainingModelRequest {
-
+  string flowReference = 1;
+  NluModel model = 2;
+  string trainingCommand = 3;
+  string testCommand = 4;
+  repeated base.Data trainingData = 5;
+  repeated base.Data testData = 6;
+  int32 timeoutMinutes = 7;
+  base.Timestamp timestamp = 8;
 }
 
 message NluTrainingModelReply {
-
+  string flowReference = 1;
+  NluModel model = 2;
+  base.StatusValue status = 3;
+  int64 trainingTime = 4;
+  int64 testTime = 5;
+  base.Timestamp timestamp = 6;
 }
 
 message NluListModelsRequest {
-
+  string flowReference = 1;
+  base.Timestamp timestamp = 2;
 }
 
 message NluListModelsReply {
-
+  string flowReference = 1;
+  repeated NluModel model = 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
 }
 
 message NluDeleteModelRequest {
-
+  string flowReference = 1;
+  NluModel model = 2;
+  base.Timestamp timestamp = 3;
 }
 
 message NluDeleteModelReply {
-
+  string flowReference = 1;
+  base.StatusValue status = 2;
+  base.Timestamp timestamp = 3;
 }
 
 service RpcNluCoreV1 {

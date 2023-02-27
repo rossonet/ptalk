@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private Command() {
     command_ = "";
+    language_ = "";
   }
 
   @java.lang.Override
@@ -44,36 +45,10 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.channel.protobuf.server.grpc.Command.class, net.rossonet.ptalk.channel.protobuf.server.grpc.Command.Builder.class);
   }
 
-  public static final int AGENTSENDER_FIELD_NUMBER = 1;
-  private net.rossonet.ptalk.channel.protobuf.server.grpc.Agent agentSender_;
-  /**
-   * <code>.channelGrpc.Agent agentSender = 1;</code>
-   * @return Whether the agentSender field is set.
-   */
-  @java.lang.Override
-  public boolean hasAgentSender() {
-    return agentSender_ != null;
-  }
-  /**
-   * <code>.channelGrpc.Agent agentSender = 1;</code>
-   * @return The agentSender.
-   */
-  @java.lang.Override
-  public net.rossonet.ptalk.channel.protobuf.server.grpc.Agent getAgentSender() {
-    return agentSender_ == null ? net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.getDefaultInstance() : agentSender_;
-  }
-  /**
-   * <code>.channelGrpc.Agent agentSender = 1;</code>
-   */
-  @java.lang.Override
-  public net.rossonet.ptalk.channel.protobuf.server.grpc.AgentOrBuilder getAgentSenderOrBuilder() {
-    return getAgentSender();
-  }
-
-  public static final int COMMAND_FIELD_NUMBER = 2;
+  public static final int COMMAND_FIELD_NUMBER = 1;
   private volatile java.lang.Object command_;
   /**
-   * <code>string command = 2;</code>
+   * <code>string command = 1;</code>
    * @return The command.
    */
   @java.lang.Override
@@ -90,7 +65,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string command = 2;</code>
+   * <code>string command = 1;</code>
    * @return The bytes for command.
    */
   @java.lang.Override
@@ -102,6 +77,44 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       command_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int LANGUAGE_FIELD_NUMBER = 2;
+  private volatile java.lang.Object language_;
+  /**
+   * <code>string language = 2;</code>
+   * @return The language.
+   */
+  @java.lang.Override
+  public java.lang.String getLanguage() {
+    java.lang.Object ref = language_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      language_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string language = 2;</code>
+   * @return The bytes for language.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getLanguageBytes() {
+    java.lang.Object ref = language_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      language_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -122,11 +135,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (agentSender_ != null) {
-      output.writeMessage(1, getAgentSender());
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(command_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, command_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, command_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(language_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, language_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -137,12 +150,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (agentSender_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getAgentSender());
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(command_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, command_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, command_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(language_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, language_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -159,13 +171,10 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.channel.protobuf.server.grpc.Command other = (net.rossonet.ptalk.channel.protobuf.server.grpc.Command) obj;
 
-    if (hasAgentSender() != other.hasAgentSender()) return false;
-    if (hasAgentSender()) {
-      if (!getAgentSender()
-          .equals(other.getAgentSender())) return false;
-    }
     if (!getCommand()
         .equals(other.getCommand())) return false;
+    if (!getLanguage()
+        .equals(other.getLanguage())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -177,12 +186,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasAgentSender()) {
-      hash = (37 * hash) + AGENTSENDER_FIELD_NUMBER;
-      hash = (53 * hash) + getAgentSender().hashCode();
-    }
     hash = (37 * hash) + COMMAND_FIELD_NUMBER;
     hash = (53 * hash) + getCommand().hashCode();
+    hash = (37 * hash) + LANGUAGE_FIELD_NUMBER;
+    hash = (53 * hash) + getLanguage().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -311,13 +318,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (agentSenderBuilder_ == null) {
-        agentSender_ = null;
-      } else {
-        agentSender_ = null;
-        agentSenderBuilder_ = null;
-      }
       command_ = "";
+
+      language_ = "";
 
       return this;
     }
@@ -345,12 +348,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.channel.protobuf.server.grpc.Command buildPartial() {
       net.rossonet.ptalk.channel.protobuf.server.grpc.Command result = new net.rossonet.ptalk.channel.protobuf.server.grpc.Command(this);
-      if (agentSenderBuilder_ == null) {
-        result.agentSender_ = agentSender_;
-      } else {
-        result.agentSender_ = agentSenderBuilder_.build();
-      }
       result.command_ = command_;
+      result.language_ = language_;
       onBuilt();
       return result;
     }
@@ -399,11 +398,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.channel.protobuf.server.grpc.Command other) {
       if (other == net.rossonet.ptalk.channel.protobuf.server.grpc.Command.getDefaultInstance()) return this;
-      if (other.hasAgentSender()) {
-        mergeAgentSender(other.getAgentSender());
-      }
       if (!other.getCommand().isEmpty()) {
         command_ = other.command_;
+        onChanged();
+      }
+      if (!other.getLanguage().isEmpty()) {
+        language_ = other.language_;
         onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -433,14 +433,12 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              input.readMessage(
-                  getAgentSenderFieldBuilder().getBuilder(),
-                  extensionRegistry);
+              command_ = input.readStringRequireUtf8();
 
               break;
             } // case 10
             case 18: {
-              command_ = input.readStringRequireUtf8();
+              language_ = input.readStringRequireUtf8();
 
               break;
             } // case 18
@@ -460,128 +458,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private net.rossonet.ptalk.channel.protobuf.server.grpc.Agent agentSender_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        net.rossonet.ptalk.channel.protobuf.server.grpc.Agent, net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.Builder, net.rossonet.ptalk.channel.protobuf.server.grpc.AgentOrBuilder> agentSenderBuilder_;
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     * @return Whether the agentSender field is set.
-     */
-    public boolean hasAgentSender() {
-      return agentSenderBuilder_ != null || agentSender_ != null;
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     * @return The agentSender.
-     */
-    public net.rossonet.ptalk.channel.protobuf.server.grpc.Agent getAgentSender() {
-      if (agentSenderBuilder_ == null) {
-        return agentSender_ == null ? net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.getDefaultInstance() : agentSender_;
-      } else {
-        return agentSenderBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     */
-    public Builder setAgentSender(net.rossonet.ptalk.channel.protobuf.server.grpc.Agent value) {
-      if (agentSenderBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        agentSender_ = value;
-        onChanged();
-      } else {
-        agentSenderBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     */
-    public Builder setAgentSender(
-        net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.Builder builderForValue) {
-      if (agentSenderBuilder_ == null) {
-        agentSender_ = builderForValue.build();
-        onChanged();
-      } else {
-        agentSenderBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     */
-    public Builder mergeAgentSender(net.rossonet.ptalk.channel.protobuf.server.grpc.Agent value) {
-      if (agentSenderBuilder_ == null) {
-        if (agentSender_ != null) {
-          agentSender_ =
-            net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.newBuilder(agentSender_).mergeFrom(value).buildPartial();
-        } else {
-          agentSender_ = value;
-        }
-        onChanged();
-      } else {
-        agentSenderBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     */
-    public Builder clearAgentSender() {
-      if (agentSenderBuilder_ == null) {
-        agentSender_ = null;
-        onChanged();
-      } else {
-        agentSender_ = null;
-        agentSenderBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     */
-    public net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.Builder getAgentSenderBuilder() {
-      
-      onChanged();
-      return getAgentSenderFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     */
-    public net.rossonet.ptalk.channel.protobuf.server.grpc.AgentOrBuilder getAgentSenderOrBuilder() {
-      if (agentSenderBuilder_ != null) {
-        return agentSenderBuilder_.getMessageOrBuilder();
-      } else {
-        return agentSender_ == null ?
-            net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.getDefaultInstance() : agentSender_;
-      }
-    }
-    /**
-     * <code>.channelGrpc.Agent agentSender = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        net.rossonet.ptalk.channel.protobuf.server.grpc.Agent, net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.Builder, net.rossonet.ptalk.channel.protobuf.server.grpc.AgentOrBuilder> 
-        getAgentSenderFieldBuilder() {
-      if (agentSenderBuilder_ == null) {
-        agentSenderBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            net.rossonet.ptalk.channel.protobuf.server.grpc.Agent, net.rossonet.ptalk.channel.protobuf.server.grpc.Agent.Builder, net.rossonet.ptalk.channel.protobuf.server.grpc.AgentOrBuilder>(
-                getAgentSender(),
-                getParentForChildren(),
-                isClean());
-        agentSender_ = null;
-      }
-      return agentSenderBuilder_;
-    }
-
     private java.lang.Object command_ = "";
     /**
-     * <code>string command = 2;</code>
+     * <code>string command = 1;</code>
      * @return The command.
      */
     public java.lang.String getCommand() {
@@ -597,7 +476,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string command = 2;</code>
+     * <code>string command = 1;</code>
      * @return The bytes for command.
      */
     public com.google.protobuf.ByteString
@@ -614,7 +493,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string command = 2;</code>
+     * <code>string command = 1;</code>
      * @param value The command to set.
      * @return This builder for chaining.
      */
@@ -629,7 +508,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string command = 2;</code>
+     * <code>string command = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearCommand() {
@@ -639,7 +518,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string command = 2;</code>
+     * <code>string command = 1;</code>
      * @param value The bytes for command to set.
      * @return This builder for chaining.
      */
@@ -651,6 +530,82 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       command_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object language_ = "";
+    /**
+     * <code>string language = 2;</code>
+     * @return The language.
+     */
+    public java.lang.String getLanguage() {
+      java.lang.Object ref = language_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        language_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string language = 2;</code>
+     * @return The bytes for language.
+     */
+    public com.google.protobuf.ByteString
+        getLanguageBytes() {
+      java.lang.Object ref = language_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        language_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string language = 2;</code>
+     * @param value The language to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLanguage(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      language_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string language = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLanguage() {
+      
+      language_ = getDefaultInstance().getLanguage();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string language = 2;</code>
+     * @param value The bytes for language to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLanguageBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      language_ = value;
       onChanged();
       return this;
     }

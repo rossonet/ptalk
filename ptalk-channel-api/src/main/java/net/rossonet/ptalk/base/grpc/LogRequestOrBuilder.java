@@ -8,107 +8,122 @@ public interface LogRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string unitUniqueName = 1;</code>
-   * @return The unitUniqueName.
-   */
-  java.lang.String getUnitUniqueName();
-  /**
-   * <code>string unitUniqueName = 1;</code>
-   * @return The bytes for unitUniqueName.
-   */
-  com.google.protobuf.ByteString
-      getUnitUniqueNameBytes();
-
-  /**
-   * <code>.base.LogSeverity severity = 2;</code>
-   * @return The enum numeric value on the wire for severity.
-   */
-  int getSeverityValue();
-  /**
-   * <code>.base.LogSeverity severity = 2;</code>
-   * @return The severity.
-   */
-  net.rossonet.ptalk.base.grpc.LogSeverity getSeverity();
-
-  /**
-   * <code>string logLine = 3;</code>
-   * @return The logLine.
-   */
-  java.lang.String getLogLine();
-  /**
-   * <code>string logLine = 3;</code>
-   * @return The bytes for logLine.
-   */
-  com.google.protobuf.ByteString
-      getLogLineBytes();
-
-  /**
-   * <code>string flowReference = 4;</code>
+   * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
   java.lang.String getFlowReference();
   /**
-   * <code>string flowReference = 4;</code>
+   * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
   com.google.protobuf.ByteString
       getFlowReferenceBytes();
 
   /**
-   * <code>string messageReference = 5;</code>
+   * <code>string unitUniqueName = 2;</code>
+   * @return The unitUniqueName.
+   */
+  java.lang.String getUnitUniqueName();
+  /**
+   * <code>string unitUniqueName = 2;</code>
+   * @return The bytes for unitUniqueName.
+   */
+  com.google.protobuf.ByteString
+      getUnitUniqueNameBytes();
+
+  /**
+   * <code>.base.LogSeverity severity = 3;</code>
+   * @return The enum numeric value on the wire for severity.
+   */
+  int getSeverityValue();
+  /**
+   * <code>.base.LogSeverity severity = 3;</code>
+   * @return The severity.
+   */
+  net.rossonet.ptalk.base.grpc.LogSeverity getSeverity();
+
+  /**
+   * <code>string logLine = 4;</code>
+   * @return The logLine.
+   */
+  java.lang.String getLogLine();
+  /**
+   * <code>string logLine = 4;</code>
+   * @return The bytes for logLine.
+   */
+  com.google.protobuf.ByteString
+      getLogLineBytes();
+
+  /**
+   * <code>string messageReference = 6;</code>
    * @return The messageReference.
    */
   java.lang.String getMessageReference();
   /**
-   * <code>string messageReference = 5;</code>
+   * <code>string messageReference = 6;</code>
    * @return The bytes for messageReference.
    */
   com.google.protobuf.ByteString
       getMessageReferenceBytes();
 
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.StackTraceLine> 
       getStacktraceList();
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   net.rossonet.ptalk.base.grpc.StackTraceLine getStacktrace(int index);
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   int getStacktraceCount();
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.StackTraceLineOrBuilder> 
       getStacktraceOrBuilderList();
   /**
-   * <code>repeated .base.StackTraceLine stacktrace = 6;</code>
+   * <code>repeated .base.StackTraceLine stacktrace = 7;</code>
    */
   net.rossonet.ptalk.base.grpc.StackTraceLineOrBuilder getStacktraceOrBuilder(
       int index);
 
   /**
-   * <code>.base.StatusValue status = 7;</code>
+   * <code>.base.StatusValue status = 8;</code>
    * @return The enum numeric value on the wire for status.
    */
   int getStatusValue();
   /**
-   * <code>.base.StatusValue status = 7;</code>
+   * <code>.base.StatusValue status = 8;</code>
    * @return The status.
    */
   net.rossonet.ptalk.base.grpc.StatusValue getStatus();
 
   /**
-   * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+   * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
    * @return The enum numeric value on the wire for lifecycleStatus.
    */
   int getLifecycleStatusValue();
   /**
-   * <code>.base.LifecycleStatus lifecycleStatus = 8;</code>
+   * <code>.base.LifecycleStatus lifecycleStatus = 9;</code>
    * @return The lifecycleStatus.
    */
   net.rossonet.ptalk.base.grpc.LifecycleStatus getLifecycleStatus();
+
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

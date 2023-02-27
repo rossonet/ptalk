@@ -8,13 +8,20 @@ public interface StatusOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.channelGrpc.StatusValue status = 1;</code>
-   * @return The enum numeric value on the wire for status.
+   * <code>string statusDescription = 1;</code>
+   * @return The statusDescription.
    */
-  int getStatusValue();
+  java.lang.String getStatusDescription();
   /**
-   * <code>.channelGrpc.StatusValue status = 1;</code>
-   * @return The status.
+   * <code>string statusDescription = 1;</code>
+   * @return The bytes for statusDescription.
    */
-  net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue getStatus();
+  com.google.protobuf.ByteString
+      getStatusDescriptionBytes();
+
+  /**
+   * <code>int32 statusId = 2;</code>
+   * @return The statusId.
+   */
+  int getStatusId();
 }

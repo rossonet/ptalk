@@ -4,12 +4,14 @@ import io.grpc.stub.StreamObserver;
 import net.rossonet.ptalk.ability.grpc.AbilityMessageReply;
 import net.rossonet.ptalk.ability.grpc.CancelRuleReply;
 import net.rossonet.ptalk.ability.grpc.CancelRuleRequest;
-import net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply;
-import net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest;
+import net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply;
+import net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest;
+import net.rossonet.ptalk.ability.grpc.GetRuleReply;
+import net.rossonet.ptalk.ability.grpc.GetRuleRequest;
 import net.rossonet.ptalk.ability.grpc.ListRulesReply;
 import net.rossonet.ptalk.ability.grpc.ListRulesRequest;
-import net.rossonet.ptalk.ability.grpc.MemoryContextReply;
-import net.rossonet.ptalk.ability.grpc.MemoryContextRequest;
+import net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply;
+import net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest;
 import net.rossonet.ptalk.ability.grpc.RegisterRulesReply;
 import net.rossonet.ptalk.ability.grpc.RegisterRulesRequest;
 import net.rossonet.ptalk.ability.grpc.RpcAbilityCoreV1Grpc.RpcAbilityCoreV1ImplBase;
@@ -31,14 +33,20 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 	}
 
 	@Override
-	public void generalConfiguration(GeneralConfigurationRequest request,
-			StreamObserver<GeneralConfigurationReply> responseObserver) {
+	public void generalConfigurationQuery(GeneralConfigurationQueryRequest request,
+			StreamObserver<GeneralConfigurationQueryReply> responseObserver) {
 		// TODO Auto-generated method stub
-		super.generalConfiguration(request, responseObserver);
+		super.generalConfigurationQuery(request, responseObserver);
 	}
 
 	public PTalkEngineRuntime getpTalkEngineRuntime() {
 		return pTalkEngineRuntime;
+	}
+
+	@Override
+	public void getRule(GetRuleRequest request, StreamObserver<GetRuleReply> responseObserver) {
+		// TODO Auto-generated method stub
+		super.getRule(request, responseObserver);
 	}
 
 	@Override
@@ -48,9 +56,10 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 	}
 
 	@Override
-	public void memory(MemoryContextRequest request, StreamObserver<MemoryContextReply> responseObserver) {
+	public void memoryQuery(MemoryContextQueryRequest request,
+			StreamObserver<MemoryContextQueryReply> responseObserver) {
 		// TODO Auto-generated method stub
-		super.memory(request, responseObserver);
+		super.memoryQuery(request, responseObserver);
 	}
 
 	@Override

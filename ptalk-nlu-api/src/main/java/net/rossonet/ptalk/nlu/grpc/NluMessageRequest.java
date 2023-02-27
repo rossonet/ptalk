@@ -18,8 +18,7 @@ private static final long serialVersionUID = 0L;
   private NluMessageRequest() {
     flowReference_ = "";
     messageReference_ = "";
-    model_ = "";
-    modelVersion_ = "";
+    originContext_ = "";
     replyTask_ = "";
     contextJson_ = "";
     additionalDatas_ = java.util.Collections.emptyList();
@@ -127,80 +126,68 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int MODEL_FIELD_NUMBER = 3;
-  private volatile java.lang.Object model_;
+  public static final int ORIGINCONTEXT_FIELD_NUMBER = 3;
+  private volatile java.lang.Object originContext_;
   /**
-   * <code>string model = 3;</code>
-   * @return The model.
+   * <code>string originContext = 3;</code>
+   * @return The originContext.
    */
   @java.lang.Override
-  public java.lang.String getModel() {
-    java.lang.Object ref = model_;
+  public java.lang.String getOriginContext() {
+    java.lang.Object ref = originContext_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      model_ = s;
+      originContext_ = s;
       return s;
     }
   }
   /**
-   * <code>string model = 3;</code>
-   * @return The bytes for model.
+   * <code>string originContext = 3;</code>
+   * @return The bytes for originContext.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getModelBytes() {
-    java.lang.Object ref = model_;
+      getOriginContextBytes() {
+    java.lang.Object ref = originContext_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      model_ = b;
+      originContext_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int MODELVERSION_FIELD_NUMBER = 4;
-  private volatile java.lang.Object modelVersion_;
+  public static final int MODEL_FIELD_NUMBER = 4;
+  private net.rossonet.ptalk.nlu.grpc.NluModel model_;
   /**
-   * <code>string modelVersion = 4;</code>
-   * @return The modelVersion.
+   * <code>.nlu.NluModel model = 4;</code>
+   * @return Whether the model field is set.
    */
   @java.lang.Override
-  public java.lang.String getModelVersion() {
-    java.lang.Object ref = modelVersion_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      modelVersion_ = s;
-      return s;
-    }
+  public boolean hasModel() {
+    return model_ != null;
   }
   /**
-   * <code>string modelVersion = 4;</code>
-   * @return The bytes for modelVersion.
+   * <code>.nlu.NluModel model = 4;</code>
+   * @return The model.
    */
   @java.lang.Override
-  public com.google.protobuf.ByteString
-      getModelVersionBytes() {
-    java.lang.Object ref = modelVersion_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      modelVersion_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public net.rossonet.ptalk.nlu.grpc.NluModel getModel() {
+    return model_ == null ? net.rossonet.ptalk.nlu.grpc.NluModel.getDefaultInstance() : model_;
+  }
+  /**
+   * <code>.nlu.NluModel model = 4;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder() {
+    return getModel();
   }
 
   public static final int REPLYTASK_FIELD_NUMBER = 5;
@@ -385,6 +372,43 @@ private static final long serialVersionUID = 0L;
     return tags_.get(index);
   }
 
+  public static final int TIMESTAMP_FIELD_NUMBER = 10;
+  private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return Whether the timestamp field is set.
+   */
+  @java.lang.Override
+  public boolean hasTimestamp() {
+    return timestamp_ != null;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   * @return The timestamp.
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+    return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 10;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+    return getTimestamp();
+  }
+
+  public static final int TRACELOG_FIELD_NUMBER = 11;
+  private boolean traceLog_;
+  /**
+   * <code>bool traceLog = 11;</code>
+   * @return The traceLog.
+   */
+  @java.lang.Override
+  public boolean getTraceLog() {
+    return traceLog_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -405,11 +429,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(messageReference_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, messageReference_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(model_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, model_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(originContext_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, originContext_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(modelVersion_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, modelVersion_);
+    if (model_ != null) {
+      output.writeMessage(4, getModel());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(replyTask_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, replyTask_);
@@ -426,6 +450,12 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < tags_.size(); i++) {
       output.writeMessage(9, tags_.get(i));
     }
+    if (timestamp_ != null) {
+      output.writeMessage(10, getTimestamp());
+    }
+    if (traceLog_ != false) {
+      output.writeBool(11, traceLog_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -441,11 +471,12 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(messageReference_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, messageReference_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(model_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, model_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(originContext_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, originContext_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(modelVersion_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, modelVersion_);
+    if (model_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getModel());
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(replyTask_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, replyTask_);
@@ -464,6 +495,14 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < tags_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(9, tags_.get(i));
+    }
+    if (timestamp_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(10, getTimestamp());
+    }
+    if (traceLog_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(11, traceLog_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -484,10 +523,13 @@ private static final long serialVersionUID = 0L;
         .equals(other.getFlowReference())) return false;
     if (!getMessageReference()
         .equals(other.getMessageReference())) return false;
-    if (!getModel()
-        .equals(other.getModel())) return false;
-    if (!getModelVersion()
-        .equals(other.getModelVersion())) return false;
+    if (!getOriginContext()
+        .equals(other.getOriginContext())) return false;
+    if (hasModel() != other.hasModel()) return false;
+    if (hasModel()) {
+      if (!getModel()
+          .equals(other.getModel())) return false;
+    }
     if (!getReplyTask()
         .equals(other.getReplyTask())) return false;
     if (hasMessage() != other.hasMessage()) return false;
@@ -501,6 +543,13 @@ private static final long serialVersionUID = 0L;
         .equals(other.getAdditionalDatasList())) return false;
     if (!getTagsList()
         .equals(other.getTagsList())) return false;
+    if (hasTimestamp() != other.hasTimestamp()) return false;
+    if (hasTimestamp()) {
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+    }
+    if (getTraceLog()
+        != other.getTraceLog()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -516,10 +565,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getFlowReference().hashCode();
     hash = (37 * hash) + MESSAGEREFERENCE_FIELD_NUMBER;
     hash = (53 * hash) + getMessageReference().hashCode();
-    hash = (37 * hash) + MODEL_FIELD_NUMBER;
-    hash = (53 * hash) + getModel().hashCode();
-    hash = (37 * hash) + MODELVERSION_FIELD_NUMBER;
-    hash = (53 * hash) + getModelVersion().hashCode();
+    hash = (37 * hash) + ORIGINCONTEXT_FIELD_NUMBER;
+    hash = (53 * hash) + getOriginContext().hashCode();
+    if (hasModel()) {
+      hash = (37 * hash) + MODEL_FIELD_NUMBER;
+      hash = (53 * hash) + getModel().hashCode();
+    }
     hash = (37 * hash) + REPLYTASK_FIELD_NUMBER;
     hash = (53 * hash) + getReplyTask().hashCode();
     if (hasMessage()) {
@@ -536,6 +587,13 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + TAGS_FIELD_NUMBER;
       hash = (53 * hash) + getTagsList().hashCode();
     }
+    if (hasTimestamp()) {
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
+    }
+    hash = (37 * hash) + TRACELOG_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getTraceLog());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -668,10 +726,14 @@ private static final long serialVersionUID = 0L;
 
       messageReference_ = "";
 
-      model_ = "";
+      originContext_ = "";
 
-      modelVersion_ = "";
-
+      if (modelBuilder_ == null) {
+        model_ = null;
+      } else {
+        model_ = null;
+        modelBuilder_ = null;
+      }
       replyTask_ = "";
 
       if (messageBuilder_ == null) {
@@ -696,6 +758,14 @@ private static final long serialVersionUID = 0L;
         tagsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000002);
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
+      traceLog_ = false;
+
       return this;
     }
 
@@ -725,8 +795,12 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       result.flowReference_ = flowReference_;
       result.messageReference_ = messageReference_;
-      result.model_ = model_;
-      result.modelVersion_ = modelVersion_;
+      result.originContext_ = originContext_;
+      if (modelBuilder_ == null) {
+        result.model_ = model_;
+      } else {
+        result.model_ = modelBuilder_.build();
+      }
       result.replyTask_ = replyTask_;
       if (messageBuilder_ == null) {
         result.message_ = message_;
@@ -752,6 +826,12 @@ private static final long serialVersionUID = 0L;
       } else {
         result.tags_ = tagsBuilder_.build();
       }
+      if (timestampBuilder_ == null) {
+        result.timestamp_ = timestamp_;
+      } else {
+        result.timestamp_ = timestampBuilder_.build();
+      }
+      result.traceLog_ = traceLog_;
       onBuilt();
       return result;
     }
@@ -808,13 +888,12 @@ private static final long serialVersionUID = 0L;
         messageReference_ = other.messageReference_;
         onChanged();
       }
-      if (!other.getModel().isEmpty()) {
-        model_ = other.model_;
+      if (!other.getOriginContext().isEmpty()) {
+        originContext_ = other.originContext_;
         onChanged();
       }
-      if (!other.getModelVersion().isEmpty()) {
-        modelVersion_ = other.modelVersion_;
-        onChanged();
+      if (other.hasModel()) {
+        mergeModel(other.getModel());
       }
       if (!other.getReplyTask().isEmpty()) {
         replyTask_ = other.replyTask_;
@@ -879,6 +958,12 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      if (other.hasTimestamp()) {
+        mergeTimestamp(other.getTimestamp());
+      }
+      if (other.getTraceLog() != false) {
+        setTraceLog(other.getTraceLog());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -916,12 +1001,14 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 18
             case 26: {
-              model_ = input.readStringRequireUtf8();
+              originContext_ = input.readStringRequireUtf8();
 
               break;
             } // case 26
             case 34: {
-              modelVersion_ = input.readStringRequireUtf8();
+              input.readMessage(
+                  getModelFieldBuilder().getBuilder(),
+                  extensionRegistry);
 
               break;
             } // case 34
@@ -968,6 +1055,18 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 74
+            case 82: {
+              input.readMessage(
+                  getTimestampFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 82
+            case 88: {
+              traceLog_ = input.readBool();
+
+              break;
+            } // case 88
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1137,156 +1236,199 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object model_ = "";
+    private java.lang.Object originContext_ = "";
     /**
-     * <code>string model = 3;</code>
-     * @return The model.
+     * <code>string originContext = 3;</code>
+     * @return The originContext.
      */
-    public java.lang.String getModel() {
-      java.lang.Object ref = model_;
+    public java.lang.String getOriginContext() {
+      java.lang.Object ref = originContext_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        model_ = s;
+        originContext_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string model = 3;</code>
-     * @return The bytes for model.
+     * <code>string originContext = 3;</code>
+     * @return The bytes for originContext.
      */
     public com.google.protobuf.ByteString
-        getModelBytes() {
-      java.lang.Object ref = model_;
+        getOriginContextBytes() {
+      java.lang.Object ref = originContext_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        model_ = b;
+        originContext_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string model = 3;</code>
-     * @param value The model to set.
+     * <code>string originContext = 3;</code>
+     * @param value The originContext to set.
      * @return This builder for chaining.
      */
-    public Builder setModel(
+    public Builder setOriginContext(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      model_ = value;
+      originContext_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string model = 3;</code>
+     * <code>string originContext = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearModel() {
+    public Builder clearOriginContext() {
       
-      model_ = getDefaultInstance().getModel();
+      originContext_ = getDefaultInstance().getOriginContext();
       onChanged();
       return this;
     }
     /**
-     * <code>string model = 3;</code>
-     * @param value The bytes for model to set.
+     * <code>string originContext = 3;</code>
+     * @param value The bytes for originContext to set.
      * @return This builder for chaining.
      */
-    public Builder setModelBytes(
+    public Builder setOriginContextBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      model_ = value;
+      originContext_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object modelVersion_ = "";
+    private net.rossonet.ptalk.nlu.grpc.NluModel model_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.NluModel, net.rossonet.ptalk.nlu.grpc.NluModel.Builder, net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder> modelBuilder_;
     /**
-     * <code>string modelVersion = 4;</code>
-     * @return The modelVersion.
+     * <code>.nlu.NluModel model = 4;</code>
+     * @return Whether the model field is set.
      */
-    public java.lang.String getModelVersion() {
-      java.lang.Object ref = modelVersion_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        modelVersion_ = s;
-        return s;
+    public boolean hasModel() {
+      return modelBuilder_ != null || model_ != null;
+    }
+    /**
+     * <code>.nlu.NluModel model = 4;</code>
+     * @return The model.
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModel getModel() {
+      if (modelBuilder_ == null) {
+        return model_ == null ? net.rossonet.ptalk.nlu.grpc.NluModel.getDefaultInstance() : model_;
       } else {
-        return (java.lang.String) ref;
+        return modelBuilder_.getMessage();
       }
     }
     /**
-     * <code>string modelVersion = 4;</code>
-     * @return The bytes for modelVersion.
+     * <code>.nlu.NluModel model = 4;</code>
      */
-    public com.google.protobuf.ByteString
-        getModelVersionBytes() {
-      java.lang.Object ref = modelVersion_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        modelVersion_ = b;
-        return b;
+    public Builder setModel(net.rossonet.ptalk.nlu.grpc.NluModel value) {
+      if (modelBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        model_ = value;
+        onChanged();
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        modelBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.nlu.NluModel model = 4;</code>
+     */
+    public Builder setModel(
+        net.rossonet.ptalk.nlu.grpc.NluModel.Builder builderForValue) {
+      if (modelBuilder_ == null) {
+        model_ = builderForValue.build();
+        onChanged();
+      } else {
+        modelBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.nlu.NluModel model = 4;</code>
+     */
+    public Builder mergeModel(net.rossonet.ptalk.nlu.grpc.NluModel value) {
+      if (modelBuilder_ == null) {
+        if (model_ != null) {
+          model_ =
+            net.rossonet.ptalk.nlu.grpc.NluModel.newBuilder(model_).mergeFrom(value).buildPartial();
+        } else {
+          model_ = value;
+        }
+        onChanged();
+      } else {
+        modelBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.nlu.NluModel model = 4;</code>
+     */
+    public Builder clearModel() {
+      if (modelBuilder_ == null) {
+        model_ = null;
+        onChanged();
+      } else {
+        model_ = null;
+        modelBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.nlu.NluModel model = 4;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModel.Builder getModelBuilder() {
+      
+      onChanged();
+      return getModelFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.nlu.NluModel model = 4;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder() {
+      if (modelBuilder_ != null) {
+        return modelBuilder_.getMessageOrBuilder();
+      } else {
+        return model_ == null ?
+            net.rossonet.ptalk.nlu.grpc.NluModel.getDefaultInstance() : model_;
       }
     }
     /**
-     * <code>string modelVersion = 4;</code>
-     * @param value The modelVersion to set.
-     * @return This builder for chaining.
+     * <code>.nlu.NluModel model = 4;</code>
      */
-    public Builder setModelVersion(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      modelVersion_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string modelVersion = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearModelVersion() {
-      
-      modelVersion_ = getDefaultInstance().getModelVersion();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string modelVersion = 4;</code>
-     * @param value The bytes for modelVersion to set.
-     * @return This builder for chaining.
-     */
-    public Builder setModelVersionBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      modelVersion_ = value;
-      onChanged();
-      return this;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.NluModel, net.rossonet.ptalk.nlu.grpc.NluModel.Builder, net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder> 
+        getModelFieldBuilder() {
+      if (modelBuilder_ == null) {
+        modelBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            net.rossonet.ptalk.nlu.grpc.NluModel, net.rossonet.ptalk.nlu.grpc.NluModel.Builder, net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder>(
+                getModel(),
+                getParentForChildren(),
+                isClean());
+        model_ = null;
+      }
+      return modelBuilder_;
     }
 
     private java.lang.Object replyTask_ = "";
@@ -2038,6 +2180,156 @@ private static final long serialVersionUID = 0L;
         tags_ = null;
       }
       return tagsBuilder_;
+    }
+
+    private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> timestampBuilder_;
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     * @return Whether the timestamp field is set.
+     */
+    public boolean hasTimestamp() {
+      return timestampBuilder_ != null || timestamp_ != null;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     * @return The timestamp.
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+      if (timestampBuilder_ == null) {
+        return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      } else {
+        return timestampBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder setTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        timestamp_ = value;
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder setTimestamp(
+        net.rossonet.ptalk.base.grpc.Timestamp.Builder builderForValue) {
+      if (timestampBuilder_ == null) {
+        timestamp_ = builderForValue.build();
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder mergeTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (timestamp_ != null) {
+          timestamp_ =
+            net.rossonet.ptalk.base.grpc.Timestamp.newBuilder(timestamp_).mergeFrom(value).buildPartial();
+        } else {
+          timestamp_ = value;
+        }
+        onChanged();
+      } else {
+        timestampBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public Builder clearTimestamp() {
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+        onChanged();
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp.Builder getTimestampBuilder() {
+      
+      onChanged();
+      return getTimestampFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+      if (timestampBuilder_ != null) {
+        return timestampBuilder_.getMessageOrBuilder();
+      } else {
+        return timestamp_ == null ?
+            net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 10;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> 
+        getTimestampFieldBuilder() {
+      if (timestampBuilder_ == null) {
+        timestampBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder>(
+                getTimestamp(),
+                getParentForChildren(),
+                isClean());
+        timestamp_ = null;
+      }
+      return timestampBuilder_;
+    }
+
+    private boolean traceLog_ ;
+    /**
+     * <code>bool traceLog = 11;</code>
+     * @return The traceLog.
+     */
+    @java.lang.Override
+    public boolean getTraceLog() {
+      return traceLog_;
+    }
+    /**
+     * <code>bool traceLog = 11;</code>
+     * @param value The traceLog to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTraceLog(boolean value) {
+      
+      traceLog_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool traceLog = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTraceLog() {
+      
+      traceLog_ = false;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

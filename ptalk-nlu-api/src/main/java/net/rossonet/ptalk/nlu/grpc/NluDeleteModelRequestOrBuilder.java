@@ -6,4 +6,46 @@ package net.rossonet.ptalk.nlu.grpc;
 public interface NluDeleteModelRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:nlu.NluDeleteModelRequest)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  java.lang.String getFlowReference();
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  com.google.protobuf.ByteString
+      getFlowReferenceBytes();
+
+  /**
+   * <code>.nlu.NluModel model = 2;</code>
+   * @return Whether the model field is set.
+   */
+  boolean hasModel();
+  /**
+   * <code>.nlu.NluModel model = 2;</code>
+   * @return The model.
+   */
+  net.rossonet.ptalk.nlu.grpc.NluModel getModel();
+  /**
+   * <code>.nlu.NluModel model = 2;</code>
+   */
+  net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder();
+
+  /**
+   * <code>.base.Timestamp timestamp = 3;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 3;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 3;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

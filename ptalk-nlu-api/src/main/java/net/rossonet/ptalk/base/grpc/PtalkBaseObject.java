@@ -94,68 +94,74 @@ public final class PtalkBaseObject {
       "\r.base.Quality\022\020\n\010priority\030\t \001(\005\022\016\n\006weig" +
       "ht\030\n \001(\003\"i\n\003Tag\022\013\n\003tag\030\001 \001(\t\022\023\n\013displayN" +
       "ame\030\002 \001(\t\022\030\n\020shortDescription\030\003 \001(\t\022\023\n\013d" +
-      "escription\030\004 \001(\t\022\021\n\ttagFather\030\005 \001(\t\"\206\001\n\025" +
+      "escription\030\004 \001(\t\022\021\n\ttagFather\030\005 \001(\t\"\252\001\n\025" +
       "GenericMessageRequest\022\025\n\rflowReference\030\001" +
       " \001(\t\022\030\n\020messageReference\030\002 \001(\t\022#\n\017additi" +
       "onalDatas\030\003 \003(\0132\n.base.Data\022\027\n\004tags\030\004 \003(" +
-      "\0132\t.base.Tag\"\256\001\n\023GenericMessageReply\022\025\n\r" +
-      "flowReference\030\001 \001(\t\022\030\n\020messageReference\030" +
-      "\002 \001(\t\022(\n\rgeneralStatus\030\003 \001(\0162\021.base.Stat" +
-      "usValue\022#\n\017additionalDatas\030\004 \003(\0132\n.base." +
-      "Data\022\027\n\004tags\030\005 \003(\0132\t.base.Tag\"\255\002\n\017Regist" +
-      "erRequest\022\026\n\016unitUniqueName\030\001 \001(\t\022 \n\010uni" +
-      "tType\030\002 \001(\0162\016.base.UnitType\022\023\n\013displayNa" +
-      "me\030\003 \001(\t\022\030\n\020shortDescription\030\004 \001(\t\022\023\n\013de" +
-      "scription\030\005 \001(\t\022\022\n\njsonHealth\030\006 \001(\t\022\026\n\016c" +
-      "ertificateCrt\030\007 \001(\t\022\024\n\014capabilities\030\010 \003(" +
-      "\t\022#\n\017additionalDatas\030\t \003(\0132\n.base.Data\022\027" +
-      "\n\004tags\030\n \003(\0132\t.base.Tag\022\034\n\024selfSuperAbil" +
-      "ityCode\030\013 \001(\t\"\256\002\n\rRegisterReply\022\026\n\016unitU" +
-      "niqueName\030\001 \001(\t\022\033\n\023monitoringFrequency\030\002" +
-      " \001(\005\022\030\n\020globalJsonConfig\030\003 \001(\t\022\023\n\013certif" +
-      "icate\030\004 \001(\t\022\034\n\024certificateFullChain\030\005 \001(" +
-      "\t\022-\n\022statusRegistration\030\006 \001(\0162\021.base.Sta" +
-      "tusValue\022\035\n\025timestampRegistration\030\007 \001(\003\022" +
-      "\017\n\007otpSeed\030\010 \001(\t\022#\n\017additionalDatas\030\t \003(" +
-      "\0132\n.base.Data\022\027\n\004tags\030\n \003(\0132\t.base.Tag\"\224" +
-      "\001\n\rHealthRequest\022\026\n\016unitUniqueName\030\001 \001(\t" +
-      "\022\030\n\020jsonHardwareInfo\030\002 \001(\t\022!\n\006status\030\003 \001" +
-      "(\0162\021.base.StatusValue\022.\n\017lifecycleStatus" +
-      "\030\004 \001(\0162\025.base.LifecycleStatus\"d\n\016StackTr" +
-      "aceLine\022\017\n\007message\030\001 \001(\t\022\026\n\016exceptionCla" +
-      "ss\030\002 \001(\t\022\r\n\005class\030\003 \001(\t\022\014\n\004file\030\004 \001(\t\022\014\n" +
-      "\004line\030\005 \001(\005\"\210\002\n\nLogRequest\022\026\n\016unitUnique" +
-      "Name\030\001 \001(\t\022#\n\010severity\030\002 \001(\0162\021.base.LogS" +
-      "everity\022\017\n\007logLine\030\003 \001(\t\022\025\n\rflowReferenc" +
-      "e\030\004 \001(\t\022\030\n\020messageReference\030\005 \001(\t\022(\n\nsta" +
-      "cktrace\030\006 \003(\0132\024.base.StackTraceLine\022!\n\006s" +
-      "tatus\030\007 \001(\0162\021.base.StatusValue\022.\n\017lifecy" +
-      "cleStatus\030\010 \001(\0162\025.base.LifecycleStatus*p" +
-      "\n\013StatusValue\022\017\n\013STATUS_GOOD\020\000\022\016\n\nSTATUS" +
-      "_BAD\020\001\022\020\n\014STATUS_FAULT\020\002\022\025\n\021STATUS_WAIT_" +
-      "HUMAN\020\003\022\027\n\023STATUS_NOT_APPROVED\020\004*^\n\017Life" +
-      "cycleStatus\022\010\n\004INIT\020\000\022\016\n\nCONFIGURED\020\002\022\013\n" +
-      "\007RUNNING\020\003\022\n\n\006KILLED\020\004\022\013\n\007FAULTED\020\005\022\013\n\007S" +
-      "TOPPED\020\006*\202\001\n\013LogSeverity\022\013\n\007DEFAULT\020\000\022\t\n" +
-      "\005DEBUG\020d\022\t\n\004INFO\020\310\001\022\013\n\006NOTICE\020\254\002\022\014\n\007WARN" +
-      "ING\020\220\003\022\n\n\005ERROR\020\364\003\022\r\n\010CRITICAL\020\330\004\022\n\n\005ALE" +
-      "RT\020\274\005\022\016\n\tEMERGENCY\020\240\006*\224\001\n\010DataType\022\n\n\006ST" +
-      "RING\020\000\022\010\n\004CHAR\020\001\022\t\n\005INT32\020\002\022\t\n\005INT64\020\003\022\t" +
-      "\n\005FLOAT\020\004\022\n\n\006DOUBLE\020\005\022\013\n\007BOOLEAN\020\006\022\r\n\tTI" +
-      "MESTAMP\020\007\022\013\n\007UNKNOWN\020\010\022\014\n\010JSONDATA\020\t\022\016\n\n" +
-      "BASE64DATA\020\n*@\n\007Quality\022\023\n\017QUALITY_UNKNO" +
-      "WN\020\000\022\t\n\004GOOD\020\310\001\022\010\n\003BAD\020\220\003\022\013\n\006CACHED\020\350\007*7" +
-      "\n\010UnitType\022\013\n\007ABILITY\020\000\022\013\n\007CHANNEL\020\024\022\007\n\003" +
-      "NLU\020(\022\010\n\004SELF\020P2\342\001\n\tRpcCoreV1\0228\n\010Registe" +
-      "r\022\025.base.RegisterRequest\032\023.base.Register" +
-      "Reply\"\000\022\'\n\003Log\022\020.base.LogRequest\032\014.base." +
-      "Status\"\000\022-\n\006Health\022\023.base.HealthRequest\032" +
-      "\014.base.Status\"\000\022C\n\007Message\022\033.base.Generi" +
-      "cMessageRequest\032\031.base.GenericMessageRep" +
-      "ly\"\0002U\n\016RpcSlaveUnitV1\022C\n\007Message\022\033.base" +
-      ".GenericMessageRequest\032\031.base.GenericMes" +
-      "sageReply\"\000B1\n\034net.rossonet.ptalk.base.g" +
-      "rpcB\017PtalkBaseObjectP\001b\006proto3"
+      "\0132\t.base.Tag\022\"\n\ttimestamp\030\005 \001(\0132\017.base.T" +
+      "imestamp\"\322\001\n\023GenericMessageReply\022\025\n\rflow" +
+      "Reference\030\001 \001(\t\022\030\n\020messageReference\030\002 \001(" +
+      "\t\022(\n\rgeneralStatus\030\003 \001(\0162\021.base.StatusVa" +
+      "lue\022#\n\017additionalDatas\030\004 \003(\0132\n.base.Data" +
+      "\022\027\n\004tags\030\005 \003(\0132\t.base.Tag\022\"\n\ttimestamp\030\006" +
+      " \001(\0132\017.base.Timestamp\"\321\002\n\017RegisterReques" +
+      "t\022\026\n\016unitUniqueName\030\001 \001(\t\022 \n\010unitType\030\002 " +
+      "\001(\0162\016.base.UnitType\022\023\n\013displayName\030\003 \001(\t" +
+      "\022\030\n\020shortDescription\030\004 \001(\t\022\023\n\013descriptio" +
+      "n\030\005 \001(\t\022\022\n\njsonHealth\030\006 \001(\t\022\026\n\016certifica" +
+      "teCrt\030\007 \001(\t\022\024\n\014capabilities\030\010 \003(\t\022#\n\017add" +
+      "itionalDatas\030\t \003(\0132\n.base.Data\022\027\n\004tags\030\n" +
+      " \003(\0132\t.base.Tag\022\034\n\024selfSuperAbilityCode\030" +
+      "\013 \001(\t\022\"\n\ttimestamp\030\014 \001(\0132\017.base.Timestam" +
+      "p\"\322\002\n\rRegisterReply\022\026\n\016unitUniqueName\030\001 " +
+      "\001(\t\022\033\n\023monitoringFrequency\030\002 \001(\005\022\030\n\020glob" +
+      "alJsonConfig\030\003 \001(\t\022\023\n\013certificate\030\004 \001(\t\022" +
+      "\034\n\024certificateFullChain\030\005 \001(\t\022-\n\022statusR" +
+      "egistration\030\006 \001(\0162\021.base.StatusValue\022\035\n\025" +
+      "timestampRegistration\030\007 \001(\003\022\017\n\007otpSeed\030\010" +
+      " \001(\t\022#\n\017additionalDatas\030\t \003(\0132\n.base.Dat" +
+      "a\022\027\n\004tags\030\n \003(\0132\t.base.Tag\022\"\n\ttimestamp\030" +
+      "\013 \001(\0132\017.base.Timestamp\"\317\001\n\rHealthRequest" +
+      "\022\025\n\rflowReference\030\001 \001(\t\022\026\n\016unitUniqueNam" +
+      "e\030\002 \001(\t\022\030\n\020jsonHardwareInfo\030\003 \001(\t\022!\n\006sta" +
+      "tus\030\004 \001(\0162\021.base.StatusValue\022.\n\017lifecycl" +
+      "eStatus\030\005 \001(\0162\025.base.LifecycleStatus\022\"\n\t" +
+      "timestamp\030\006 \001(\0132\017.base.Timestamp\"d\n\016Stac" +
+      "kTraceLine\022\017\n\007message\030\001 \001(\t\022\026\n\016exception" +
+      "Class\030\002 \001(\t\022\r\n\005class\030\003 \001(\t\022\014\n\004file\030\004 \001(\t" +
+      "\022\014\n\004line\030\005 \001(\005\"\254\002\n\nLogRequest\022\025\n\rflowRef" +
+      "erence\030\001 \001(\t\022\026\n\016unitUniqueName\030\002 \001(\t\022#\n\010" +
+      "severity\030\003 \001(\0162\021.base.LogSeverity\022\017\n\007log" +
+      "Line\030\004 \001(\t\022\030\n\020messageReference\030\006 \001(\t\022(\n\n" +
+      "stacktrace\030\007 \003(\0132\024.base.StackTraceLine\022!" +
+      "\n\006status\030\010 \001(\0162\021.base.StatusValue\022.\n\017lif" +
+      "ecycleStatus\030\t \001(\0162\025.base.LifecycleStatu" +
+      "s\022\"\n\ttimestamp\030\n \001(\0132\017.base.Timestamp*p\n" +
+      "\013StatusValue\022\017\n\013STATUS_GOOD\020\000\022\016\n\nSTATUS_" +
+      "BAD\020\001\022\020\n\014STATUS_FAULT\020\002\022\025\n\021STATUS_WAIT_H" +
+      "UMAN\020\003\022\027\n\023STATUS_NOT_APPROVED\020\004*^\n\017Lifec" +
+      "ycleStatus\022\010\n\004INIT\020\000\022\016\n\nCONFIGURED\020\002\022\013\n\007" +
+      "RUNNING\020\003\022\n\n\006KILLED\020\004\022\013\n\007FAULTED\020\005\022\013\n\007ST" +
+      "OPPED\020\006*\202\001\n\013LogSeverity\022\013\n\007DEFAULT\020\000\022\t\n\005" +
+      "DEBUG\020d\022\t\n\004INFO\020\310\001\022\013\n\006NOTICE\020\254\002\022\014\n\007WARNI" +
+      "NG\020\220\003\022\n\n\005ERROR\020\364\003\022\r\n\010CRITICAL\020\330\004\022\n\n\005ALER" +
+      "T\020\274\005\022\016\n\tEMERGENCY\020\240\006*\224\001\n\010DataType\022\n\n\006STR" +
+      "ING\020\000\022\010\n\004CHAR\020\001\022\t\n\005INT32\020\002\022\t\n\005INT64\020\003\022\t\n" +
+      "\005FLOAT\020\004\022\n\n\006DOUBLE\020\005\022\013\n\007BOOLEAN\020\006\022\r\n\tTIM" +
+      "ESTAMP\020\007\022\013\n\007UNKNOWN\020\010\022\014\n\010JSONDATA\020\t\022\016\n\nB" +
+      "ASE64DATA\020\n*@\n\007Quality\022\023\n\017QUALITY_UNKNOW" +
+      "N\020\000\022\t\n\004GOOD\020\310\001\022\010\n\003BAD\020\220\003\022\013\n\006CACHED\020\350\007*7\n" +
+      "\010UnitType\022\013\n\007ABILITY\020\000\022\013\n\007CHANNEL\020\024\022\007\n\003N" +
+      "LU\020(\022\010\n\004SELF\020P2\342\001\n\tRpcCoreV1\0228\n\010Register" +
+      "\022\025.base.RegisterRequest\032\023.base.RegisterR" +
+      "eply\"\000\022\'\n\003Log\022\020.base.LogRequest\032\014.base.S" +
+      "tatus\"\000\022-\n\006Health\022\023.base.HealthRequest\032\014" +
+      ".base.Status\"\000\022C\n\007Message\022\033.base.Generic" +
+      "MessageRequest\032\031.base.GenericMessageRepl" +
+      "y\"\0002U\n\016RpcSlaveUnitV1\022C\n\007Message\022\033.base." +
+      "GenericMessageRequest\032\031.base.GenericMess" +
+      "ageReply\"\000B1\n\034net.rossonet.ptalk.base.gr" +
+      "pcB\017PtalkBaseObjectP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -196,31 +202,31 @@ public final class PtalkBaseObject {
     internal_static_base_GenericMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_base_GenericMessageRequest_descriptor,
-        new java.lang.String[] { "FlowReference", "MessageReference", "AdditionalDatas", "Tags", });
+        new java.lang.String[] { "FlowReference", "MessageReference", "AdditionalDatas", "Tags", "Timestamp", });
     internal_static_base_GenericMessageReply_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_base_GenericMessageReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_base_GenericMessageReply_descriptor,
-        new java.lang.String[] { "FlowReference", "MessageReference", "GeneralStatus", "AdditionalDatas", "Tags", });
+        new java.lang.String[] { "FlowReference", "MessageReference", "GeneralStatus", "AdditionalDatas", "Tags", "Timestamp", });
     internal_static_base_RegisterRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_base_RegisterRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_base_RegisterRequest_descriptor,
-        new java.lang.String[] { "UnitUniqueName", "UnitType", "DisplayName", "ShortDescription", "Description", "JsonHealth", "CertificateCrt", "Capabilities", "AdditionalDatas", "Tags", "SelfSuperAbilityCode", });
+        new java.lang.String[] { "UnitUniqueName", "UnitType", "DisplayName", "ShortDescription", "Description", "JsonHealth", "CertificateCrt", "Capabilities", "AdditionalDatas", "Tags", "SelfSuperAbilityCode", "Timestamp", });
     internal_static_base_RegisterReply_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_base_RegisterReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_base_RegisterReply_descriptor,
-        new java.lang.String[] { "UnitUniqueName", "MonitoringFrequency", "GlobalJsonConfig", "Certificate", "CertificateFullChain", "StatusRegistration", "TimestampRegistration", "OtpSeed", "AdditionalDatas", "Tags", });
+        new java.lang.String[] { "UnitUniqueName", "MonitoringFrequency", "GlobalJsonConfig", "Certificate", "CertificateFullChain", "StatusRegistration", "TimestampRegistration", "OtpSeed", "AdditionalDatas", "Tags", "Timestamp", });
     internal_static_base_HealthRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_base_HealthRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_base_HealthRequest_descriptor,
-        new java.lang.String[] { "UnitUniqueName", "JsonHardwareInfo", "Status", "LifecycleStatus", });
+        new java.lang.String[] { "FlowReference", "UnitUniqueName", "JsonHardwareInfo", "Status", "LifecycleStatus", "Timestamp", });
     internal_static_base_StackTraceLine_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_base_StackTraceLine_fieldAccessorTable = new
@@ -232,7 +238,7 @@ public final class PtalkBaseObject {
     internal_static_base_LogRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_base_LogRequest_descriptor,
-        new java.lang.String[] { "UnitUniqueName", "Severity", "LogLine", "FlowReference", "MessageReference", "Stacktrace", "Status", "LifecycleStatus", });
+        new java.lang.String[] { "FlowReference", "UnitUniqueName", "Severity", "LogLine", "MessageReference", "Stacktrace", "Status", "LifecycleStatus", "Timestamp", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -89,4 +89,19 @@ public interface GenericMessageReplyOrBuilder extends
    */
   net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(
       int index);
+
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

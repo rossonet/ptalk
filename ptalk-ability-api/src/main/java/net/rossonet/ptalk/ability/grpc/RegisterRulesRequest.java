@@ -16,6 +16,10 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private RegisterRulesRequest() {
+    flowReference_ = "";
+    jsonRule_ = "";
+    additionalDatas_ = java.util.Collections.emptyList();
+    tags_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -43,6 +47,214 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.ability.grpc.RegisterRulesRequest.class, net.rossonet.ptalk.ability.grpc.RegisterRulesRequest.Builder.class);
   }
 
+  public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
+  private volatile java.lang.Object flowReference_;
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  @java.lang.Override
+  public java.lang.String getFlowReference() {
+    java.lang.Object ref = flowReference_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      flowReference_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getFlowReferenceBytes() {
+    java.lang.Object ref = flowReference_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      flowReference_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int RULE_FIELD_NUMBER = 2;
+  private net.rossonet.ptalk.ability.grpc.Rule rule_;
+  /**
+   * <code>.ability.Rule rule = 2;</code>
+   * @return Whether the rule field is set.
+   */
+  @java.lang.Override
+  public boolean hasRule() {
+    return rule_ != null;
+  }
+  /**
+   * <code>.ability.Rule rule = 2;</code>
+   * @return The rule.
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.ability.grpc.Rule getRule() {
+    return rule_ == null ? net.rossonet.ptalk.ability.grpc.Rule.getDefaultInstance() : rule_;
+  }
+  /**
+   * <code>.ability.Rule rule = 2;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.ability.grpc.RuleOrBuilder getRuleOrBuilder() {
+    return getRule();
+  }
+
+  public static final int JSONRULE_FIELD_NUMBER = 3;
+  private volatile java.lang.Object jsonRule_;
+  /**
+   * <code>string jsonRule = 3;</code>
+   * @return The jsonRule.
+   */
+  @java.lang.Override
+  public java.lang.String getJsonRule() {
+    java.lang.Object ref = jsonRule_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      jsonRule_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string jsonRule = 3;</code>
+   * @return The bytes for jsonRule.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getJsonRuleBytes() {
+    java.lang.Object ref = jsonRule_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      jsonRule_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ADDITIONALDATAS_FIELD_NUMBER = 4;
+  private java.util.List<net.rossonet.ptalk.base.grpc.Data> additionalDatas_;
+  /**
+   * <code>repeated .base.Data additionalDatas = 4;</code>
+   */
+  @java.lang.Override
+  public java.util.List<net.rossonet.ptalk.base.grpc.Data> getAdditionalDatasList() {
+    return additionalDatas_;
+  }
+  /**
+   * <code>repeated .base.Data additionalDatas = 4;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getAdditionalDatasOrBuilderList() {
+    return additionalDatas_;
+  }
+  /**
+   * <code>repeated .base.Data additionalDatas = 4;</code>
+   */
+  @java.lang.Override
+  public int getAdditionalDatasCount() {
+    return additionalDatas_.size();
+  }
+  /**
+   * <code>repeated .base.Data additionalDatas = 4;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index) {
+    return additionalDatas_.get(index);
+  }
+  /**
+   * <code>repeated .base.Data additionalDatas = 4;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
+      int index) {
+    return additionalDatas_.get(index);
+  }
+
+  public static final int TAGS_FIELD_NUMBER = 5;
+  private java.util.List<net.rossonet.ptalk.base.grpc.Tag> tags_;
+  /**
+   * <code>repeated .base.Tag tags = 5;</code>
+   */
+  @java.lang.Override
+  public java.util.List<net.rossonet.ptalk.base.grpc.Tag> getTagsList() {
+    return tags_;
+  }
+  /**
+   * <code>repeated .base.Tag tags = 5;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends net.rossonet.ptalk.base.grpc.TagOrBuilder> 
+      getTagsOrBuilderList() {
+    return tags_;
+  }
+  /**
+   * <code>repeated .base.Tag tags = 5;</code>
+   */
+  @java.lang.Override
+  public int getTagsCount() {
+    return tags_.size();
+  }
+  /**
+   * <code>repeated .base.Tag tags = 5;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Tag getTags(int index) {
+    return tags_.get(index);
+  }
+  /**
+   * <code>repeated .base.Tag tags = 5;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(
+      int index) {
+    return tags_.get(index);
+  }
+
+  public static final int TIMESTAMP_FIELD_NUMBER = 6;
+  private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   * @return Whether the timestamp field is set.
+   */
+  @java.lang.Override
+  public boolean hasTimestamp() {
+    return timestamp_ != null;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   * @return The timestamp.
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+    return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+    return getTimestamp();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -57,6 +269,24 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, flowReference_);
+    }
+    if (rule_ != null) {
+      output.writeMessage(2, getRule());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jsonRule_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, jsonRule_);
+    }
+    for (int i = 0; i < additionalDatas_.size(); i++) {
+      output.writeMessage(4, additionalDatas_.get(i));
+    }
+    for (int i = 0; i < tags_.size(); i++) {
+      output.writeMessage(5, tags_.get(i));
+    }
+    if (timestamp_ != null) {
+      output.writeMessage(6, getTimestamp());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -66,6 +296,28 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, flowReference_);
+    }
+    if (rule_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, getRule());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jsonRule_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, jsonRule_);
+    }
+    for (int i = 0; i < additionalDatas_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, additionalDatas_.get(i));
+    }
+    for (int i = 0; i < tags_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, tags_.get(i));
+    }
+    if (timestamp_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getTimestamp());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -81,6 +333,24 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.ability.grpc.RegisterRulesRequest other = (net.rossonet.ptalk.ability.grpc.RegisterRulesRequest) obj;
 
+    if (!getFlowReference()
+        .equals(other.getFlowReference())) return false;
+    if (hasRule() != other.hasRule()) return false;
+    if (hasRule()) {
+      if (!getRule()
+          .equals(other.getRule())) return false;
+    }
+    if (!getJsonRule()
+        .equals(other.getJsonRule())) return false;
+    if (!getAdditionalDatasList()
+        .equals(other.getAdditionalDatasList())) return false;
+    if (!getTagsList()
+        .equals(other.getTagsList())) return false;
+    if (hasTimestamp() != other.hasTimestamp()) return false;
+    if (hasTimestamp()) {
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -92,6 +362,26 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + FLOWREFERENCE_FIELD_NUMBER;
+    hash = (53 * hash) + getFlowReference().hashCode();
+    if (hasRule()) {
+      hash = (37 * hash) + RULE_FIELD_NUMBER;
+      hash = (53 * hash) + getRule().hashCode();
+    }
+    hash = (37 * hash) + JSONRULE_FIELD_NUMBER;
+    hash = (53 * hash) + getJsonRule().hashCode();
+    if (getAdditionalDatasCount() > 0) {
+      hash = (37 * hash) + ADDITIONALDATAS_FIELD_NUMBER;
+      hash = (53 * hash) + getAdditionalDatasList().hashCode();
+    }
+    if (getTagsCount() > 0) {
+      hash = (37 * hash) + TAGS_FIELD_NUMBER;
+      hash = (53 * hash) + getTagsList().hashCode();
+    }
+    if (hasTimestamp()) {
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -220,6 +510,36 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      flowReference_ = "";
+
+      if (ruleBuilder_ == null) {
+        rule_ = null;
+      } else {
+        rule_ = null;
+        ruleBuilder_ = null;
+      }
+      jsonRule_ = "";
+
+      if (additionalDatasBuilder_ == null) {
+        additionalDatas_ = java.util.Collections.emptyList();
+      } else {
+        additionalDatas_ = null;
+        additionalDatasBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
+      if (tagsBuilder_ == null) {
+        tags_ = java.util.Collections.emptyList();
+      } else {
+        tags_ = null;
+        tagsBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
       return this;
     }
 
@@ -246,6 +566,37 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.ability.grpc.RegisterRulesRequest buildPartial() {
       net.rossonet.ptalk.ability.grpc.RegisterRulesRequest result = new net.rossonet.ptalk.ability.grpc.RegisterRulesRequest(this);
+      int from_bitField0_ = bitField0_;
+      result.flowReference_ = flowReference_;
+      if (ruleBuilder_ == null) {
+        result.rule_ = rule_;
+      } else {
+        result.rule_ = ruleBuilder_.build();
+      }
+      result.jsonRule_ = jsonRule_;
+      if (additionalDatasBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          additionalDatas_ = java.util.Collections.unmodifiableList(additionalDatas_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.additionalDatas_ = additionalDatas_;
+      } else {
+        result.additionalDatas_ = additionalDatasBuilder_.build();
+      }
+      if (tagsBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) != 0)) {
+          tags_ = java.util.Collections.unmodifiableList(tags_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.tags_ = tags_;
+      } else {
+        result.tags_ = tagsBuilder_.build();
+      }
+      if (timestampBuilder_ == null) {
+        result.timestamp_ = timestamp_;
+      } else {
+        result.timestamp_ = timestampBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -294,6 +645,72 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.ability.grpc.RegisterRulesRequest other) {
       if (other == net.rossonet.ptalk.ability.grpc.RegisterRulesRequest.getDefaultInstance()) return this;
+      if (!other.getFlowReference().isEmpty()) {
+        flowReference_ = other.flowReference_;
+        onChanged();
+      }
+      if (other.hasRule()) {
+        mergeRule(other.getRule());
+      }
+      if (!other.getJsonRule().isEmpty()) {
+        jsonRule_ = other.jsonRule_;
+        onChanged();
+      }
+      if (additionalDatasBuilder_ == null) {
+        if (!other.additionalDatas_.isEmpty()) {
+          if (additionalDatas_.isEmpty()) {
+            additionalDatas_ = other.additionalDatas_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureAdditionalDatasIsMutable();
+            additionalDatas_.addAll(other.additionalDatas_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.additionalDatas_.isEmpty()) {
+          if (additionalDatasBuilder_.isEmpty()) {
+            additionalDatasBuilder_.dispose();
+            additionalDatasBuilder_ = null;
+            additionalDatas_ = other.additionalDatas_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            additionalDatasBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getAdditionalDatasFieldBuilder() : null;
+          } else {
+            additionalDatasBuilder_.addAllMessages(other.additionalDatas_);
+          }
+        }
+      }
+      if (tagsBuilder_ == null) {
+        if (!other.tags_.isEmpty()) {
+          if (tags_.isEmpty()) {
+            tags_ = other.tags_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureTagsIsMutable();
+            tags_.addAll(other.tags_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.tags_.isEmpty()) {
+          if (tagsBuilder_.isEmpty()) {
+            tagsBuilder_.dispose();
+            tagsBuilder_ = null;
+            tags_ = other.tags_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+            tagsBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getTagsFieldBuilder() : null;
+          } else {
+            tagsBuilder_.addAllMessages(other.tags_);
+          }
+        }
+      }
+      if (other.hasTimestamp()) {
+        mergeTimestamp(other.getTimestamp());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -320,6 +737,56 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              flowReference_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 10
+            case 18: {
+              input.readMessage(
+                  getRuleFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 18
+            case 26: {
+              jsonRule_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 26
+            case 34: {
+              net.rossonet.ptalk.base.grpc.Data m =
+                  input.readMessage(
+                      net.rossonet.ptalk.base.grpc.Data.parser(),
+                      extensionRegistry);
+              if (additionalDatasBuilder_ == null) {
+                ensureAdditionalDatasIsMutable();
+                additionalDatas_.add(m);
+              } else {
+                additionalDatasBuilder_.addMessage(m);
+              }
+              break;
+            } // case 34
+            case 42: {
+              net.rossonet.ptalk.base.grpc.Tag m =
+                  input.readMessage(
+                      net.rossonet.ptalk.base.grpc.Tag.parser(),
+                      extensionRegistry);
+              if (tagsBuilder_ == null) {
+                ensureTagsIsMutable();
+                tags_.add(m);
+              } else {
+                tagsBuilder_.addMessage(m);
+              }
+              break;
+            } // case 42
+            case 50: {
+              input.readMessage(
+                  getTimestampFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 50
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -334,6 +801,877 @@ private static final long serialVersionUID = 0L;
         onChanged();
       } // finally
       return this;
+    }
+    private int bitField0_;
+
+    private java.lang.Object flowReference_ = "";
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The flowReference.
+     */
+    public java.lang.String getFlowReference() {
+      java.lang.Object ref = flowReference_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        flowReference_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The bytes for flowReference.
+     */
+    public com.google.protobuf.ByteString
+        getFlowReferenceBytes() {
+      java.lang.Object ref = flowReference_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        flowReference_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReference(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFlowReference() {
+      
+      flowReference_ = getDefaultInstance().getFlowReference();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The bytes for flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReferenceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+
+    private net.rossonet.ptalk.ability.grpc.Rule rule_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.ability.grpc.Rule, net.rossonet.ptalk.ability.grpc.Rule.Builder, net.rossonet.ptalk.ability.grpc.RuleOrBuilder> ruleBuilder_;
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     * @return Whether the rule field is set.
+     */
+    public boolean hasRule() {
+      return ruleBuilder_ != null || rule_ != null;
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     * @return The rule.
+     */
+    public net.rossonet.ptalk.ability.grpc.Rule getRule() {
+      if (ruleBuilder_ == null) {
+        return rule_ == null ? net.rossonet.ptalk.ability.grpc.Rule.getDefaultInstance() : rule_;
+      } else {
+        return ruleBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     */
+    public Builder setRule(net.rossonet.ptalk.ability.grpc.Rule value) {
+      if (ruleBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        rule_ = value;
+        onChanged();
+      } else {
+        ruleBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     */
+    public Builder setRule(
+        net.rossonet.ptalk.ability.grpc.Rule.Builder builderForValue) {
+      if (ruleBuilder_ == null) {
+        rule_ = builderForValue.build();
+        onChanged();
+      } else {
+        ruleBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     */
+    public Builder mergeRule(net.rossonet.ptalk.ability.grpc.Rule value) {
+      if (ruleBuilder_ == null) {
+        if (rule_ != null) {
+          rule_ =
+            net.rossonet.ptalk.ability.grpc.Rule.newBuilder(rule_).mergeFrom(value).buildPartial();
+        } else {
+          rule_ = value;
+        }
+        onChanged();
+      } else {
+        ruleBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     */
+    public Builder clearRule() {
+      if (ruleBuilder_ == null) {
+        rule_ = null;
+        onChanged();
+      } else {
+        rule_ = null;
+        ruleBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     */
+    public net.rossonet.ptalk.ability.grpc.Rule.Builder getRuleBuilder() {
+      
+      onChanged();
+      return getRuleFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     */
+    public net.rossonet.ptalk.ability.grpc.RuleOrBuilder getRuleOrBuilder() {
+      if (ruleBuilder_ != null) {
+        return ruleBuilder_.getMessageOrBuilder();
+      } else {
+        return rule_ == null ?
+            net.rossonet.ptalk.ability.grpc.Rule.getDefaultInstance() : rule_;
+      }
+    }
+    /**
+     * <code>.ability.Rule rule = 2;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.ability.grpc.Rule, net.rossonet.ptalk.ability.grpc.Rule.Builder, net.rossonet.ptalk.ability.grpc.RuleOrBuilder> 
+        getRuleFieldBuilder() {
+      if (ruleBuilder_ == null) {
+        ruleBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            net.rossonet.ptalk.ability.grpc.Rule, net.rossonet.ptalk.ability.grpc.Rule.Builder, net.rossonet.ptalk.ability.grpc.RuleOrBuilder>(
+                getRule(),
+                getParentForChildren(),
+                isClean());
+        rule_ = null;
+      }
+      return ruleBuilder_;
+    }
+
+    private java.lang.Object jsonRule_ = "";
+    /**
+     * <code>string jsonRule = 3;</code>
+     * @return The jsonRule.
+     */
+    public java.lang.String getJsonRule() {
+      java.lang.Object ref = jsonRule_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jsonRule_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string jsonRule = 3;</code>
+     * @return The bytes for jsonRule.
+     */
+    public com.google.protobuf.ByteString
+        getJsonRuleBytes() {
+      java.lang.Object ref = jsonRule_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jsonRule_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string jsonRule = 3;</code>
+     * @param value The jsonRule to set.
+     * @return This builder for chaining.
+     */
+    public Builder setJsonRule(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      jsonRule_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string jsonRule = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearJsonRule() {
+      
+      jsonRule_ = getDefaultInstance().getJsonRule();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string jsonRule = 3;</code>
+     * @param value The bytes for jsonRule to set.
+     * @return This builder for chaining.
+     */
+    public Builder setJsonRuleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      jsonRule_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.util.List<net.rossonet.ptalk.base.grpc.Data> additionalDatas_ =
+      java.util.Collections.emptyList();
+    private void ensureAdditionalDatasIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        additionalDatas_ = new java.util.ArrayList<net.rossonet.ptalk.base.grpc.Data>(additionalDatas_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> additionalDatasBuilder_;
+
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.base.grpc.Data> getAdditionalDatasList() {
+      if (additionalDatasBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(additionalDatas_);
+      } else {
+        return additionalDatasBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public int getAdditionalDatasCount() {
+      if (additionalDatasBuilder_ == null) {
+        return additionalDatas_.size();
+      } else {
+        return additionalDatasBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index) {
+      if (additionalDatasBuilder_ == null) {
+        return additionalDatas_.get(index);
+      } else {
+        return additionalDatasBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder setAdditionalDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data value) {
+      if (additionalDatasBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAdditionalDatasIsMutable();
+        additionalDatas_.set(index, value);
+        onChanged();
+      } else {
+        additionalDatasBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder setAdditionalDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data.Builder builderForValue) {
+      if (additionalDatasBuilder_ == null) {
+        ensureAdditionalDatasIsMutable();
+        additionalDatas_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        additionalDatasBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder addAdditionalDatas(net.rossonet.ptalk.base.grpc.Data value) {
+      if (additionalDatasBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAdditionalDatasIsMutable();
+        additionalDatas_.add(value);
+        onChanged();
+      } else {
+        additionalDatasBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder addAdditionalDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data value) {
+      if (additionalDatasBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureAdditionalDatasIsMutable();
+        additionalDatas_.add(index, value);
+        onChanged();
+      } else {
+        additionalDatasBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder addAdditionalDatas(
+        net.rossonet.ptalk.base.grpc.Data.Builder builderForValue) {
+      if (additionalDatasBuilder_ == null) {
+        ensureAdditionalDatasIsMutable();
+        additionalDatas_.add(builderForValue.build());
+        onChanged();
+      } else {
+        additionalDatasBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder addAdditionalDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data.Builder builderForValue) {
+      if (additionalDatasBuilder_ == null) {
+        ensureAdditionalDatasIsMutable();
+        additionalDatas_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        additionalDatasBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder addAllAdditionalDatas(
+        java.lang.Iterable<? extends net.rossonet.ptalk.base.grpc.Data> values) {
+      if (additionalDatasBuilder_ == null) {
+        ensureAdditionalDatasIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, additionalDatas_);
+        onChanged();
+      } else {
+        additionalDatasBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder clearAdditionalDatas() {
+      if (additionalDatasBuilder_ == null) {
+        additionalDatas_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        additionalDatasBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public Builder removeAdditionalDatas(int index) {
+      if (additionalDatasBuilder_ == null) {
+        ensureAdditionalDatasIsMutable();
+        additionalDatas_.remove(index);
+        onChanged();
+      } else {
+        additionalDatasBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data.Builder getAdditionalDatasBuilder(
+        int index) {
+      return getAdditionalDatasFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
+        int index) {
+      if (additionalDatasBuilder_ == null) {
+        return additionalDatas_.get(index);  } else {
+        return additionalDatasBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+         getAdditionalDatasOrBuilderList() {
+      if (additionalDatasBuilder_ != null) {
+        return additionalDatasBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(additionalDatas_);
+      }
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data.Builder addAdditionalDatasBuilder() {
+      return getAdditionalDatasFieldBuilder().addBuilder(
+          net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data.Builder addAdditionalDatasBuilder(
+        int index) {
+      return getAdditionalDatasFieldBuilder().addBuilder(
+          index, net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .base.Data additionalDatas = 4;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.base.grpc.Data.Builder> 
+         getAdditionalDatasBuilderList() {
+      return getAdditionalDatasFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+        getAdditionalDatasFieldBuilder() {
+      if (additionalDatasBuilder_ == null) {
+        additionalDatasBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder>(
+                additionalDatas_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        additionalDatas_ = null;
+      }
+      return additionalDatasBuilder_;
+    }
+
+    private java.util.List<net.rossonet.ptalk.base.grpc.Tag> tags_ =
+      java.util.Collections.emptyList();
+    private void ensureTagsIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        tags_ = new java.util.ArrayList<net.rossonet.ptalk.base.grpc.Tag>(tags_);
+        bitField0_ |= 0x00000002;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Tag, net.rossonet.ptalk.base.grpc.Tag.Builder, net.rossonet.ptalk.base.grpc.TagOrBuilder> tagsBuilder_;
+
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.base.grpc.Tag> getTagsList() {
+      if (tagsBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(tags_);
+      } else {
+        return tagsBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public int getTagsCount() {
+      if (tagsBuilder_ == null) {
+        return tags_.size();
+      } else {
+        return tagsBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Tag getTags(int index) {
+      if (tagsBuilder_ == null) {
+        return tags_.get(index);
+      } else {
+        return tagsBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder setTags(
+        int index, net.rossonet.ptalk.base.grpc.Tag value) {
+      if (tagsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTagsIsMutable();
+        tags_.set(index, value);
+        onChanged();
+      } else {
+        tagsBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder setTags(
+        int index, net.rossonet.ptalk.base.grpc.Tag.Builder builderForValue) {
+      if (tagsBuilder_ == null) {
+        ensureTagsIsMutable();
+        tags_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        tagsBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder addTags(net.rossonet.ptalk.base.grpc.Tag value) {
+      if (tagsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTagsIsMutable();
+        tags_.add(value);
+        onChanged();
+      } else {
+        tagsBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder addTags(
+        int index, net.rossonet.ptalk.base.grpc.Tag value) {
+      if (tagsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTagsIsMutable();
+        tags_.add(index, value);
+        onChanged();
+      } else {
+        tagsBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder addTags(
+        net.rossonet.ptalk.base.grpc.Tag.Builder builderForValue) {
+      if (tagsBuilder_ == null) {
+        ensureTagsIsMutable();
+        tags_.add(builderForValue.build());
+        onChanged();
+      } else {
+        tagsBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder addTags(
+        int index, net.rossonet.ptalk.base.grpc.Tag.Builder builderForValue) {
+      if (tagsBuilder_ == null) {
+        ensureTagsIsMutable();
+        tags_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        tagsBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder addAllTags(
+        java.lang.Iterable<? extends net.rossonet.ptalk.base.grpc.Tag> values) {
+      if (tagsBuilder_ == null) {
+        ensureTagsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, tags_);
+        onChanged();
+      } else {
+        tagsBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder clearTags() {
+      if (tagsBuilder_ == null) {
+        tags_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+      } else {
+        tagsBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public Builder removeTags(int index) {
+      if (tagsBuilder_ == null) {
+        ensureTagsIsMutable();
+        tags_.remove(index);
+        onChanged();
+      } else {
+        tagsBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Tag.Builder getTagsBuilder(
+        int index) {
+      return getTagsFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(
+        int index) {
+      if (tagsBuilder_ == null) {
+        return tags_.get(index);  } else {
+        return tagsBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public java.util.List<? extends net.rossonet.ptalk.base.grpc.TagOrBuilder> 
+         getTagsOrBuilderList() {
+      if (tagsBuilder_ != null) {
+        return tagsBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(tags_);
+      }
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Tag.Builder addTagsBuilder() {
+      return getTagsFieldBuilder().addBuilder(
+          net.rossonet.ptalk.base.grpc.Tag.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Tag.Builder addTagsBuilder(
+        int index) {
+      return getTagsFieldBuilder().addBuilder(
+          index, net.rossonet.ptalk.base.grpc.Tag.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .base.Tag tags = 5;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.base.grpc.Tag.Builder> 
+         getTagsBuilderList() {
+      return getTagsFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Tag, net.rossonet.ptalk.base.grpc.Tag.Builder, net.rossonet.ptalk.base.grpc.TagOrBuilder> 
+        getTagsFieldBuilder() {
+      if (tagsBuilder_ == null) {
+        tagsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Tag, net.rossonet.ptalk.base.grpc.Tag.Builder, net.rossonet.ptalk.base.grpc.TagOrBuilder>(
+                tags_,
+                ((bitField0_ & 0x00000002) != 0),
+                getParentForChildren(),
+                isClean());
+        tags_ = null;
+      }
+      return tagsBuilder_;
+    }
+
+    private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> timestampBuilder_;
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     * @return Whether the timestamp field is set.
+     */
+    public boolean hasTimestamp() {
+      return timestampBuilder_ != null || timestamp_ != null;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     * @return The timestamp.
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+      if (timestampBuilder_ == null) {
+        return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      } else {
+        return timestampBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     */
+    public Builder setTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        timestamp_ = value;
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     */
+    public Builder setTimestamp(
+        net.rossonet.ptalk.base.grpc.Timestamp.Builder builderForValue) {
+      if (timestampBuilder_ == null) {
+        timestamp_ = builderForValue.build();
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     */
+    public Builder mergeTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (timestamp_ != null) {
+          timestamp_ =
+            net.rossonet.ptalk.base.grpc.Timestamp.newBuilder(timestamp_).mergeFrom(value).buildPartial();
+        } else {
+          timestamp_ = value;
+        }
+        onChanged();
+      } else {
+        timestampBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     */
+    public Builder clearTimestamp() {
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+        onChanged();
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp.Builder getTimestampBuilder() {
+      
+      onChanged();
+      return getTimestampFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+      if (timestampBuilder_ != null) {
+        return timestampBuilder_.getMessageOrBuilder();
+      } else {
+        return timestamp_ == null ?
+            net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> 
+        getTimestampFieldBuilder() {
+      if (timestampBuilder_ == null) {
+        timestampBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder>(
+                getTimestamp(),
+                getParentForChildren(),
+                isClean());
+        timestamp_ = null;
+      }
+      return timestampBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -196,6 +196,7 @@ gradle.taskGraph.beforeTask { Task task ->
 clean {
 //  println("starting clean in ${projectDir}")
   delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/*/grpc/*.java' }
+  delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/channel/protobuf/server/grpc/*.java' }
 }
 
 docker {

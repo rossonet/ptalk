@@ -17,6 +17,7 @@ message AbilityMessageRequest {
   base.Data message = 4;
   repeated base.Data additionalDatas = 5;
   repeated base.Tag tags = 6;
+  base.Timestamp timestamp = 7;
 }
 
 message AbilityMessageReply {
@@ -27,61 +28,134 @@ message AbilityMessageReply {
   base.StatusValue status = 5;
   repeated base.Data additionalDatas = 6;
   repeated base.Tag tags = 7;
+  base.Timestamp timestamp = 8;
+}
+
+message Rule {
+  string ruleUniqueName = 1;
+  string task = 2;
 }
 
 message CancelRuleRequest {
-
+  string flowReference = 1;
+  Rule rule= 2;
+  base.Timestamp timestamp = 3;
 }
 
 message CancelRuleReply {
+  string flowReference = 1;
+  base.StatusValue status = 2;
+  base.Timestamp timestamp = 3;
+}
 
+message GetRuleRequest {
+  string flowReference = 1;
+  Rule rule= 2;
+  base.Timestamp timestamp = 3;
+}
+
+message GetRuleReply {
+  string flowReference = 1;
+  string jsonRule = 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
 }
 
 message RegisterRulesRequest {
-
+  string flowReference = 1;
+  Rule rule= 2;
+  string jsonRule = 3;
+  repeated base.Data additionalDatas = 4;
+  repeated base.Tag tags = 5;
+  base.Timestamp timestamp = 6;
 }
 
 message RegisterRulesReply {
-
+  string flowReference = 1;
+  Rule rule= 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
 }
 
 message ListRulesRequest {
-
+  string flowReference = 1;
+  base.Timestamp timestamp = 3;
 }
 
 message ListRulesReply {
-
+  string flowReference = 1;
+  repeated Rule rule = 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
 }
 
 message DumpConfigurationRequest {
-
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
 }
 
 message DumpConfigurationReply {
-
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
+  base.StatusValue status = 4;
+  string configurationJson = 5;
 }
 
 message PushConfigurationRequest {
-
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
+  string configurationJson = 4;
 }
 
 message PushConfigurationReply {
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
+  base.StatusValue status = 4;
+}
+
+message MemoryContextQueryRequest {
+  string flowReference = 1;
+  string context = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message MemoryContextQueryReply {
+  string flowReference = 1;
+  string context = 2;
+  repeated base.Data datas = 3;
+  base.Timestamp timestamp = 4;
+  base.StatusValue status = 5;
+}
+
+message MemoryContextManagementRequest {
 
 }
 
-message MemoryContextRequest {
+message MemoryContextManagementReply {
 
 }
 
-message MemoryContextReply {
+message GeneralConfigurationQueryRequest {
+  string flowReference = 1;
+  string key = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message GeneralConfigurationQueryReply {
+  string flowReference = 1;
+  base.Data value = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message GeneralConfigurationManagementRequest {
 
 }
 
-message GeneralConfigurationRequest {
-
-}
-
-message GeneralConfigurationReply {
+message GeneralConfigurationManagementReply {
 
 }
 
@@ -90,8 +164,9 @@ service RpcAbilityCoreV1 {
   rpc RegisterRules (RegisterRulesRequest) returns (RegisterRulesReply) {}
   rpc CancelRule (CancelRuleRequest) returns (CancelRuleReply) {}
   rpc ListRules (ListRulesRequest) returns (ListRulesReply) {}
-  rpc Memory (MemoryContextRequest) returns (MemoryContextReply) {}
-  rpc GeneralConfiguration (GeneralConfigurationRequest) returns (GeneralConfigurationReply) {}
+  rpc GetRule (GetRuleRequest) returns (GetRuleReply) {}
+  rpc MemoryQuery (MemoryContextQueryRequest) returns (MemoryContextQueryReply) {}
+  rpc GeneralConfigurationQuery (GeneralConfigurationQueryRequest) returns (GeneralConfigurationQueryReply) {}
 }
 
 service RpcAbilityUnitV1 {
@@ -102,5 +177,15 @@ service RpcAbilityUnitV1 {
 service RpcSuperAbilityCoreV1 {
   rpc PushConfiguration (PushConfigurationRequest) returns (PushConfigurationReply) {}
   rpc DumpConfiguration (DumpConfigurationRequest) returns (DumpConfigurationReply) {}
+  rpc RegisterPreRules (RegisterRulesRequest) returns (RegisterRulesReply) {}
+  rpc CancelPreRule (CancelRuleRequest) returns (CancelRuleReply) {}
+  rpc ListPreRules (ListRulesRequest) returns (ListRulesReply) {}
+  rpc GetPreRule (GetRuleRequest) returns (GetRuleReply) {}
+  rpc RegisterPostRules (RegisterRulesRequest) returns (RegisterRulesReply) {}
+  rpc CancelPostRule (CancelRuleRequest) returns (CancelRuleReply) {}
+  rpc ListPostRules (ListRulesRequest) returns (ListRulesReply) {}
+  rpc GetPostRule (GetRuleRequest) returns (GetRuleReply) {}
+  rpc MemoryManagement (MemoryContextManagementRequest) returns (MemoryContextManagementReply) {}
+  rpc GeneralConfigurationManagement (GeneralConfigurationManagementRequest) returns (GeneralConfigurationManagementReply) {}
 }
 

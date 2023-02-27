@@ -8,48 +8,75 @@ public interface HealthRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string unitUniqueName = 1;</code>
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  java.lang.String getFlowReference();
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  com.google.protobuf.ByteString
+      getFlowReferenceBytes();
+
+  /**
+   * <code>string unitUniqueName = 2;</code>
    * @return The unitUniqueName.
    */
   java.lang.String getUnitUniqueName();
   /**
-   * <code>string unitUniqueName = 1;</code>
+   * <code>string unitUniqueName = 2;</code>
    * @return The bytes for unitUniqueName.
    */
   com.google.protobuf.ByteString
       getUnitUniqueNameBytes();
 
   /**
-   * <code>string jsonHardwareInfo = 2;</code>
+   * <code>string jsonHardwareInfo = 3;</code>
    * @return The jsonHardwareInfo.
    */
   java.lang.String getJsonHardwareInfo();
   /**
-   * <code>string jsonHardwareInfo = 2;</code>
+   * <code>string jsonHardwareInfo = 3;</code>
    * @return The bytes for jsonHardwareInfo.
    */
   com.google.protobuf.ByteString
       getJsonHardwareInfoBytes();
 
   /**
-   * <code>.base.StatusValue status = 3;</code>
+   * <code>.base.StatusValue status = 4;</code>
    * @return The enum numeric value on the wire for status.
    */
   int getStatusValue();
   /**
-   * <code>.base.StatusValue status = 3;</code>
+   * <code>.base.StatusValue status = 4;</code>
    * @return The status.
    */
   net.rossonet.ptalk.base.grpc.StatusValue getStatus();
 
   /**
-   * <code>.base.LifecycleStatus lifecycleStatus = 4;</code>
+   * <code>.base.LifecycleStatus lifecycleStatus = 5;</code>
    * @return The enum numeric value on the wire for lifecycleStatus.
    */
   int getLifecycleStatusValue();
   /**
-   * <code>.base.LifecycleStatus lifecycleStatus = 4;</code>
+   * <code>.base.LifecycleStatus lifecycleStatus = 5;</code>
    * @return The lifecycleStatus.
    */
   net.rossonet.ptalk.base.grpc.LifecycleStatus getLifecycleStatus();
+
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   * @return Whether the timestamp field is set.
+   */
+  boolean hasTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   * @return The timestamp.
+   */
+  net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
+  /**
+   * <code>.base.Timestamp timestamp = 6;</code>
+   */
+  net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

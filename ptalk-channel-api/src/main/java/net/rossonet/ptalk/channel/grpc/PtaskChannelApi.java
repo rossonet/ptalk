@@ -34,21 +34,33 @@ public final class PtaskChannelApi {
   static {
     java.lang.String[] descriptorData = {
       "\n\027ptalk-channel-api.proto\022\007channel\032\024ptal" +
-      "k-base-api.proto\"\027\n\025ChannelMessageReques" +
-      "t\"\025\n\023ChannelMessageReply2\333\001\n\020RpcChannelC" +
-      "oreV1\022J\n\010CallSync\022\036.channel.ChannelMessa" +
-      "geRequest\032\034.channel.ChannelMessageReply\"" +
-      "\000\022;\n\tCallAsync\022\036.channel.ChannelMessageR" +
-      "equest\032\014.base.Status\"\000\022>\n\016ReplyCallAsync" +
-      "\022\034.channel.ChannelMessageReply\032\014.base.St" +
-      "atus\"\0002\333\001\n\020RpcChannelUnitV1\022J\n\010CallSync\022" +
-      "\036.channel.ChannelMessageRequest\032\034.channe" +
-      "l.ChannelMessageReply\"\000\022;\n\tCallAsync\022\036.c" +
-      "hannel.ChannelMessageRequest\032\014.base.Stat" +
-      "us\"\000\022>\n\016ReplyCallAsync\022\034.channel.Channel" +
-      "MessageReply\032\014.base.Status\"\000B4\n\037net.ross" +
-      "onet.ptalk.channel.grpcB\017PtaskChannelApi" +
-      "P\001b\006proto3"
+      "k-base-api.proto\"\204\003\n\025ChannelMessageReque" +
+      "st\022\025\n\rflowReference\030\001 \001(\t\022\030\n\020messageRefe" +
+      "rence\030\002 \001(\t\022\025\n\roriginContext\030\003 \001(\t\022\031\n\021ch" +
+      "annelUniqueName\030\004 \001(\t\022\036\n\026channelUniqueMe" +
+      "ssageId\030\005 \001(\t\022\021\n\treplyTask\030\006 \001(\t\022\033\n\007mess" +
+      "age\030\007 \001(\0132\n.base.Data\022\023\n\013contextJson\030\010 \001" +
+      "(\t\022#\n\017additionalDatas\030\t \003(\0132\n.base.Data\022" +
+      "\027\n\004tags\030\n \003(\0132\t.base.Tag\022\020\n\010priority\030\013 \001" +
+      "(\005\022\020\n\010traceLog\030\014 \001(\010\022\"\n\ttimestamp\030\r \001(\0132" +
+      "\017.base.Timestamp\022\035\n\ttraceData\030\016 \003(\0132\n.ba" +
+      "se.Data\"\222\001\n\023ChannelMessageReply\022\025\n\rflowR" +
+      "eference\030\001 \001(\t\022!\n\006status\030\002 \001(\0162\021.base.St" +
+      "atusValue\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Time" +
+      "stamp\022\035\n\ttraceData\030\004 \003(\0132\n.base.Data2\333\001\n" +
+      "\020RpcChannelCoreV1\022J\n\010CallSync\022\036.channel." +
+      "ChannelMessageRequest\032\034.channel.ChannelM" +
+      "essageReply\"\000\022;\n\tCallAsync\022\036.channel.Cha" +
+      "nnelMessageRequest\032\014.base.Status\"\000\022>\n\016Re" +
+      "plyCallAsync\022\034.channel.ChannelMessageRep" +
+      "ly\032\014.base.Status\"\0002\333\001\n\020RpcChannelUnitV1\022" +
+      "J\n\010CallSync\022\036.channel.ChannelMessageRequ" +
+      "est\032\034.channel.ChannelMessageReply\"\000\022;\n\tC" +
+      "allAsync\022\036.channel.ChannelMessageRequest" +
+      "\032\014.base.Status\"\000\022>\n\016ReplyCallAsync\022\034.cha" +
+      "nnel.ChannelMessageReply\032\014.base.Status\"\000" +
+      "B4\n\037net.rossonet.ptalk.channel.grpcB\017Pta" +
+      "skChannelApiP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -60,13 +72,13 @@ public final class PtaskChannelApi {
     internal_static_channel_ChannelMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_channel_ChannelMessageRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "MessageReference", "OriginContext", "ChannelUniqueName", "ChannelUniqueMessageId", "ReplyTask", "Message", "ContextJson", "AdditionalDatas", "Tags", "Priority", "TraceLog", "Timestamp", "TraceData", });
     internal_static_channel_ChannelMessageReply_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_channel_ChannelMessageReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_channel_ChannelMessageReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Status", "Timestamp", "TraceData", });
     net.rossonet.ptalk.base.grpc.PtalkBaseObject.getDescriptor();
   }
 

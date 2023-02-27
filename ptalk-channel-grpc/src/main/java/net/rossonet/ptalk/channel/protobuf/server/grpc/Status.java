@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Status() {
-    status_ = 0;
+    statusDescription_ = "";
   }
 
   @java.lang.Override
@@ -44,23 +44,53 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.channel.protobuf.server.grpc.Status.class, net.rossonet.ptalk.channel.protobuf.server.grpc.Status.Builder.class);
   }
 
-  public static final int STATUS_FIELD_NUMBER = 1;
-  private int status_;
+  public static final int STATUSDESCRIPTION_FIELD_NUMBER = 1;
+  private volatile java.lang.Object statusDescription_;
   /**
-   * <code>.channelGrpc.StatusValue status = 1;</code>
-   * @return The enum numeric value on the wire for status.
+   * <code>string statusDescription = 1;</code>
+   * @return The statusDescription.
    */
-  @java.lang.Override public int getStatusValue() {
-    return status_;
+  @java.lang.Override
+  public java.lang.String getStatusDescription() {
+    java.lang.Object ref = statusDescription_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      statusDescription_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.channelGrpc.StatusValue status = 1;</code>
-   * @return The status.
+   * <code>string statusDescription = 1;</code>
+   * @return The bytes for statusDescription.
    */
-  @java.lang.Override public net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue getStatus() {
-    @SuppressWarnings("deprecation")
-    net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue result = net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue.valueOf(status_);
-    return result == null ? net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue.UNRECOGNIZED : result;
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getStatusDescriptionBytes() {
+    java.lang.Object ref = statusDescription_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      statusDescription_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STATUSID_FIELD_NUMBER = 2;
+  private int statusId_;
+  /**
+   * <code>int32 statusId = 2;</code>
+   * @return The statusId.
+   */
+  @java.lang.Override
+  public int getStatusId() {
+    return statusId_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -77,8 +107,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (status_ != net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue.GOOD.getNumber()) {
-      output.writeEnum(1, status_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(statusDescription_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, statusDescription_);
+    }
+    if (statusId_ != 0) {
+      output.writeInt32(2, statusId_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -89,9 +122,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (status_ != net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue.GOOD.getNumber()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(statusDescription_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, statusDescription_);
+    }
+    if (statusId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, status_);
+        .computeInt32Size(2, statusId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -108,7 +144,10 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.channel.protobuf.server.grpc.Status other = (net.rossonet.ptalk.channel.protobuf.server.grpc.Status) obj;
 
-    if (status_ != other.status_) return false;
+    if (!getStatusDescription()
+        .equals(other.getStatusDescription())) return false;
+    if (getStatusId()
+        != other.getStatusId()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -120,8 +159,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + status_;
+    hash = (37 * hash) + STATUSDESCRIPTION_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusDescription().hashCode();
+    hash = (37 * hash) + STATUSID_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusId();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -250,7 +291,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      status_ = 0;
+      statusDescription_ = "";
+
+      statusId_ = 0;
 
       return this;
     }
@@ -278,7 +321,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.channel.protobuf.server.grpc.Status buildPartial() {
       net.rossonet.ptalk.channel.protobuf.server.grpc.Status result = new net.rossonet.ptalk.channel.protobuf.server.grpc.Status(this);
-      result.status_ = status_;
+      result.statusDescription_ = statusDescription_;
+      result.statusId_ = statusId_;
       onBuilt();
       return result;
     }
@@ -327,8 +371,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.channel.protobuf.server.grpc.Status other) {
       if (other == net.rossonet.ptalk.channel.protobuf.server.grpc.Status.getDefaultInstance()) return this;
-      if (other.status_ != 0) {
-        setStatusValue(other.getStatusValue());
+      if (!other.getStatusDescription().isEmpty()) {
+        statusDescription_ = other.statusDescription_;
+        onChanged();
+      }
+      if (other.getStatusId() != 0) {
+        setStatusId(other.getStatusId());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -356,11 +404,16 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              status_ = input.readEnum();
+            case 10: {
+              statusDescription_ = input.readStringRequireUtf8();
 
               break;
-            } // case 8
+            } // case 10
+            case 16: {
+              statusId_ = input.readInt32();
+
+              break;
+            } // case 16
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -377,56 +430,109 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int status_ = 0;
+    private java.lang.Object statusDescription_ = "";
     /**
-     * <code>.channelGrpc.StatusValue status = 1;</code>
-     * @return The enum numeric value on the wire for status.
+     * <code>string statusDescription = 1;</code>
+     * @return The statusDescription.
      */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
+    public java.lang.String getStatusDescription() {
+      java.lang.Object ref = statusDescription_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        statusDescription_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>.channelGrpc.StatusValue status = 1;</code>
-     * @param value The enum numeric value on the wire for status to set.
+     * <code>string statusDescription = 1;</code>
+     * @return The bytes for statusDescription.
+     */
+    public com.google.protobuf.ByteString
+        getStatusDescriptionBytes() {
+      java.lang.Object ref = statusDescription_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        statusDescription_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string statusDescription = 1;</code>
+     * @param value The statusDescription to set.
      * @return This builder for chaining.
      */
-    public Builder setStatusValue(int value) {
-      
-      status_ = value;
+    public Builder setStatusDescription(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      statusDescription_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>.channelGrpc.StatusValue status = 1;</code>
-     * @return The status.
+     * <code>string statusDescription = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStatusDescription() {
+      
+      statusDescription_ = getDefaultInstance().getStatusDescription();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusDescription = 1;</code>
+     * @param value The bytes for statusDescription to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatusDescriptionBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      statusDescription_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int statusId_ ;
+    /**
+     * <code>int32 statusId = 2;</code>
+     * @return The statusId.
      */
     @java.lang.Override
-    public net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue getStatus() {
-      @SuppressWarnings("deprecation")
-      net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue result = net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue.valueOf(status_);
-      return result == null ? net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue.UNRECOGNIZED : result;
+    public int getStatusId() {
+      return statusId_;
     }
     /**
-     * <code>.channelGrpc.StatusValue status = 1;</code>
-     * @param value The status to set.
+     * <code>int32 statusId = 2;</code>
+     * @param value The statusId to set.
      * @return This builder for chaining.
      */
-    public Builder setStatus(net.rossonet.ptalk.channel.protobuf.server.grpc.StatusValue value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
+    public Builder setStatusId(int value) {
       
-      status_ = value.getNumber();
+      statusId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>.channelGrpc.StatusValue status = 1;</code>
+     * <code>int32 statusId = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearStatus() {
+    public Builder clearStatusId() {
       
-      status_ = 0;
+      statusId_ = 0;
       onChanged();
       return this;
     }

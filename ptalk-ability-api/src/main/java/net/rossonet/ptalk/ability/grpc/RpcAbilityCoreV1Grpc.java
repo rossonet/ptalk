@@ -139,66 +139,97 @@ public final class RpcAbilityCoreV1Grpc {
     return getListRulesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.MemoryContextRequest,
-      net.rossonet.ptalk.ability.grpc.MemoryContextReply> getMemoryMethod;
+  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GetRuleRequest,
+      net.rossonet.ptalk.ability.grpc.GetRuleReply> getGetRuleMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Memory",
-      requestType = net.rossonet.ptalk.ability.grpc.MemoryContextRequest.class,
-      responseType = net.rossonet.ptalk.ability.grpc.MemoryContextReply.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetRule",
+      requestType = net.rossonet.ptalk.ability.grpc.GetRuleRequest.class,
+      responseType = net.rossonet.ptalk.ability.grpc.GetRuleReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.MemoryContextRequest,
-      net.rossonet.ptalk.ability.grpc.MemoryContextReply> getMemoryMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.MemoryContextRequest, net.rossonet.ptalk.ability.grpc.MemoryContextReply> getMemoryMethod;
-    if ((getMemoryMethod = RpcAbilityCoreV1Grpc.getMemoryMethod) == null) {
+  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GetRuleRequest,
+      net.rossonet.ptalk.ability.grpc.GetRuleReply> getGetRuleMethod() {
+    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GetRuleRequest, net.rossonet.ptalk.ability.grpc.GetRuleReply> getGetRuleMethod;
+    if ((getGetRuleMethod = RpcAbilityCoreV1Grpc.getGetRuleMethod) == null) {
       synchronized (RpcAbilityCoreV1Grpc.class) {
-        if ((getMemoryMethod = RpcAbilityCoreV1Grpc.getMemoryMethod) == null) {
-          RpcAbilityCoreV1Grpc.getMemoryMethod = getMemoryMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.MemoryContextRequest, net.rossonet.ptalk.ability.grpc.MemoryContextReply>newBuilder()
+        if ((getGetRuleMethod = RpcAbilityCoreV1Grpc.getGetRuleMethod) == null) {
+          RpcAbilityCoreV1Grpc.getGetRuleMethod = getGetRuleMethod =
+              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.GetRuleRequest, net.rossonet.ptalk.ability.grpc.GetRuleReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Memory"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetRule"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.MemoryContextRequest.getDefaultInstance()))
+                  net.rossonet.ptalk.ability.grpc.GetRuleRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.MemoryContextReply.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("Memory"))
+                  net.rossonet.ptalk.ability.grpc.GetRuleReply.getDefaultInstance()))
+              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("GetRule"))
               .build();
         }
       }
     }
-    return getMemoryMethod;
+    return getGetRuleMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest,
-      net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> getGeneralConfigurationMethod;
+  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest,
+      net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply> getMemoryQueryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GeneralConfiguration",
-      requestType = net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest.class,
-      responseType = net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply.class,
+      fullMethodName = SERVICE_NAME + '/' + "MemoryQuery",
+      requestType = net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest.class,
+      responseType = net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest,
-      net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> getGeneralConfigurationMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest, net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> getGeneralConfigurationMethod;
-    if ((getGeneralConfigurationMethod = RpcAbilityCoreV1Grpc.getGeneralConfigurationMethod) == null) {
+  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest,
+      net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply> getMemoryQueryMethod() {
+    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest, net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply> getMemoryQueryMethod;
+    if ((getMemoryQueryMethod = RpcAbilityCoreV1Grpc.getMemoryQueryMethod) == null) {
       synchronized (RpcAbilityCoreV1Grpc.class) {
-        if ((getGeneralConfigurationMethod = RpcAbilityCoreV1Grpc.getGeneralConfigurationMethod) == null) {
-          RpcAbilityCoreV1Grpc.getGeneralConfigurationMethod = getGeneralConfigurationMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest, net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply>newBuilder()
+        if ((getMemoryQueryMethod = RpcAbilityCoreV1Grpc.getMemoryQueryMethod) == null) {
+          RpcAbilityCoreV1Grpc.getMemoryQueryMethod = getMemoryQueryMethod =
+              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest, net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GeneralConfiguration"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "MemoryQuery"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest.getDefaultInstance()))
+                  net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("GeneralConfiguration"))
+                  net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply.getDefaultInstance()))
+              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("MemoryQuery"))
               .build();
         }
       }
     }
-    return getGeneralConfigurationMethod;
+    return getMemoryQueryMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest,
+      net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply> getGeneralConfigurationQueryMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GeneralConfigurationQuery",
+      requestType = net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest.class,
+      responseType = net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest,
+      net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply> getGeneralConfigurationQueryMethod() {
+    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest, net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply> getGeneralConfigurationQueryMethod;
+    if ((getGeneralConfigurationQueryMethod = RpcAbilityCoreV1Grpc.getGeneralConfigurationQueryMethod) == null) {
+      synchronized (RpcAbilityCoreV1Grpc.class) {
+        if ((getGeneralConfigurationQueryMethod = RpcAbilityCoreV1Grpc.getGeneralConfigurationQueryMethod) == null) {
+          RpcAbilityCoreV1Grpc.getGeneralConfigurationQueryMethod = getGeneralConfigurationQueryMethod =
+              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest, net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GeneralConfigurationQuery"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply.getDefaultInstance()))
+              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("GeneralConfigurationQuery"))
+              .build();
+        }
+      }
+    }
+    return getGeneralConfigurationQueryMethod;
   }
 
   /**
@@ -279,16 +310,23 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public void memory(net.rossonet.ptalk.ability.grpc.MemoryContextRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMemoryMethod(), responseObserver);
+    public void getRule(net.rossonet.ptalk.ability.grpc.GetRuleRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GetRuleReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRuleMethod(), responseObserver);
     }
 
     /**
      */
-    public void generalConfiguration(net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGeneralConfigurationMethod(), responseObserver);
+    public void memoryQuery(net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMemoryQueryMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void generalConfigurationQuery(net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGeneralConfigurationQueryMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -322,19 +360,26 @@ public final class RpcAbilityCoreV1Grpc {
                 net.rossonet.ptalk.ability.grpc.ListRulesReply>(
                   this, METHODID_LIST_RULES)))
           .addMethod(
-            getMemoryMethod(),
+            getGetRuleMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.MemoryContextRequest,
-                net.rossonet.ptalk.ability.grpc.MemoryContextReply>(
-                  this, METHODID_MEMORY)))
+                net.rossonet.ptalk.ability.grpc.GetRuleRequest,
+                net.rossonet.ptalk.ability.grpc.GetRuleReply>(
+                  this, METHODID_GET_RULE)))
           .addMethod(
-            getGeneralConfigurationMethod(),
+            getMemoryQueryMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest,
-                net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply>(
-                  this, METHODID_GENERAL_CONFIGURATION)))
+                net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest,
+                net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply>(
+                  this, METHODID_MEMORY_QUERY)))
+          .addMethod(
+            getGeneralConfigurationQueryMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest,
+                net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply>(
+                  this, METHODID_GENERAL_CONFIGURATION_QUERY)))
           .build();
     }
   }
@@ -387,18 +432,26 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public void memory(net.rossonet.ptalk.ability.grpc.MemoryContextRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextReply> responseObserver) {
+    public void getRule(net.rossonet.ptalk.ability.grpc.GetRuleRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GetRuleReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getMemoryMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetRuleMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void generalConfiguration(net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> responseObserver) {
+    public void memoryQuery(net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGeneralConfigurationMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getMemoryQueryMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void generalConfigurationQuery(net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGeneralConfigurationQueryMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -446,16 +499,23 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public net.rossonet.ptalk.ability.grpc.MemoryContextReply memory(net.rossonet.ptalk.ability.grpc.MemoryContextRequest request) {
+    public net.rossonet.ptalk.ability.grpc.GetRuleReply getRule(net.rossonet.ptalk.ability.grpc.GetRuleRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getMemoryMethod(), getCallOptions(), request);
+          getChannel(), getGetRuleMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply generalConfiguration(net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request) {
+    public net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply memoryQuery(net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGeneralConfigurationMethod(), getCallOptions(), request);
+          getChannel(), getMemoryQueryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply generalConfigurationQuery(net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGeneralConfigurationQueryMethod(), getCallOptions(), request);
     }
   }
 
@@ -507,18 +567,26 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.MemoryContextReply> memory(
-        net.rossonet.ptalk.ability.grpc.MemoryContextRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.GetRuleReply> getRule(
+        net.rossonet.ptalk.ability.grpc.GetRuleRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getMemoryMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetRuleMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> generalConfiguration(
-        net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply> memoryQuery(
+        net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGeneralConfigurationMethod(), getCallOptions()), request);
+          getChannel().newCall(getMemoryQueryMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply> generalConfigurationQuery(
+        net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGeneralConfigurationQueryMethod(), getCallOptions()), request);
     }
   }
 
@@ -526,8 +594,9 @@ public final class RpcAbilityCoreV1Grpc {
   private static final int METHODID_REGISTER_RULES = 1;
   private static final int METHODID_CANCEL_RULE = 2;
   private static final int METHODID_LIST_RULES = 3;
-  private static final int METHODID_MEMORY = 4;
-  private static final int METHODID_GENERAL_CONFIGURATION = 5;
+  private static final int METHODID_GET_RULE = 4;
+  private static final int METHODID_MEMORY_QUERY = 5;
+  private static final int METHODID_GENERAL_CONFIGURATION_QUERY = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -562,13 +631,17 @@ public final class RpcAbilityCoreV1Grpc {
           serviceImpl.listRules((net.rossonet.ptalk.ability.grpc.ListRulesRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.ListRulesReply>) responseObserver);
           break;
-        case METHODID_MEMORY:
-          serviceImpl.memory((net.rossonet.ptalk.ability.grpc.MemoryContextRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextReply>) responseObserver);
+        case METHODID_GET_RULE:
+          serviceImpl.getRule((net.rossonet.ptalk.ability.grpc.GetRuleRequest) request,
+              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GetRuleReply>) responseObserver);
           break;
-        case METHODID_GENERAL_CONFIGURATION:
-          serviceImpl.generalConfiguration((net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply>) responseObserver);
+        case METHODID_MEMORY_QUERY:
+          serviceImpl.memoryQuery((net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest) request,
+              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply>) responseObserver);
+          break;
+        case METHODID_GENERAL_CONFIGURATION_QUERY:
+          serviceImpl.generalConfigurationQuery((net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest) request,
+              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -635,8 +708,9 @@ public final class RpcAbilityCoreV1Grpc {
               .addMethod(getRegisterRulesMethod())
               .addMethod(getCancelRuleMethod())
               .addMethod(getListRulesMethod())
-              .addMethod(getMemoryMethod())
-              .addMethod(getGeneralConfigurationMethod())
+              .addMethod(getGetRuleMethod())
+              .addMethod(getMemoryQueryMethod())
+              .addMethod(getGeneralConfigurationQueryMethod())
               .build();
         }
       }

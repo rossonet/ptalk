@@ -15,205 +15,35 @@ public final class PtalkChannelGrpcServerGrpc {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_RegisterRequest_descriptor;
+    internal_static_channelGrpc_Parameter_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_RegisterRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_Timestamp_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_Timestamp_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_RegisterReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_RegisterReply_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ListAgentsRequestReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ListAgentsRequestReply_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_AgentRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_AgentRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ApproveAgentRequestRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ApproveAgentRequestRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_Status_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_Status_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_Agent_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_Agent_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ConfigReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ConfigReply_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ListStringReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ListStringReply_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ConfigReport_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ConfigReport_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_FlowMessage_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_FlowMessage_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_RequestToAgent_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_RequestToAgent_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ChatMessage_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ChatMessage_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_CommandReplyRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_CommandReplyRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_HealthRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_HealthRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_LogRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_LogRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ExceptionRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ExceptionRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_Empty_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_Empty_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ListAgentsReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ListAgentsReply_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ElaborateMessageRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ElaborateMessageRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ElaborateMessageReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ElaborateMessageReply_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ListCommandsRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ListCommandsRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ListCommandsReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ListCommandsReply_fieldAccessorTable;
+      internal_static_channelGrpc_Parameter_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_channelGrpc_Command_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_channelGrpc_Command_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_CompleteCommandRequest_descriptor;
+    internal_static_channelGrpc_Status_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_CompleteCommandRequest_fieldAccessorTable;
+      internal_static_channelGrpc_Status_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_CompleteCommandReply_descriptor;
+    internal_static_channelGrpc_Tag_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_CompleteCommandReply_fieldAccessorTable;
+      internal_static_channelGrpc_Tag_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_PollingRequest_descriptor;
+    internal_static_channelGrpc_MessageRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_PollingRequest_fieldAccessorTable;
+      internal_static_channelGrpc_MessageRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_SubscribeRequest_descriptor;
+    internal_static_channelGrpc_MessageReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_SubscribeRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_FlowMessageData_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_FlowMessageData_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_RequestWrite_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_RequestWrite_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_DataNode_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_DataNode_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_NodeMetadata_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_NodeMetadata_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_AddressSpace_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_AddressSpace_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ParentScope_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ParentScope_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_TunnelMessage_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_TunnelMessage_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_ResponseNetworkChannel_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_ResponseNetworkChannel_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_RequestTunnelMessage_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_RequestTunnelMessage_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_AgentProxyRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_AgentProxyRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_channelGrpc_AgentProxyReply_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_channelGrpc_AgentProxyReply_fieldAccessorTable;
+      internal_static_channelGrpc_MessageReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -224,488 +54,81 @@ public final class PtalkChannelGrpcServerGrpc {
   static {
     java.lang.String[] descriptorData = {
       "\n\030ptalk-channel-grpc.proto\022\013channelGrpc\"" +
-      "\233\001\n\017RegisterRequest\022\014\n\004name\030\001 \001(\t\022\022\n\nreq" +
-      "uestCsr\030\002 \001(\t\022\022\n\ndisplayKey\030\003 \001(\t\022$\n\004tim" +
-      "e\030\004 \001(\0132\026.channelGrpc.Timestamp\022\022\n\njsonH" +
-      "ealth\030\005 \001(\t\022\030\n\020shortDescription\030\006 \001(\t\"+\n" +
-      "\tTimestamp\022\017\n\007seconds\030\001 \001(\003\022\r\n\005nanos\030\002 \001" +
-      "(\005\"\275\001\n\rRegisterReply\022\024\n\014registerCode\030\001 \001" +
-      "(\t\022\033\n\023monitoringFrequency\030\002 \001(\005\022\014\n\004cert\030" +
-      "\003 \001(\t\022\n\n\002ca\030\004 \001(\t\022/\n\022statusRegistration\030" +
-      "\005 \001(\0132\023.channelGrpc.Status\022\035\n\025timestampR" +
-      "egistration\030\006 \001(\003\022\017\n\007otpSeed\030\007 \001(\t\"j\n\026Li" +
-      "stAgentsRequestReply\022#\n\006result\030\001 \001(\0132\023.c" +
-      "hannelGrpc.Status\022+\n\010requests\030\002 \003(\0132\031.ch" +
-      "annelGrpc.AgentRequest\"\261\001\n\014AgentRequest\022" +
-      "-\n\007request\030\001 \001(\0132\034.channelGrpc.RegisterR" +
-      "equest\022\021\n\tidRequest\030\002 \001(\t\022(\n\010approved\030\003 " +
-      "\001(\0132\026.channelGrpc.Timestamp\0225\n\025registrat" +
-      "ionCompleted\030\004 \001(\0132\026.channelGrpc.Timesta" +
-      "mp\"K\n\032ApproveAgentRequestRequest\022\021\n\tidRe" +
-      "quest\030\001 \001(\t\022\014\n\004cert\030\002 \001(\t\022\014\n\004note\030\003 \001(\t\"" +
-      "2\n\006Status\022(\n\006status\030\001 \001(\0162\030.channelGrpc." +
-      "StatusValue\"\263\001\n\005Agent\022\027\n\017agentUniqueName" +
-      "\030\001 \001(\t\022\030\n\020shortDescription\030\002 \001(\t\0220\n\014regi" +
-      "sterData\030\003 \001(\0132\032.channelGrpc.RegisterRep" +
-      "ly\022\030\n\020jsonHardwareInfo\030\004 \001(\t\022+\n\013lastCont" +
-      "act\030\005 \001(\0132\026.channelGrpc.Timestamp\"\207\001\n\013Co" +
-      "nfigReply\022\024\n\014base64Config\030\001 \001(\t\022\022\n\njsonC" +
-      "onfig\030\002 \001(\t\022\021\n\tymlConfig\030\003 \001(\t\022\021\n\trestar" +
-      "tAt\030\004 \001(\003\022(\n\006status\030\005 \001(\0162\030.channelGrpc." +
-      "StatusValue\"b\n\017ListStringReply\022\'\n\013agentS" +
-      "ender\030\001 \001(\0132\022.channelGrpc.Agent\022\021\n\tlistD" +
-      "atas\030\002 \003(\t\022\023\n\013linesNumber\030\003 \001(\005\"[\n\014Confi" +
-      "gReport\022!\n\005agent\030\001 \001(\0132\022.channelGrpc.Age" +
-      "nt\022\024\n\014base64Config\030\002 \001(\t\022\022\n\njsonConfig\030\003" +
-      " \001(\t\"<\n\013FlowMessage\022-\n\010toDoList\030\001 \003(\0132\033." +
-      "channelGrpc.RequestToAgent\"\215\002\n\016RequestTo" +
-      "Agent\022&\n\004type\030\001 \001(\0162\030.channelGrpc.Comman" +
-      "dType\022\"\n\006caller\030\002 \001(\0132\022.channelGrpc.Agen" +
-      "t\022\027\n\017uniqueIdRequest\030\003 \001(\t\022\026\n\016requestCom" +
-      "mand\030\004 \001(\t\022\r\n\005words\030\005 \003(\t\022\021\n\twordIndex\030\006" +
-      " \001(\005\022\020\n\010position\030\007 \001(\005\0228\n\rtunnelRequest\030" +
-      "\010 \001(\0132!.channelGrpc.RequestTunnelMessage" +
-      "\022\020\n\010otpToken\030\t \001(\t\"x\n\013ChatMessage\022\'\n\013age" +
-      "ntSender\030\001 \001(\0132\022.channelGrpc.Agent\022,\n\020ag" +
-      "entDestination\030\002 \001(\0132\022.channelGrpc.Agent" +
-      "\022\022\n\nmessageTxt\030\003 \001(\t\"\211\002\n\023CommandReplyReq" +
-      "uest\022\027\n\017uniqueIdRequest\030\001 \001(\t\022\'\n\013agentSe" +
-      "nder\030\002 \001(\0132\022.channelGrpc.Agent\022,\n\020agentD" +
-      "estination\030\003 \001(\0132\022.channelGrpc.Agent\022\017\n\007" +
-      "replies\030\004 \003(\t\022\016\n\006errors\030\005 \003(\t\0228\n\013tunnelR" +
-      "eply\030\006 \001(\0132#.channelGrpc.ResponseNetwork" +
-      "Channel\022\024\n\014base64Config\030\007 \001(\t\022\021\n\trestart" +
-      "At\030\010 \001(\003\"\201\001\n\rHealthRequest\022\'\n\013agentSende" +
-      "r\030\001 \001(\0132\022.channelGrpc.Agent\022\030\n\020jsonHardw" +
-      "areInfo\030\002 \001(\t\022-\n\006status\030\003 \001(\0162\035.channelG" +
-      "rpc.HomunculusStates\"r\n\nLogRequest\022\'\n\013ag" +
-      "entSender\030\001 \001(\0132\022.channelGrpc.Agent\022*\n\010s" +
-      "everity\030\002 \001(\0162\030.channelGrpc.LogSeverity\022" +
-      "\017\n\007logLine\030\003 \001(\t\"r\n\020ExceptionRequest\022\'\n\013" +
-      "agentSender\030\001 \001(\0132\022.channelGrpc.Agent\022\030\n" +
-      "\020messageException\030\002 \001(\t\022\033\n\023stackTraceExc" +
-      "eption\030\003 \001(\t\"\007\n\005Empty\"Z\n\017ListAgentsReply" +
-      "\022#\n\006result\030\001 \001(\0132\023.channelGrpc.Status\022\"\n" +
-      "\006agents\030\002 \003(\0132\022.channelGrpc.Agent\"\220\001\n\027El" +
-      "aborateMessageRequest\022\'\n\013agentTarget\030\001 \001" +
-      "(\0132\022.channelGrpc.Agent\022\'\n\013agentSender\030\002 " +
-      "\001(\0132\022.channelGrpc.Agent\022\026\n\016commandMessag" +
-      "e\030\003 \001(\t\022\013\n\003otp\030\004 \001(\t\"6\n\025ElaborateMessage" +
-      "Reply\022\r\n\005reply\030\001 \001(\t\022\016\n\006errors\030\002 \003(\t\"g\n\023" +
-      "ListCommandsRequest\022\'\n\013agentTarget\030\001 \001(\013" +
-      "2\022.channelGrpc.Agent\022\'\n\013agentSender\030\002 \001(" +
-      "\0132\022.channelGrpc.Agent\";\n\021ListCommandsRep" +
-      "ly\022&\n\010commands\030\001 \003(\0132\024.channelGrpc.Comma" +
-      "nd\"C\n\007Command\022\'\n\013agentSender\030\001 \001(\0132\022.cha" +
-      "nnelGrpc.Agent\022\017\n\007command\030\002 \001(\t\"\236\001\n\026Comp" +
-      "leteCommandRequest\022\'\n\013agentTarget\030\001 \001(\0132" +
-      "\022.channelGrpc.Agent\022\'\n\013agentSender\030\002 \001(\013" +
-      "2\022.channelGrpc.Agent\022\r\n\005words\030\003 \003(\t\022\021\n\tw" +
-      "ordIndex\030\004 \001(\005\022\020\n\010position\030\005 \001(\005\"7\n\024Comp" +
-      "leteCommandReply\022\017\n\007replies\030\001 \003(\t\022\016\n\006err" +
-      "ors\030\002 \003(\t\"]\n\016PollingRequest\022!\n\005agent\030\001 \001" +
-      "(\0132\022.channelGrpc.Agent\022(\n\tdataNodes\030\002 \003(" +
-      "\0132\025.channelGrpc.DataNode\"u\n\020SubscribeReq" +
-      "uest\022!\n\005agent\030\001 \001(\0132\022.channelGrpc.Agent\022" +
-      "(\n\tdataNodes\030\002 \003(\0132\025.channelGrpc.DataNod" +
-      "e\022\024\n\014samplingRate\030\003 \001(\005\"S\n\017FlowMessageDa" +
-      "ta\022%\n\006values\030\001 \003(\0132\025.channelGrpc.DataNod" +
-      "e\022\031\n\021hiSpeedRoutingTag\030\002 \001(\005\"_\n\014RequestW" +
-      "rite\022!\n\005agent\030\001 \001(\0132\022.channelGrpc.Agent\022" +
-      ",\n\rvaluesToWrite\030\002 \003(\0132\025.channelGrpc.Dat" +
-      "aNode\"\263\002\n\010DataNode\022&\n\nagentOwner\030\001 \001(\0132\022" +
-      ".channelGrpc.Agent\022\016\n\006nodeId\030\002 \001(\t\022\021\n\tjs" +
-      "onValue\030\003 \001(\t\022\023\n\013stringValue\030\004 \001(\t\022\023\n\013ba" +
-      "se64Value\030\005 \001(\t\022$\n\007quality\030\006 \001(\0132\023.chann" +
-      "elGrpc.Status\022)\n\ttimestamp\030\007 \001(\0132\026.chann" +
-      "elGrpc.Timestamp\022#\n\004type\030\010 \001(\0162\025.channel" +
-      "Grpc.DataType\022\016\n\006errors\030\t \003(\t\022,\n\014timeToE" +
-      "xpire\030\n \001(\0132\026.channelGrpc.Timestamp\"\253\001\n\014" +
-      "NodeMetadata\022\'\n\010dataNode\030\001 \001(\0132\025.channel" +
-      "Grpc.DataNode\022\021\n\tnamespace\030\002 \001(\t\022\020\n\010doma" +
-      "inId\030\003 \001(\t\022\014\n\004tags\030\004 \003(\t\0221\n\017fatherForSco" +
-      "pes\030\005 \003(\0132\030.channelGrpc.ParentScope\022\014\n\004l" +
-      "ogs\030\006 \003(\t\"\200\001\n\014AddressSpace\022\022\n\nlastUpdate" +
-      "\030\001 \001(\003\022(\n\005nodes\030\002 \003(\0132\031.channelGrpc.Node" +
-      "Metadata\0222\n\017subAddressSpace\030\003 \003(\0132\031.chan" +
-      "nelGrpc.AddressSpace\"G\n\013ParentScope\022\r\n\005s" +
-      "cope\030\001 \001(\t\022)\n\006parent\030\002 \001(\0132\031.channelGrpc" +
-      ".NodeMetadata\"\253\003\n\rTunnelMessage\022\'\n\013agent" +
-      "Source\030\001 \001(\0132\022.channelGrpc.Agent\022,\n\020agen" +
-      "tDestination\030\002 \001(\0132\022.channelGrpc.Agent\022\020" +
-      "\n\010tunnelId\030\003 \001(\003\022\021\n\tsessionId\030\004 \001(\003\022\021\n\tc" +
-      "lassUuid\030\005 \001(\003\022-\n\013messageType\030\006 \001(\0162\030.ch" +
-      "annelGrpc.MessageType\0221\n\rmessageStatus\030\007" +
-      " \001(\0162\032.channelGrpc.MessageStatus\022\r\n\005chun" +
-      "k\030\010 \001(\005\022\023\n\013totalChunks\030\t \001(\005\022\021\n\tmessageI" +
-      "d\030\n \001(\003\022\024\n\014messageAckId\030\013 \001(\003\022\034\n\024message" +
-      "AckReceivedId\030\014 \001(\003\022\017\n\007payload\030\r \001(\t\022\024\n\014" +
-      "originalSize\030\016 \001(\005\022\027\n\017messageHashCode\030\017 " +
-      "\001(\005\")\n\026ResponseNetworkChannel\022\017\n\007targeId" +
-      "\030\001 \001(\003\"\220\003\n\024RequestTunnelMessage\022\017\n\007targe" +
-      "Id\030\001 \001(\003\022\'\n\013agentSource\030\002 \001(\0132\022.channelG" +
-      "rpc.Agent\022,\n\020agentDestination\030\003 \001(\0132\022.ch" +
-      "annelGrpc.Agent\022%\n\004mode\030\004 \001(\0162\027.channelG" +
-      "rpc.TunnelType\022\016\n\006destIp\030\005 \001(\t\022\020\n\010destPo" +
-      "rt\030\006 \001(\005\022\017\n\007srcPort\030\007 \001(\005\022\027\n\017socketSoTim" +
-      "eout\030\010 \001(\005\022\030\n\020socketTcpNoDelay\030\t \001(\010\022\027\n\017" +
-      "socketKeepAlive\030\n \001(\010\022\037\n\027socketReceiveBu" +
-      "fferSize\030\013 \001(\005\022\032\n\022socketReuseAddress\030\014 \001" +
-      "(\010\022\032\n\022socketTrafficClass\030\r \001(\005\022\021\n\tsocket" +
-      "Qos\030\016 \001(\005\"\375\002\n\021AgentProxyRequest\022\026\n\016idPro" +
-      "xyRequest\030\001 \001(\003\022\'\n\013agentSource\030\002 \001(\0132\022.c" +
-      "hannelGrpc.Agent\022,\n\020agentDestination\030\003 \001" +
-      "(\0132\022.channelGrpc.Agent\022\016\n\006destIp\030\004 \001(\t\022\020" +
-      "\n\010destPort\030\005 \001(\005\022\016\n\006header\030\006 \001(\t\022\017\n\007payl" +
-      "oad\030\007 \001(\t\022\027\n\017socketSoTimeout\030\010 \001(\005\022\030\n\020so" +
-      "cketTcpNoDelay\030\t \001(\010\022\027\n\017socketKeepAlive\030" +
-      "\n \001(\010\022\037\n\027socketReceiveBufferSize\030\013 \001(\005\022\032" +
-      "\n\022socketReuseAddress\030\014 \001(\010\022\032\n\022socketTraf" +
-      "ficClass\030\r \001(\005\022\021\n\tsocketQos\030\016 \001(\005\"\346\001\n\017Ag" +
-      "entProxyReply\022\026\n\016idProxyRequest\030\001 \001(\003\022\'\n" +
-      "\013agentSource\030\002 \001(\0132\022.channelGrpc.Agent\022," +
-      "\n\020agentDestination\030\003 \001(\0132\022.channelGrpc.A" +
-      "gent\022\r\n\005srcIp\030\004 \001(\t\022\017\n\007srcPort\030\005 \001(\005\022\016\n\006" +
-      "header\030\006 \001(\t\022\017\n\007payload\030\007 \001(\t\022#\n\006status\030" +
-      "\010 \001(\0132\023.channelGrpc.Status*;\n\013StatusValu" +
-      "e\022\010\n\004GOOD\020\000\022\007\n\003BAD\020\001\022\t\n\005FAULT\020\002\022\016\n\nWAIT_" +
-      "HUMAN\020\003*l\n\020HomunculusStates\022\010\n\004INIT\020\000\022\014\n" +
-      "\010STAMINAL\020\001\022\016\n\nCONFIGURED\020\002\022\013\n\007RUNNING\020\003" +
-      "\022\n\n\006KILLED\020\004\022\013\n\007FAULTED\020\005\022\n\n\006STASIS\020\006*\370\001" +
-      "\n\013CommandType\022\035\n\031ELABORATE_MESSAGE_COMMA" +
-      "ND\020\000\022\021\n\rLIST_COMMANDS\020\001\022\024\n\020COMPLETE_COMM" +
-      "AND\020\002\022\024\n\020OPEN_PROXY_SOCKS\020\003\022\017\n\013EXPOSE_PO" +
-      "RT\020\004\022\016\n\nCLOSE_PORT\020\005\022\030\n\024CONNECT_DATA_CHA" +
-      "NNEL\020\006\022\025\n\021SET_CONFIGURATION\020\007\022\025\n\021GET_CON" +
-      "FIGURATION\020\010\022\020\n\014GET_PROVIDES\020\t\022\020\n\014GET_RE" +
-      "QUIRED\020\n*\202\001\n\013LogSeverity\022\013\n\007DEFAULT\020\000\022\t\n" +
-      "\005DEBUG\020d\022\t\n\004INFO\020\310\001\022\013\n\006NOTICE\020\254\002\022\014\n\007WARN" +
-      "ING\020\220\003\022\n\n\005ERROR\020\364\003\022\r\n\010CRITICAL\020\330\004\022\n\n\005ALE" +
-      "RT\020\274\005\022\016\n\tEMERGENCY\020\240\006*\266\001\n\010DataType\022\n\n\006ST" +
-      "RING\020\000\022\010\n\004CHAR\020\001\022\t\n\005BYTES\020\002\022\t\n\005INT32\020\003\022\t" +
-      "\n\005INT64\020\004\022\t\n\005FLOAT\020\005\022\n\n\006DOUBLE\020\006\022\013\n\007BOOL" +
-      "EAN\020\007\022\r\n\tTIMESTAMP\020\010\022\n\n\006OBJECT\020\t\022\013\n\007UNKN" +
-      "OWN\020\n\022\014\n\010JSONDATA\020\013\022\016\n\nBASE64DATA\020\014\022\t\n\005M" +
-      "EDIA\020\r*/\n\013MessageType\022\017\n\013FROM_CLIENT\020\000\022\017" +
-      "\n\013FROM_SERVER\020\001*\227\003\n\rMessageStatus\022\021\n\rcha" +
-      "nnelActive\020\000\022\023\n\017channelInactive\020\001\022\027\n\023cha" +
-      "nnelReadComplete\020\002\022\025\n\021channelRegistered\020" +
-      "\003\022\027\n\023channelUnregistered\020\004\022\035\n\031channelWri" +
-      "tabilityChanged\020\005\022\023\n\017exceptionCaught\020\006\022\026" +
-      "\n\022userEventTriggered\020\007\022\027\n\023channelTransmi" +
-      "ssion\020\010\022\030\n\024beaconChannelRequest\020\t\022\024\n\020bea" +
-      "conMessageAck\020\n\022!\n\035channelTransmissionCo" +
-      "mpressed\020\013\022\026\n\022closeRequestServer\020\014\022\026\n\022cl" +
-      "oseRequestClient\020\r\022\030\n\024beaconMessageContr" +
-      "ol\020\016\022\023\n\017beaconLocalPing\020\017*~\n\nTunnelType\022" +
-      "\027\n\023SERVER_TO_BYTES_TCP\020\000\022\027\n\023BYTES_TO_CLI" +
-      "ENT_TCP\020\001\022\027\n\023SERVER_TO_BYTES_UDP\020\002\022\027\n\023BY" +
-      "TES_TO_CLIENT_UDP\020\003\022\014\n\010SHUTDOWN\020\0042\351\013\n\014Rp" +
-      "cServiceV1\022F\n\010Register\022\034.channelGrpc.Reg" +
-      "isterRequest\032\032.channelGrpc.RegisterReply" +
-      "\"\000\022A\n\017PollingCmdQueue\022\022.channelGrpc.Agen" +
-      "t\032\030.channelGrpc.FlowMessage\"\000\022H\n\024Subscri" +
-      "ptionCmdQueue\022\022.channelGrpc.Agent\032\030.chan" +
-      "nelGrpc.FlowMessage\"\0000\001\022B\n\017SendChatMessa" +
-      "ge\022\030.channelGrpc.ChatMessage\032\023.channelGr" +
-      "pc.Status\"\000\022K\n\020SendCommandReply\022 .channe" +
-      "lGrpc.CommandReplyRequest\032\023.channelGrpc." +
-      "Status\"\000\022?\n\nSendHealth\022\032.channelGrpc.Hea" +
-      "lthRequest\032\023.channelGrpc.Status\"\000\0229\n\007Sen" +
-      "dLog\022\027.channelGrpc.LogRequest\032\023.channelG" +
-      "rpc.Status\"\000\022E\n\rSendException\022\035.channelG" +
-      "rpc.ExceptionRequest\032\023.channelGrpc.Statu" +
-      "s\"\000\022J\n\021SendConfigRuntime\022\031.channelGrpc.C" +
-      "onfigReport\032\030.channelGrpc.ConfigReply\"\000\022" +
-      "B\n\020GetConfigRuntime\022\022.channelGrpc.Agent\032" +
-      "\030.channelGrpc.ConfigReply\"\000\022H\n\022GetRuntim" +
-      "eProvides\022\022.channelGrpc.Agent\032\034.channelG" +
-      "rpc.ListStringReply\"\000\022H\n\022GetRuntimeRequi" +
-      "red\022\022.channelGrpc.Agent\032\034.channelGrpc.Li" +
-      "stStringReply\"\000\022@\n\nListAgents\022\022.channelG" +
-      "rpc.Empty\032\034.channelGrpc.ListAgentsReply\"" +
-      "\000\022V\n\031ListAgentsRequestComplete\022\022.channel" +
-      "Grpc.Empty\032#.channelGrpc.ListAgentsReque" +
-      "stReply\"\000\022R\n\025ListAgentsRequestToDo\022\022.cha" +
-      "nnelGrpc.Empty\032#.channelGrpc.ListAgentsR" +
-      "equestReply\"\000\022U\n\023ApproveAgentRequest\022\'.c" +
-      "hannelGrpc.ApproveAgentRequestRequest\032\023." +
-      "channelGrpc.Status\"\000\0226\n\tKickAgent\022\022.chan" +
-      "nelGrpc.Agent\032\023.channelGrpc.Status\"\000\022^\n\020" +
-      "ElaborateMessage\022$.channelGrpc.Elaborate" +
-      "MessageRequest\032\".channelGrpc.ElaborateMe" +
-      "ssageReply\"\000\022R\n\014ListCommands\022 .channelGr" +
-      "pc.ListCommandsRequest\032\036.channelGrpc.Lis" +
-      "tCommandsReply\"\000\022[\n\017CompleteCommand\022#.ch" +
-      "annelGrpc.CompleteCommandRequest\032!.chann" +
-      "elGrpc.CompleteCommandReply\"\0002\324\003\n\rDataSe" +
-      "rviceV1\022F\n\007Polling\022\033.channelGrpc.Polling" +
-      "Request\032\034.channelGrpc.FlowMessageData\"\000\022" +
-      "O\n\014Subscription\022\035.channelGrpc.SubscribeR" +
-      "equest\032\034.channelGrpc.FlowMessageData\"\0000\001" +
-      "\022B\n\005Write\022\031.channelGrpc.RequestWrite\032\034.c" +
-      "hannelGrpc.FlowMessageData\"\000\022P\n\021WriteSub" +
-      "scription\022\031.channelGrpc.RequestWrite\032\034.c" +
-      "hannelGrpc.FlowMessageData\"\000(\001\022J\n\020SendAd" +
-      "dressSpace\022\031.channelGrpc.AddressSpace\032\031." +
-      "channelGrpc.AddressSpace\"\000\022H\n\025GetRemoteA" +
-      "ddressSpace\022\022.channelGrpc.Agent\032\031.channe" +
-      "lGrpc.AddressSpace\"\0002\224\002\n\017TunnelServiceV1" +
-      "\022R\n\022openNetworkChannel\022\032.channelGrpc.Tun" +
-      "nelMessage\032\032.channelGrpc.TunnelMessage\"\000" +
-      "(\0010\001\022Y\n\rRequestTunnel\022!.channelGrpc.Requ" +
-      "estTunnelMessage\032#.channelGrpc.ResponseN" +
-      "etworkChannel\"\000\022R\n\020ProxyHttpRequest\022\036.ch" +
-      "annelGrpc.AgentProxyRequest\032\034.channelGrp" +
-      "c.AgentProxyReply\"\000Bd\n/net.rossonet.ptal" +
-      "k.channel.protobuf.server.grpcB\032PtalkCha" +
-      "nnelGrpcServerGrpcP\001\242\002\022PTALK_CHANNEL_GRP" +
-      "Cb\006proto3"
+      "o\n\tParameter\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t" +
+      "\022\023\n\013description\030\003 \001(\t\022\017\n\007quality\030\004 \001(\005\022\020" +
+      "\n\010priority\030\005 \001(\005\022\016\n\006weight\030\006 \001(\003\",\n\007Comm" +
+      "and\022\017\n\007command\030\001 \001(\t\022\020\n\010language\030\002 \001(\t\"5" +
+      "\n\006Status\022\031\n\021statusDescription\030\001 \001(\t\022\020\n\010s" +
+      "tatusId\030\002 \001(\005\":\n\003Tag\022\013\n\003tag\030\001 \001(\t\022\023\n\013des" +
+      "cription\030\002 \001(\t\022\021\n\ttagFather\030\003 \001(\t\"\210\002\n\016Me" +
+      "ssageRequest\022\030\n\020messageReference\030\001 \001(\t\022\017" +
+      "\n\007message\030\002 \001(\t\022\022\n\nUniqueName\030\003 \001(\t\022\027\n\017U" +
+      "niqueMessageId\030\004 \001(\t\022*\n\nparameters\030\005 \003(\013" +
+      "2\026.channelGrpc.Parameter\022\023\n\013contextJson\030" +
+      "\006 \001(\t\022\020\n\010priority\030\007 \001(\005\022\020\n\010traceLog\030\010 \001(" +
+      "\010\022\021\n\ttimestamp\030\t \001(\003\022&\n\010commands\030\n \003(\0132\024" +
+      ".channelGrpc.Command\"\210\002\n\014MessageReply\022\030\n" +
+      "\020messageReference\030\001 \001(\t\022\017\n\007message\030\002 \001(\t" +
+      "\022\022\n\nUniqueName\030\003 \001(\t\022\027\n\017UniqueMessageId\030" +
+      "\004 \001(\t\022\016\n\006status\030\005 \001(\t\022\021\n\ttimestamp\030\006 \001(\003" +
+      "\022\024\n\014messageReply\030\007 \001(\t\022*\n\nparameters\030\010 \003" +
+      "(\0132\026.channelGrpc.Parameter\022\023\n\013contextJso" +
+      "n\030\t \001(\t\022&\n\010commands\030\n \003(\0132\024.channelGrpc." +
+      "Command2\335\001\n\020RpcChannelCoreV1\022D\n\010CallSync" +
+      "\022\033.channelGrpc.MessageRequest\032\031.channelG" +
+      "rpc.MessageReply\"\000\022?\n\tCallAsync\022\033.channe" +
+      "lGrpc.MessageRequest\032\023.channelGrpc.Statu" +
+      "s\"\000\022B\n\016ReplyCallAsync\022\031.channelGrpc.Mess" +
+      "ageReply\032\023.channelGrpc.Status\"\0002\335\001\n\020RpcC" +
+      "hannelUnitV1\022D\n\010CallSync\022\033.channelGrpc.M" +
+      "essageRequest\032\031.channelGrpc.MessageReply" +
+      "\"\000\022?\n\tCallAsync\022\033.channelGrpc.MessageReq" +
+      "uest\032\023.channelGrpc.Status\"\000\022B\n\016ReplyCall" +
+      "Async\022\031.channelGrpc.MessageReply\032\023.chann" +
+      "elGrpc.Status\"\000BO\n/net.rossonet.ptalk.ch" +
+      "annel.protobuf.server.grpcB\032PtalkChannel" +
+      "GrpcServerGrpcP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_channelGrpc_RegisterRequest_descriptor =
+    internal_static_channelGrpc_Parameter_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_channelGrpc_RegisterRequest_fieldAccessorTable = new
+    internal_static_channelGrpc_Parameter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_RegisterRequest_descriptor,
-        new java.lang.String[] { "Name", "RequestCsr", "DisplayKey", "Time", "JsonHealth", "ShortDescription", });
-    internal_static_channelGrpc_Timestamp_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_channelGrpc_Timestamp_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_Timestamp_descriptor,
-        new java.lang.String[] { "Seconds", "Nanos", });
-    internal_static_channelGrpc_RegisterReply_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_channelGrpc_RegisterReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_RegisterReply_descriptor,
-        new java.lang.String[] { "RegisterCode", "MonitoringFrequency", "Cert", "Ca", "StatusRegistration", "TimestampRegistration", "OtpSeed", });
-    internal_static_channelGrpc_ListAgentsRequestReply_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_channelGrpc_ListAgentsRequestReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ListAgentsRequestReply_descriptor,
-        new java.lang.String[] { "Result", "Requests", });
-    internal_static_channelGrpc_AgentRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_channelGrpc_AgentRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_AgentRequest_descriptor,
-        new java.lang.String[] { "Request", "IdRequest", "Approved", "RegistrationCompleted", });
-    internal_static_channelGrpc_ApproveAgentRequestRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_channelGrpc_ApproveAgentRequestRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ApproveAgentRequestRequest_descriptor,
-        new java.lang.String[] { "IdRequest", "Cert", "Note", });
-    internal_static_channelGrpc_Status_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_channelGrpc_Status_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_Status_descriptor,
-        new java.lang.String[] { "Status", });
-    internal_static_channelGrpc_Agent_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_channelGrpc_Agent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_Agent_descriptor,
-        new java.lang.String[] { "AgentUniqueName", "ShortDescription", "RegisterData", "JsonHardwareInfo", "LastContact", });
-    internal_static_channelGrpc_ConfigReply_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_channelGrpc_ConfigReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ConfigReply_descriptor,
-        new java.lang.String[] { "Base64Config", "JsonConfig", "YmlConfig", "RestartAt", "Status", });
-    internal_static_channelGrpc_ListStringReply_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_channelGrpc_ListStringReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ListStringReply_descriptor,
-        new java.lang.String[] { "AgentSender", "ListDatas", "LinesNumber", });
-    internal_static_channelGrpc_ConfigReport_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_channelGrpc_ConfigReport_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ConfigReport_descriptor,
-        new java.lang.String[] { "Agent", "Base64Config", "JsonConfig", });
-    internal_static_channelGrpc_FlowMessage_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_channelGrpc_FlowMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_FlowMessage_descriptor,
-        new java.lang.String[] { "ToDoList", });
-    internal_static_channelGrpc_RequestToAgent_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_channelGrpc_RequestToAgent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_RequestToAgent_descriptor,
-        new java.lang.String[] { "Type", "Caller", "UniqueIdRequest", "RequestCommand", "Words", "WordIndex", "Position", "TunnelRequest", "OtpToken", });
-    internal_static_channelGrpc_ChatMessage_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_channelGrpc_ChatMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ChatMessage_descriptor,
-        new java.lang.String[] { "AgentSender", "AgentDestination", "MessageTxt", });
-    internal_static_channelGrpc_CommandReplyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_channelGrpc_CommandReplyRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_CommandReplyRequest_descriptor,
-        new java.lang.String[] { "UniqueIdRequest", "AgentSender", "AgentDestination", "Replies", "Errors", "TunnelReply", "Base64Config", "RestartAt", });
-    internal_static_channelGrpc_HealthRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_channelGrpc_HealthRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_HealthRequest_descriptor,
-        new java.lang.String[] { "AgentSender", "JsonHardwareInfo", "Status", });
-    internal_static_channelGrpc_LogRequest_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_channelGrpc_LogRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_LogRequest_descriptor,
-        new java.lang.String[] { "AgentSender", "Severity", "LogLine", });
-    internal_static_channelGrpc_ExceptionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
-    internal_static_channelGrpc_ExceptionRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ExceptionRequest_descriptor,
-        new java.lang.String[] { "AgentSender", "MessageException", "StackTraceException", });
-    internal_static_channelGrpc_Empty_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_channelGrpc_Empty_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_Empty_descriptor,
-        new java.lang.String[] { });
-    internal_static_channelGrpc_ListAgentsReply_descriptor =
-      getDescriptor().getMessageTypes().get(19);
-    internal_static_channelGrpc_ListAgentsReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ListAgentsReply_descriptor,
-        new java.lang.String[] { "Result", "Agents", });
-    internal_static_channelGrpc_ElaborateMessageRequest_descriptor =
-      getDescriptor().getMessageTypes().get(20);
-    internal_static_channelGrpc_ElaborateMessageRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ElaborateMessageRequest_descriptor,
-        new java.lang.String[] { "AgentTarget", "AgentSender", "CommandMessage", "Otp", });
-    internal_static_channelGrpc_ElaborateMessageReply_descriptor =
-      getDescriptor().getMessageTypes().get(21);
-    internal_static_channelGrpc_ElaborateMessageReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ElaborateMessageReply_descriptor,
-        new java.lang.String[] { "Reply", "Errors", });
-    internal_static_channelGrpc_ListCommandsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(22);
-    internal_static_channelGrpc_ListCommandsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ListCommandsRequest_descriptor,
-        new java.lang.String[] { "AgentTarget", "AgentSender", });
-    internal_static_channelGrpc_ListCommandsReply_descriptor =
-      getDescriptor().getMessageTypes().get(23);
-    internal_static_channelGrpc_ListCommandsReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ListCommandsReply_descriptor,
-        new java.lang.String[] { "Commands", });
+        internal_static_channelGrpc_Parameter_descriptor,
+        new java.lang.String[] { "Key", "Value", "Description", "Quality", "Priority", "Weight", });
     internal_static_channelGrpc_Command_descriptor =
-      getDescriptor().getMessageTypes().get(24);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_channelGrpc_Command_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_channelGrpc_Command_descriptor,
-        new java.lang.String[] { "AgentSender", "Command", });
-    internal_static_channelGrpc_CompleteCommandRequest_descriptor =
-      getDescriptor().getMessageTypes().get(25);
-    internal_static_channelGrpc_CompleteCommandRequest_fieldAccessorTable = new
+        new java.lang.String[] { "Command", "Language", });
+    internal_static_channelGrpc_Status_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_channelGrpc_Status_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_CompleteCommandRequest_descriptor,
-        new java.lang.String[] { "AgentTarget", "AgentSender", "Words", "WordIndex", "Position", });
-    internal_static_channelGrpc_CompleteCommandReply_descriptor =
-      getDescriptor().getMessageTypes().get(26);
-    internal_static_channelGrpc_CompleteCommandReply_fieldAccessorTable = new
+        internal_static_channelGrpc_Status_descriptor,
+        new java.lang.String[] { "StatusDescription", "StatusId", });
+    internal_static_channelGrpc_Tag_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_channelGrpc_Tag_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_CompleteCommandReply_descriptor,
-        new java.lang.String[] { "Replies", "Errors", });
-    internal_static_channelGrpc_PollingRequest_descriptor =
-      getDescriptor().getMessageTypes().get(27);
-    internal_static_channelGrpc_PollingRequest_fieldAccessorTable = new
+        internal_static_channelGrpc_Tag_descriptor,
+        new java.lang.String[] { "Tag", "Description", "TagFather", });
+    internal_static_channelGrpc_MessageRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_channelGrpc_MessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_PollingRequest_descriptor,
-        new java.lang.String[] { "Agent", "DataNodes", });
-    internal_static_channelGrpc_SubscribeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(28);
-    internal_static_channelGrpc_SubscribeRequest_fieldAccessorTable = new
+        internal_static_channelGrpc_MessageRequest_descriptor,
+        new java.lang.String[] { "MessageReference", "Message", "UniqueName", "UniqueMessageId", "Parameters", "ContextJson", "Priority", "TraceLog", "Timestamp", "Commands", });
+    internal_static_channelGrpc_MessageReply_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_channelGrpc_MessageReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_SubscribeRequest_descriptor,
-        new java.lang.String[] { "Agent", "DataNodes", "SamplingRate", });
-    internal_static_channelGrpc_FlowMessageData_descriptor =
-      getDescriptor().getMessageTypes().get(29);
-    internal_static_channelGrpc_FlowMessageData_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_FlowMessageData_descriptor,
-        new java.lang.String[] { "Values", "HiSpeedRoutingTag", });
-    internal_static_channelGrpc_RequestWrite_descriptor =
-      getDescriptor().getMessageTypes().get(30);
-    internal_static_channelGrpc_RequestWrite_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_RequestWrite_descriptor,
-        new java.lang.String[] { "Agent", "ValuesToWrite", });
-    internal_static_channelGrpc_DataNode_descriptor =
-      getDescriptor().getMessageTypes().get(31);
-    internal_static_channelGrpc_DataNode_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_DataNode_descriptor,
-        new java.lang.String[] { "AgentOwner", "NodeId", "JsonValue", "StringValue", "Base64Value", "Quality", "Timestamp", "Type", "Errors", "TimeToExpire", });
-    internal_static_channelGrpc_NodeMetadata_descriptor =
-      getDescriptor().getMessageTypes().get(32);
-    internal_static_channelGrpc_NodeMetadata_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_NodeMetadata_descriptor,
-        new java.lang.String[] { "DataNode", "Namespace", "DomainId", "Tags", "FatherForScopes", "Logs", });
-    internal_static_channelGrpc_AddressSpace_descriptor =
-      getDescriptor().getMessageTypes().get(33);
-    internal_static_channelGrpc_AddressSpace_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_AddressSpace_descriptor,
-        new java.lang.String[] { "LastUpdate", "Nodes", "SubAddressSpace", });
-    internal_static_channelGrpc_ParentScope_descriptor =
-      getDescriptor().getMessageTypes().get(34);
-    internal_static_channelGrpc_ParentScope_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ParentScope_descriptor,
-        new java.lang.String[] { "Scope", "Parent", });
-    internal_static_channelGrpc_TunnelMessage_descriptor =
-      getDescriptor().getMessageTypes().get(35);
-    internal_static_channelGrpc_TunnelMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_TunnelMessage_descriptor,
-        new java.lang.String[] { "AgentSource", "AgentDestination", "TunnelId", "SessionId", "ClassUuid", "MessageType", "MessageStatus", "Chunk", "TotalChunks", "MessageId", "MessageAckId", "MessageAckReceivedId", "Payload", "OriginalSize", "MessageHashCode", });
-    internal_static_channelGrpc_ResponseNetworkChannel_descriptor =
-      getDescriptor().getMessageTypes().get(36);
-    internal_static_channelGrpc_ResponseNetworkChannel_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_ResponseNetworkChannel_descriptor,
-        new java.lang.String[] { "TargeId", });
-    internal_static_channelGrpc_RequestTunnelMessage_descriptor =
-      getDescriptor().getMessageTypes().get(37);
-    internal_static_channelGrpc_RequestTunnelMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_RequestTunnelMessage_descriptor,
-        new java.lang.String[] { "TargeId", "AgentSource", "AgentDestination", "Mode", "DestIp", "DestPort", "SrcPort", "SocketSoTimeout", "SocketTcpNoDelay", "SocketKeepAlive", "SocketReceiveBufferSize", "SocketReuseAddress", "SocketTrafficClass", "SocketQos", });
-    internal_static_channelGrpc_AgentProxyRequest_descriptor =
-      getDescriptor().getMessageTypes().get(38);
-    internal_static_channelGrpc_AgentProxyRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_AgentProxyRequest_descriptor,
-        new java.lang.String[] { "IdProxyRequest", "AgentSource", "AgentDestination", "DestIp", "DestPort", "Header", "Payload", "SocketSoTimeout", "SocketTcpNoDelay", "SocketKeepAlive", "SocketReceiveBufferSize", "SocketReuseAddress", "SocketTrafficClass", "SocketQos", });
-    internal_static_channelGrpc_AgentProxyReply_descriptor =
-      getDescriptor().getMessageTypes().get(39);
-    internal_static_channelGrpc_AgentProxyReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_channelGrpc_AgentProxyReply_descriptor,
-        new java.lang.String[] { "IdProxyRequest", "AgentSource", "AgentDestination", "SrcIp", "SrcPort", "Header", "Payload", "Status", });
+        internal_static_channelGrpc_MessageReply_descriptor,
+        new java.lang.String[] { "MessageReference", "Message", "UniqueName", "UniqueMessageId", "Status", "Timestamp", "MessageReply", "Parameters", "ContextJson", "Commands", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

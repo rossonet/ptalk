@@ -25,6 +25,11 @@ public final class PtaskAbilityApi {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ability_AbilityMessageReply_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_Rule_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_Rule_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ability_CancelRuleRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -34,6 +39,16 @@ public final class PtaskAbilityApi {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ability_CancelRuleReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GetRuleRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GetRuleRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GetRuleReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GetRuleReply_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ability_RegisterRulesRequest_descriptor;
   static final 
@@ -75,25 +90,45 @@ public final class PtaskAbilityApi {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ability_PushConfigurationReply_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ability_MemoryContextRequest_descriptor;
+    internal_static_ability_MemoryContextQueryRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ability_MemoryContextRequest_fieldAccessorTable;
+      internal_static_ability_MemoryContextQueryRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ability_MemoryContextReply_descriptor;
+    internal_static_ability_MemoryContextQueryReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ability_MemoryContextReply_fieldAccessorTable;
+      internal_static_ability_MemoryContextQueryReply_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ability_GeneralConfigurationRequest_descriptor;
+    internal_static_ability_MemoryContextManagementRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ability_GeneralConfigurationRequest_fieldAccessorTable;
+      internal_static_ability_MemoryContextManagementRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ability_GeneralConfigurationReply_descriptor;
+    internal_static_ability_MemoryContextManagementReply_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ability_GeneralConfigurationReply_fieldAccessorTable;
+      internal_static_ability_MemoryContextManagementReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GeneralConfigurationQueryRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GeneralConfigurationQueryRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GeneralConfigurationQueryReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GeneralConfigurationQueryReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GeneralConfigurationManagementRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GeneralConfigurationManagementRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GeneralConfigurationManagementReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GeneralConfigurationManagementReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -104,48 +139,122 @@ public final class PtaskAbilityApi {
   static {
     java.lang.String[] descriptorData = {
       "\n\027ptalk-ability-api.proto\022\007ability\032\024ptal" +
-      "k-base-api.proto\"\266\001\n\025AbilityMessageReque" +
+      "k-base-api.proto\"\332\001\n\025AbilityMessageReque" +
       "st\022\025\n\rflowReference\030\001 \001(\t\022\030\n\020messageRefe" +
       "rence\030\002 \001(\t\022\021\n\treplyTask\030\003 \001(\t\022\033\n\007messag" +
       "e\030\004 \001(\0132\n.base.Data\022#\n\017additionalDatas\030\005" +
       " \003(\0132\n.base.Data\022\027\n\004tags\030\006 \003(\0132\t.base.Ta" +
-      "g\"\320\001\n\023AbilityMessageReply\022\025\n\rflowReferen" +
-      "ce\030\001 \001(\t\022\030\n\020messageReference\030\002 \001(\t\022\014\n\004ta" +
-      "sk\030\003 \001(\t\022\031\n\005reply\030\004 \001(\0132\n.base.Data\022!\n\006s" +
-      "tatus\030\005 \001(\0162\021.base.StatusValue\022#\n\017additi" +
-      "onalDatas\030\006 \003(\0132\n.base.Data\022\027\n\004tags\030\007 \003(" +
-      "\0132\t.base.Tag\"\023\n\021CancelRuleRequest\"\021\n\017Can" +
-      "celRuleReply\"\026\n\024RegisterRulesRequest\"\024\n\022" +
-      "RegisterRulesReply\"\022\n\020ListRulesRequest\"\020" +
-      "\n\016ListRulesReply\"\032\n\030DumpConfigurationReq" +
-      "uest\"\030\n\026DumpConfigurationReply\"\032\n\030PushCo" +
-      "nfigurationRequest\"\030\n\026PushConfigurationR" +
-      "eply\"\026\n\024MemoryContextRequest\"\024\n\022MemoryCo" +
-      "ntextReply\"\035\n\033GeneralConfigurationReques" +
-      "t\"\033\n\031GeneralConfigurationReply2\322\003\n\020RpcAb" +
-      "ilityCoreV1\022:\n\nReplyAsync\022\034.ability.Abil" +
-      "ityMessageReply\032\014.base.Status\"\000\022M\n\rRegis" +
-      "terRules\022\035.ability.RegisterRulesRequest\032" +
-      "\033.ability.RegisterRulesReply\"\000\022D\n\nCancel" +
-      "Rule\022\032.ability.CancelRuleRequest\032\030.abili" +
-      "ty.CancelRuleReply\"\000\022A\n\tListRules\022\031.abil" +
-      "ity.ListRulesRequest\032\027.ability.ListRules" +
-      "Reply\"\000\022F\n\006Memory\022\035.ability.MemoryContex" +
-      "tRequest\032\033.ability.MemoryContextReply\"\000\022" +
-      "b\n\024GeneralConfiguration\022$.ability.Genera" +
-      "lConfigurationRequest\032\".ability.GeneralC" +
-      "onfigurationReply\"\0002\233\001\n\020RpcAbilityUnitV1" +
-      "\022J\n\010CallSync\022\036.ability.AbilityMessageReq" +
-      "uest\032\034.ability.AbilityMessageReply\"\000\022;\n\t" +
-      "CallAsync\022\036.ability.AbilityMessageReques" +
-      "t\032\014.base.Status\"\0002\315\001\n\025RpcSuperAbilityCor" +
-      "eV1\022Y\n\021PushConfiguration\022!.ability.PushC" +
-      "onfigurationRequest\032\037.ability.PushConfig" +
-      "urationReply\"\000\022Y\n\021DumpConfiguration\022!.ab" +
-      "ility.DumpConfigurationRequest\032\037.ability" +
-      ".DumpConfigurationReply\"\000B4\n\037net.rossone" +
-      "t.ptalk.ability.grpcB\017PtaskAbilityApiP\001b" +
-      "\006proto3"
+      "g\022\"\n\ttimestamp\030\007 \001(\0132\017.base.Timestamp\"\364\001" +
+      "\n\023AbilityMessageReply\022\025\n\rflowReference\030\001" +
+      " \001(\t\022\030\n\020messageReference\030\002 \001(\t\022\014\n\004task\030\003" +
+      " \001(\t\022\031\n\005reply\030\004 \001(\0132\n.base.Data\022!\n\006statu" +
+      "s\030\005 \001(\0162\021.base.StatusValue\022#\n\017additional" +
+      "Datas\030\006 \003(\0132\n.base.Data\022\027\n\004tags\030\007 \003(\0132\t." +
+      "base.Tag\022\"\n\ttimestamp\030\010 \001(\0132\017.base.Times" +
+      "tamp\",\n\004Rule\022\026\n\016ruleUniqueName\030\001 \001(\t\022\014\n\004" +
+      "task\030\002 \001(\t\"k\n\021CancelRuleRequest\022\025\n\rflowR" +
+      "eference\030\001 \001(\t\022\033\n\004rule\030\002 \001(\0132\r.ability.R" +
+      "ule\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp\"" +
+      "o\n\017CancelRuleReply\022\025\n\rflowReference\030\001 \001(" +
+      "\t\022!\n\006status\030\002 \001(\0162\021.base.StatusValue\022\"\n\t" +
+      "timestamp\030\003 \001(\0132\017.base.Timestamp\"h\n\016GetR" +
+      "uleRequest\022\025\n\rflowReference\030\001 \001(\t\022\033\n\004rul" +
+      "e\030\002 \001(\0132\r.ability.Rule\022\"\n\ttimestamp\030\003 \001(" +
+      "\0132\017.base.Timestamp\"~\n\014GetRuleReply\022\025\n\rfl" +
+      "owReference\030\001 \001(\t\022\020\n\010jsonRule\030\002 \001(\t\022!\n\006s" +
+      "tatus\030\003 \001(\0162\021.base.StatusValue\022\"\n\ttimest" +
+      "amp\030\004 \001(\0132\017.base.Timestamp\"\276\001\n\024RegisterR" +
+      "ulesRequest\022\025\n\rflowReference\030\001 \001(\t\022\033\n\004ru" +
+      "le\030\002 \001(\0132\r.ability.Rule\022\020\n\010jsonRule\030\003 \001(" +
+      "\t\022#\n\017additionalDatas\030\004 \003(\0132\n.base.Data\022\027" +
+      "\n\004tags\030\005 \003(\0132\t.base.Tag\022\"\n\ttimestamp\030\006 \001" +
+      "(\0132\017.base.Timestamp\"\217\001\n\022RegisterRulesRep" +
+      "ly\022\025\n\rflowReference\030\001 \001(\t\022\033\n\004rule\030\002 \001(\0132" +
+      "\r.ability.Rule\022!\n\006status\030\003 \001(\0162\021.base.St" +
+      "atusValue\022\"\n\ttimestamp\030\004 \001(\0132\017.base.Time" +
+      "stamp\"M\n\020ListRulesRequest\022\025\n\rflowReferen" +
+      "ce\030\001 \001(\t\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Times" +
+      "tamp\"\213\001\n\016ListRulesReply\022\025\n\rflowReference" +
+      "\030\001 \001(\t\022\033\n\004rule\030\002 \003(\0132\r.ability.Rule\022!\n\006s" +
+      "tatus\030\003 \001(\0162\021.base.StatusValue\022\"\n\ttimest" +
+      "amp\030\004 \001(\0132\017.base.Timestamp\"z\n\030DumpConfig" +
+      "urationRequest\022\025\n\rflowReference\030\001 \001(\t\022#\n" +
+      "\017additionalDatas\030\002 \003(\0132\n.base.Data\022\"\n\tti" +
+      "mestamp\030\003 \001(\0132\017.base.Timestamp\"\266\001\n\026DumpC" +
+      "onfigurationReply\022\025\n\rflowReference\030\001 \001(\t" +
+      "\022#\n\017additionalDatas\030\002 \003(\0132\n.base.Data\022\"\n" +
+      "\ttimestamp\030\003 \001(\0132\017.base.Timestamp\022!\n\006sta" +
+      "tus\030\004 \001(\0162\021.base.StatusValue\022\031\n\021configur" +
+      "ationJson\030\005 \001(\t\"\225\001\n\030PushConfigurationReq" +
+      "uest\022\025\n\rflowReference\030\001 \001(\t\022#\n\017additiona" +
+      "lDatas\030\002 \003(\0132\n.base.Data\022\"\n\ttimestamp\030\003 " +
+      "\001(\0132\017.base.Timestamp\022\031\n\021configurationJso" +
+      "n\030\004 \001(\t\"\233\001\n\026PushConfigurationReply\022\025\n\rfl" +
+      "owReference\030\001 \001(\t\022#\n\017additionalDatas\030\002 \003" +
+      "(\0132\n.base.Data\022\"\n\ttimestamp\030\003 \001(\0132\017.base" +
+      ".Timestamp\022!\n\006status\030\004 \001(\0162\021.base.Status" +
+      "Value\"g\n\031MemoryContextQueryRequest\022\025\n\rfl" +
+      "owReference\030\001 \001(\t\022\017\n\007context\030\002 \001(\t\022\"\n\tti" +
+      "mestamp\030\003 \001(\0132\017.base.Timestamp\"\243\001\n\027Memor" +
+      "yContextQueryReply\022\025\n\rflowReference\030\001 \001(" +
+      "\t\022\017\n\007context\030\002 \001(\t\022\031\n\005datas\030\003 \003(\0132\n.base" +
+      ".Data\022\"\n\ttimestamp\030\004 \001(\0132\017.base.Timestam" +
+      "p\022!\n\006status\030\005 \001(\0162\021.base.StatusValue\" \n\036" +
+      "MemoryContextManagementRequest\"\036\n\034Memory" +
+      "ContextManagementReply\"j\n GeneralConfigu" +
+      "rationQueryRequest\022\025\n\rflowReference\030\001 \001(" +
+      "\t\022\013\n\003key\030\002 \001(\t\022\"\n\ttimestamp\030\003 \001(\0132\017.base" +
+      ".Timestamp\"v\n\036GeneralConfigurationQueryR" +
+      "eply\022\025\n\rflowReference\030\001 \001(\t\022\031\n\005value\030\002 \001" +
+      "(\0132\n.base.Data\022\"\n\ttimestamp\030\003 \001(\0132\017.base" +
+      ".Timestamp\"\'\n%GeneralConfigurationManage" +
+      "mentRequest\"%\n#GeneralConfigurationManag" +
+      "ementReply2\255\004\n\020RpcAbilityCoreV1\022:\n\nReply" +
+      "Async\022\034.ability.AbilityMessageReply\032\014.ba" +
+      "se.Status\"\000\022M\n\rRegisterRules\022\035.ability.R" +
+      "egisterRulesRequest\032\033.ability.RegisterRu" +
+      "lesReply\"\000\022D\n\nCancelRule\022\032.ability.Cance" +
+      "lRuleRequest\032\030.ability.CancelRuleReply\"\000" +
+      "\022A\n\tListRules\022\031.ability.ListRulesRequest" +
+      "\032\027.ability.ListRulesReply\"\000\022;\n\007GetRule\022\027" +
+      ".ability.GetRuleRequest\032\025.ability.GetRul" +
+      "eReply\"\000\022U\n\013MemoryQuery\022\".ability.Memory" +
+      "ContextQueryRequest\032 .ability.MemoryCont" +
+      "extQueryReply\"\000\022q\n\031GeneralConfigurationQ" +
+      "uery\022).ability.GeneralConfigurationQuery" +
+      "Request\032\'.ability.GeneralConfigurationQu" +
+      "eryReply\"\0002\233\001\n\020RpcAbilityUnitV1\022J\n\010CallS" +
+      "ync\022\036.ability.AbilityMessageRequest\032\034.ab" +
+      "ility.AbilityMessageReply\"\000\022;\n\tCallAsync" +
+      "\022\036.ability.AbilityMessageRequest\032\014.base." +
+      "Status\"\0002\374\007\n\025RpcSuperAbilityCoreV1\022Y\n\021Pu" +
+      "shConfiguration\022!.ability.PushConfigurat" +
+      "ionRequest\032\037.ability.PushConfigurationRe" +
+      "ply\"\000\022Y\n\021DumpConfiguration\022!.ability.Dum" +
+      "pConfigurationRequest\032\037.ability.DumpConf" +
+      "igurationReply\"\000\022P\n\020RegisterPreRules\022\035.a" +
+      "bility.RegisterRulesRequest\032\033.ability.Re" +
+      "gisterRulesReply\"\000\022G\n\rCancelPreRule\022\032.ab" +
+      "ility.CancelRuleRequest\032\030.ability.Cancel" +
+      "RuleReply\"\000\022D\n\014ListPreRules\022\031.ability.Li" +
+      "stRulesRequest\032\027.ability.ListRulesReply\"" +
+      "\000\022>\n\nGetPreRule\022\027.ability.GetRuleRequest" +
+      "\032\025.ability.GetRuleReply\"\000\022Q\n\021RegisterPos" +
+      "tRules\022\035.ability.RegisterRulesRequest\032\033." +
+      "ability.RegisterRulesReply\"\000\022H\n\016CancelPo" +
+      "stRule\022\032.ability.CancelRuleRequest\032\030.abi" +
+      "lity.CancelRuleReply\"\000\022E\n\rListPostRules\022" +
+      "\031.ability.ListRulesRequest\032\027.ability.Lis" +
+      "tRulesReply\"\000\022?\n\013GetPostRule\022\027.ability.G" +
+      "etRuleRequest\032\025.ability.GetRuleReply\"\000\022d" +
+      "\n\020MemoryManagement\022\'.ability.MemoryConte" +
+      "xtManagementRequest\032%.ability.MemoryCont" +
+      "extManagementReply\"\000\022\200\001\n\036GeneralConfigur" +
+      "ationManagement\022..ability.GeneralConfigu" +
+      "rationManagementRequest\032,.ability.Genera" +
+      "lConfigurationManagementReply\"\000B4\n\037net.r" +
+      "ossonet.ptalk.ability.grpcB\017PtaskAbility" +
+      "ApiP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -157,96 +266,138 @@ public final class PtaskAbilityApi {
     internal_static_ability_AbilityMessageRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_AbilityMessageRequest_descriptor,
-        new java.lang.String[] { "FlowReference", "MessageReference", "ReplyTask", "Message", "AdditionalDatas", "Tags", });
+        new java.lang.String[] { "FlowReference", "MessageReference", "ReplyTask", "Message", "AdditionalDatas", "Tags", "Timestamp", });
     internal_static_ability_AbilityMessageReply_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ability_AbilityMessageReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_AbilityMessageReply_descriptor,
-        new java.lang.String[] { "FlowReference", "MessageReference", "Task", "Reply", "Status", "AdditionalDatas", "Tags", });
-    internal_static_ability_CancelRuleRequest_descriptor =
+        new java.lang.String[] { "FlowReference", "MessageReference", "Task", "Reply", "Status", "AdditionalDatas", "Tags", "Timestamp", });
+    internal_static_ability_Rule_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_ability_Rule_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_Rule_descriptor,
+        new java.lang.String[] { "RuleUniqueName", "Task", });
+    internal_static_ability_CancelRuleRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_ability_CancelRuleRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_CancelRuleRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Rule", "Timestamp", });
     internal_static_ability_CancelRuleReply_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_ability_CancelRuleReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_CancelRuleReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Status", "Timestamp", });
+    internal_static_ability_GetRuleRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_ability_GetRuleRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GetRuleRequest_descriptor,
+        new java.lang.String[] { "FlowReference", "Rule", "Timestamp", });
+    internal_static_ability_GetRuleReply_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_ability_GetRuleReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GetRuleReply_descriptor,
+        new java.lang.String[] { "FlowReference", "JsonRule", "Status", "Timestamp", });
     internal_static_ability_RegisterRulesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_ability_RegisterRulesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_RegisterRulesRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Rule", "JsonRule", "AdditionalDatas", "Tags", "Timestamp", });
     internal_static_ability_RegisterRulesReply_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_ability_RegisterRulesReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_RegisterRulesReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Rule", "Status", "Timestamp", });
     internal_static_ability_ListRulesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_ability_ListRulesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_ListRulesRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Timestamp", });
     internal_static_ability_ListRulesReply_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_ability_ListRulesReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_ListRulesReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "Rule", "Status", "Timestamp", });
     internal_static_ability_DumpConfigurationRequest_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_ability_DumpConfigurationRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_DumpConfigurationRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "AdditionalDatas", "Timestamp", });
     internal_static_ability_DumpConfigurationReply_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_ability_DumpConfigurationReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_DumpConfigurationReply_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "AdditionalDatas", "Timestamp", "Status", "ConfigurationJson", });
     internal_static_ability_PushConfigurationRequest_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_ability_PushConfigurationRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_PushConfigurationRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "FlowReference", "AdditionalDatas", "Timestamp", "ConfigurationJson", });
     internal_static_ability_PushConfigurationReply_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_ability_PushConfigurationReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_PushConfigurationReply_descriptor,
-        new java.lang.String[] { });
-    internal_static_ability_MemoryContextRequest_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_ability_MemoryContextRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ability_MemoryContextRequest_descriptor,
-        new java.lang.String[] { });
-    internal_static_ability_MemoryContextReply_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_ability_MemoryContextReply_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ability_MemoryContextReply_descriptor,
-        new java.lang.String[] { });
-    internal_static_ability_GeneralConfigurationRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_ability_GeneralConfigurationRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ability_GeneralConfigurationRequest_descriptor,
-        new java.lang.String[] { });
-    internal_static_ability_GeneralConfigurationReply_descriptor =
+        new java.lang.String[] { "FlowReference", "AdditionalDatas", "Timestamp", "Status", });
+    internal_static_ability_MemoryContextQueryRequest_descriptor =
       getDescriptor().getMessageTypes().get(15);
-    internal_static_ability_GeneralConfigurationReply_fieldAccessorTable = new
+    internal_static_ability_MemoryContextQueryRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ability_GeneralConfigurationReply_descriptor,
+        internal_static_ability_MemoryContextQueryRequest_descriptor,
+        new java.lang.String[] { "FlowReference", "Context", "Timestamp", });
+    internal_static_ability_MemoryContextQueryReply_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_ability_MemoryContextQueryReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_MemoryContextQueryReply_descriptor,
+        new java.lang.String[] { "FlowReference", "Context", "Datas", "Timestamp", "Status", });
+    internal_static_ability_MemoryContextManagementRequest_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_ability_MemoryContextManagementRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_MemoryContextManagementRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_ability_MemoryContextManagementReply_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_ability_MemoryContextManagementReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_MemoryContextManagementReply_descriptor,
+        new java.lang.String[] { });
+    internal_static_ability_GeneralConfigurationQueryRequest_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_ability_GeneralConfigurationQueryRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GeneralConfigurationQueryRequest_descriptor,
+        new java.lang.String[] { "FlowReference", "Key", "Timestamp", });
+    internal_static_ability_GeneralConfigurationQueryReply_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_ability_GeneralConfigurationQueryReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GeneralConfigurationQueryReply_descriptor,
+        new java.lang.String[] { "FlowReference", "Value", "Timestamp", });
+    internal_static_ability_GeneralConfigurationManagementRequest_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_ability_GeneralConfigurationManagementRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GeneralConfigurationManagementRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_ability_GeneralConfigurationManagementReply_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_ability_GeneralConfigurationManagementReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GeneralConfigurationManagementReply_descriptor,
         new java.lang.String[] { });
     net.rossonet.ptalk.base.grpc.PtalkBaseObject.getDescriptor();
   }

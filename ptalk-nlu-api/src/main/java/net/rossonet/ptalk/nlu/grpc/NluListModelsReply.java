@@ -16,6 +16,9 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private NluListModelsReply() {
+    flowReference_ = "";
+    model_ = java.util.Collections.emptyList();
+    status_ = 0;
   }
 
   @java.lang.Override
@@ -43,6 +46,129 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.nlu.grpc.NluListModelsReply.class, net.rossonet.ptalk.nlu.grpc.NluListModelsReply.Builder.class);
   }
 
+  public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
+  private volatile java.lang.Object flowReference_;
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  @java.lang.Override
+  public java.lang.String getFlowReference() {
+    java.lang.Object ref = flowReference_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      flowReference_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getFlowReferenceBytes() {
+    java.lang.Object ref = flowReference_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      flowReference_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MODEL_FIELD_NUMBER = 2;
+  private java.util.List<net.rossonet.ptalk.nlu.grpc.NluModel> model_;
+  /**
+   * <code>repeated .nlu.NluModel model = 2;</code>
+   */
+  @java.lang.Override
+  public java.util.List<net.rossonet.ptalk.nlu.grpc.NluModel> getModelList() {
+    return model_;
+  }
+  /**
+   * <code>repeated .nlu.NluModel model = 2;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder> 
+      getModelOrBuilderList() {
+    return model_;
+  }
+  /**
+   * <code>repeated .nlu.NluModel model = 2;</code>
+   */
+  @java.lang.Override
+  public int getModelCount() {
+    return model_.size();
+  }
+  /**
+   * <code>repeated .nlu.NluModel model = 2;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.nlu.grpc.NluModel getModel(int index) {
+    return model_.get(index);
+  }
+  /**
+   * <code>repeated .nlu.NluModel model = 2;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder(
+      int index) {
+    return model_.get(index);
+  }
+
+  public static final int STATUS_FIELD_NUMBER = 3;
+  private int status_;
+  /**
+   * <code>.base.StatusValue status = 3;</code>
+   * @return The enum numeric value on the wire for status.
+   */
+  @java.lang.Override public int getStatusValue() {
+    return status_;
+  }
+  /**
+   * <code>.base.StatusValue status = 3;</code>
+   * @return The status.
+   */
+  @java.lang.Override public net.rossonet.ptalk.base.grpc.StatusValue getStatus() {
+    @SuppressWarnings("deprecation")
+    net.rossonet.ptalk.base.grpc.StatusValue result = net.rossonet.ptalk.base.grpc.StatusValue.valueOf(status_);
+    return result == null ? net.rossonet.ptalk.base.grpc.StatusValue.UNRECOGNIZED : result;
+  }
+
+  public static final int TIMESTAMP_FIELD_NUMBER = 4;
+  private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+  /**
+   * <code>.base.Timestamp timestamp = 4;</code>
+   * @return Whether the timestamp field is set.
+   */
+  @java.lang.Override
+  public boolean hasTimestamp() {
+    return timestamp_ != null;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 4;</code>
+   * @return The timestamp.
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+    return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+  }
+  /**
+   * <code>.base.Timestamp timestamp = 4;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+    return getTimestamp();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -57,6 +183,18 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, flowReference_);
+    }
+    for (int i = 0; i < model_.size(); i++) {
+      output.writeMessage(2, model_.get(i));
+    }
+    if (status_ != net.rossonet.ptalk.base.grpc.StatusValue.STATUS_GOOD.getNumber()) {
+      output.writeEnum(3, status_);
+    }
+    if (timestamp_ != null) {
+      output.writeMessage(4, getTimestamp());
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -66,6 +204,21 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, flowReference_);
+    }
+    for (int i = 0; i < model_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, model_.get(i));
+    }
+    if (status_ != net.rossonet.ptalk.base.grpc.StatusValue.STATUS_GOOD.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(3, status_);
+    }
+    if (timestamp_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getTimestamp());
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -81,6 +234,16 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.nlu.grpc.NluListModelsReply other = (net.rossonet.ptalk.nlu.grpc.NluListModelsReply) obj;
 
+    if (!getFlowReference()
+        .equals(other.getFlowReference())) return false;
+    if (!getModelList()
+        .equals(other.getModelList())) return false;
+    if (status_ != other.status_) return false;
+    if (hasTimestamp() != other.hasTimestamp()) return false;
+    if (hasTimestamp()) {
+      if (!getTimestamp()
+          .equals(other.getTimestamp())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -92,6 +255,18 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + FLOWREFERENCE_FIELD_NUMBER;
+    hash = (53 * hash) + getFlowReference().hashCode();
+    if (getModelCount() > 0) {
+      hash = (37 * hash) + MODEL_FIELD_NUMBER;
+      hash = (53 * hash) + getModelList().hashCode();
+    }
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + status_;
+    if (hasTimestamp()) {
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + getTimestamp().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -220,6 +395,23 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      flowReference_ = "";
+
+      if (modelBuilder_ == null) {
+        model_ = java.util.Collections.emptyList();
+      } else {
+        model_ = null;
+        modelBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
+      status_ = 0;
+
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
       return this;
     }
 
@@ -246,6 +438,23 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.nlu.grpc.NluListModelsReply buildPartial() {
       net.rossonet.ptalk.nlu.grpc.NluListModelsReply result = new net.rossonet.ptalk.nlu.grpc.NluListModelsReply(this);
+      int from_bitField0_ = bitField0_;
+      result.flowReference_ = flowReference_;
+      if (modelBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          model_ = java.util.Collections.unmodifiableList(model_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.model_ = model_;
+      } else {
+        result.model_ = modelBuilder_.build();
+      }
+      result.status_ = status_;
+      if (timestampBuilder_ == null) {
+        result.timestamp_ = timestamp_;
+      } else {
+        result.timestamp_ = timestampBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -294,6 +503,42 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.nlu.grpc.NluListModelsReply other) {
       if (other == net.rossonet.ptalk.nlu.grpc.NluListModelsReply.getDefaultInstance()) return this;
+      if (!other.getFlowReference().isEmpty()) {
+        flowReference_ = other.flowReference_;
+        onChanged();
+      }
+      if (modelBuilder_ == null) {
+        if (!other.model_.isEmpty()) {
+          if (model_.isEmpty()) {
+            model_ = other.model_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureModelIsMutable();
+            model_.addAll(other.model_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.model_.isEmpty()) {
+          if (modelBuilder_.isEmpty()) {
+            modelBuilder_.dispose();
+            modelBuilder_ = null;
+            model_ = other.model_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            modelBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getModelFieldBuilder() : null;
+          } else {
+            modelBuilder_.addAllMessages(other.model_);
+          }
+        }
+      }
+      if (other.status_ != 0) {
+        setStatusValue(other.getStatusValue());
+      }
+      if (other.hasTimestamp()) {
+        mergeTimestamp(other.getTimestamp());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -320,6 +565,36 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              flowReference_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 10
+            case 18: {
+              net.rossonet.ptalk.nlu.grpc.NluModel m =
+                  input.readMessage(
+                      net.rossonet.ptalk.nlu.grpc.NluModel.parser(),
+                      extensionRegistry);
+              if (modelBuilder_ == null) {
+                ensureModelIsMutable();
+                model_.add(m);
+              } else {
+                modelBuilder_.addMessage(m);
+              }
+              break;
+            } // case 18
+            case 24: {
+              status_ = input.readEnum();
+
+              break;
+            } // case 24
+            case 34: {
+              input.readMessage(
+                  getTimestampFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
+              break;
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -334,6 +609,496 @@ private static final long serialVersionUID = 0L;
         onChanged();
       } // finally
       return this;
+    }
+    private int bitField0_;
+
+    private java.lang.Object flowReference_ = "";
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The flowReference.
+     */
+    public java.lang.String getFlowReference() {
+      java.lang.Object ref = flowReference_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        flowReference_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The bytes for flowReference.
+     */
+    public com.google.protobuf.ByteString
+        getFlowReferenceBytes() {
+      java.lang.Object ref = flowReference_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        flowReference_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReference(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFlowReference() {
+      
+      flowReference_ = getDefaultInstance().getFlowReference();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The bytes for flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReferenceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.util.List<net.rossonet.ptalk.nlu.grpc.NluModel> model_ =
+      java.util.Collections.emptyList();
+    private void ensureModelIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        model_ = new java.util.ArrayList<net.rossonet.ptalk.nlu.grpc.NluModel>(model_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.NluModel, net.rossonet.ptalk.nlu.grpc.NluModel.Builder, net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder> modelBuilder_;
+
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.nlu.grpc.NluModel> getModelList() {
+      if (modelBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(model_);
+      } else {
+        return modelBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public int getModelCount() {
+      if (modelBuilder_ == null) {
+        return model_.size();
+      } else {
+        return modelBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModel getModel(int index) {
+      if (modelBuilder_ == null) {
+        return model_.get(index);
+      } else {
+        return modelBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder setModel(
+        int index, net.rossonet.ptalk.nlu.grpc.NluModel value) {
+      if (modelBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureModelIsMutable();
+        model_.set(index, value);
+        onChanged();
+      } else {
+        modelBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder setModel(
+        int index, net.rossonet.ptalk.nlu.grpc.NluModel.Builder builderForValue) {
+      if (modelBuilder_ == null) {
+        ensureModelIsMutable();
+        model_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        modelBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder addModel(net.rossonet.ptalk.nlu.grpc.NluModel value) {
+      if (modelBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureModelIsMutable();
+        model_.add(value);
+        onChanged();
+      } else {
+        modelBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder addModel(
+        int index, net.rossonet.ptalk.nlu.grpc.NluModel value) {
+      if (modelBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureModelIsMutable();
+        model_.add(index, value);
+        onChanged();
+      } else {
+        modelBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder addModel(
+        net.rossonet.ptalk.nlu.grpc.NluModel.Builder builderForValue) {
+      if (modelBuilder_ == null) {
+        ensureModelIsMutable();
+        model_.add(builderForValue.build());
+        onChanged();
+      } else {
+        modelBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder addModel(
+        int index, net.rossonet.ptalk.nlu.grpc.NluModel.Builder builderForValue) {
+      if (modelBuilder_ == null) {
+        ensureModelIsMutable();
+        model_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        modelBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder addAllModel(
+        java.lang.Iterable<? extends net.rossonet.ptalk.nlu.grpc.NluModel> values) {
+      if (modelBuilder_ == null) {
+        ensureModelIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, model_);
+        onChanged();
+      } else {
+        modelBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder clearModel() {
+      if (modelBuilder_ == null) {
+        model_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        modelBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public Builder removeModel(int index) {
+      if (modelBuilder_ == null) {
+        ensureModelIsMutable();
+        model_.remove(index);
+        onChanged();
+      } else {
+        modelBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModel.Builder getModelBuilder(
+        int index) {
+      return getModelFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder(
+        int index) {
+      if (modelBuilder_ == null) {
+        return model_.get(index);  } else {
+        return modelBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public java.util.List<? extends net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder> 
+         getModelOrBuilderList() {
+      if (modelBuilder_ != null) {
+        return modelBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(model_);
+      }
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModel.Builder addModelBuilder() {
+      return getModelFieldBuilder().addBuilder(
+          net.rossonet.ptalk.nlu.grpc.NluModel.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.NluModel.Builder addModelBuilder(
+        int index) {
+      return getModelFieldBuilder().addBuilder(
+          index, net.rossonet.ptalk.nlu.grpc.NluModel.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .nlu.NluModel model = 2;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.nlu.grpc.NluModel.Builder> 
+         getModelBuilderList() {
+      return getModelFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.NluModel, net.rossonet.ptalk.nlu.grpc.NluModel.Builder, net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder> 
+        getModelFieldBuilder() {
+      if (modelBuilder_ == null) {
+        modelBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            net.rossonet.ptalk.nlu.grpc.NluModel, net.rossonet.ptalk.nlu.grpc.NluModel.Builder, net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder>(
+                model_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        model_ = null;
+      }
+      return modelBuilder_;
+    }
+
+    private int status_ = 0;
+    /**
+     * <code>.base.StatusValue status = 3;</code>
+     * @return The enum numeric value on the wire for status.
+     */
+    @java.lang.Override public int getStatusValue() {
+      return status_;
+    }
+    /**
+     * <code>.base.StatusValue status = 3;</code>
+     * @param value The enum numeric value on the wire for status to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatusValue(int value) {
+      
+      status_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.base.StatusValue status = 3;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public net.rossonet.ptalk.base.grpc.StatusValue getStatus() {
+      @SuppressWarnings("deprecation")
+      net.rossonet.ptalk.base.grpc.StatusValue result = net.rossonet.ptalk.base.grpc.StatusValue.valueOf(status_);
+      return result == null ? net.rossonet.ptalk.base.grpc.StatusValue.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.base.StatusValue status = 3;</code>
+     * @param value The status to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatus(net.rossonet.ptalk.base.grpc.StatusValue value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      status_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.base.StatusValue status = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStatus() {
+      
+      status_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> timestampBuilder_;
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     * @return Whether the timestamp field is set.
+     */
+    public boolean hasTimestamp() {
+      return timestampBuilder_ != null || timestamp_ != null;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     * @return The timestamp.
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
+      if (timestampBuilder_ == null) {
+        return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      } else {
+        return timestampBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     */
+    public Builder setTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        timestamp_ = value;
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     */
+    public Builder setTimestamp(
+        net.rossonet.ptalk.base.grpc.Timestamp.Builder builderForValue) {
+      if (timestampBuilder_ == null) {
+        timestamp_ = builderForValue.build();
+        onChanged();
+      } else {
+        timestampBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     */
+    public Builder mergeTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
+      if (timestampBuilder_ == null) {
+        if (timestamp_ != null) {
+          timestamp_ =
+            net.rossonet.ptalk.base.grpc.Timestamp.newBuilder(timestamp_).mergeFrom(value).buildPartial();
+        } else {
+          timestamp_ = value;
+        }
+        onChanged();
+      } else {
+        timestampBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     */
+    public Builder clearTimestamp() {
+      if (timestampBuilder_ == null) {
+        timestamp_ = null;
+        onChanged();
+      } else {
+        timestamp_ = null;
+        timestampBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Timestamp.Builder getTimestampBuilder() {
+      
+      onChanged();
+      return getTimestampFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
+      if (timestampBuilder_ != null) {
+        return timestampBuilder_.getMessageOrBuilder();
+      } else {
+        return timestamp_ == null ?
+            net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
+      }
+    }
+    /**
+     * <code>.base.Timestamp timestamp = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> 
+        getTimestampFieldBuilder() {
+      if (timestampBuilder_ == null) {
+        timestampBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder>(
+                getTimestamp(),
+                getParentForChildren(),
+                isClean());
+        timestamp_ = null;
+      }
+      return timestampBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
