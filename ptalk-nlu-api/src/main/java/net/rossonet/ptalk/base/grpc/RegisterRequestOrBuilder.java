@@ -162,4 +162,16 @@ public interface RegisterRequestOrBuilder extends
    */
   net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(
       int index);
+
+  /**
+   * <code>string selfSuperAbilityCode = 11;</code>
+   * @return The selfSuperAbilityCode.
+   */
+  java.lang.String getSelfSuperAbilityCode();
+  /**
+   * <code>string selfSuperAbilityCode = 11;</code>
+   * @return The bytes for selfSuperAbilityCode.
+   */
+  com.google.protobuf.ByteString
+      getSelfSuperAbilityCodeBytes();
 }

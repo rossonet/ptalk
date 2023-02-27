@@ -1,4 +1,6 @@
 // Andrea Ambrosini - Rossonet s.c.a r.l.
+// the original copy of this file is in ptalk-base-api directory at the root of the main project.
+// Doesn't edit the file in other location, it'll be overwritten.
 
 syntax = "proto3";
 
@@ -124,6 +126,7 @@ message RegisterRequest {
   repeated string capabilities = 8;
   repeated Data additionalDatas = 9;
   repeated Tag tags = 10;
+  string selfSuperAbilityCode = 11;
 }
 
 message RegisterReply {

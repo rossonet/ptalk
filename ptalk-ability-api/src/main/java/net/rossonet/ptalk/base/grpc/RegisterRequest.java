@@ -26,6 +26,7 @@ private static final long serialVersionUID = 0L;
     capabilities_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     additionalDatas_ = java.util.Collections.emptyList();
     tags_ = java.util.Collections.emptyList();
+    selfSuperAbilityCode_ = "";
   }
 
   @java.lang.Override
@@ -415,6 +416,44 @@ private static final long serialVersionUID = 0L;
     return tags_.get(index);
   }
 
+  public static final int SELFSUPERABILITYCODE_FIELD_NUMBER = 11;
+  private volatile java.lang.Object selfSuperAbilityCode_;
+  /**
+   * <code>string selfSuperAbilityCode = 11;</code>
+   * @return The selfSuperAbilityCode.
+   */
+  @java.lang.Override
+  public java.lang.String getSelfSuperAbilityCode() {
+    java.lang.Object ref = selfSuperAbilityCode_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      selfSuperAbilityCode_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string selfSuperAbilityCode = 11;</code>
+   * @return The bytes for selfSuperAbilityCode.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getSelfSuperAbilityCodeBytes() {
+    java.lang.Object ref = selfSuperAbilityCode_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      selfSuperAbilityCode_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -458,6 +497,9 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < tags_.size(); i++) {
       output.writeMessage(10, tags_.get(i));
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(selfSuperAbilityCode_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, selfSuperAbilityCode_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -506,6 +548,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(10, tags_.get(i));
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(selfSuperAbilityCode_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, selfSuperAbilityCode_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -540,6 +585,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getAdditionalDatasList())) return false;
     if (!getTagsList()
         .equals(other.getTagsList())) return false;
+    if (!getSelfSuperAbilityCode()
+        .equals(other.getSelfSuperAbilityCode())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -577,6 +624,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + TAGS_FIELD_NUMBER;
       hash = (53 * hash) + getTagsList().hashCode();
     }
+    hash = (37 * hash) + SELFSUPERABILITYCODE_FIELD_NUMBER;
+    hash = (53 * hash) + getSelfSuperAbilityCode().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -735,6 +784,8 @@ private static final long serialVersionUID = 0L;
         tagsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000004);
+      selfSuperAbilityCode_ = "";
+
       return this;
     }
 
@@ -792,6 +843,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.tags_ = tagsBuilder_.build();
       }
+      result.selfSuperAbilityCode_ = selfSuperAbilityCode_;
       onBuilt();
       return result;
     }
@@ -929,6 +981,10 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      if (!other.getSelfSuperAbilityCode().isEmpty()) {
+        selfSuperAbilityCode_ = other.selfSuperAbilityCode_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -1022,6 +1078,11 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 82
+            case 90: {
+              selfSuperAbilityCode_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 90
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -2137,6 +2198,82 @@ private static final long serialVersionUID = 0L;
         tags_ = null;
       }
       return tagsBuilder_;
+    }
+
+    private java.lang.Object selfSuperAbilityCode_ = "";
+    /**
+     * <code>string selfSuperAbilityCode = 11;</code>
+     * @return The selfSuperAbilityCode.
+     */
+    public java.lang.String getSelfSuperAbilityCode() {
+      java.lang.Object ref = selfSuperAbilityCode_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        selfSuperAbilityCode_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string selfSuperAbilityCode = 11;</code>
+     * @return The bytes for selfSuperAbilityCode.
+     */
+    public com.google.protobuf.ByteString
+        getSelfSuperAbilityCodeBytes() {
+      java.lang.Object ref = selfSuperAbilityCode_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        selfSuperAbilityCode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string selfSuperAbilityCode = 11;</code>
+     * @param value The selfSuperAbilityCode to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSelfSuperAbilityCode(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      selfSuperAbilityCode_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string selfSuperAbilityCode = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSelfSuperAbilityCode() {
+      
+      selfSuperAbilityCode_ = getDefaultInstance().getSelfSuperAbilityCode();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string selfSuperAbilityCode = 11;</code>
+     * @param value The bytes for selfSuperAbilityCode to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSelfSuperAbilityCodeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      selfSuperAbilityCode_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
