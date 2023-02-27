@@ -51,16 +51,19 @@ public class ExecutionLogger implements Closeable {
 	@Override
 	public void close() throws IOException {
 		// pulizia
-
 	}
 
 	public void completedInstant(Task rulesEngineTask) {
 		logger.info("completedInstant " + rulesEngineTask.getTraceId());
 	}
 
-	public void exceptionLog(Task rulesEngineTask, TaskManagerException fireException) {
-		logger.info("exceptionLog " + rulesEngineTask.getTraceId() + "\nstacktrace"
-				+ LogHelper.stackTraceToString(fireException));
+	public void exceptionLog(String taskName, TaskManagerException fireException) {
+		logger.info("exceptionLog " + taskName + "\nstacktrace" + LogHelper.stackTraceToString(fireException));
+
+	}
+
+	public void exceptionLog(Task rulesEngineTask, Exception fireException) {
+		logger.info("exceptionLog " + rulesEngineTask + "\nstacktrace" + LogHelper.stackTraceToString(fireException));
 
 	}
 

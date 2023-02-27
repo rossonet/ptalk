@@ -1,5 +1,7 @@
 package net.rossonet.ptalk.engine.parameter;
 
+import org.json.JSONObject;
+
 public class ExecutionParameters {
 
 	private static final String AI_MANAGER_FACT_LABEL = "ai-manager";
@@ -24,14 +26,13 @@ public class ExecutionParameters {
 
 	private static final String DEFAULT_TIMEOUT_MAIN_EXECUTION_MS = "60000";
 
-	public static ExecutionParameters fromJson(String executionParameters) {
-		// TODO fromJson
+	public static JSONObject toJson() {
+		// TODO toJson
 		return null;
 	}
 
-	public static String toJson(ExecutionParameters executionParameters) {
-		// TODO toJson
-		return null;
+	public ExecutionParameters(JSONObject executionParameters) {
+		// TODO import da json
 	}
 
 	public String getAbilityCommunicationFactLabel() {

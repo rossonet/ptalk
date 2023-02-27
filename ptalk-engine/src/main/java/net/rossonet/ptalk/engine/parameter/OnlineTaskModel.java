@@ -2,7 +2,9 @@ package net.rossonet.ptalk.engine.parameter;
 
 import java.io.Serializable;
 
-public class TaskModel implements Serializable {
+import org.json.JSONObject;
+
+public class OnlineTaskModel implements Serializable {
 
 	private static final long serialVersionUID = -9139834337155333462L;
 	private String executionParameter;
@@ -11,6 +13,10 @@ public class TaskModel implements Serializable {
 	private String preRules;
 
 	private String modelName;
+
+	public OnlineTaskModel(JSONObject jsonTask) {
+		// TODO import da json
+	}
 
 	public String getExecutionParameter() {
 		return executionParameter;
@@ -50,6 +56,11 @@ public class TaskModel implements Serializable {
 
 	public void setPreRules(String preRules) {
 		this.preRules = preRules;
+	}
+
+	public JSONObject toJson() {
+		// TODO toJson
+		return null;
 	}
 
 }

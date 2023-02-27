@@ -4,8 +4,8 @@ import io.grpc.stub.StreamObserver;
 import net.rossonet.ptalk.ability.grpc.AbilityMessageReply;
 import net.rossonet.ptalk.ability.grpc.CancelRuleReply;
 import net.rossonet.ptalk.ability.grpc.CancelRuleRequest;
-import net.rossonet.ptalk.ability.grpc.DumpConfigurationReply;
-import net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest;
+import net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply;
+import net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest;
 import net.rossonet.ptalk.ability.grpc.ListRulesReply;
 import net.rossonet.ptalk.ability.grpc.ListRulesRequest;
 import net.rossonet.ptalk.ability.grpc.MemoryContextReply;
@@ -31,10 +31,10 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 	}
 
 	@Override
-	public void dumpConfiguration(DumpConfigurationRequest request,
-			StreamObserver<DumpConfigurationReply> responseObserver) {
+	public void generalConfiguration(GeneralConfigurationRequest request,
+			StreamObserver<GeneralConfigurationReply> responseObserver) {
 		// TODO Auto-generated method stub
-		super.dumpConfiguration(request, responseObserver);
+		super.generalConfiguration(request, responseObserver);
 	}
 
 	public PTalkEngineRuntime getpTalkEngineRuntime() {

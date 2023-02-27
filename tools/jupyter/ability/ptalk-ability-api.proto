@@ -77,13 +77,21 @@ message MemoryContextReply {
 
 }
 
+message GeneralConfigurationRequest {
+
+}
+
+message GeneralConfigurationReply {
+
+}
+
 service RpcAbilityCoreV1 {
   rpc ReplyAsync (AbilityMessageReply) returns (base.Status) {}
   rpc RegisterRules (RegisterRulesRequest) returns (RegisterRulesReply) {}
   rpc CancelRule (CancelRuleRequest) returns (CancelRuleReply) {}
   rpc ListRules (ListRulesRequest) returns (ListRulesReply) {}
   rpc Memory (MemoryContextRequest) returns (MemoryContextReply) {}
-  rpc DumpConfiguration (DumpConfigurationRequest) returns (DumpConfigurationReply) {}
+  rpc GeneralConfiguration (GeneralConfigurationRequest) returns (GeneralConfigurationReply) {}
 }
 
 service RpcAbilityUnitV1 {
@@ -93,5 +101,6 @@ service RpcAbilityUnitV1 {
 
 service RpcSuperAbilityCoreV1 {
   rpc PushConfiguration (PushConfigurationRequest) returns (PushConfigurationReply) {}
+  rpc DumpConfiguration (DumpConfigurationRequest) returns (DumpConfigurationReply) {}
 }
 

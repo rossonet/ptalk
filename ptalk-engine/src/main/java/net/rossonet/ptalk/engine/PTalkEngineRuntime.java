@@ -13,9 +13,11 @@ import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopSchedulerType;
 
 public class PTalkEngineRuntime {
 
+//TODO impostare un TTL su un messaggio e tutto quello che genera
+
 	private final HazelcastInstanceBuilder hazelcastInstanceBuilder;
 
-	private final GlobalConfiguration globalConfiguration;
+	private final ConfigurationTasksManager configurationTasksManager;
 
 	private final MemoryManagerFactFactory memoryManagerFactFactory;
 
@@ -41,9 +43,12 @@ public class PTalkEngineRuntime {
 	private final ExecutorService lowScheduler;
 	private final ExecutorService hightScheduler;
 
-	public PTalkEngineRuntime(boolean hazelcastEmbedded, String[] args) {
+	private final GlobalConfiguration globalConfiguration;
+
+	public PTalkEngineRuntime(GlobalConfiguration configuration) {
+		this.globalConfiguration = configuration;
 		hazelcastInstanceBuilder = new HazelcastInstanceBuilder(this);
-		globalConfiguration = new GlobalConfiguration(this);
+		configurationTasksManager = new ConfigurationTasksManager(this);
 		memoryManagerFactFactory = new MemoryManagerFactFactory(this);
 		nextHopManagerFactFactory = new NextHopManagerFactFactory(this);
 		nluCommunicationFactFactory = new NluCommunicationFactFactory(this);
@@ -66,6 +71,10 @@ public class PTalkEngineRuntime {
 
 	public AiManagerFactFactory getAiManagerFactFactory() {
 		return aiManagerFactFactory;
+	}
+
+	public ConfigurationTasksManager getConfigurationTasksManager() {
+		return configurationTasksManager;
 	}
 
 	public ExecutionLogger getExecutionLogger() {
@@ -136,7 +145,7 @@ public class PTalkEngineRuntime {
 			executionLogger.logGlobalException(e);
 		}
 		try {
-			globalConfiguration.close();
+			configurationTasksManager.close();
 		} catch (final Exception e) {
 			executionLogger.logGlobalException(e);
 		}

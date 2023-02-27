@@ -170,35 +170,35 @@ public final class RpcAbilityCoreV1Grpc {
     return getMemoryMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest,
-      net.rossonet.ptalk.ability.grpc.DumpConfigurationReply> getDumpConfigurationMethod;
+  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest,
+      net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> getGeneralConfigurationMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DumpConfiguration",
-      requestType = net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest.class,
-      responseType = net.rossonet.ptalk.ability.grpc.DumpConfigurationReply.class,
+      fullMethodName = SERVICE_NAME + '/' + "GeneralConfiguration",
+      requestType = net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest.class,
+      responseType = net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest,
-      net.rossonet.ptalk.ability.grpc.DumpConfigurationReply> getDumpConfigurationMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest, net.rossonet.ptalk.ability.grpc.DumpConfigurationReply> getDumpConfigurationMethod;
-    if ((getDumpConfigurationMethod = RpcAbilityCoreV1Grpc.getDumpConfigurationMethod) == null) {
+  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest,
+      net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> getGeneralConfigurationMethod() {
+    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest, net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> getGeneralConfigurationMethod;
+    if ((getGeneralConfigurationMethod = RpcAbilityCoreV1Grpc.getGeneralConfigurationMethod) == null) {
       synchronized (RpcAbilityCoreV1Grpc.class) {
-        if ((getDumpConfigurationMethod = RpcAbilityCoreV1Grpc.getDumpConfigurationMethod) == null) {
-          RpcAbilityCoreV1Grpc.getDumpConfigurationMethod = getDumpConfigurationMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest, net.rossonet.ptalk.ability.grpc.DumpConfigurationReply>newBuilder()
+        if ((getGeneralConfigurationMethod = RpcAbilityCoreV1Grpc.getGeneralConfigurationMethod) == null) {
+          RpcAbilityCoreV1Grpc.getGeneralConfigurationMethod = getGeneralConfigurationMethod =
+              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest, net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DumpConfiguration"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GeneralConfiguration"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest.getDefaultInstance()))
+                  net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.DumpConfigurationReply.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("DumpConfiguration"))
+                  net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply.getDefaultInstance()))
+              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("GeneralConfiguration"))
               .build();
         }
       }
     }
-    return getDumpConfigurationMethod;
+    return getGeneralConfigurationMethod;
   }
 
   /**
@@ -286,9 +286,9 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public void dumpConfiguration(net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.DumpConfigurationReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDumpConfigurationMethod(), responseObserver);
+    public void generalConfiguration(net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGeneralConfigurationMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -329,12 +329,12 @@ public final class RpcAbilityCoreV1Grpc {
                 net.rossonet.ptalk.ability.grpc.MemoryContextReply>(
                   this, METHODID_MEMORY)))
           .addMethod(
-            getDumpConfigurationMethod(),
+            getGeneralConfigurationMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest,
-                net.rossonet.ptalk.ability.grpc.DumpConfigurationReply>(
-                  this, METHODID_DUMP_CONFIGURATION)))
+                net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest,
+                net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply>(
+                  this, METHODID_GENERAL_CONFIGURATION)))
           .build();
     }
   }
@@ -395,10 +395,10 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public void dumpConfiguration(net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.DumpConfigurationReply> responseObserver) {
+    public void generalConfiguration(net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDumpConfigurationMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGeneralConfigurationMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -453,9 +453,9 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public net.rossonet.ptalk.ability.grpc.DumpConfigurationReply dumpConfiguration(net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest request) {
+    public net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply generalConfiguration(net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDumpConfigurationMethod(), getCallOptions(), request);
+          getChannel(), getGeneralConfigurationMethod(), getCallOptions(), request);
     }
   }
 
@@ -515,10 +515,10 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.DumpConfigurationReply> dumpConfiguration(
-        net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply> generalConfiguration(
+        net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDumpConfigurationMethod(), getCallOptions()), request);
+          getChannel().newCall(getGeneralConfigurationMethod(), getCallOptions()), request);
     }
   }
 
@@ -527,7 +527,7 @@ public final class RpcAbilityCoreV1Grpc {
   private static final int METHODID_CANCEL_RULE = 2;
   private static final int METHODID_LIST_RULES = 3;
   private static final int METHODID_MEMORY = 4;
-  private static final int METHODID_DUMP_CONFIGURATION = 5;
+  private static final int METHODID_GENERAL_CONFIGURATION = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -566,9 +566,9 @@ public final class RpcAbilityCoreV1Grpc {
           serviceImpl.memory((net.rossonet.ptalk.ability.grpc.MemoryContextRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextReply>) responseObserver);
           break;
-        case METHODID_DUMP_CONFIGURATION:
-          serviceImpl.dumpConfiguration((net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.DumpConfigurationReply>) responseObserver);
+        case METHODID_GENERAL_CONFIGURATION:
+          serviceImpl.generalConfiguration((net.rossonet.ptalk.ability.grpc.GeneralConfigurationRequest) request,
+              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationReply>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -636,7 +636,7 @@ public final class RpcAbilityCoreV1Grpc {
               .addMethod(getCancelRuleMethod())
               .addMethod(getListRulesMethod())
               .addMethod(getMemoryMethod())
-              .addMethod(getDumpConfigurationMethod())
+              .addMethod(getGeneralConfigurationMethod())
               .build();
         }
       }

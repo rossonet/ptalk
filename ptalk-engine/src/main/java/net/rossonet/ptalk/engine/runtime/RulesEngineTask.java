@@ -52,6 +52,7 @@ class RulesEngineTask implements Task {
 	private Future<Facts> mainRunFuture = null;
 
 	private Future<Facts> postRunFuture = null;
+
 	private Collection<NextHop> nextHops = null;
 
 	private final PTalkEngineRuntime pTalkEngineRuntime;
@@ -182,12 +183,13 @@ class RulesEngineTask implements Task {
 			throw new BadTaskOrderExecution("try to load rules in a task with status " + executionStatus.name());
 		}
 		try {
-			for (final Rule preRule : pTalkEngineRuntime.getGlobalConfiguration().getPreRulesAsJson(this)) {
+			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager()
+					.getPreRules(getTaskName())) {
 				preExecutionRules.register(preRule);
 			}
 			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().preRules(this,
-						pTalkEngineRuntime.getGlobalConfiguration().getPreRulesAsString(this));
+						pTalkEngineRuntime.getConfigurationTasksManager().getPreRulesAsString(getTaskName()));
 			}
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.LOAD_FAULT;
@@ -199,13 +201,15 @@ class RulesEngineTask implements Task {
 			throw loadingTaskRulesException;
 		}
 		try {
-			for (final Rule preRule : pTalkEngineRuntime.getGlobalConfiguration().getMainRulesAsJson(this)) {
+			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager()
+					.getMainRules(getTaskName())) {
 				executionRules.register(preRule);
 			}
-			executionParameters = pTalkEngineRuntime.getGlobalConfiguration().getExecutionParameters(this);
+			executionParameters = pTalkEngineRuntime.getConfigurationTasksManager()
+					.getExecutionParameters(getTaskName());
 			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().mainRules(this,
-						pTalkEngineRuntime.getGlobalConfiguration().getMainRulesAsString(this));
+						pTalkEngineRuntime.getConfigurationTasksManager().getMainRulesAsString(getTaskName()));
 				pTalkEngineRuntime.getExecutionLogger().executionParameters(this, executionParameters.toString());
 			}
 		} catch (final Exception e) {
@@ -218,12 +222,13 @@ class RulesEngineTask implements Task {
 			throw loadingTaskRulesException;
 		}
 		try {
-			for (final Rule preRule : pTalkEngineRuntime.getGlobalConfiguration().getPostRulesAsJson(this)) {
+			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager()
+					.getPostRules(getTaskName())) {
 				postExecutionRules.register(preRule);
 			}
 			if (traceLog) {
 				pTalkEngineRuntime.getExecutionLogger().postRules(this,
-						pTalkEngineRuntime.getGlobalConfiguration().getPostRulesAsString(this));
+						pTalkEngineRuntime.getConfigurationTasksManager().getPostRulesAsString(getTaskName()));
 			}
 		} catch (final Exception e) {
 			executionStatus = ExecutionStatus.LOAD_FAULT;

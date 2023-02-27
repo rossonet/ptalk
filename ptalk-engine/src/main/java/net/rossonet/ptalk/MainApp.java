@@ -2,6 +2,7 @@ package net.rossonet.ptalk;
 
 import java.util.logging.Logger;
 
+import net.rossonet.ptalk.engine.GlobalConfiguration;
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 
 public class MainApp {
@@ -15,7 +16,8 @@ public class MainApp {
 	}
 
 	public static void main(final String[] args) {
-		pTalkEngineRuntime = new PTalkEngineRuntime(false, args);
+		final GlobalConfiguration configuration = new GlobalConfiguration();
+		pTalkEngineRuntime = new PTalkEngineRuntime(configuration);
 		runAppUntilStop(pTalkEngineRuntime);
 	}
 

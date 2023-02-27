@@ -84,6 +84,16 @@ public final class PtaskAbilityApi {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ability_MemoryContextReply_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GeneralConfigurationRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GeneralConfigurationRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ability_GeneralConfigurationReply_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ability_GeneralConfigurationReply_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -111,27 +121,31 @@ public final class PtaskAbilityApi {
       "uest\"\030\n\026DumpConfigurationReply\"\032\n\030PushCo" +
       "nfigurationRequest\"\030\n\026PushConfigurationR" +
       "eply\"\026\n\024MemoryContextRequest\"\024\n\022MemoryCo" +
-      "ntextReply2\311\003\n\020RpcAbilityCoreV1\022:\n\nReply" +
-      "Async\022\034.ability.AbilityMessageReply\032\014.ba" +
-      "se.Status\"\000\022M\n\rRegisterRules\022\035.ability.R" +
-      "egisterRulesRequest\032\033.ability.RegisterRu" +
-      "lesReply\"\000\022D\n\nCancelRule\022\032.ability.Cance" +
-      "lRuleRequest\032\030.ability.CancelRuleReply\"\000" +
-      "\022A\n\tListRules\022\031.ability.ListRulesRequest" +
-      "\032\027.ability.ListRulesReply\"\000\022F\n\006Memory\022\035." +
-      "ability.MemoryContextRequest\032\033.ability.M" +
-      "emoryContextReply\"\000\022Y\n\021DumpConfiguration" +
-      "\022!.ability.DumpConfigurationRequest\032\037.ab" +
-      "ility.DumpConfigurationReply\"\0002\233\001\n\020RpcAb" +
-      "ilityUnitV1\022J\n\010CallSync\022\036.ability.Abilit" +
-      "yMessageRequest\032\034.ability.AbilityMessage" +
-      "Reply\"\000\022;\n\tCallAsync\022\036.ability.AbilityMe" +
-      "ssageRequest\032\014.base.Status\"\0002r\n\025RpcSuper" +
-      "AbilityCoreV1\022Y\n\021PushConfiguration\022!.abi" +
-      "lity.PushConfigurationRequest\032\037.ability." +
-      "PushConfigurationReply\"\000B4\n\037net.rossonet" +
-      ".ptalk.ability.grpcB\017PtaskAbilityApiP\001b\006" +
-      "proto3"
+      "ntextReply\"\035\n\033GeneralConfigurationReques" +
+      "t\"\033\n\031GeneralConfigurationReply2\322\003\n\020RpcAb" +
+      "ilityCoreV1\022:\n\nReplyAsync\022\034.ability.Abil" +
+      "ityMessageReply\032\014.base.Status\"\000\022M\n\rRegis" +
+      "terRules\022\035.ability.RegisterRulesRequest\032" +
+      "\033.ability.RegisterRulesReply\"\000\022D\n\nCancel" +
+      "Rule\022\032.ability.CancelRuleRequest\032\030.abili" +
+      "ty.CancelRuleReply\"\000\022A\n\tListRules\022\031.abil" +
+      "ity.ListRulesRequest\032\027.ability.ListRules" +
+      "Reply\"\000\022F\n\006Memory\022\035.ability.MemoryContex" +
+      "tRequest\032\033.ability.MemoryContextReply\"\000\022" +
+      "b\n\024GeneralConfiguration\022$.ability.Genera" +
+      "lConfigurationRequest\032\".ability.GeneralC" +
+      "onfigurationReply\"\0002\233\001\n\020RpcAbilityUnitV1" +
+      "\022J\n\010CallSync\022\036.ability.AbilityMessageReq" +
+      "uest\032\034.ability.AbilityMessageReply\"\000\022;\n\t" +
+      "CallAsync\022\036.ability.AbilityMessageReques" +
+      "t\032\014.base.Status\"\0002\315\001\n\025RpcSuperAbilityCor" +
+      "eV1\022Y\n\021PushConfiguration\022!.ability.PushC" +
+      "onfigurationRequest\032\037.ability.PushConfig" +
+      "urationReply\"\000\022Y\n\021DumpConfiguration\022!.ab" +
+      "ility.DumpConfigurationRequest\032\037.ability" +
+      ".DumpConfigurationReply\"\000B4\n\037net.rossone" +
+      "t.ptalk.ability.grpcB\017PtaskAbilityApiP\001b" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -221,6 +235,18 @@ public final class PtaskAbilityApi {
     internal_static_ability_MemoryContextReply_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_MemoryContextReply_descriptor,
+        new java.lang.String[] { });
+    internal_static_ability_GeneralConfigurationRequest_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_ability_GeneralConfigurationRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GeneralConfigurationRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_ability_GeneralConfigurationReply_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_ability_GeneralConfigurationReply_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ability_GeneralConfigurationReply_descriptor,
         new java.lang.String[] { });
     net.rossonet.ptalk.base.grpc.PtalkBaseObject.getDescriptor();
   }
