@@ -1,6 +1,8 @@
 package net.rossonet.ptalk.engine.runtime.fact.memory;
 
-public class MemoryManagerFact {
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
+
+public class MemoryManagerFact implements PTalkFact {
 
 	private final String traceId;
 
@@ -8,6 +10,7 @@ public class MemoryManagerFact {
 		this.traceId = traceId;
 	}
 
+	@Override
 	public String getTraceId() {
 		return traceId;
 	}

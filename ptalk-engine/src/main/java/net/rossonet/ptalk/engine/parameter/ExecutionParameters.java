@@ -4,19 +4,19 @@ import org.json.JSONObject;
 
 public class ExecutionParameters {
 
-	private static final String AI_MANAGER_FACT_LABEL = "ai-manager";
+	private static final String AI_MANAGER_FACT_NAME = "ai-manager";
 
-	private static final String ABILITY_COMMUNICATION_FACT_LABEL = "ability-communication";
+	private static final String ABILITY_COMMUNICATION_FACT_NAME = "ability-communication";
 
-	private static final String EXTENSIONS_MANAGER_FACT_LABEL = "extensions-manager";
+	private static final String EXTENSIONS_MANAGER_FACT_NAME = "extensions-manager";
 
-	private static final String MEMORY_MANAGER_FACT_LABEL = "memory-manager";
+	private static final String MEMORY_MANAGER_FACT_NAME = "memory-manager";
 
-	private static final String NEXT_HOP_FACT_LABEL = "next";
+	private static final String NEXT_HOP_FACT_NAME = "next";
 
-	private static final String NLU_COMMUNICATION_FACT_LABEL = "nlu-communication";
+	private static final String NLU_COMMUNICATION_FACT_NAME = "nlu-communication";
 
-	private static final String SUPER_MANAGER_FACT_LABEL = "super-manager";
+	private static final String SUPER_MANAGER_FACT_NAME = "super-manager";
 
 	private static final String DEFAULT_TIME_UNIT = "milliseconds";
 
@@ -26,65 +26,163 @@ public class ExecutionParameters {
 
 	private static final String DEFAULT_TIMEOUT_MAIN_EXECUTION_MS = "60000";
 
-	public static JSONObject toJson() {
-		// TODO toJson
-		return null;
-	}
+	private static final String AI_MANAGER_FACT_LABEL = "ai-manager-name";
+
+	private static final String ABILITY_COMMUNICATION_FACT_LABEL = "ability-communication-name";
+
+	private static final String EXTENSIONS_MANAGER_FACT_LABEL = "extensions-manager-name";
+
+	private static final String MEMORY_MANAGER_FACT_LABEL = "memory-manager-name";
+
+	private static final String NEXT_HOP_FACT_LABEL = "next-name";
+
+	private static final String NLU_COMMUNICATION_FACT_LABEL = "nlu-communication-name";
+
+	private static final String SUPER_MANAGER_FACT_LABEL = "super-manager-name";
+
+	private static final String MAIN_TIME_UNIT_LABEL = "main-time-unit";
+
+	private static final String PRE_TIME_UNIT_LABEL = "pre-time-unit";
+
+	private static final String POST_TIME_UNIT_LABEL = "post-time-unit";
+
+	private static final String TIMEOUT_PRE_EXECUTION_MS_LABEL = "timeout-pre-execution";
+
+	private static final String TIMEOUT_POST_EXECUTION_MS_LABEL = "timeout-pre-execution";
+
+	private static final String TIMEOUT_MAIN_EXECUTION_MS_LABEL = "timeout-pre-execution";
+
+	private String abilityCommunicationFactName = null;
+
+	private String timeoutPreExecutionTimeUnit = null;
+
+	private String timeoutPreExecution = null;
+
+	private String timeoutPostExecutionTimeUnit = null;
+
+	private String timeoutPostExecution = null;
+
+	private String timeoutMainExecutionTimeUnit = null;
+
+	private String timeoutMainExecution = null;
+
+	private String superManagerFactName = null;
+
+	private String nluCommunicationFactName = null;
+
+	private String nextHopFactName = null;
+
+	private String memoryManagerFactName = null;
+
+	private String extensionsManagerFactName = null;
+
+	private String aiManagerFactName = null;
 
 	public ExecutionParameters(JSONObject executionParameters) {
-		// TODO import da json
+
+		if (executionParameters.has(AI_MANAGER_FACT_LABEL)) {
+			aiManagerFactName = executionParameters.getString(AI_MANAGER_FACT_LABEL);
+		}
+
+		if (executionParameters.has(ABILITY_COMMUNICATION_FACT_LABEL)) {
+			abilityCommunicationFactName = executionParameters.getString(ABILITY_COMMUNICATION_FACT_LABEL);
+		}
+
+		if (executionParameters.has(EXTENSIONS_MANAGER_FACT_LABEL)) {
+			extensionsManagerFactName = executionParameters.getString(EXTENSIONS_MANAGER_FACT_LABEL);
+		}
+
+		if (executionParameters.has(MEMORY_MANAGER_FACT_LABEL)) {
+			memoryManagerFactName = executionParameters.getString(MEMORY_MANAGER_FACT_LABEL);
+		}
+
+		if (executionParameters.has(NEXT_HOP_FACT_LABEL)) {
+			nextHopFactName = executionParameters.getString(NEXT_HOP_FACT_LABEL);
+		}
+
+		if (executionParameters.has(NLU_COMMUNICATION_FACT_LABEL)) {
+			nluCommunicationFactName = executionParameters.getString(NLU_COMMUNICATION_FACT_LABEL);
+		}
+
+		if (executionParameters.has(SUPER_MANAGER_FACT_LABEL)) {
+			superManagerFactName = executionParameters.getString(SUPER_MANAGER_FACT_LABEL);
+		}
+
+		if (executionParameters.has(MAIN_TIME_UNIT_LABEL)) {
+			timeoutMainExecutionTimeUnit = executionParameters.getString(MAIN_TIME_UNIT_LABEL);
+		}
+
+		if (executionParameters.has(PRE_TIME_UNIT_LABEL)) {
+			timeoutPreExecutionTimeUnit = executionParameters.getString(PRE_TIME_UNIT_LABEL);
+		}
+
+		if (executionParameters.has(POST_TIME_UNIT_LABEL)) {
+			timeoutPostExecutionTimeUnit = executionParameters.getString(POST_TIME_UNIT_LABEL);
+		}
+
+		if (executionParameters.has(TIMEOUT_PRE_EXECUTION_MS_LABEL)) {
+			timeoutPreExecution = executionParameters.getString(TIMEOUT_PRE_EXECUTION_MS_LABEL);
+		}
+
+		if (executionParameters.has(TIMEOUT_POST_EXECUTION_MS_LABEL)) {
+			timeoutPostExecution = executionParameters.getString(TIMEOUT_POST_EXECUTION_MS_LABEL);
+		}
+
+		if (executionParameters.has(TIMEOUT_MAIN_EXECUTION_MS_LABEL)) {
+			timeoutMainExecution = executionParameters.getString(TIMEOUT_MAIN_EXECUTION_MS_LABEL);
+		}
 	}
 
-	public String getAbilityCommunicationFactLabel() {
-		return ABILITY_COMMUNICATION_FACT_LABEL;
+	public String getAbilityCommunicationFactName() {
+		return abilityCommunicationFactName != null ? abilityCommunicationFactName : ABILITY_COMMUNICATION_FACT_NAME;
 	}
 
-	public String getAiManagerFactLabel() {
-		return AI_MANAGER_FACT_LABEL;
+	public String getAiManagerFactName() {
+		return aiManagerFactName != null ? aiManagerFactName : AI_MANAGER_FACT_NAME;
 	}
 
-	public String getExtensionsManagerFactLabel() {
-		return EXTENSIONS_MANAGER_FACT_LABEL;
+	public String getExtensionsManagerFactName() {
+		return extensionsManagerFactName != null ? extensionsManagerFactName : EXTENSIONS_MANAGER_FACT_NAME;
 	}
 
-	public String getMemoryManagerFactLabel() {
-		return MEMORY_MANAGER_FACT_LABEL;
+	public String getMemoryManagerFactName() {
+		return memoryManagerFactName != null ? memoryManagerFactName : MEMORY_MANAGER_FACT_NAME;
 	}
 
-	public String getNextHopFactLabel() {
-		return NEXT_HOP_FACT_LABEL;
+	public String getNextHopFactName() {
+		return nextHopFactName != null ? nextHopFactName : NEXT_HOP_FACT_NAME;
 	}
 
-	public String getNluCommunicationFactLabel() {
-		return NLU_COMMUNICATION_FACT_LABEL;
+	public String getNluCommunicationFactName() {
+		return nluCommunicationFactName != null ? nluCommunicationFactName : NLU_COMMUNICATION_FACT_NAME;
 	}
 
-	public String getSuperManagerFactLabel() {
-		return SUPER_MANAGER_FACT_LABEL;
+	public String getSuperManagerFactName() {
+		return superManagerFactName != null ? superManagerFactName : SUPER_MANAGER_FACT_NAME;
 	}
 
 	public String getTimeoutMainExecution() {
-		return DEFAULT_TIMEOUT_MAIN_EXECUTION_MS;
+		return timeoutMainExecution != null ? timeoutMainExecution : DEFAULT_TIMEOUT_MAIN_EXECUTION_MS;
 	}
 
 	public String getTimeoutMainExecutionTimeUnit() {
-		return DEFAULT_TIME_UNIT;
+		return timeoutMainExecutionTimeUnit != null ? timeoutMainExecutionTimeUnit : DEFAULT_TIME_UNIT;
 	}
 
 	public String getTimeoutPostExecution() {
-		return DEFAULT_TIMEOUT_POST_EXECUTION_MS;
+		return timeoutPostExecution != null ? timeoutPostExecution : DEFAULT_TIMEOUT_POST_EXECUTION_MS;
 	}
 
 	public String getTimeoutPostExecutionTimeUnit() {
-		return DEFAULT_TIME_UNIT;
+		return timeoutPostExecutionTimeUnit != null ? timeoutPostExecutionTimeUnit : DEFAULT_TIME_UNIT;
 	}
 
 	public String getTimeoutPreExecution() {
-		return DEFAULT_TIMEOUT_PRE_EXECUTION_MS;
+		return timeoutPreExecution != null ? timeoutPreExecution : DEFAULT_TIMEOUT_PRE_EXECUTION_MS;
 	}
 
 	public String getTimeoutPreExecutionTimeUnit() {
-		return DEFAULT_TIME_UNIT;
+		return timeoutPreExecutionTimeUnit != null ? timeoutPreExecutionTimeUnit : DEFAULT_TIME_UNIT;
 	}
 
 }

@@ -35,28 +35,28 @@ public interface NluTrainingModelRequestOrBuilder extends
   net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder();
 
   /**
-   * <code>string trainingCommand = 3;</code>
-   * @return The trainingCommand.
+   * <code>string trainingJob = 3;</code>
+   * @return The trainingJob.
    */
-  java.lang.String getTrainingCommand();
+  java.lang.String getTrainingJob();
   /**
-   * <code>string trainingCommand = 3;</code>
-   * @return The bytes for trainingCommand.
+   * <code>string trainingJob = 3;</code>
+   * @return The bytes for trainingJob.
    */
   com.google.protobuf.ByteString
-      getTrainingCommandBytes();
+      getTrainingJobBytes();
 
   /**
-   * <code>string testCommand = 4;</code>
-   * @return The testCommand.
+   * <code>string testJob = 4;</code>
+   * @return The testJob.
    */
-  java.lang.String getTestCommand();
+  java.lang.String getTestJob();
   /**
-   * <code>string testCommand = 4;</code>
-   * @return The bytes for testCommand.
+   * <code>string testJob = 4;</code>
+   * @return The bytes for testJob.
    */
   com.google.protobuf.ByteString
-      getTestCommandBytes();
+      getTestJobBytes();
 
   /**
    * <code>repeated .base.Data trainingData = 5;</code>
@@ -107,23 +107,71 @@ public interface NluTrainingModelRequestOrBuilder extends
       int index);
 
   /**
-   * <code>int32 timeoutMinutes = 7;</code>
+   * <code>repeated .base.Data trainingSecret = 7;</code>
+   */
+  java.util.List<net.rossonet.ptalk.base.grpc.Data> 
+      getTrainingSecretList();
+  /**
+   * <code>repeated .base.Data trainingSecret = 7;</code>
+   */
+  net.rossonet.ptalk.base.grpc.Data getTrainingSecret(int index);
+  /**
+   * <code>repeated .base.Data trainingSecret = 7;</code>
+   */
+  int getTrainingSecretCount();
+  /**
+   * <code>repeated .base.Data trainingSecret = 7;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getTrainingSecretOrBuilderList();
+  /**
+   * <code>repeated .base.Data trainingSecret = 7;</code>
+   */
+  net.rossonet.ptalk.base.grpc.DataOrBuilder getTrainingSecretOrBuilder(
+      int index);
+
+  /**
+   * <code>repeated .base.Data testSecret = 8;</code>
+   */
+  java.util.List<net.rossonet.ptalk.base.grpc.Data> 
+      getTestSecretList();
+  /**
+   * <code>repeated .base.Data testSecret = 8;</code>
+   */
+  net.rossonet.ptalk.base.grpc.Data getTestSecret(int index);
+  /**
+   * <code>repeated .base.Data testSecret = 8;</code>
+   */
+  int getTestSecretCount();
+  /**
+   * <code>repeated .base.Data testSecret = 8;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getTestSecretOrBuilderList();
+  /**
+   * <code>repeated .base.Data testSecret = 8;</code>
+   */
+  net.rossonet.ptalk.base.grpc.DataOrBuilder getTestSecretOrBuilder(
+      int index);
+
+  /**
+   * <code>int32 timeoutMinutes = 9;</code>
    * @return The timeoutMinutes.
    */
   int getTimeoutMinutes();
 
   /**
-   * <code>.base.Timestamp timestamp = 8;</code>
+   * <code>.base.Timestamp timestamp = 10;</code>
    * @return Whether the timestamp field is set.
    */
   boolean hasTimestamp();
   /**
-   * <code>.base.Timestamp timestamp = 8;</code>
+   * <code>.base.Timestamp timestamp = 10;</code>
    * @return The timestamp.
    */
   net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
   /**
-   * <code>.base.Timestamp timestamp = 8;</code>
+   * <code>.base.Timestamp timestamp = 10;</code>
    */
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

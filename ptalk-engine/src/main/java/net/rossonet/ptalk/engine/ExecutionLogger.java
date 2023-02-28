@@ -2,6 +2,7 @@ package net.rossonet.ptalk.engine;
 
 import java.io.Closeable;
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.jeasy.rules.api.Facts;
@@ -11,6 +12,7 @@ import org.rossonet.utils.LogHelper;
 
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.runtime.Task;
+import net.rossonet.ptalk.utils.JsonHelper;
 
 public class ExecutionLogger implements Closeable {
 
@@ -92,8 +94,9 @@ public class ExecutionLogger implements Closeable {
 
 	}
 
-	public void mainRules(Task rulesEngineTask, String rulesAsJson) {
-		logger.info("mainRules " + rulesEngineTask.getTraceId() + "\nrulesAsJson" + rulesAsJson);
+	public void mainRules(Task rulesEngineTask, Set<String> set) {
+		logger.info("mainRules " + rulesEngineTask.getTraceId() + "\nrulesAsJson"
+				+ JsonHelper.getJsonArrayFromStringSet(set));
 
 	}
 
@@ -118,8 +121,9 @@ public class ExecutionLogger implements Closeable {
 
 	}
 
-	public void postRules(Task rulesEngineTask, String postRulesAsJson) {
-		logger.info("postRules " + rulesEngineTask.getTraceId() + "\npostRulesAsJson" + postRulesAsJson);
+	public void postRules(Task rulesEngineTask, Set<String> set) {
+		logger.info("postRules " + rulesEngineTask.getTraceId() + "\npostRulesAsJson"
+				+ JsonHelper.getJsonArrayFromStringSet(set));
 
 	}
 
@@ -128,8 +132,9 @@ public class ExecutionLogger implements Closeable {
 
 	}
 
-	public void preRules(Task rulesEngineTask, String preRulesAsJson) {
-		logger.info("preRules " + rulesEngineTask.getTraceId() + "\npreRulesAsJson" + preRulesAsJson);
+	public void preRules(Task rulesEngineTask, Set<String> set) {
+		logger.info("preRules " + rulesEngineTask.getTraceId() + "\npreRulesAsJson"
+				+ JsonHelper.getJsonArrayFromStringSet(set));
 
 	}
 

@@ -8,10 +8,10 @@ public interface TimestampOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 seconds = 1;</code>
-   * @return The seconds.
+   * <code>int64 milliSeconds = 1;</code>
+   * @return The milliSeconds.
    */
-  long getSeconds();
+  long getMilliSeconds();
 
   /**
    * <code>int32 nanos = 2;</code>

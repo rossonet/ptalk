@@ -6,10 +6,19 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.jeasy.rules.api.Facts;
+import org.json.JSONObject;
 
+import net.rossonet.ptalk.ability.grpc.AbilityMessageReply;
 import net.rossonet.ptalk.base.grpc.LifecycleStatus;
+import net.rossonet.ptalk.channel.grpc.ChannelMessageReply;
+import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
+import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.grpc.GrpcCoreService;
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopSchedulerType;
+import net.rossonet.ptalk.nlu.grpc.NluMessageReply;
+import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
+import net.rossonet.ptalk.utils.JsonHelper;
 
 public class PTalkEngineRuntime {
 
@@ -19,20 +28,21 @@ public class PTalkEngineRuntime {
 
 	private final ConfigurationTasksManager configurationTasksManager;
 
-	private final MemoryManagerFactFactory memoryManagerFactFactory;
+	private final PTalkFactFactory memoryManagerFactFactory;
 
-	private final NextHopManagerFactFactory nextHopManagerFactFactory;
+	private final PTalkFactFactory nextHopManagerFactFactory;
 
-	private final NluCommunicationFactFactory nluCommunicationFactFactory;
+	private final PTalkFactFactory nluCommunicationFactFactory;
 
-	private final SuperManagerFactFactory superManagerFactFactory;
+	private final PTalkFactFactory superManagerFactFactory;
 
-	private final AiManagerFactFactory aiManagerFactFactory;
+	private final PTalkFactFactory aiManagerFactFactory;
 
-	private final ExtensionsManagerFactFactory extensionsManagerFactFactory;
+	private final PTalkFactFactory extensionsManagerFactFactory;
 
-	private final AbilityCommunicationFactFactory abilityCommunicationFactFactory;
+	private final PTalkFactFactory abilityCommunicationFactFactory;
 
+	private final PTalkFactFactory[] allPTalkFactFactory;
 	private final ExecutionLogger executionLogger;
 
 	private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
@@ -44,6 +54,8 @@ public class PTalkEngineRuntime {
 	private final ExecutorService hightScheduler;
 
 	private final GlobalConfiguration globalConfiguration;
+
+	private final MemoryManager memoryManager;
 
 	public PTalkEngineRuntime(GlobalConfiguration configuration) {
 		this.globalConfiguration = configuration;
@@ -57,20 +69,30 @@ public class PTalkEngineRuntime {
 		extensionsManagerFactFactory = new ExtensionsManagerFactFactory(this);
 		abilityCommunicationFactFactory = new AbilityCommunicationFactFactory(this);
 		executionLogger = new ExecutionLogger(this);
+		memoryManager = new MemoryManager(this);
 		lifecycleStatus = LifecycleStatus.CONFIGURED;
 		normalScheduler = Executors.newFixedThreadPool(globalConfiguration.getNormalSchedulerThreadSize());
 		lowScheduler = Executors.newSingleThreadExecutor();
 		hightScheduler = Executors.newCachedThreadPool();
 		grpcCoreService = new GrpcCoreService(this, globalConfiguration.getGrpcServerPort());
+		allPTalkFactFactory = new PTalkFactFactory[] { superManagerFactFactory, memoryManagerFactFactory,
+				nextHopManagerFactFactory, abilityCommunicationFactFactory, nluCommunicationFactFactory,
+				aiManagerFactFactory, extensionsManagerFactFactory };
+		updateConfigurationAllFactories();
 		lifecycleStatus = LifecycleStatus.RUNNING;
 	}
 
+	public Future<ChannelMessageReply> channelMessage(ChannelMessageRequest request, boolean async) {
+		// TODO call from channels
+		return null;
+	}
+
 	public AbilityCommunicationFactFactory getAbilityCommunicationFactFactory() {
-		return abilityCommunicationFactFactory;
+		return (AbilityCommunicationFactFactory) abilityCommunicationFactFactory;
 	}
 
 	public AiManagerFactFactory getAiManagerFactFactory() {
-		return aiManagerFactFactory;
+		return (AiManagerFactFactory) aiManagerFactFactory;
 	}
 
 	public ConfigurationTasksManager getConfigurationTasksManager() {
@@ -82,7 +104,7 @@ public class PTalkEngineRuntime {
 	}
 
 	public ExtensionsManagerFactFactory getExtensionsManagerFactFactory() {
-		return extensionsManagerFactFactory;
+		return (ExtensionsManagerFactFactory) extensionsManagerFactFactory;
 	}
 
 	public GlobalConfiguration getGlobalConfiguration() {
@@ -101,6 +123,10 @@ public class PTalkEngineRuntime {
 		return hightScheduler;
 	}
 
+	public JSONObject getJsonConfiguration() {
+		return JsonHelper.generateJsonConfiguration(globalConfiguration, configurationTasksManager);
+	}
+
 	public LifecycleStatus getLifecycleStatus() {
 		return lifecycleStatus;
 	}
@@ -109,16 +135,20 @@ public class PTalkEngineRuntime {
 		return lowScheduler;
 	}
 
+	public MemoryManager getMemoryManager() {
+		return memoryManager;
+	}
+
 	public MemoryManagerFactFactory getMemoryManagerFactFactory() {
-		return memoryManagerFactFactory;
+		return (MemoryManagerFactFactory) memoryManagerFactFactory;
 	}
 
 	public NextHopManagerFactFactory getNextHopManagerFactFactory() {
-		return nextHopManagerFactFactory;
+		return (NextHopManagerFactFactory) nextHopManagerFactFactory;
 	}
 
 	public NluCommunicationFactFactory getNluCommunicationFactFactory() {
-		return nluCommunicationFactFactory;
+		return (NluCommunicationFactFactory) nluCommunicationFactFactory;
 	}
 
 	public ExecutorService getNormalScheduler() {
@@ -126,11 +156,36 @@ public class PTalkEngineRuntime {
 	}
 
 	public SuperManagerFactFactory getSuperManagerFactFactory() {
-		return superManagerFactFactory;
+		return (SuperManagerFactFactory) superManagerFactFactory;
 	}
 
 	public boolean isRunning() {
 		return lifecycleStatus.equals(LifecycleStatus.RUNNING);
+	}
+
+	public void replaceJsonConfiguration(JSONObject jsonConfiguration) throws TaskManagerException {
+		JsonHelper.updateJsonConfiguration(jsonConfiguration, globalConfiguration, configurationTasksManager);
+		updateConfigurationAllFactories();
+	}
+
+	public void replyFromAbilityMessage(AbilityMessageReply request) {
+		// TODO replyFromAbilityMessage
+
+	}
+
+	public Future<ChannelMessageReply> replyFromChannelMessage(ChannelMessageReply request) {
+		// TODO reply of async channle message
+		return null;
+	}
+
+	public void replyFromNluCall(NluMessageReply request) {
+		// TODO reply From NLU call
+
+	}
+
+	public void replyFromNluTrainingRequest(NluTrainingModelReply request) {
+		// TODO reply From NLU training request
+
 	}
 
 	public void stop() {
@@ -190,7 +245,9 @@ public class PTalkEngineRuntime {
 			executionLogger.logGlobalException(e);
 		}
 		lifecycleStatus = LifecycleStatus.STOPPED;
-		notify();
+		synchronized (this) {
+			notifyAll();
+		}
 	}
 
 	public Future<Facts> submit(NextHopSchedulerType nextHopSchedulerType, Callable<Facts> task) {
@@ -213,6 +270,12 @@ public class PTalkEngineRuntime {
 			break;
 		}
 		return result;
+	}
+
+	private void updateConfigurationAllFactories() {
+		for (final PTalkFactFactory ff : allPTalkFactFactory) {
+			ff.updateConfiguration();
+		}
 	}
 
 }

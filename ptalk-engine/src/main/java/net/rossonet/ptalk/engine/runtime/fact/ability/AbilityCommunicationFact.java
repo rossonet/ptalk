@@ -1,6 +1,8 @@
 package net.rossonet.ptalk.engine.runtime.fact.ability;
 
-public class AbilityCommunicationFact {
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
+
+public class AbilityCommunicationFact implements PTalkFact {
 
 	private final String traceId;
 
@@ -8,6 +10,7 @@ public class AbilityCommunicationFact {
 		this.traceId = traceId;
 	}
 
+	@Override
 	public String getTraceId() {
 		return traceId;
 	}

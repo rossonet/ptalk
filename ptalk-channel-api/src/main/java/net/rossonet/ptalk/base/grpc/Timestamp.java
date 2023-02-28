@@ -43,15 +43,15 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.base.grpc.Timestamp.class, net.rossonet.ptalk.base.grpc.Timestamp.Builder.class);
   }
 
-  public static final int SECONDS_FIELD_NUMBER = 1;
-  private long seconds_;
+  public static final int MILLISECONDS_FIELD_NUMBER = 1;
+  private long milliSeconds_;
   /**
-   * <code>int64 seconds = 1;</code>
-   * @return The seconds.
+   * <code>int64 milliSeconds = 1;</code>
+   * @return The milliSeconds.
    */
   @java.lang.Override
-  public long getSeconds() {
-    return seconds_;
+  public long getMilliSeconds() {
+    return milliSeconds_;
   }
 
   public static final int NANOS_FIELD_NUMBER = 2;
@@ -79,8 +79,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (seconds_ != 0L) {
-      output.writeInt64(1, seconds_);
+    if (milliSeconds_ != 0L) {
+      output.writeInt64(1, milliSeconds_);
     }
     if (nanos_ != 0) {
       output.writeInt32(2, nanos_);
@@ -94,9 +94,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (seconds_ != 0L) {
+    if (milliSeconds_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, seconds_);
+        .computeInt64Size(1, milliSeconds_);
     }
     if (nanos_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -117,8 +117,8 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.base.grpc.Timestamp other = (net.rossonet.ptalk.base.grpc.Timestamp) obj;
 
-    if (getSeconds()
-        != other.getSeconds()) return false;
+    if (getMilliSeconds()
+        != other.getMilliSeconds()) return false;
     if (getNanos()
         != other.getNanos()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -132,9 +132,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + SECONDS_FIELD_NUMBER;
+    hash = (37 * hash) + MILLISECONDS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getSeconds());
+        getMilliSeconds());
     hash = (37 * hash) + NANOS_FIELD_NUMBER;
     hash = (53 * hash) + getNanos();
     hash = (29 * hash) + getUnknownFields().hashCode();
@@ -265,7 +265,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      seconds_ = 0L;
+      milliSeconds_ = 0L;
 
       nanos_ = 0;
 
@@ -295,7 +295,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.base.grpc.Timestamp buildPartial() {
       net.rossonet.ptalk.base.grpc.Timestamp result = new net.rossonet.ptalk.base.grpc.Timestamp(this);
-      result.seconds_ = seconds_;
+      result.milliSeconds_ = milliSeconds_;
       result.nanos_ = nanos_;
       onBuilt();
       return result;
@@ -345,8 +345,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.base.grpc.Timestamp other) {
       if (other == net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance()) return this;
-      if (other.getSeconds() != 0L) {
-        setSeconds(other.getSeconds());
+      if (other.getMilliSeconds() != 0L) {
+        setMilliSeconds(other.getMilliSeconds());
       }
       if (other.getNanos() != 0) {
         setNanos(other.getNanos());
@@ -378,7 +378,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              seconds_ = input.readInt64();
+              milliSeconds_ = input.readInt64();
 
               break;
             } // case 8
@@ -403,33 +403,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long seconds_ ;
+    private long milliSeconds_ ;
     /**
-     * <code>int64 seconds = 1;</code>
-     * @return The seconds.
+     * <code>int64 milliSeconds = 1;</code>
+     * @return The milliSeconds.
      */
     @java.lang.Override
-    public long getSeconds() {
-      return seconds_;
+    public long getMilliSeconds() {
+      return milliSeconds_;
     }
     /**
-     * <code>int64 seconds = 1;</code>
-     * @param value The seconds to set.
+     * <code>int64 milliSeconds = 1;</code>
+     * @param value The milliSeconds to set.
      * @return This builder for chaining.
      */
-    public Builder setSeconds(long value) {
+    public Builder setMilliSeconds(long value) {
       
-      seconds_ = value;
+      milliSeconds_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 seconds = 1;</code>
+     * <code>int64 milliSeconds = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearSeconds() {
+    public Builder clearMilliSeconds() {
       
-      seconds_ = 0L;
+      milliSeconds_ = 0L;
       onChanged();
       return this;
     }

@@ -16,19 +16,21 @@ public class MainApp {
 	}
 
 	public static void main(final String[] args) {
-		final GlobalConfiguration configuration = new GlobalConfiguration();
+		final GlobalConfiguration configuration = GlobalConfiguration.getNewBuilder().build();
 		pTalkEngineRuntime = new PTalkEngineRuntime(configuration);
-		runAppUntilStop(pTalkEngineRuntime);
+		runAppUntilStop();
 	}
 
-	public static void runAppUntilStop(PTalkEngineRuntime pTalk) {
+	public static void runAppUntilStop() {
 		logger.info("system started");
 		Thread.currentThread().setName("main");
 		while (pTalkEngineRuntime.isRunning()) {
 			try {
 				logger.info("running");
-				pTalk.wait();
-			} catch (final InterruptedException e) {
+				synchronized (pTalkEngineRuntime) {
+					pTalkEngineRuntime.wait();
+				}
+			} catch (final Exception e) {
 				e.printStackTrace();
 			}
 		}

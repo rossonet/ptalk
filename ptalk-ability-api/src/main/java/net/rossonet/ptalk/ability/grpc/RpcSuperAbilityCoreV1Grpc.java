@@ -77,35 +77,35 @@ public final class RpcSuperAbilityCoreV1Grpc {
     return getDumpConfigurationMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest,
-      net.rossonet.ptalk.ability.grpc.RegisterRulesReply> getRegisterPreRulesMethod;
+  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
+      net.rossonet.ptalk.ability.grpc.RegisterRuleReply> getRegisterPreRuleMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "RegisterPreRules",
-      requestType = net.rossonet.ptalk.ability.grpc.RegisterRulesRequest.class,
-      responseType = net.rossonet.ptalk.ability.grpc.RegisterRulesReply.class,
+      fullMethodName = SERVICE_NAME + '/' + "RegisterPreRule",
+      requestType = net.rossonet.ptalk.ability.grpc.RegisterRuleRequest.class,
+      responseType = net.rossonet.ptalk.ability.grpc.RegisterRuleReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest,
-      net.rossonet.ptalk.ability.grpc.RegisterRulesReply> getRegisterPreRulesMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest, net.rossonet.ptalk.ability.grpc.RegisterRulesReply> getRegisterPreRulesMethod;
-    if ((getRegisterPreRulesMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPreRulesMethod) == null) {
+  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
+      net.rossonet.ptalk.ability.grpc.RegisterRuleReply> getRegisterPreRuleMethod() {
+    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest, net.rossonet.ptalk.ability.grpc.RegisterRuleReply> getRegisterPreRuleMethod;
+    if ((getRegisterPreRuleMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPreRuleMethod) == null) {
       synchronized (RpcSuperAbilityCoreV1Grpc.class) {
-        if ((getRegisterPreRulesMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPreRulesMethod) == null) {
-          RpcSuperAbilityCoreV1Grpc.getRegisterPreRulesMethod = getRegisterPreRulesMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest, net.rossonet.ptalk.ability.grpc.RegisterRulesReply>newBuilder()
+        if ((getRegisterPreRuleMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPreRuleMethod) == null) {
+          RpcSuperAbilityCoreV1Grpc.getRegisterPreRuleMethod = getRegisterPreRuleMethod =
+              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest, net.rossonet.ptalk.ability.grpc.RegisterRuleReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterPreRules"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterPreRule"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.RegisterRulesRequest.getDefaultInstance()))
+                  net.rossonet.ptalk.ability.grpc.RegisterRuleRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.RegisterRulesReply.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcSuperAbilityCoreV1MethodDescriptorSupplier("RegisterPreRules"))
+                  net.rossonet.ptalk.ability.grpc.RegisterRuleReply.getDefaultInstance()))
+              .setSchemaDescriptor(new RpcSuperAbilityCoreV1MethodDescriptorSupplier("RegisterPreRule"))
               .build();
         }
       }
     }
-    return getRegisterPreRulesMethod;
+    return getRegisterPreRuleMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.CancelRuleRequest,
@@ -201,35 +201,35 @@ public final class RpcSuperAbilityCoreV1Grpc {
     return getGetPreRuleMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest,
-      net.rossonet.ptalk.ability.grpc.RegisterRulesReply> getRegisterPostRulesMethod;
+  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
+      net.rossonet.ptalk.ability.grpc.RegisterRuleReply> getRegisterPostRuleMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "RegisterPostRules",
-      requestType = net.rossonet.ptalk.ability.grpc.RegisterRulesRequest.class,
-      responseType = net.rossonet.ptalk.ability.grpc.RegisterRulesReply.class,
+      fullMethodName = SERVICE_NAME + '/' + "RegisterPostRule",
+      requestType = net.rossonet.ptalk.ability.grpc.RegisterRuleRequest.class,
+      responseType = net.rossonet.ptalk.ability.grpc.RegisterRuleReply.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest,
-      net.rossonet.ptalk.ability.grpc.RegisterRulesReply> getRegisterPostRulesMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest, net.rossonet.ptalk.ability.grpc.RegisterRulesReply> getRegisterPostRulesMethod;
-    if ((getRegisterPostRulesMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPostRulesMethod) == null) {
+  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
+      net.rossonet.ptalk.ability.grpc.RegisterRuleReply> getRegisterPostRuleMethod() {
+    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest, net.rossonet.ptalk.ability.grpc.RegisterRuleReply> getRegisterPostRuleMethod;
+    if ((getRegisterPostRuleMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPostRuleMethod) == null) {
       synchronized (RpcSuperAbilityCoreV1Grpc.class) {
-        if ((getRegisterPostRulesMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPostRulesMethod) == null) {
-          RpcSuperAbilityCoreV1Grpc.getRegisterPostRulesMethod = getRegisterPostRulesMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.RegisterRulesRequest, net.rossonet.ptalk.ability.grpc.RegisterRulesReply>newBuilder()
+        if ((getRegisterPostRuleMethod = RpcSuperAbilityCoreV1Grpc.getRegisterPostRuleMethod) == null) {
+          RpcSuperAbilityCoreV1Grpc.getRegisterPostRuleMethod = getRegisterPostRuleMethod =
+              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest, net.rossonet.ptalk.ability.grpc.RegisterRuleReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterPostRules"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RegisterPostRule"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.RegisterRulesRequest.getDefaultInstance()))
+                  net.rossonet.ptalk.ability.grpc.RegisterRuleRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.RegisterRulesReply.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcSuperAbilityCoreV1MethodDescriptorSupplier("RegisterPostRules"))
+                  net.rossonet.ptalk.ability.grpc.RegisterRuleReply.getDefaultInstance()))
+              .setSchemaDescriptor(new RpcSuperAbilityCoreV1MethodDescriptorSupplier("RegisterPostRule"))
               .build();
         }
       }
     }
-    return getRegisterPostRulesMethod;
+    return getRegisterPostRuleMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.CancelRuleRequest,
@@ -451,9 +451,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public void registerPreRules(net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRulesReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterPreRulesMethod(), responseObserver);
+    public void registerPreRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterPreRuleMethod(), responseObserver);
     }
 
     /**
@@ -479,9 +479,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public void registerPostRules(net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRulesReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterPostRulesMethod(), responseObserver);
+    public void registerPostRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterPostRuleMethod(), responseObserver);
     }
 
     /**
@@ -536,12 +536,12 @@ public final class RpcSuperAbilityCoreV1Grpc {
                 net.rossonet.ptalk.ability.grpc.DumpConfigurationReply>(
                   this, METHODID_DUMP_CONFIGURATION)))
           .addMethod(
-            getRegisterPreRulesMethod(),
+            getRegisterPreRuleMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.RegisterRulesRequest,
-                net.rossonet.ptalk.ability.grpc.RegisterRulesReply>(
-                  this, METHODID_REGISTER_PRE_RULES)))
+                net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
+                net.rossonet.ptalk.ability.grpc.RegisterRuleReply>(
+                  this, METHODID_REGISTER_PRE_RULE)))
           .addMethod(
             getCancelPreRuleMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -564,12 +564,12 @@ public final class RpcSuperAbilityCoreV1Grpc {
                 net.rossonet.ptalk.ability.grpc.GetRuleReply>(
                   this, METHODID_GET_PRE_RULE)))
           .addMethod(
-            getRegisterPostRulesMethod(),
+            getRegisterPostRuleMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.RegisterRulesRequest,
-                net.rossonet.ptalk.ability.grpc.RegisterRulesReply>(
-                  this, METHODID_REGISTER_POST_RULES)))
+                net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
+                net.rossonet.ptalk.ability.grpc.RegisterRuleReply>(
+                  this, METHODID_REGISTER_POST_RULE)))
           .addMethod(
             getCancelPostRuleMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -641,10 +641,10 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public void registerPreRules(net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRulesReply> responseObserver) {
+    public void registerPreRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRegisterPreRulesMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getRegisterPreRuleMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -673,10 +673,10 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public void registerPostRules(net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRulesReply> responseObserver) {
+    public void registerPostRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request,
+        io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getRegisterPostRulesMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getRegisterPostRuleMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -750,9 +750,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public net.rossonet.ptalk.ability.grpc.RegisterRulesReply registerPreRules(net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request) {
+    public net.rossonet.ptalk.ability.grpc.RegisterRuleReply registerPreRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRegisterPreRulesMethod(), getCallOptions(), request);
+          getChannel(), getRegisterPreRuleMethod(), getCallOptions(), request);
     }
 
     /**
@@ -778,9 +778,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public net.rossonet.ptalk.ability.grpc.RegisterRulesReply registerPostRules(net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request) {
+    public net.rossonet.ptalk.ability.grpc.RegisterRuleReply registerPostRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getRegisterPostRulesMethod(), getCallOptions(), request);
+          getChannel(), getRegisterPostRuleMethod(), getCallOptions(), request);
     }
 
     /**
@@ -851,10 +851,10 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.RegisterRulesReply> registerPreRules(
-        net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> registerPreRule(
+        net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRegisterPreRulesMethod(), getCallOptions()), request);
+          getChannel().newCall(getRegisterPreRuleMethod(), getCallOptions()), request);
     }
 
     /**
@@ -883,10 +883,10 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.RegisterRulesReply> registerPostRules(
-        net.rossonet.ptalk.ability.grpc.RegisterRulesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> registerPostRule(
+        net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getRegisterPostRulesMethod(), getCallOptions()), request);
+          getChannel().newCall(getRegisterPostRuleMethod(), getCallOptions()), request);
     }
 
     /**
@@ -932,11 +932,11 @@ public final class RpcSuperAbilityCoreV1Grpc {
 
   private static final int METHODID_PUSH_CONFIGURATION = 0;
   private static final int METHODID_DUMP_CONFIGURATION = 1;
-  private static final int METHODID_REGISTER_PRE_RULES = 2;
+  private static final int METHODID_REGISTER_PRE_RULE = 2;
   private static final int METHODID_CANCEL_PRE_RULE = 3;
   private static final int METHODID_LIST_PRE_RULES = 4;
   private static final int METHODID_GET_PRE_RULE = 5;
-  private static final int METHODID_REGISTER_POST_RULES = 6;
+  private static final int METHODID_REGISTER_POST_RULE = 6;
   private static final int METHODID_CANCEL_POST_RULE = 7;
   private static final int METHODID_LIST_POST_RULES = 8;
   private static final int METHODID_GET_POST_RULE = 9;
@@ -968,9 +968,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
           serviceImpl.dumpConfiguration((net.rossonet.ptalk.ability.grpc.DumpConfigurationRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.DumpConfigurationReply>) responseObserver);
           break;
-        case METHODID_REGISTER_PRE_RULES:
-          serviceImpl.registerPreRules((net.rossonet.ptalk.ability.grpc.RegisterRulesRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRulesReply>) responseObserver);
+        case METHODID_REGISTER_PRE_RULE:
+          serviceImpl.registerPreRule((net.rossonet.ptalk.ability.grpc.RegisterRuleRequest) request,
+              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply>) responseObserver);
           break;
         case METHODID_CANCEL_PRE_RULE:
           serviceImpl.cancelPreRule((net.rossonet.ptalk.ability.grpc.CancelRuleRequest) request,
@@ -984,9 +984,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
           serviceImpl.getPreRule((net.rossonet.ptalk.ability.grpc.GetRuleRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GetRuleReply>) responseObserver);
           break;
-        case METHODID_REGISTER_POST_RULES:
-          serviceImpl.registerPostRules((net.rossonet.ptalk.ability.grpc.RegisterRulesRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRulesReply>) responseObserver);
+        case METHODID_REGISTER_POST_RULE:
+          serviceImpl.registerPostRule((net.rossonet.ptalk.ability.grpc.RegisterRuleRequest) request,
+              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply>) responseObserver);
           break;
         case METHODID_CANCEL_POST_RULE:
           serviceImpl.cancelPostRule((net.rossonet.ptalk.ability.grpc.CancelRuleRequest) request,
@@ -1071,11 +1071,11 @@ public final class RpcSuperAbilityCoreV1Grpc {
               .setSchemaDescriptor(new RpcSuperAbilityCoreV1FileDescriptorSupplier())
               .addMethod(getPushConfigurationMethod())
               .addMethod(getDumpConfigurationMethod())
-              .addMethod(getRegisterPreRulesMethod())
+              .addMethod(getRegisterPreRuleMethod())
               .addMethod(getCancelPreRuleMethod())
               .addMethod(getListPreRulesMethod())
               .addMethod(getGetPreRuleMethod())
-              .addMethod(getRegisterPostRulesMethod())
+              .addMethod(getRegisterPostRuleMethod())
               .addMethod(getCancelPostRuleMethod())
               .addMethod(getListPostRulesMethod())
               .addMethod(getGetPostRuleMethod())

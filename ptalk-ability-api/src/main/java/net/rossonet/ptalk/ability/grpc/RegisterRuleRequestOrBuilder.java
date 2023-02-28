@@ -3,8 +3,8 @@
 
 package net.rossonet.ptalk.ability.grpc;
 
-public interface RegisterRulesRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:ability.RegisterRulesRequest)
+public interface RegisterRuleRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:ability.RegisterRuleRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

@@ -18,6 +18,8 @@ private static final long serialVersionUID = 0L;
   private NluTrainingModelReply() {
     flowReference_ = "";
     status_ = 0;
+    trainingLog_ = java.util.Collections.emptyList();
+    testLog_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -150,10 +152,90 @@ private static final long serialVersionUID = 0L;
     return testTime_;
   }
 
-  public static final int TIMESTAMP_FIELD_NUMBER = 6;
+  public static final int TRAININGLOG_FIELD_NUMBER = 6;
+  private java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> trainingLog_;
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  @java.lang.Override
+  public java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> getTrainingLogList() {
+    return trainingLog_;
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+      getTrainingLogOrBuilderList() {
+    return trainingLog_;
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  @java.lang.Override
+  public int getTrainingLogCount() {
+    return trainingLog_.size();
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.nlu.grpc.TrainingLineLog getTrainingLog(int index) {
+    return trainingLog_.get(index);
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder getTrainingLogOrBuilder(
+      int index) {
+    return trainingLog_.get(index);
+  }
+
+  public static final int TESTLOG_FIELD_NUMBER = 7;
+  private java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> testLog_;
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  @java.lang.Override
+  public java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> getTestLogList() {
+    return testLog_;
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+      getTestLogOrBuilderList() {
+    return testLog_;
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  @java.lang.Override
+  public int getTestLogCount() {
+    return testLog_.size();
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.nlu.grpc.TrainingLineLog getTestLog(int index) {
+    return testLog_.get(index);
+  }
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder getTestLogOrBuilder(
+      int index) {
+    return testLog_.get(index);
+  }
+
+  public static final int TIMESTAMP_FIELD_NUMBER = 8;
   private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
   /**
-   * <code>.base.Timestamp timestamp = 6;</code>
+   * <code>.base.Timestamp timestamp = 8;</code>
    * @return Whether the timestamp field is set.
    */
   @java.lang.Override
@@ -161,7 +243,7 @@ private static final long serialVersionUID = 0L;
     return timestamp_ != null;
   }
   /**
-   * <code>.base.Timestamp timestamp = 6;</code>
+   * <code>.base.Timestamp timestamp = 8;</code>
    * @return The timestamp.
    */
   @java.lang.Override
@@ -169,7 +251,7 @@ private static final long serialVersionUID = 0L;
     return timestamp_ == null ? net.rossonet.ptalk.base.grpc.Timestamp.getDefaultInstance() : timestamp_;
   }
   /**
-   * <code>.base.Timestamp timestamp = 6;</code>
+   * <code>.base.Timestamp timestamp = 8;</code>
    */
   @java.lang.Override
   public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
@@ -205,8 +287,14 @@ private static final long serialVersionUID = 0L;
     if (testTime_ != 0L) {
       output.writeInt64(5, testTime_);
     }
+    for (int i = 0; i < trainingLog_.size(); i++) {
+      output.writeMessage(6, trainingLog_.get(i));
+    }
+    for (int i = 0; i < testLog_.size(); i++) {
+      output.writeMessage(7, testLog_.get(i));
+    }
     if (timestamp_ != null) {
-      output.writeMessage(6, getTimestamp());
+      output.writeMessage(8, getTimestamp());
     }
     getUnknownFields().writeTo(output);
   }
@@ -236,9 +324,17 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(5, testTime_);
     }
+    for (int i = 0; i < trainingLog_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, trainingLog_.get(i));
+    }
+    for (int i = 0; i < testLog_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(7, testLog_.get(i));
+    }
     if (timestamp_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getTimestamp());
+        .computeMessageSize(8, getTimestamp());
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -267,6 +363,10 @@ private static final long serialVersionUID = 0L;
         != other.getTrainingTime()) return false;
     if (getTestTime()
         != other.getTestTime()) return false;
+    if (!getTrainingLogList()
+        .equals(other.getTrainingLogList())) return false;
+    if (!getTestLogList()
+        .equals(other.getTestLogList())) return false;
     if (hasTimestamp() != other.hasTimestamp()) return false;
     if (hasTimestamp()) {
       if (!getTimestamp()
@@ -297,6 +397,14 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + TESTTIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTestTime());
+    if (getTrainingLogCount() > 0) {
+      hash = (37 * hash) + TRAININGLOG_FIELD_NUMBER;
+      hash = (53 * hash) + getTrainingLogList().hashCode();
+    }
+    if (getTestLogCount() > 0) {
+      hash = (37 * hash) + TESTLOG_FIELD_NUMBER;
+      hash = (53 * hash) + getTestLogList().hashCode();
+    }
     if (hasTimestamp()) {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + getTimestamp().hashCode();
@@ -443,6 +551,20 @@ private static final long serialVersionUID = 0L;
 
       testTime_ = 0L;
 
+      if (trainingLogBuilder_ == null) {
+        trainingLog_ = java.util.Collections.emptyList();
+      } else {
+        trainingLog_ = null;
+        trainingLogBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
+      if (testLogBuilder_ == null) {
+        testLog_ = java.util.Collections.emptyList();
+      } else {
+        testLog_ = null;
+        testLogBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
       if (timestampBuilder_ == null) {
         timestamp_ = null;
       } else {
@@ -475,6 +597,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply buildPartial() {
       net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply result = new net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply(this);
+      int from_bitField0_ = bitField0_;
       result.flowReference_ = flowReference_;
       if (modelBuilder_ == null) {
         result.model_ = model_;
@@ -484,6 +607,24 @@ private static final long serialVersionUID = 0L;
       result.status_ = status_;
       result.trainingTime_ = trainingTime_;
       result.testTime_ = testTime_;
+      if (trainingLogBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          trainingLog_ = java.util.Collections.unmodifiableList(trainingLog_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.trainingLog_ = trainingLog_;
+      } else {
+        result.trainingLog_ = trainingLogBuilder_.build();
+      }
+      if (testLogBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) != 0)) {
+          testLog_ = java.util.Collections.unmodifiableList(testLog_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.testLog_ = testLog_;
+      } else {
+        result.testLog_ = testLogBuilder_.build();
+      }
       if (timestampBuilder_ == null) {
         result.timestamp_ = timestamp_;
       } else {
@@ -553,6 +694,58 @@ private static final long serialVersionUID = 0L;
       if (other.getTestTime() != 0L) {
         setTestTime(other.getTestTime());
       }
+      if (trainingLogBuilder_ == null) {
+        if (!other.trainingLog_.isEmpty()) {
+          if (trainingLog_.isEmpty()) {
+            trainingLog_ = other.trainingLog_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureTrainingLogIsMutable();
+            trainingLog_.addAll(other.trainingLog_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.trainingLog_.isEmpty()) {
+          if (trainingLogBuilder_.isEmpty()) {
+            trainingLogBuilder_.dispose();
+            trainingLogBuilder_ = null;
+            trainingLog_ = other.trainingLog_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            trainingLogBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getTrainingLogFieldBuilder() : null;
+          } else {
+            trainingLogBuilder_.addAllMessages(other.trainingLog_);
+          }
+        }
+      }
+      if (testLogBuilder_ == null) {
+        if (!other.testLog_.isEmpty()) {
+          if (testLog_.isEmpty()) {
+            testLog_ = other.testLog_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureTestLogIsMutable();
+            testLog_.addAll(other.testLog_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.testLog_.isEmpty()) {
+          if (testLogBuilder_.isEmpty()) {
+            testLogBuilder_.dispose();
+            testLogBuilder_ = null;
+            testLog_ = other.testLog_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+            testLogBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getTestLogFieldBuilder() : null;
+          } else {
+            testLogBuilder_.addAllMessages(other.testLog_);
+          }
+        }
+      }
       if (other.hasTimestamp()) {
         mergeTimestamp(other.getTimestamp());
       }
@@ -610,12 +803,38 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 40
             case 50: {
+              net.rossonet.ptalk.nlu.grpc.TrainingLineLog m =
+                  input.readMessage(
+                      net.rossonet.ptalk.nlu.grpc.TrainingLineLog.parser(),
+                      extensionRegistry);
+              if (trainingLogBuilder_ == null) {
+                ensureTrainingLogIsMutable();
+                trainingLog_.add(m);
+              } else {
+                trainingLogBuilder_.addMessage(m);
+              }
+              break;
+            } // case 50
+            case 58: {
+              net.rossonet.ptalk.nlu.grpc.TrainingLineLog m =
+                  input.readMessage(
+                      net.rossonet.ptalk.nlu.grpc.TrainingLineLog.parser(),
+                      extensionRegistry);
+              if (testLogBuilder_ == null) {
+                ensureTestLogIsMutable();
+                testLog_.add(m);
+              } else {
+                testLogBuilder_.addMessage(m);
+              }
+              break;
+            } // case 58
+            case 66: {
               input.readMessage(
                   getTimestampFieldBuilder().getBuilder(),
                   extensionRegistry);
 
               break;
-            } // case 50
+            } // case 66
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -631,6 +850,7 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int bitField0_;
 
     private java.lang.Object flowReference_ = "";
     /**
@@ -943,18 +1163,498 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> trainingLog_ =
+      java.util.Collections.emptyList();
+    private void ensureTrainingLogIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        trainingLog_ = new java.util.ArrayList<net.rossonet.ptalk.nlu.grpc.TrainingLineLog>(trainingLog_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.TrainingLineLog, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder, net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> trainingLogBuilder_;
+
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> getTrainingLogList() {
+      if (trainingLogBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(trainingLog_);
+      } else {
+        return trainingLogBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public int getTrainingLogCount() {
+      if (trainingLogBuilder_ == null) {
+        return trainingLog_.size();
+      } else {
+        return trainingLogBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog getTrainingLog(int index) {
+      if (trainingLogBuilder_ == null) {
+        return trainingLog_.get(index);
+      } else {
+        return trainingLogBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder setTrainingLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog value) {
+      if (trainingLogBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTrainingLogIsMutable();
+        trainingLog_.set(index, value);
+        onChanged();
+      } else {
+        trainingLogBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder setTrainingLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder builderForValue) {
+      if (trainingLogBuilder_ == null) {
+        ensureTrainingLogIsMutable();
+        trainingLog_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        trainingLogBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder addTrainingLog(net.rossonet.ptalk.nlu.grpc.TrainingLineLog value) {
+      if (trainingLogBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTrainingLogIsMutable();
+        trainingLog_.add(value);
+        onChanged();
+      } else {
+        trainingLogBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder addTrainingLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog value) {
+      if (trainingLogBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTrainingLogIsMutable();
+        trainingLog_.add(index, value);
+        onChanged();
+      } else {
+        trainingLogBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder addTrainingLog(
+        net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder builderForValue) {
+      if (trainingLogBuilder_ == null) {
+        ensureTrainingLogIsMutable();
+        trainingLog_.add(builderForValue.build());
+        onChanged();
+      } else {
+        trainingLogBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder addTrainingLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder builderForValue) {
+      if (trainingLogBuilder_ == null) {
+        ensureTrainingLogIsMutable();
+        trainingLog_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        trainingLogBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder addAllTrainingLog(
+        java.lang.Iterable<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLog> values) {
+      if (trainingLogBuilder_ == null) {
+        ensureTrainingLogIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, trainingLog_);
+        onChanged();
+      } else {
+        trainingLogBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder clearTrainingLog() {
+      if (trainingLogBuilder_ == null) {
+        trainingLog_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        trainingLogBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public Builder removeTrainingLog(int index) {
+      if (trainingLogBuilder_ == null) {
+        ensureTrainingLogIsMutable();
+        trainingLog_.remove(index);
+        onChanged();
+      } else {
+        trainingLogBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder getTrainingLogBuilder(
+        int index) {
+      return getTrainingLogFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder getTrainingLogOrBuilder(
+        int index) {
+      if (trainingLogBuilder_ == null) {
+        return trainingLog_.get(index);  } else {
+        return trainingLogBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public java.util.List<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+         getTrainingLogOrBuilderList() {
+      if (trainingLogBuilder_ != null) {
+        return trainingLogBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(trainingLog_);
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder addTrainingLogBuilder() {
+      return getTrainingLogFieldBuilder().addBuilder(
+          net.rossonet.ptalk.nlu.grpc.TrainingLineLog.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder addTrainingLogBuilder(
+        int index) {
+      return getTrainingLogFieldBuilder().addBuilder(
+          index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder> 
+         getTrainingLogBuilderList() {
+      return getTrainingLogFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.TrainingLineLog, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder, net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+        getTrainingLogFieldBuilder() {
+      if (trainingLogBuilder_ == null) {
+        trainingLogBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            net.rossonet.ptalk.nlu.grpc.TrainingLineLog, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder, net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder>(
+                trainingLog_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        trainingLog_ = null;
+      }
+      return trainingLogBuilder_;
+    }
+
+    private java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> testLog_ =
+      java.util.Collections.emptyList();
+    private void ensureTestLogIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        testLog_ = new java.util.ArrayList<net.rossonet.ptalk.nlu.grpc.TrainingLineLog>(testLog_);
+        bitField0_ |= 0x00000002;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.TrainingLineLog, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder, net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> testLogBuilder_;
+
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> getTestLogList() {
+      if (testLogBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(testLog_);
+      } else {
+        return testLogBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public int getTestLogCount() {
+      if (testLogBuilder_ == null) {
+        return testLog_.size();
+      } else {
+        return testLogBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog getTestLog(int index) {
+      if (testLogBuilder_ == null) {
+        return testLog_.get(index);
+      } else {
+        return testLogBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder setTestLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog value) {
+      if (testLogBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTestLogIsMutable();
+        testLog_.set(index, value);
+        onChanged();
+      } else {
+        testLogBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder setTestLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder builderForValue) {
+      if (testLogBuilder_ == null) {
+        ensureTestLogIsMutable();
+        testLog_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        testLogBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder addTestLog(net.rossonet.ptalk.nlu.grpc.TrainingLineLog value) {
+      if (testLogBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTestLogIsMutable();
+        testLog_.add(value);
+        onChanged();
+      } else {
+        testLogBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder addTestLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog value) {
+      if (testLogBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTestLogIsMutable();
+        testLog_.add(index, value);
+        onChanged();
+      } else {
+        testLogBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder addTestLog(
+        net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder builderForValue) {
+      if (testLogBuilder_ == null) {
+        ensureTestLogIsMutable();
+        testLog_.add(builderForValue.build());
+        onChanged();
+      } else {
+        testLogBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder addTestLog(
+        int index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder builderForValue) {
+      if (testLogBuilder_ == null) {
+        ensureTestLogIsMutable();
+        testLog_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        testLogBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder addAllTestLog(
+        java.lang.Iterable<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLog> values) {
+      if (testLogBuilder_ == null) {
+        ensureTestLogIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, testLog_);
+        onChanged();
+      } else {
+        testLogBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder clearTestLog() {
+      if (testLogBuilder_ == null) {
+        testLog_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+      } else {
+        testLogBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public Builder removeTestLog(int index) {
+      if (testLogBuilder_ == null) {
+        ensureTestLogIsMutable();
+        testLog_.remove(index);
+        onChanged();
+      } else {
+        testLogBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder getTestLogBuilder(
+        int index) {
+      return getTestLogFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder getTestLogOrBuilder(
+        int index) {
+      if (testLogBuilder_ == null) {
+        return testLog_.get(index);  } else {
+        return testLogBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public java.util.List<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+         getTestLogOrBuilderList() {
+      if (testLogBuilder_ != null) {
+        return testLogBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(testLog_);
+      }
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder addTestLogBuilder() {
+      return getTestLogFieldBuilder().addBuilder(
+          net.rossonet.ptalk.nlu.grpc.TrainingLineLog.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder addTestLogBuilder(
+        int index) {
+      return getTestLogFieldBuilder().addBuilder(
+          index, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder> 
+         getTestLogBuilderList() {
+      return getTestLogFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.nlu.grpc.TrainingLineLog, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder, net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+        getTestLogFieldBuilder() {
+      if (testLogBuilder_ == null) {
+        testLogBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            net.rossonet.ptalk.nlu.grpc.TrainingLineLog, net.rossonet.ptalk.nlu.grpc.TrainingLineLog.Builder, net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder>(
+                testLog_,
+                ((bitField0_ & 0x00000002) != 0),
+                getParentForChildren(),
+                isClean());
+        testLog_ = null;
+      }
+      return testLogBuilder_;
+    }
+
     private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
     private com.google.protobuf.SingleFieldBuilderV3<
         net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> timestampBuilder_;
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      * @return Whether the timestamp field is set.
      */
     public boolean hasTimestamp() {
       return timestampBuilder_ != null || timestamp_ != null;
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      * @return The timestamp.
      */
     public net.rossonet.ptalk.base.grpc.Timestamp getTimestamp() {
@@ -965,7 +1665,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      */
     public Builder setTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
       if (timestampBuilder_ == null) {
@@ -981,7 +1681,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      */
     public Builder setTimestamp(
         net.rossonet.ptalk.base.grpc.Timestamp.Builder builderForValue) {
@@ -995,7 +1695,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      */
     public Builder mergeTimestamp(net.rossonet.ptalk.base.grpc.Timestamp value) {
       if (timestampBuilder_ == null) {
@@ -1013,7 +1713,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      */
     public Builder clearTimestamp() {
       if (timestampBuilder_ == null) {
@@ -1027,7 +1727,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      */
     public net.rossonet.ptalk.base.grpc.Timestamp.Builder getTimestampBuilder() {
       
@@ -1035,7 +1735,7 @@ private static final long serialVersionUID = 0L;
       return getTimestampFieldBuilder().getBuilder();
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      */
     public net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder() {
       if (timestampBuilder_ != null) {
@@ -1046,7 +1746,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.base.Timestamp timestamp = 6;</code>
+     * <code>.base.Timestamp timestamp = 8;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         net.rossonet.ptalk.base.grpc.Timestamp, net.rossonet.ptalk.base.grpc.Timestamp.Builder, net.rossonet.ptalk.base.grpc.TimestampOrBuilder> 

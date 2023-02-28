@@ -76,24 +76,24 @@ class RulesEngineTask implements Task {
 	}
 
 	private void addPostFireFacts() {
-		workingFacts.add(new Fact<SuperManagerFact>(executionParameters.getSuperManagerFactLabel(),
+		workingFacts.add(new Fact<SuperManagerFact>(executionParameters.getSuperManagerFactName(),
 				pTalkEngineRuntime.getSuperManagerFactFactory().getOrCreate(this)));
-		workingFacts.add(new Fact<NextHopManagerFact>(executionParameters.getNextHopFactLabel(),
+		workingFacts.add(new Fact<NextHopManagerFact>(executionParameters.getNextHopFactName(),
 				pTalkEngineRuntime.getNextHopManagerFactFactory().getOrCreate(this)));
 	}
 
 	private void addPreFireFacts() {
-		workingFacts.add(new Fact<SuperManagerFact>(executionParameters.getSuperManagerFactLabel(),
+		workingFacts.add(new Fact<SuperManagerFact>(executionParameters.getSuperManagerFactName(),
 				pTalkEngineRuntime.getSuperManagerFactFactory().getOrCreate(this)));
-		workingFacts.add(new Fact<MemoryManagerFact>(executionParameters.getMemoryManagerFactLabel(),
+		workingFacts.add(new Fact<MemoryManagerFact>(executionParameters.getMemoryManagerFactName(),
 				pTalkEngineRuntime.getMemoryManagerFactFactory().getOrCreate(this)));
-		workingFacts.add(new Fact<AiManagerFact>(executionParameters.getAiManagerFactLabel(),
+		workingFacts.add(new Fact<AiManagerFact>(executionParameters.getAiManagerFactName(),
 				pTalkEngineRuntime.getAiManagerFactFactory().getOrCreate(this)));
-		workingFacts.add(new Fact<ExtensionsManagerFact>(executionParameters.getExtensionsManagerFactLabel(),
+		workingFacts.add(new Fact<ExtensionsManagerFact>(executionParameters.getExtensionsManagerFactName(),
 				pTalkEngineRuntime.getExtensionsManagerFactFactory().getOrCreate(this)));
-		workingFacts.add(new Fact<AbilityCommunicationFact>(executionParameters.getAbilityCommunicationFactLabel(),
+		workingFacts.add(new Fact<AbilityCommunicationFact>(executionParameters.getAbilityCommunicationFactName(),
 				pTalkEngineRuntime.getAbilityCommunicationFactFactory().getOrCreate(this)));
-		workingFacts.add(new Fact<NluCommunicationFact>(executionParameters.getNluCommunicationFactLabel(),
+		workingFacts.add(new Fact<NluCommunicationFact>(executionParameters.getNluCommunicationFactName(),
 				pTalkEngineRuntime.getNluCommunicationFactFactory().getOrCreate(this)));
 	}
 
@@ -315,7 +315,7 @@ class RulesEngineTask implements Task {
 			}
 			throw fireException;
 		}
-		nextHops = ((Fact<NextHopManagerFact>) workingFacts.getFact(executionParameters.getNextHopFactLabel()))
+		nextHops = ((Fact<NextHopManagerFact>) workingFacts.getFact(executionParameters.getNextHopFactName()))
 				.getValue().getNextHops();
 		removeAllManagerFactsAfterPostFire();
 		executionStatus = ExecutionStatus.POST_EXECUTION_COMPLETED;
@@ -349,13 +349,13 @@ class RulesEngineTask implements Task {
 	}
 
 	private void removeAllManagerFactsAfterPostFire() {
-		workingFacts.remove(executionParameters.getSuperManagerFactLabel());
-		workingFacts.remove(executionParameters.getMemoryManagerFactLabel());
-		workingFacts.remove(executionParameters.getAiManagerFactLabel());
-		workingFacts.remove(executionParameters.getExtensionsManagerFactLabel());
-		workingFacts.remove(executionParameters.getAbilityCommunicationFactLabel());
-		workingFacts.remove(executionParameters.getNluCommunicationFactLabel());
-		workingFacts.remove(executionParameters.getNextHopFactLabel());
+		workingFacts.remove(executionParameters.getSuperManagerFactName());
+		workingFacts.remove(executionParameters.getMemoryManagerFactName());
+		workingFacts.remove(executionParameters.getAiManagerFactName());
+		workingFacts.remove(executionParameters.getExtensionsManagerFactName());
+		workingFacts.remove(executionParameters.getAbilityCommunicationFactName());
+		workingFacts.remove(executionParameters.getNluCommunicationFactName());
+		workingFacts.remove(executionParameters.getNextHopFactName());
 		pTalkEngineRuntime.getSuperManagerFactFactory().remove(this);
 		pTalkEngineRuntime.getMemoryManagerFactFactory().remove(this);
 		pTalkEngineRuntime.getAiManagerFactFactory().remove(this);
@@ -365,7 +365,7 @@ class RulesEngineTask implements Task {
 	}
 
 	private void removePreFireFacts() {
-		workingFacts.remove(executionParameters.getSuperManagerFactLabel());
+		workingFacts.remove(executionParameters.getSuperManagerFactName());
 	}
 
 }

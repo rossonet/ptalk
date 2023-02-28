@@ -1,14 +1,14 @@
 package net.rossonet.ptalk.engine;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import net.rossonet.ptalk.engine.runtime.Task;
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopManagerFact;
 
-public class NextHopManagerFactFactory implements Closeable {
+public class NextHopManagerFactFactory implements PTalkFactFactory {
 
 	private final Map<String, NextHopManagerFact> facts = new HashMap<>();
 	private final PTalkEngineRuntime pTalkEngineRuntime;
@@ -23,6 +23,7 @@ public class NextHopManagerFactFactory implements Closeable {
 
 	}
 
+	@Override
 	public NextHopManagerFact getOrCreate(Task rulesEngineTask) {
 		if (facts.containsKey(rulesEngineTask.getTraceId())) {
 			return facts.get(rulesEngineTask.getTraceId());
@@ -37,10 +38,18 @@ public class NextHopManagerFactFactory implements Closeable {
 		return pTalkEngineRuntime;
 	}
 
+	@Override
 	public void remove(Task rulesEngineTask) {
 		if (facts.containsKey(rulesEngineTask.getTraceId())) {
 			facts.remove(rulesEngineTask.getTraceId());
 		}
+	}
+
+	@Override
+	public void updateConfiguration() {
+		// forse da migliorare
+		facts.clear();
+
 	}
 
 }

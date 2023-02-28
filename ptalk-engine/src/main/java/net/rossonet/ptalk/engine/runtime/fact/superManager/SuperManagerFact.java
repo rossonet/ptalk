@@ -1,6 +1,8 @@
 package net.rossonet.ptalk.engine.runtime.fact.superManager;
 
-public class SuperManagerFact {
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
+
+public class SuperManagerFact implements PTalkFact {
 
 	private final String traceId;
 
@@ -8,6 +10,7 @@ public class SuperManagerFact {
 		this.traceId = traceId;
 	}
 
+	@Override
 	public String getTraceId() {
 		return traceId;
 	}

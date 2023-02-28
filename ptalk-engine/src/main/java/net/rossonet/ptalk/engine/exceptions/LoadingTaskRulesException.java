@@ -2,7 +2,7 @@ package net.rossonet.ptalk.engine.exceptions;
 
 public class LoadingTaskRulesException extends TaskManagerException {
 
-	private static final long serialVersionUID = 5665313227782005753L;
+	private static final long serialVersionUID = -2471654084779285542L;
 
 	public LoadingTaskRulesException(Exception cause) {
 		super(cause);

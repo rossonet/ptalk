@@ -58,17 +58,65 @@ public interface NluTrainingModelReplyOrBuilder extends
   long getTestTime();
 
   /**
-   * <code>.base.Timestamp timestamp = 6;</code>
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> 
+      getTrainingLogList();
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  net.rossonet.ptalk.nlu.grpc.TrainingLineLog getTrainingLog(int index);
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  int getTrainingLogCount();
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+      getTrainingLogOrBuilderList();
+  /**
+   * <code>repeated .nlu.TrainingLineLog trainingLog = 6;</code>
+   */
+  net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder getTrainingLogOrBuilder(
+      int index);
+
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  java.util.List<net.rossonet.ptalk.nlu.grpc.TrainingLineLog> 
+      getTestLogList();
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  net.rossonet.ptalk.nlu.grpc.TrainingLineLog getTestLog(int index);
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  int getTestLogCount();
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder> 
+      getTestLogOrBuilderList();
+  /**
+   * <code>repeated .nlu.TrainingLineLog testLog = 7;</code>
+   */
+  net.rossonet.ptalk.nlu.grpc.TrainingLineLogOrBuilder getTestLogOrBuilder(
+      int index);
+
+  /**
+   * <code>.base.Timestamp timestamp = 8;</code>
    * @return Whether the timestamp field is set.
    */
   boolean hasTimestamp();
   /**
-   * <code>.base.Timestamp timestamp = 6;</code>
+   * <code>.base.Timestamp timestamp = 8;</code>
    * @return The timestamp.
    */
   net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
   /**
-   * <code>.base.Timestamp timestamp = 6;</code>
+   * <code>.base.Timestamp timestamp = 8;</code>
    */
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }

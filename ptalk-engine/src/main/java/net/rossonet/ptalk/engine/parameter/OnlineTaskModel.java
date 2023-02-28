@@ -1,28 +1,54 @@
 package net.rossonet.ptalk.engine.parameter;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
+import net.rossonet.ptalk.utils.JsonHelper;
 
 public class OnlineTaskModel implements Serializable {
 
+	private static final String POST_RULES_LABEL = "post-rules";
+	private static final String MAIN_RULES_LABEL = "main-rules";
+	private static final String PRE_RULES_LABEL = "pre-rules";
 	private static final long serialVersionUID = -9139834337155333462L;
-	private String executionParameter;
-	private String mainRules;
-	private String postRules;
-	private String preRules;
+	private static final String EXECUTION_PARAMETER_LABEL = null;
+	private String executionParameter = null;
+	private Set<String> mainRules = new HashSet<>();
+	private Set<String> postRules = new HashSet<>();
+	private Set<String> preRules = new HashSet<>();
 
 	private String modelName;
 
 	public OnlineTaskModel(JSONObject jsonTask) {
-		// TODO import da json
+		if (jsonTask.has(MAIN_RULES_LABEL)) {
+			final JSONArray mainJsonArray = jsonTask.getJSONArray(MAIN_RULES_LABEL);
+			for (int i = 0; mainJsonArray.length() < i; i++) {
+				mainRules.add(mainJsonArray.getJSONObject(i).toString(0));
+			}
+		}
+		if (jsonTask.has(PRE_RULES_LABEL)) {
+			final JSONArray preJsonArray = jsonTask.getJSONArray(PRE_RULES_LABEL);
+			for (int i = 0; preJsonArray.length() < i; i++) {
+				preRules.add(preJsonArray.getJSONObject(i).toString(0));
+			}
+		}
+		if (jsonTask.has(POST_RULES_LABEL)) {
+			final JSONArray postJsonArray = jsonTask.getJSONArray(POST_RULES_LABEL);
+			for (int i = 0; postJsonArray.length() < i; i++) {
+				postRules.add(postJsonArray.getJSONObject(i).toString(0));
+			}
+		}
 	}
 
 	public String getExecutionParameter() {
 		return executionParameter;
 	}
 
-	public String getMainRulesAsString() {
+	public Set<String> getMainRulesAsString() {
 		return mainRules;
 	}
 
@@ -30,11 +56,11 @@ public class OnlineTaskModel implements Serializable {
 		return modelName;
 	}
 
-	public String getPostRulesAsString() {
+	public Set<String> getPostRulesAsString() {
 		return postRules;
 	}
 
-	public String getPreRulesAsString() {
+	public Set<String> getPreRulesAsString() {
 		return preRules;
 	}
 
@@ -42,7 +68,7 @@ public class OnlineTaskModel implements Serializable {
 		this.executionParameter = executionParameter;
 	}
 
-	public void setMainRules(String mainRules) {
+	public void setMainRules(Set<String> mainRules) {
 		this.mainRules = mainRules;
 	}
 
@@ -50,17 +76,21 @@ public class OnlineTaskModel implements Serializable {
 		this.modelName = modelName;
 	}
 
-	public void setPostRules(String postRules) {
+	public void setPostRules(Set<String> postRules) {
 		this.postRules = postRules;
 	}
 
-	public void setPreRules(String preRules) {
+	public void setPreRules(Set<String> preRules) {
 		this.preRules = preRules;
 	}
 
 	public JSONObject toJson() {
-		// TODO toJson
-		return null;
+		final JSONObject reply = new JSONObject();
+		reply.put(EXECUTION_PARAMETER_LABEL, new JSONObject(executionParameter));
+		reply.put(PRE_RULES_LABEL, JsonHelper.getJsonArrayFromStringSet(preRules));
+		reply.put(MAIN_RULES_LABEL, JsonHelper.getJsonArrayFromStringSet(mainRules));
+		reply.put(POST_RULES_LABEL, JsonHelper.getJsonArrayFromStringSet(postRules));
+		return reply;
 	}
 
 }

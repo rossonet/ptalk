@@ -4,18 +4,18 @@
 package net.rossonet.ptalk.ability.grpc;
 
 /**
- * Protobuf type {@code ability.RegisterRulesReply}
+ * Protobuf type {@code ability.RegisterRuleReply}
  */
-public final class RegisterRulesReply extends
+public final class RegisterRuleReply extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ability.RegisterRulesReply)
-    RegisterRulesReplyOrBuilder {
+    // @@protoc_insertion_point(message_implements:ability.RegisterRuleReply)
+    RegisterRuleReplyOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use RegisterRulesReply.newBuilder() to construct.
-  private RegisterRulesReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use RegisterRuleReply.newBuilder() to construct.
+  private RegisterRuleReply(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private RegisterRulesReply() {
+  private RegisterRuleReply() {
     flowReference_ = "";
     status_ = 0;
   }
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new RegisterRulesReply();
+    return new RegisterRuleReply();
   }
 
   @java.lang.Override
@@ -34,15 +34,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRulesReply_descriptor;
+    return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRuleReply_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRulesReply_fieldAccessorTable
+    return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRuleReply_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            net.rossonet.ptalk.ability.grpc.RegisterRulesReply.class, net.rossonet.ptalk.ability.grpc.RegisterRulesReply.Builder.class);
+            net.rossonet.ptalk.ability.grpc.RegisterRuleReply.class, net.rossonet.ptalk.ability.grpc.RegisterRuleReply.Builder.class);
   }
 
   public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
@@ -214,10 +214,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof net.rossonet.ptalk.ability.grpc.RegisterRulesReply)) {
+    if (!(obj instanceof net.rossonet.ptalk.ability.grpc.RegisterRuleReply)) {
       return super.equals(obj);
     }
-    net.rossonet.ptalk.ability.grpc.RegisterRulesReply other = (net.rossonet.ptalk.ability.grpc.RegisterRulesReply) obj;
+    net.rossonet.ptalk.ability.grpc.RegisterRuleReply other = (net.rossonet.ptalk.ability.grpc.RegisterRuleReply) obj;
 
     if (!getFlowReference()
         .equals(other.getFlowReference())) return false;
@@ -260,69 +260,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(byte[] data)
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(java.io.InputStream input)
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseDelimitedFrom(java.io.InputStream input)
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseDelimitedFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply parseFrom(
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -335,7 +335,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(net.rossonet.ptalk.ability.grpc.RegisterRulesReply prototype) {
+  public static Builder newBuilder(net.rossonet.ptalk.ability.grpc.RegisterRuleReply prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -351,26 +351,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ability.RegisterRulesReply}
+   * Protobuf type {@code ability.RegisterRuleReply}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ability.RegisterRulesReply)
-      net.rossonet.ptalk.ability.grpc.RegisterRulesReplyOrBuilder {
+      // @@protoc_insertion_point(builder_implements:ability.RegisterRuleReply)
+      net.rossonet.ptalk.ability.grpc.RegisterRuleReplyOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRulesReply_descriptor;
+      return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRuleReply_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRulesReply_fieldAccessorTable
+      return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRuleReply_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              net.rossonet.ptalk.ability.grpc.RegisterRulesReply.class, net.rossonet.ptalk.ability.grpc.RegisterRulesReply.Builder.class);
+              net.rossonet.ptalk.ability.grpc.RegisterRuleReply.class, net.rossonet.ptalk.ability.grpc.RegisterRuleReply.Builder.class);
     }
 
-    // Construct using net.rossonet.ptalk.ability.grpc.RegisterRulesReply.newBuilder()
+    // Construct using net.rossonet.ptalk.ability.grpc.RegisterRuleReply.newBuilder()
     private Builder() {
 
     }
@@ -405,17 +405,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRulesReply_descriptor;
+      return net.rossonet.ptalk.ability.grpc.PtaskAbilityApi.internal_static_ability_RegisterRuleReply_descriptor;
     }
 
     @java.lang.Override
-    public net.rossonet.ptalk.ability.grpc.RegisterRulesReply getDefaultInstanceForType() {
-      return net.rossonet.ptalk.ability.grpc.RegisterRulesReply.getDefaultInstance();
+    public net.rossonet.ptalk.ability.grpc.RegisterRuleReply getDefaultInstanceForType() {
+      return net.rossonet.ptalk.ability.grpc.RegisterRuleReply.getDefaultInstance();
     }
 
     @java.lang.Override
-    public net.rossonet.ptalk.ability.grpc.RegisterRulesReply build() {
-      net.rossonet.ptalk.ability.grpc.RegisterRulesReply result = buildPartial();
+    public net.rossonet.ptalk.ability.grpc.RegisterRuleReply build() {
+      net.rossonet.ptalk.ability.grpc.RegisterRuleReply result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -423,8 +423,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public net.rossonet.ptalk.ability.grpc.RegisterRulesReply buildPartial() {
-      net.rossonet.ptalk.ability.grpc.RegisterRulesReply result = new net.rossonet.ptalk.ability.grpc.RegisterRulesReply(this);
+    public net.rossonet.ptalk.ability.grpc.RegisterRuleReply buildPartial() {
+      net.rossonet.ptalk.ability.grpc.RegisterRuleReply result = new net.rossonet.ptalk.ability.grpc.RegisterRuleReply(this);
       result.flowReference_ = flowReference_;
       if (ruleBuilder_ == null) {
         result.rule_ = rule_;
@@ -475,16 +475,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof net.rossonet.ptalk.ability.grpc.RegisterRulesReply) {
-        return mergeFrom((net.rossonet.ptalk.ability.grpc.RegisterRulesReply)other);
+      if (other instanceof net.rossonet.ptalk.ability.grpc.RegisterRuleReply) {
+        return mergeFrom((net.rossonet.ptalk.ability.grpc.RegisterRuleReply)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(net.rossonet.ptalk.ability.grpc.RegisterRulesReply other) {
-      if (other == net.rossonet.ptalk.ability.grpc.RegisterRulesReply.getDefaultInstance()) return this;
+    public Builder mergeFrom(net.rossonet.ptalk.ability.grpc.RegisterRuleReply other) {
+      if (other == net.rossonet.ptalk.ability.grpc.RegisterRuleReply.getDefaultInstance()) return this;
       if (!other.getFlowReference().isEmpty()) {
         flowReference_ = other.flowReference_;
         onChanged();
@@ -944,23 +944,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ability.RegisterRulesReply)
+    // @@protoc_insertion_point(builder_scope:ability.RegisterRuleReply)
   }
 
-  // @@protoc_insertion_point(class_scope:ability.RegisterRulesReply)
-  private static final net.rossonet.ptalk.ability.grpc.RegisterRulesReply DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:ability.RegisterRuleReply)
+  private static final net.rossonet.ptalk.ability.grpc.RegisterRuleReply DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new net.rossonet.ptalk.ability.grpc.RegisterRulesReply();
+    DEFAULT_INSTANCE = new net.rossonet.ptalk.ability.grpc.RegisterRuleReply();
   }
 
-  public static net.rossonet.ptalk.ability.grpc.RegisterRulesReply getDefaultInstance() {
+  public static net.rossonet.ptalk.ability.grpc.RegisterRuleReply getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<RegisterRulesReply>
-      PARSER = new com.google.protobuf.AbstractParser<RegisterRulesReply>() {
+  private static final com.google.protobuf.Parser<RegisterRuleReply>
+      PARSER = new com.google.protobuf.AbstractParser<RegisterRuleReply>() {
     @java.lang.Override
-    public RegisterRulesReply parsePartialFrom(
+    public RegisterRuleReply parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -979,17 +979,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<RegisterRulesReply> parser() {
+  public static com.google.protobuf.Parser<RegisterRuleReply> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<RegisterRulesReply> getParserForType() {
+  public com.google.protobuf.Parser<RegisterRuleReply> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public net.rossonet.ptalk.ability.grpc.RegisterRulesReply getDefaultInstanceForType() {
+  public net.rossonet.ptalk.ability.grpc.RegisterRuleReply getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

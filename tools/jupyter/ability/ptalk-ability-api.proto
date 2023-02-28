@@ -61,7 +61,7 @@ message GetRuleReply {
   base.Timestamp timestamp = 4;
 }
 
-message RegisterRulesRequest {
+message RegisterRuleRequest {
   string flowReference = 1;
   Rule rule= 2;
   string jsonRule = 3;
@@ -70,7 +70,7 @@ message RegisterRulesRequest {
   base.Timestamp timestamp = 6;
 }
 
-message RegisterRulesReply {
+message RegisterRuleReply {
   string flowReference = 1;
   Rule rule= 2;
   base.StatusValue status = 3;
@@ -161,7 +161,7 @@ message GeneralConfigurationManagementReply {
 
 service RpcAbilityCoreV1 {
   rpc ReplyAsync (AbilityMessageReply) returns (base.Status) {}
-  rpc RegisterRules (RegisterRulesRequest) returns (RegisterRulesReply) {}
+  rpc RegisterRule (RegisterRuleRequest) returns (RegisterRuleReply) {}
   rpc CancelRule (CancelRuleRequest) returns (CancelRuleReply) {}
   rpc ListRules (ListRulesRequest) returns (ListRulesReply) {}
   rpc GetRule (GetRuleRequest) returns (GetRuleReply) {}
@@ -177,11 +177,11 @@ service RpcAbilityUnitV1 {
 service RpcSuperAbilityCoreV1 {
   rpc PushConfiguration (PushConfigurationRequest) returns (PushConfigurationReply) {}
   rpc DumpConfiguration (DumpConfigurationRequest) returns (DumpConfigurationReply) {}
-  rpc RegisterPreRules (RegisterRulesRequest) returns (RegisterRulesReply) {}
+  rpc RegisterPreRule (RegisterRuleRequest) returns (RegisterRuleReply) {}
   rpc CancelPreRule (CancelRuleRequest) returns (CancelRuleReply) {}
   rpc ListPreRules (ListRulesRequest) returns (ListRulesReply) {}
   rpc GetPreRule (GetRuleRequest) returns (GetRuleReply) {}
-  rpc RegisterPostRules (RegisterRulesRequest) returns (RegisterRulesReply) {}
+  rpc RegisterPostRule (RegisterRuleRequest) returns (RegisterRuleReply) {}
   rpc CancelPostRule (CancelRuleRequest) returns (CancelRuleReply) {}
   rpc ListPostRules (ListRulesRequest) returns (ListRulesReply) {}
   rpc GetPostRule (GetRuleRequest) returns (GetRuleReply) {}

@@ -5,8 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
 
-public class NextHopManagerFact {
+public class NextHopManagerFact implements PTalkFact {
 
 	private final String traceId;
 	private final Set<NextHop> nextHops = new HashSet<>();
@@ -24,6 +25,11 @@ public class NextHopManagerFact {
 
 	public Collection<NextHop> getNextHops() {
 		return nextHops;
+	}
+
+	@Override
+	public String getTraceId() {
+		return traceId;
 	}
 
 }

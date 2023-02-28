@@ -4,19 +4,25 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;
 import org.jeasy.rules.jexl.JexlRuleFactory;
 import org.jeasy.rules.support.reader.JsonRuleDefinitionReader;
 import org.json.JSONObject;
 
+import com.hazelcast.replicatedmap.ReplicatedMap;
+
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.parameter.ExecutionParameters;
 import net.rossonet.ptalk.engine.parameter.OnlineTaskModel;
+import net.rossonet.ptalk.utils.JsonHelper;
 
 public class ConfigurationTasksManager implements Closeable {
 
-	private static final JexlRuleFactory RULE_FACTORY = new JexlRuleFactory(new JsonRuleDefinitionReader());
+	private static final JexlRuleFactory JEXL_RULE_FACTORY = new JexlRuleFactory(new JsonRuleDefinitionReader());
 
 	private final PTalkEngineRuntime pTalkEngineRuntime;
 
@@ -24,18 +30,40 @@ public class ConfigurationTasksManager implements Closeable {
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
 	}
 
-	public void addOrUpdateTaskConfiguration(JSONObject jsonConfiguration) {
+	public synchronized Rule addMainRule(String taskName, String jsonRule) throws Exception {
+		final Set<String> mainRulesAsString = getMainRulesAsString(taskName);
+		mainRulesAsString.add(jsonRule);
+		getTaskModels().get(taskName).setMainRules(mainRulesAsString);
+		return JEXL_RULE_FACTORY.createRule(new StringReader(jsonRule));
+	}
+
+	public synchronized void addOrUpdateTaskConfiguration(JSONObject jsonConfiguration) {
 		final OnlineTaskModel task = new OnlineTaskModel(jsonConfiguration);
-		pTalkEngineRuntime.getHazelcastInstanceBuilder().getTaskModelRepository().put(task.getModelName(), task);
+		getTaskModels().put(task.getModelName(), task);
+	}
+
+	public synchronized Rule addPostRule(String taskName, String jsonRule) throws Exception {
+		final Set<String> mainRulesAsString = getPostRulesAsString(taskName);
+		mainRulesAsString.add(jsonRule);
+		getTaskModels().get(taskName).setPostRules(mainRulesAsString);
+		return JEXL_RULE_FACTORY.createRule(new StringReader(jsonRule));
+	}
+
+	public synchronized Rule addPreRule(String taskName, String jsonRule) throws Exception {
+		final Set<String> mainRulesAsString = getPreRulesAsString(taskName);
+		mainRulesAsString.add(jsonRule);
+		getTaskModels().get(taskName).setPreRules(mainRulesAsString);
+		return JEXL_RULE_FACTORY.createRule(new StringReader(jsonRule));
 	}
 
 	@Override
 	public void close() throws IOException {
 		// pulizia
+		getTaskModels().clear();
 	}
 
-	public void deleteTaskConfiguration(String taskName) {
-		pTalkEngineRuntime.getHazelcastInstanceBuilder().getTaskModelRepository().remove(taskName);
+	public synchronized void deleteTaskConfiguration(String taskName) {
+		getTaskModels().remove(taskName);
 	}
 
 	public ExecutionParameters getExecutionParameters(String taskName) {
@@ -43,9 +71,10 @@ public class ConfigurationTasksManager implements Closeable {
 	}
 
 	public Rules getMainRules(String taskName) {
-		final String rulesAsJson = getMainRulesAsString(taskName);
+		final Set<String> rulesAsJson = getMainRulesAsString(taskName);
 		try {
-			return RULE_FACTORY.createRules(new StringReader(rulesAsJson));
+			return JEXL_RULE_FACTORY
+					.createRules(new StringReader(JsonHelper.getJsonArrayFromStringSet(rulesAsJson).toString()));
 		} catch (final Exception e) {
 			final TaskManagerException ex = new TaskManagerException("during getMainRules", e);
 			pTalkEngineRuntime.getExecutionLogger().exceptionLog(taskName, ex);
@@ -53,15 +82,15 @@ public class ConfigurationTasksManager implements Closeable {
 		}
 	}
 
-	public String getMainRulesAsString(String taskName) {
-		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getTaskModelRepository().get(taskName)
-				.getMainRulesAsString();
+	public Set<String> getMainRulesAsString(String taskName) {
+		return getTaskModels().get(taskName).getMainRulesAsString();
 	}
 
 	public Rules getPostRules(String taskName) {
-		final String rulesAsJson = getPostRulesAsString(taskName);
+		final Set<String> rulesAsJson = getPostRulesAsString(taskName);
 		try {
-			return RULE_FACTORY.createRules(new StringReader(rulesAsJson));
+			return JEXL_RULE_FACTORY
+					.createRules(new StringReader(JsonHelper.getJsonArrayFromStringSet(rulesAsJson).toString()));
 		} catch (final Exception e) {
 			final TaskManagerException ex = new TaskManagerException("during getPostRules", e);
 			pTalkEngineRuntime.getExecutionLogger().exceptionLog(taskName, ex);
@@ -69,14 +98,15 @@ public class ConfigurationTasksManager implements Closeable {
 		}
 	}
 
-	public String getPostRulesAsString(String taskName) {
+	public Set<String> getPostRulesAsString(String taskName) {
 		return getTaskConfiguration(taskName).getPostRulesAsString();
 	}
 
 	public Rules getPreRules(String taskName) {
-		final String rulesAsJson = getPreRulesAsString(taskName);
+		final Set<String> rulesAsJson = getPreRulesAsString(taskName);
 		try {
-			return RULE_FACTORY.createRules(new StringReader(rulesAsJson));
+			return JEXL_RULE_FACTORY
+					.createRules(new StringReader(JsonHelper.getJsonArrayFromStringSet(rulesAsJson).toString()));
 		} catch (final Exception e) {
 			final TaskManagerException ex = new TaskManagerException("during getPreRules", e);
 			pTalkEngineRuntime.getExecutionLogger().exceptionLog(taskName, ex);
@@ -84,20 +114,80 @@ public class ConfigurationTasksManager implements Closeable {
 		}
 	}
 
-	public String getPreRulesAsString(String taskName) {
+	public Set<String> getPreRulesAsString(String taskName) {
 		return getTaskConfiguration(taskName).getPreRulesAsString();
 	}
 
 	public OnlineTaskModel getTaskConfiguration(String taskName) {
-		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getTaskModelRepository().get(taskName);
+		return getTaskModels().get(taskName);
 	}
 
 	public JSONObject getTaskConfigurationAsJson(String taskName) {
 		return getTaskConfiguration(taskName).toJson();
 	}
 
+	private ReplicatedMap<String, OnlineTaskModel> getTaskModels() {
+		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getTaskModelRepository();
+	}
+
 	public Collection<String> getTasks() {
-		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getTaskModelRepository().keySet();
+		return getTaskModels().keySet();
+	}
+
+	public synchronized void removePostRule(String taskName, String ruleUniqueName) {
+		final Set<String> rules = getPostRulesAsString(taskName);
+		final Set<String> newRules = new HashSet<>();
+		for (final String r : rules) {
+			final JSONObject json = new JSONObject(r);
+			if (json.has(JsonHelper.RULE_NAME_LABEL)
+					&& !json.getString(JsonHelper.RULE_NAME_LABEL).equals(ruleUniqueName)) {
+				newRules.add(r);
+			}
+		}
+		getTaskModels().get(taskName).setPostRules(newRules);
+
+	}
+
+	public synchronized void removePreRule(String taskName, String ruleUniqueName) {
+		final Set<String> rules = getPreRulesAsString(taskName);
+		final Set<String> newRules = new HashSet<>();
+		for (final String r : rules) {
+			final JSONObject json = new JSONObject(r);
+			if (json.has(JsonHelper.RULE_NAME_LABEL)
+					&& !json.getString(JsonHelper.RULE_NAME_LABEL).equals(ruleUniqueName)) {
+				newRules.add(r);
+			}
+		}
+		getTaskModels().get(taskName).setPreRules(newRules);
+
+	}
+
+	public synchronized void removeRule(String taskName, String ruleUniqueName) {
+		final Set<String> rules = getMainRulesAsString(taskName);
+		final Set<String> newRules = new HashSet<>();
+		for (final String r : rules) {
+			final JSONObject json = new JSONObject(r);
+			if (json.has(JsonHelper.RULE_NAME_LABEL)
+					&& !json.getString(JsonHelper.RULE_NAME_LABEL).equals(ruleUniqueName)) {
+				newRules.add(r);
+			}
+		}
+		getTaskModels().get(taskName).setMainRules(newRules);
+
+	}
+
+	public JSONObject toJson() {
+		final JSONObject result = new JSONObject();
+		for (final String taskKey : getTaskModels().keySet()) {
+			result.put(taskKey, getTaskModels().get(taskKey).toJson());
+		}
+		return result;
+	}
+
+	public void updateFromJson(JSONObject jsonConfiguration) {
+		for (final String taskKey : jsonConfiguration.keySet()) {
+			getTaskModels().put(taskKey, new OnlineTaskModel(jsonConfiguration.getJSONObject(taskKey)));
+		}
 	}
 
 }
