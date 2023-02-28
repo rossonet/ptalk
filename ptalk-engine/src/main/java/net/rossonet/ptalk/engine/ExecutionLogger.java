@@ -26,7 +26,6 @@ public class ExecutionLogger implements Closeable {
 	public void addedNextHop(String rulesEngineTask, String target, String scheduler, boolean debug) {
 		logger.info("addedNextHop " + rulesEngineTask + "\ntarget" + target + "\nscheduler" + scheduler + "\ndebug"
 				+ debug);
-
 	}
 
 	public void afterEvaluate(Task rulesEngineTask, Rule rule, Facts facts, boolean evaluationResult) {
@@ -97,6 +96,11 @@ public class ExecutionLogger implements Closeable {
 	public void mainRules(Task rulesEngineTask, Set<String> set) {
 		logger.info("mainRules " + rulesEngineTask.getTraceId() + "\nrulesAsJson"
 				+ JsonHelper.getJsonArrayFromStringSet(set));
+
+	}
+
+	public void message(String message) {
+		logger.info("message " + message);
 
 	}
 

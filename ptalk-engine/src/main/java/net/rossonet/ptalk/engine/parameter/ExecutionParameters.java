@@ -185,4 +185,22 @@ public class ExecutionParameters {
 		return timeoutPreExecutionTimeUnit != null ? timeoutPreExecutionTimeUnit : DEFAULT_TIME_UNIT;
 	}
 
+	public JSONObject toJson() {
+		final JSONObject json = new JSONObject();
+		json.put(AI_MANAGER_FACT_LABEL, getAiManagerFactName());
+		json.put(ABILITY_COMMUNICATION_FACT_LABEL, getAbilityCommunicationFactName());
+		json.put(EXTENSIONS_MANAGER_FACT_LABEL, getExtensionsManagerFactName());
+		json.put(MEMORY_MANAGER_FACT_LABEL, getMemoryManagerFactName());
+		json.put(NEXT_HOP_FACT_LABEL, getNextHopFactName());
+		json.put(NLU_COMMUNICATION_FACT_LABEL, getNluCommunicationFactName());
+		json.put(SUPER_MANAGER_FACT_LABEL, getSuperManagerFactName());
+		json.put(MAIN_TIME_UNIT_LABEL, getTimeoutMainExecutionTimeUnit());
+		json.put(PRE_TIME_UNIT_LABEL, getTimeoutPreExecutionTimeUnit());
+		json.put(POST_TIME_UNIT_LABEL, getTimeoutPostExecutionTimeUnit());
+		json.put(TIMEOUT_PRE_EXECUTION_MS_LABEL, getTimeoutPreExecution());
+		json.put(TIMEOUT_POST_EXECUTION_MS_LABEL, getTimeoutPostExecution());
+		json.put(TIMEOUT_MAIN_EXECUTION_MS_LABEL, getTimeoutMainExecution());
+		return json;
+	}
+
 }

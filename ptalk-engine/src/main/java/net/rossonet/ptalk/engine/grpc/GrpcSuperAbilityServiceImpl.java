@@ -131,42 +131,50 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 
 	@Override
 	public void listPostRules(ListRulesRequest request, StreamObserver<ListRulesReply> responseObserver) {
-		final Set<net.rossonet.ptalk.ability.grpc.Rule> rulesList = new HashSet<>();
-		for (final String t : pTalkEngineRuntime.getConfigurationTasksManager().getTasks()) {
-			final Rules rules = pTalkEngineRuntime.getConfigurationTasksManager().getPostRules(t);
-			final Iterator<Rule> rulesIterator = rules.iterator();
-			while (rulesIterator.hasNext()) {
-				final Rule r = rulesIterator.next();
-				rulesList.add(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
-						.setTask(t).build());
+		try {
+			final Set<net.rossonet.ptalk.ability.grpc.Rule> rulesList = new HashSet<>();
+			for (final String t : pTalkEngineRuntime.getConfigurationTasksManager().getTasks()) {
+				final Rules rules = pTalkEngineRuntime.getConfigurationTasksManager().getPostRules(t);
+				final Iterator<Rule> rulesIterator = rules.iterator();
+				while (rulesIterator.hasNext()) {
+					final Rule r = rulesIterator.next();
+					rulesList.add(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
+							.setTask(t).build());
+				}
 			}
+			final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
+					.addAllRule(rulesList)
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setStatus(StatusValue.STATUS_GOOD).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();
+		} catch (final TaskManagerException e) {
+			responseObserver.onError(e);
 		}
-		final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
-				.addAllRule(rulesList)
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
-				.setStatus(StatusValue.STATUS_GOOD).build();
-		responseObserver.onNext(reply);
-		responseObserver.onCompleted();
 	}
 
 	@Override
 	public void listPreRules(ListRulesRequest request, StreamObserver<ListRulesReply> responseObserver) {
-		final Set<net.rossonet.ptalk.ability.grpc.Rule> rulesList = new HashSet<>();
-		for (final String t : pTalkEngineRuntime.getConfigurationTasksManager().getTasks()) {
-			final Rules rules = pTalkEngineRuntime.getConfigurationTasksManager().getPreRules(t);
-			final Iterator<Rule> rulesIterator = rules.iterator();
-			while (rulesIterator.hasNext()) {
-				final Rule r = rulesIterator.next();
-				rulesList.add(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
-						.setTask(t).build());
+		try {
+			final Set<net.rossonet.ptalk.ability.grpc.Rule> rulesList = new HashSet<>();
+			for (final String t : pTalkEngineRuntime.getConfigurationTasksManager().getTasks()) {
+				final Rules rules = pTalkEngineRuntime.getConfigurationTasksManager().getPreRules(t);
+				final Iterator<Rule> rulesIterator = rules.iterator();
+				while (rulesIterator.hasNext()) {
+					final Rule r = rulesIterator.next();
+					rulesList.add(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
+							.setTask(t).build());
+				}
 			}
+			final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
+					.addAllRule(rulesList)
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setStatus(StatusValue.STATUS_GOOD).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();
+		} catch (final TaskManagerException e) {
+			responseObserver.onError(e);
 		}
-		final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
-				.addAllRule(rulesList)
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
-				.setStatus(StatusValue.STATUS_GOOD).build();
-		responseObserver.onNext(reply);
-		responseObserver.onCompleted();
 	}
 
 	@Override

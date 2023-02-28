@@ -43,16 +43,16 @@ public class PTalkEngineRuntime {
 	private final PTalkFactFactory abilityCommunicationFactFactory;
 
 	private final PTalkFactFactory[] allPTalkFactFactory;
-	private final ExecutionLogger executionLogger;
 
+	private final ExecutionLogger executionLogger;
 	private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
 
 	private final GrpcCoreService grpcCoreService;
 
 	private final ExecutorService normalScheduler;
+
 	private final ExecutorService lowScheduler;
 	private final ExecutorService hightScheduler;
-
 	private final GlobalConfiguration globalConfiguration;
 
 	private final MemoryManager memoryManager;
@@ -165,7 +165,14 @@ public class PTalkEngineRuntime {
 
 	public void replaceJsonConfiguration(JSONObject jsonConfiguration) throws TaskManagerException {
 		JsonHelper.updateJsonConfiguration(jsonConfiguration, globalConfiguration, configurationTasksManager);
+		globalConfiguration.validate();
+		configurationTasksManager.validate();
 		updateConfigurationAllFactories();
+	}
+
+	public void replaceJsonConfiguration(String configuration) throws TaskManagerException {
+		replaceJsonConfiguration(new JSONObject(configuration));
+
 	}
 
 	public void replyFromAbilityMessage(AbilityMessageReply request) {
@@ -270,6 +277,21 @@ public class PTalkEngineRuntime {
 			break;
 		}
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("PTalkEngineRuntime [globalConfiguration=");
+		builder.append(globalConfiguration);
+		builder.append(", configurationTasksManager=");
+		builder.append(configurationTasksManager);
+		builder.append(", hazelcastInstanceBuilder=");
+		builder.append(hazelcastInstanceBuilder);
+		builder.append(", memoryManager=");
+		builder.append(memoryManager);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	private void updateConfigurationAllFactories() {

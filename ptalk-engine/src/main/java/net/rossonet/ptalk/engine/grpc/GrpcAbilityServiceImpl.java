@@ -28,6 +28,7 @@ import net.rossonet.ptalk.base.grpc.Status;
 import net.rossonet.ptalk.base.grpc.StatusValue;
 import net.rossonet.ptalk.base.grpc.Timestamp;
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
+import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.utils.JsonHelper;
 
 public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
@@ -88,22 +89,28 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 
 	@Override
 	public void listRules(ListRulesRequest request, StreamObserver<ListRulesReply> responseObserver) {
-		final Set<net.rossonet.ptalk.ability.grpc.Rule> rulesList = new HashSet<>();
-		for (final String t : pTalkEngineRuntime.getConfigurationTasksManager().getTasks()) {
-			final Rules rules = pTalkEngineRuntime.getConfigurationTasksManager().getMainRules(t);
-			final Iterator<Rule> rulesIterator = rules.iterator();
-			while (rulesIterator.hasNext()) {
-				final Rule r = rulesIterator.next();
-				rulesList.add(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
-						.setTask(t).build());
+		try {
+			final Set<net.rossonet.ptalk.ability.grpc.Rule> rulesList = new HashSet<>();
+			for (final String t : pTalkEngineRuntime.getConfigurationTasksManager().getTasks()) {
+				Rules rules;
+				rules = pTalkEngineRuntime.getConfigurationTasksManager().getMainRules(t);
+
+				final Iterator<Rule> rulesIterator = rules.iterator();
+				while (rulesIterator.hasNext()) {
+					final Rule r = rulesIterator.next();
+					rulesList.add(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
+							.setTask(t).build());
+				}
 			}
+			final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
+					.addAllRule(rulesList)
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setStatus(StatusValue.STATUS_GOOD).build();
+			responseObserver.onNext(reply);
+			responseObserver.onCompleted();
+		} catch (final TaskManagerException e) {
+			responseObserver.onError(e);
 		}
-		final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
-				.addAllRule(rulesList)
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
-				.setStatus(StatusValue.STATUS_GOOD).build();
-		responseObserver.onNext(reply);
-		responseObserver.onCompleted();
 	}
 
 	@Override

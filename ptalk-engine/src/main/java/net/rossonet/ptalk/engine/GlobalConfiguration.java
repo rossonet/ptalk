@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest;
 import net.rossonet.ptalk.base.grpc.Data;
+import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.utils.JsonHelper;
 
 public class GlobalConfiguration implements Serializable {
@@ -60,6 +61,23 @@ public class GlobalConfiguration implements Serializable {
 		public GlobalConfigurationBuilder setNormalSchedulerThreadSize(Integer normalSchedulerThreadSize) {
 			this.normalSchedulerThreadSize = normalSchedulerThreadSize;
 			return this;
+		}
+
+		@Override
+		public String toString() {
+			final StringBuilder builder = new StringBuilder();
+			builder.append("GlobalConfigurationBuilder [grpcServerPort=");
+			builder.append(grpcServerPort);
+			builder.append(", normalSchedulerThreadSize=");
+			builder.append(normalSchedulerThreadSize);
+			builder.append(", hazelcastEmbedded=");
+			builder.append(hazelcastEmbedded);
+			builder.append(", inputChannel=");
+			builder.append(inputChannel);
+			builder.append(", globalDatas=");
+			builder.append(globalDatas);
+			builder.append("]");
+			return builder.toString();
 		}
 
 	}
@@ -162,6 +180,11 @@ public class GlobalConfiguration implements Serializable {
 				globalDatas.put(jsonKey, JsonHelper.dataFromJson(configuration.getJSONObject(jsonKey)));
 			}
 		}
+	}
+
+	public void validate() throws TaskManagerException {
+		// TODO validate
+
 	}
 
 }

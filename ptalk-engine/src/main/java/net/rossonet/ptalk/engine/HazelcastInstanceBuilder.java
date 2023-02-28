@@ -14,14 +14,15 @@ import net.rossonet.ptalk.engine.parameter.OnlineTaskModel;
 public class HazelcastInstanceBuilder implements Closeable {
 
 	private static final String TASK_MODEL_MAP_NAME = "task-model";
+
 	private static final String SCHEDULER_MAP_NAME = "task-scheduler";
 	private static HazelcastInstance hazelcastServer = null;
-
 	private HazelcastInstance hazelcastClient = null;
 
 	private final PTalkEngineRuntime pTalkEngineRuntime;
 
 	private ReplicatedMap<String, OnlineTaskModel> taskModelRepository;
+
 	private DurableExecutorService scheduler;
 
 	HazelcastInstanceBuilder(PTalkEngineRuntime pTalkEngineRuntime) {
@@ -96,6 +97,15 @@ public class HazelcastInstanceBuilder implements Closeable {
 	private void runServer() {
 		final Config clusterConfig = getConfig();
 		hazelcastServer = Hazelcast.newHazelcastInstance(clusterConfig);
+	}
+
+	@Override
+	public String toString() {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("HazelcastInstanceBuilder [hazelcastClient=");
+		builder.append(hazelcastClient);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

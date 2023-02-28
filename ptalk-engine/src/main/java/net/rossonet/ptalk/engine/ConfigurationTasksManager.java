@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import com.hazelcast.replicatedmap.ReplicatedMap;
 
+import net.rossonet.ptalk.engine.exceptions.BadConfigurationException;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.parameter.ExecutionParameters;
 import net.rossonet.ptalk.engine.parameter.OnlineTaskModel;
@@ -37,9 +38,14 @@ public class ConfigurationTasksManager implements Closeable {
 		return JEXL_RULE_FACTORY.createRule(new StringReader(jsonRule));
 	}
 
-	public synchronized void addOrUpdateTaskConfiguration(JSONObject jsonConfiguration) {
+	public synchronized void addOrUpdateTaskConfiguration(JSONObject jsonConfiguration) throws TaskManagerException {
 		final OnlineTaskModel task = new OnlineTaskModel(jsonConfiguration);
 		getTaskModels().put(task.getModelName(), task);
+	}
+
+	public void addOrUpdateTaskConfiguration(String configuration) throws TaskManagerException {
+		addOrUpdateTaskConfiguration(new JSONObject(configuration));
+
 	}
 
 	public synchronized Rule addPostRule(String taskName, String jsonRule) throws Exception {
@@ -59,7 +65,11 @@ public class ConfigurationTasksManager implements Closeable {
 	@Override
 	public void close() throws IOException {
 		// pulizia
-		getTaskModels().clear();
+		try {
+			getTaskModels().clear();
+		} catch (final Exception a) {
+			pTalkEngineRuntime.getExecutionLogger().message(a.getMessage());
+		}
 	}
 
 	public synchronized void deleteTaskConfiguration(String taskName) {
@@ -70,15 +80,15 @@ public class ConfigurationTasksManager implements Closeable {
 		return new ExecutionParameters(new JSONObject(getTaskConfiguration(taskName).getExecutionParameter()));
 	}
 
-	public Rules getMainRules(String taskName) {
+	public Rules getMainRules(String taskName) throws TaskManagerException {
 		final Set<String> rulesAsJson = getMainRulesAsString(taskName);
 		try {
 			return JEXL_RULE_FACTORY
 					.createRules(new StringReader(JsonHelper.getJsonArrayFromStringSet(rulesAsJson).toString()));
 		} catch (final Exception e) {
-			final TaskManagerException ex = new TaskManagerException("during getMainRules", e);
+			final BadConfigurationException ex = new BadConfigurationException("during getMainRules", e);
 			pTalkEngineRuntime.getExecutionLogger().exceptionLog(taskName, ex);
-			return new Rules();
+			throw ex;
 		}
 	}
 
@@ -86,15 +96,15 @@ public class ConfigurationTasksManager implements Closeable {
 		return getTaskModels().get(taskName).getMainRulesAsString();
 	}
 
-	public Rules getPostRules(String taskName) {
+	public Rules getPostRules(String taskName) throws TaskManagerException {
 		final Set<String> rulesAsJson = getPostRulesAsString(taskName);
 		try {
 			return JEXL_RULE_FACTORY
 					.createRules(new StringReader(JsonHelper.getJsonArrayFromStringSet(rulesAsJson).toString()));
 		} catch (final Exception e) {
-			final TaskManagerException ex = new TaskManagerException("during getPostRules", e);
+			final BadConfigurationException ex = new BadConfigurationException("during getPostRules", e);
 			pTalkEngineRuntime.getExecutionLogger().exceptionLog(taskName, ex);
-			return new Rules();
+			throw ex;
 		}
 	}
 
@@ -102,15 +112,15 @@ public class ConfigurationTasksManager implements Closeable {
 		return getTaskConfiguration(taskName).getPostRulesAsString();
 	}
 
-	public Rules getPreRules(String taskName) {
+	public Rules getPreRules(String taskName) throws TaskManagerException {
 		final Set<String> rulesAsJson = getPreRulesAsString(taskName);
 		try {
 			return JEXL_RULE_FACTORY
 					.createRules(new StringReader(JsonHelper.getJsonArrayFromStringSet(rulesAsJson).toString()));
 		} catch (final Exception e) {
-			final TaskManagerException ex = new TaskManagerException("during getPreRules", e);
+			final BadConfigurationException ex = new BadConfigurationException("during getPreRules", e);
 			pTalkEngineRuntime.getExecutionLogger().exceptionLog(taskName, ex);
-			return new Rules();
+			throw ex;
 		}
 	}
 
@@ -184,10 +194,32 @@ public class ConfigurationTasksManager implements Closeable {
 		return result;
 	}
 
-	public void updateFromJson(JSONObject jsonConfiguration) {
+	@Override
+	public String toString() {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("ConfigurationTasksManager [getTaskModels()=");
+		builder.append(getTasks());
+		builder.append("]");
+		return builder.toString();
+	}
+
+	public void updateFromJson(JSONObject jsonConfiguration) throws TaskManagerException {
 		for (final String taskKey : jsonConfiguration.keySet()) {
 			getTaskModels().put(taskKey, new OnlineTaskModel(jsonConfiguration.getJSONObject(taskKey)));
 		}
+	}
+
+	public void validate() throws TaskManagerException {
+		for (final String taskName : getTaskModels().keySet()) {
+			validate(taskName);
+		}
+	}
+
+	private void validate(String taskName) throws TaskManagerException {
+		getExecutionParameters(taskName);
+		getPreRules(taskName);
+		getMainRules(taskName);
+		getPostRules(taskName);
 	}
 
 }
