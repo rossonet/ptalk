@@ -132,11 +132,11 @@ message MemoryContextQueryReply {
 }
 
 message MemoryContextManagementRequest {
-
+// TODO MemoryContextManagementRequest
 }
 
 message MemoryContextManagementReply {
-
+// TODO MemoryContextManagementReply
 }
 
 message GeneralConfigurationQueryRequest {
@@ -152,11 +152,11 @@ message GeneralConfigurationQueryReply {
 }
 
 message GeneralConfigurationManagementRequest {
-
+// TODO GeneralConfigurationManagementRequest
 }
 
 message GeneralConfigurationManagementReply {
-
+// TODO GeneralConfigurationManagementReply
 }
 
 service RpcAbilityCoreV1 {

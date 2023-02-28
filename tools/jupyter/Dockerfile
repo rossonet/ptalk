@@ -10,6 +10,10 @@ RUN conda install -y -c conda-forge streamlit
 RUN conda install -y -c conda-forge librosa
 RUN conda install -y -c anaconda nltk
 COPY ./examples /home/jovyan/examples
+COPY ./nlu /home/jovyan/nlu
+COPY ./channel /home/jovyan/channel
+COPY ./ability /home/jovyan/ability
+COPY ./grpc-client /home/jovyan/grpc-client
 USER root
 RUN whoami && chown -R jovyan /home/jovyan/examples && chmod -R g+rw /home/jovyan/examples
 USER jovyan

@@ -8,11 +8,11 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
     value = "by gRPC proto compiler (version 1.53.0)",
     comments = "Source: ptalk-channel-grpc.proto")
 @io.grpc.stub.annotations.GrpcGenerated
-public final class RpcChannelUnitV1Grpc {
+public final class RpcChannelGrpcServerV1Grpc {
 
-  private RpcChannelUnitV1Grpc() {}
+  private RpcChannelGrpcServerV1Grpc() {}
 
-  public static final String SERVICE_NAME = "channelGrpc.RpcChannelUnitV1";
+  public static final String SERVICE_NAME = "channelGrpc.RpcChannelGrpcServerV1";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest,
@@ -26,10 +26,10 @@ public final class RpcChannelUnitV1Grpc {
   public static io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest,
       net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply> getCallSyncMethod() {
     io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest, net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply> getCallSyncMethod;
-    if ((getCallSyncMethod = RpcChannelUnitV1Grpc.getCallSyncMethod) == null) {
-      synchronized (RpcChannelUnitV1Grpc.class) {
-        if ((getCallSyncMethod = RpcChannelUnitV1Grpc.getCallSyncMethod) == null) {
-          RpcChannelUnitV1Grpc.getCallSyncMethod = getCallSyncMethod =
+    if ((getCallSyncMethod = RpcChannelGrpcServerV1Grpc.getCallSyncMethod) == null) {
+      synchronized (RpcChannelGrpcServerV1Grpc.class) {
+        if ((getCallSyncMethod = RpcChannelGrpcServerV1Grpc.getCallSyncMethod) == null) {
+          RpcChannelGrpcServerV1Grpc.getCallSyncMethod = getCallSyncMethod =
               io.grpc.MethodDescriptor.<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest, net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CallSync"))
@@ -38,7 +38,7 @@ public final class RpcChannelUnitV1Grpc {
                   net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcChannelUnitV1MethodDescriptorSupplier("CallSync"))
+              .setSchemaDescriptor(new RpcChannelGrpcServerV1MethodDescriptorSupplier("CallSync"))
               .build();
         }
       }
@@ -57,10 +57,10 @@ public final class RpcChannelUnitV1Grpc {
   public static io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest,
       net.rossonet.ptalk.channel.protobuf.server.grpc.Status> getCallAsyncMethod() {
     io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest, net.rossonet.ptalk.channel.protobuf.server.grpc.Status> getCallAsyncMethod;
-    if ((getCallAsyncMethod = RpcChannelUnitV1Grpc.getCallAsyncMethod) == null) {
-      synchronized (RpcChannelUnitV1Grpc.class) {
-        if ((getCallAsyncMethod = RpcChannelUnitV1Grpc.getCallAsyncMethod) == null) {
-          RpcChannelUnitV1Grpc.getCallAsyncMethod = getCallAsyncMethod =
+    if ((getCallAsyncMethod = RpcChannelGrpcServerV1Grpc.getCallAsyncMethod) == null) {
+      synchronized (RpcChannelGrpcServerV1Grpc.class) {
+        if ((getCallAsyncMethod = RpcChannelGrpcServerV1Grpc.getCallAsyncMethod) == null) {
+          RpcChannelGrpcServerV1Grpc.getCallAsyncMethod = getCallAsyncMethod =
               io.grpc.MethodDescriptor.<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest, net.rossonet.ptalk.channel.protobuf.server.grpc.Status>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CallAsync"))
@@ -69,7 +69,7 @@ public final class RpcChannelUnitV1Grpc {
                   net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   net.rossonet.ptalk.channel.protobuf.server.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcChannelUnitV1MethodDescriptorSupplier("CallAsync"))
+              .setSchemaDescriptor(new RpcChannelGrpcServerV1MethodDescriptorSupplier("CallAsync"))
               .build();
         }
       }
@@ -88,10 +88,10 @@ public final class RpcChannelUnitV1Grpc {
   public static io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply,
       net.rossonet.ptalk.channel.protobuf.server.grpc.Status> getReplyCallAsyncMethod() {
     io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply, net.rossonet.ptalk.channel.protobuf.server.grpc.Status> getReplyCallAsyncMethod;
-    if ((getReplyCallAsyncMethod = RpcChannelUnitV1Grpc.getReplyCallAsyncMethod) == null) {
-      synchronized (RpcChannelUnitV1Grpc.class) {
-        if ((getReplyCallAsyncMethod = RpcChannelUnitV1Grpc.getReplyCallAsyncMethod) == null) {
-          RpcChannelUnitV1Grpc.getReplyCallAsyncMethod = getReplyCallAsyncMethod =
+    if ((getReplyCallAsyncMethod = RpcChannelGrpcServerV1Grpc.getReplyCallAsyncMethod) == null) {
+      synchronized (RpcChannelGrpcServerV1Grpc.class) {
+        if ((getReplyCallAsyncMethod = RpcChannelGrpcServerV1Grpc.getReplyCallAsyncMethod) == null) {
+          RpcChannelGrpcServerV1Grpc.getReplyCallAsyncMethod = getReplyCallAsyncMethod =
               io.grpc.MethodDescriptor.<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply, net.rossonet.ptalk.channel.protobuf.server.grpc.Status>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReplyCallAsync"))
@@ -100,7 +100,7 @@ public final class RpcChannelUnitV1Grpc {
                   net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   net.rossonet.ptalk.channel.protobuf.server.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcChannelUnitV1MethodDescriptorSupplier("ReplyCallAsync"))
+              .setSchemaDescriptor(new RpcChannelGrpcServerV1MethodDescriptorSupplier("ReplyCallAsync"))
               .build();
         }
       }
@@ -111,50 +111,50 @@ public final class RpcChannelUnitV1Grpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static RpcChannelUnitV1Stub newStub(io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<RpcChannelUnitV1Stub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<RpcChannelUnitV1Stub>() {
+  public static RpcChannelGrpcServerV1Stub newStub(io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<RpcChannelGrpcServerV1Stub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<RpcChannelGrpcServerV1Stub>() {
         @java.lang.Override
-        public RpcChannelUnitV1Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new RpcChannelUnitV1Stub(channel, callOptions);
+        public RpcChannelGrpcServerV1Stub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new RpcChannelGrpcServerV1Stub(channel, callOptions);
         }
       };
-    return RpcChannelUnitV1Stub.newStub(factory, channel);
+    return RpcChannelGrpcServerV1Stub.newStub(factory, channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static RpcChannelUnitV1BlockingStub newBlockingStub(
+  public static RpcChannelGrpcServerV1BlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<RpcChannelUnitV1BlockingStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<RpcChannelUnitV1BlockingStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<RpcChannelGrpcServerV1BlockingStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<RpcChannelGrpcServerV1BlockingStub>() {
         @java.lang.Override
-        public RpcChannelUnitV1BlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new RpcChannelUnitV1BlockingStub(channel, callOptions);
+        public RpcChannelGrpcServerV1BlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new RpcChannelGrpcServerV1BlockingStub(channel, callOptions);
         }
       };
-    return RpcChannelUnitV1BlockingStub.newStub(factory, channel);
+    return RpcChannelGrpcServerV1BlockingStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static RpcChannelUnitV1FutureStub newFutureStub(
+  public static RpcChannelGrpcServerV1FutureStub newFutureStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<RpcChannelUnitV1FutureStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<RpcChannelUnitV1FutureStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<RpcChannelGrpcServerV1FutureStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<RpcChannelGrpcServerV1FutureStub>() {
         @java.lang.Override
-        public RpcChannelUnitV1FutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new RpcChannelUnitV1FutureStub(channel, callOptions);
+        public RpcChannelGrpcServerV1FutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new RpcChannelGrpcServerV1FutureStub(channel, callOptions);
         }
       };
-    return RpcChannelUnitV1FutureStub.newStub(factory, channel);
+    return RpcChannelGrpcServerV1FutureStub.newStub(factory, channel);
   }
 
   /**
    */
-  public static abstract class RpcChannelUnitV1ImplBase implements io.grpc.BindableService {
+  public static abstract class RpcChannelGrpcServerV1ImplBase implements io.grpc.BindableService {
 
     /**
      */
@@ -206,16 +206,16 @@ public final class RpcChannelUnitV1Grpc {
 
   /**
    */
-  public static final class RpcChannelUnitV1Stub extends io.grpc.stub.AbstractAsyncStub<RpcChannelUnitV1Stub> {
-    private RpcChannelUnitV1Stub(
+  public static final class RpcChannelGrpcServerV1Stub extends io.grpc.stub.AbstractAsyncStub<RpcChannelGrpcServerV1Stub> {
+    private RpcChannelGrpcServerV1Stub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected RpcChannelUnitV1Stub build(
+    protected RpcChannelGrpcServerV1Stub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new RpcChannelUnitV1Stub(channel, callOptions);
+      return new RpcChannelGrpcServerV1Stub(channel, callOptions);
     }
 
     /**
@@ -245,16 +245,16 @@ public final class RpcChannelUnitV1Grpc {
 
   /**
    */
-  public static final class RpcChannelUnitV1BlockingStub extends io.grpc.stub.AbstractBlockingStub<RpcChannelUnitV1BlockingStub> {
-    private RpcChannelUnitV1BlockingStub(
+  public static final class RpcChannelGrpcServerV1BlockingStub extends io.grpc.stub.AbstractBlockingStub<RpcChannelGrpcServerV1BlockingStub> {
+    private RpcChannelGrpcServerV1BlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected RpcChannelUnitV1BlockingStub build(
+    protected RpcChannelGrpcServerV1BlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new RpcChannelUnitV1BlockingStub(channel, callOptions);
+      return new RpcChannelGrpcServerV1BlockingStub(channel, callOptions);
     }
 
     /**
@@ -281,16 +281,16 @@ public final class RpcChannelUnitV1Grpc {
 
   /**
    */
-  public static final class RpcChannelUnitV1FutureStub extends io.grpc.stub.AbstractFutureStub<RpcChannelUnitV1FutureStub> {
-    private RpcChannelUnitV1FutureStub(
+  public static final class RpcChannelGrpcServerV1FutureStub extends io.grpc.stub.AbstractFutureStub<RpcChannelGrpcServerV1FutureStub> {
+    private RpcChannelGrpcServerV1FutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected RpcChannelUnitV1FutureStub build(
+    protected RpcChannelGrpcServerV1FutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new RpcChannelUnitV1FutureStub(channel, callOptions);
+      return new RpcChannelGrpcServerV1FutureStub(channel, callOptions);
     }
 
     /**
@@ -327,10 +327,10 @@ public final class RpcChannelUnitV1Grpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final RpcChannelUnitV1ImplBase serviceImpl;
+    private final RpcChannelGrpcServerV1ImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(RpcChannelUnitV1ImplBase serviceImpl, int methodId) {
+    MethodHandlers(RpcChannelGrpcServerV1ImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -367,9 +367,9 @@ public final class RpcChannelUnitV1Grpc {
     }
   }
 
-  private static abstract class RpcChannelUnitV1BaseDescriptorSupplier
+  private static abstract class RpcChannelGrpcServerV1BaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    RpcChannelUnitV1BaseDescriptorSupplier() {}
+    RpcChannelGrpcServerV1BaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
@@ -378,21 +378,21 @@ public final class RpcChannelUnitV1Grpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("RpcChannelUnitV1");
+      return getFileDescriptor().findServiceByName("RpcChannelGrpcServerV1");
     }
   }
 
-  private static final class RpcChannelUnitV1FileDescriptorSupplier
-      extends RpcChannelUnitV1BaseDescriptorSupplier {
-    RpcChannelUnitV1FileDescriptorSupplier() {}
+  private static final class RpcChannelGrpcServerV1FileDescriptorSupplier
+      extends RpcChannelGrpcServerV1BaseDescriptorSupplier {
+    RpcChannelGrpcServerV1FileDescriptorSupplier() {}
   }
 
-  private static final class RpcChannelUnitV1MethodDescriptorSupplier
-      extends RpcChannelUnitV1BaseDescriptorSupplier
+  private static final class RpcChannelGrpcServerV1MethodDescriptorSupplier
+      extends RpcChannelGrpcServerV1BaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    RpcChannelUnitV1MethodDescriptorSupplier(String methodName) {
+    RpcChannelGrpcServerV1MethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -407,11 +407,11 @@ public final class RpcChannelUnitV1Grpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (RpcChannelUnitV1Grpc.class) {
+      synchronized (RpcChannelGrpcServerV1Grpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new RpcChannelUnitV1FileDescriptorSupplier())
+              .setSchemaDescriptor(new RpcChannelGrpcServerV1FileDescriptorSupplier())
               .addMethod(getCallSyncMethod())
               .addMethod(getCallAsyncMethod())
               .addMethod(getReplyCallAsyncMethod())

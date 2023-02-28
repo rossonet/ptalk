@@ -4,6 +4,10 @@
 package net.rossonet.ptalk.ability.grpc;
 
 /**
+ * <pre>
+ * TODO MemoryContextManagementRequest
+ * </pre>
+ *
  * Protobuf type {@code ability.MemoryContextManagementRequest}
  */
 public final class MemoryContextManagementRequest extends
@@ -188,6 +192,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * TODO MemoryContextManagementRequest
+   * </pre>
+   *
    * Protobuf type {@code ability.MemoryContextManagementRequest}
    */
   public static final class Builder extends

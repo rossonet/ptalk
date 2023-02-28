@@ -74,20 +74,20 @@ public final class PtalkChannelGrpcServerGrpc {
       "\022\024\n\014messageReply\030\007 \001(\t\022*\n\nparameters\030\010 \003" +
       "(\0132\026.channelGrpc.Parameter\022\023\n\013contextJso" +
       "n\030\t \001(\t\022&\n\010commands\030\n \003(\0132\024.channelGrpc." +
-      "Command2\335\001\n\020RpcChannelCoreV1\022D\n\010CallSync" +
-      "\022\033.channelGrpc.MessageRequest\032\031.channelG" +
-      "rpc.MessageReply\"\000\022?\n\tCallAsync\022\033.channe" +
-      "lGrpc.MessageRequest\032\023.channelGrpc.Statu" +
-      "s\"\000\022B\n\016ReplyCallAsync\022\031.channelGrpc.Mess" +
-      "ageReply\032\023.channelGrpc.Status\"\0002\335\001\n\020RpcC" +
-      "hannelUnitV1\022D\n\010CallSync\022\033.channelGrpc.M" +
-      "essageRequest\032\031.channelGrpc.MessageReply" +
-      "\"\000\022?\n\tCallAsync\022\033.channelGrpc.MessageReq" +
-      "uest\032\023.channelGrpc.Status\"\000\022B\n\016ReplyCall" +
-      "Async\022\031.channelGrpc.MessageReply\032\023.chann" +
-      "elGrpc.Status\"\000BO\n/net.rossonet.ptalk.ch" +
-      "annel.protobuf.server.grpcB\032PtalkChannel" +
-      "GrpcServerGrpcP\001b\006proto3"
+      "Command2\343\001\n\026RpcChannelGrpcServerV1\022D\n\010Ca" +
+      "llSync\022\033.channelGrpc.MessageRequest\032\031.ch" +
+      "annelGrpc.MessageReply\"\000\022?\n\tCallAsync\022\033." +
+      "channelGrpc.MessageRequest\032\023.channelGrpc" +
+      ".Status\"\000\022B\n\016ReplyCallAsync\022\031.channelGrp" +
+      "c.MessageReply\032\023.channelGrpc.Status\"\0002\343\001" +
+      "\n\026RpcChannelGrpcClientV1\022D\n\010CallSync\022\033.c" +
+      "hannelGrpc.MessageRequest\032\031.channelGrpc." +
+      "MessageReply\"\000\022?\n\tCallAsync\022\033.channelGrp" +
+      "c.MessageRequest\032\023.channelGrpc.Status\"\000\022" +
+      "B\n\016ReplyCallAsync\022\031.channelGrpc.MessageR" +
+      "eply\032\023.channelGrpc.Status\"\000BO\n/net.rosso" +
+      "net.ptalk.channel.protobuf.server.grpcB\032" +
+      "PtalkChannelGrpcServerGrpcP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

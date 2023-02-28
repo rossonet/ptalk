@@ -4,6 +4,10 @@
 package net.rossonet.ptalk.ability.grpc;
 
 /**
+ * <pre>
+ * TODO GeneralConfigurationManagementRequest
+ * </pre>
+ *
  * Protobuf type {@code ability.GeneralConfigurationManagementRequest}
  */
 public final class GeneralConfigurationManagementRequest extends
@@ -188,6 +192,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * TODO GeneralConfigurationManagementRequest
+   * </pre>
+   *
    * Protobuf type {@code ability.GeneralConfigurationManagementRequest}
    */
   public static final class Builder extends

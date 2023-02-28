@@ -141,5 +141,9 @@ task copyProtosToJupyter() {
     from 'ptalk-ability-api/src/main/proto/ptalk-ability-api.proto'
     into 'tools/jupyter/ability/'
   }
+   copy {
+    from 'ptalk-channel-grpc/src/main/proto/ptalk-channel-grpc.proto'
+    into 'tools/jupyter/grpc-client/'
+  }
 }
 
