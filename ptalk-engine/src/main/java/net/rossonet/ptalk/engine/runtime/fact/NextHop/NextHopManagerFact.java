@@ -18,6 +18,11 @@ public class NextHopManagerFact implements PTalkFact {
 		this.traceId = traceId;
 	}
 
+	public void addNextHop(String target) {
+		addNextHop(target, NextHopSchedulerType.LOCAL.name(),
+				pTalkEngineRuntime.getTaskByTraceId(traceId).isTraceOnLog());
+	}
+
 	public void addNextHop(String target, String scheduler, boolean trace) {
 		pTalkEngineRuntime.getExecutionLogger().addedNextHop(traceId, target, scheduler, trace);
 		nextHops.add(new NextHop(NextHopSchedulerType.valueOf(scheduler), target, traceId, trace));

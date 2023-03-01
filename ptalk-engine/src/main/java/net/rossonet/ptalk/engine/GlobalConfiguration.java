@@ -183,7 +183,8 @@ public class GlobalConfiguration implements Serializable {
 	}
 
 	public void validate() throws TaskManagerException {
-		// TODO validate
+		// Se necessario, generare eccezione quando i dati non sono validi per bloccare
+		// l'import della configurazione
 
 	}
 

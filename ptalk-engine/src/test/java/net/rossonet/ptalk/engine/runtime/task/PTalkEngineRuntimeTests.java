@@ -28,7 +28,7 @@ public class PTalkEngineRuntimeTests {
 	}
 
 	@Test
-	public void createRuntimeAndPushConfiguration() {
+	public void createPTalkEngineRuntime() {
 		System.out.println(pTalkEngineRuntime.toString());
 	}
 

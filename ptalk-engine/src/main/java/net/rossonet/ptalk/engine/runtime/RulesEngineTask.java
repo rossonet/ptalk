@@ -1,5 +1,6 @@
 package net.rossonet.ptalk.engine.runtime;
 
+import java.time.Instant;
 import java.util.Collection;
 import java.util.UUID;
 import java.util.concurrent.Callable;
@@ -22,6 +23,7 @@ import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
 import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopManagerFact;
 import net.rossonet.ptalk.engine.runtime.fact.ability.AbilityCommunicationFact;
 import net.rossonet.ptalk.engine.runtime.fact.ai.AiManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.channel.ChannelCommunicationFact;
 import net.rossonet.ptalk.engine.runtime.fact.extensions.ExtensionsManagerFact;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryManagerFact;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluCommunicationFact;
@@ -59,8 +61,11 @@ class RulesEngineTask implements Task {
 
 	private final NextHop request;
 
+	private final Instant startingInstant;
+
 	RulesEngineTask(PTalkEngineRuntime pTalkEngineRuntime, NextHop request, Facts inputFacts)
 			throws TaskManagerException {
+		this.startingInstant = Instant.now();
 		this.traceId = UUID.randomUUID().toString();
 		this.request = request;
 		this.taskName = request.getTarget();
@@ -95,6 +100,8 @@ class RulesEngineTask implements Task {
 				pTalkEngineRuntime.getAbilityCommunicationFactFactory().getOrCreate(this)));
 		workingFacts.add(new Fact<NluCommunicationFact>(executionParameters.getNluCommunicationFactName(),
 				pTalkEngineRuntime.getNluCommunicationFactFactory().getOrCreate(this)));
+		workingFacts.add(new Fact<ChannelCommunicationFact>(executionParameters.getChannelCommunicationFactName(),
+				pTalkEngineRuntime.getChannelCommunicationFactFactory().getOrCreate(this)));
 	}
 
 	@Override
@@ -159,6 +166,11 @@ class RulesEngineTask implements Task {
 	}
 
 	@Override
+	public Instant getStartingInstant() {
+		return startingInstant;
+	}
+
+	@Override
 	public String getTaskName() {
 		return taskName;
 	}
@@ -183,8 +195,7 @@ class RulesEngineTask implements Task {
 			throw new BadTaskOrderExecution("try to load rules in a task with status " + executionStatus.name());
 		}
 		try {
-			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager()
-					.getPreRules(getTaskName())) {
+			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager().getPreRules(getTaskName())) {
 				preExecutionRules.register(preRule);
 			}
 			if (traceLog) {
@@ -201,8 +212,7 @@ class RulesEngineTask implements Task {
 			throw loadingTaskRulesException;
 		}
 		try {
-			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager()
-					.getMainRules(getTaskName())) {
+			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager().getMainRules(getTaskName())) {
 				executionRules.register(preRule);
 			}
 			executionParameters = pTalkEngineRuntime.getConfigurationTasksManager()
@@ -222,8 +232,7 @@ class RulesEngineTask implements Task {
 			throw loadingTaskRulesException;
 		}
 		try {
-			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager()
-					.getPostRules(getTaskName())) {
+			for (final Rule preRule : pTalkEngineRuntime.getConfigurationTasksManager().getPostRules(getTaskName())) {
 				postExecutionRules.register(preRule);
 			}
 			if (traceLog) {
@@ -355,6 +364,7 @@ class RulesEngineTask implements Task {
 		workingFacts.remove(executionParameters.getExtensionsManagerFactName());
 		workingFacts.remove(executionParameters.getAbilityCommunicationFactName());
 		workingFacts.remove(executionParameters.getNluCommunicationFactName());
+		workingFacts.remove(executionParameters.getChannelCommunicationFactName());
 		workingFacts.remove(executionParameters.getNextHopFactName());
 		pTalkEngineRuntime.getSuperManagerFactFactory().remove(this);
 		pTalkEngineRuntime.getMemoryManagerFactFactory().remove(this);
@@ -362,6 +372,7 @@ class RulesEngineTask implements Task {
 		pTalkEngineRuntime.getExtensionsManagerFactFactory().remove(this);
 		pTalkEngineRuntime.getAbilityCommunicationFactFactory().remove(this);
 		pTalkEngineRuntime.getNluCommunicationFactFactory().remove(this);
+		pTalkEngineRuntime.getChannelCommunicationFactFactory().remove(this);
 	}
 
 	private void removePreFireFacts() {

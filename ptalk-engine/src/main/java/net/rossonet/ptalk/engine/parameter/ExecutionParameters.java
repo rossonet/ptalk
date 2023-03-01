@@ -16,6 +16,8 @@ public class ExecutionParameters {
 
 	private static final String NLU_COMMUNICATION_FACT_NAME = "nlu-communication";
 
+	private static final String CHANNEL_COMMUNICATION_FACT_NAME = "channel-communication";
+
 	private static final String SUPER_MANAGER_FACT_NAME = "super-manager";
 
 	private static final String DEFAULT_TIME_UNIT = "milliseconds";
@@ -37,6 +39,8 @@ public class ExecutionParameters {
 	private static final String NEXT_HOP_FACT_LABEL = "next-name";
 
 	private static final String NLU_COMMUNICATION_FACT_LABEL = "nlu-communication-name";
+
+	private static final String CHANNEL_COMMUNICATION_FACT_LABEL = "channel-communication-name";
 
 	private static final String SUPER_MANAGER_FACT_LABEL = "super-manager-name";
 
@@ -70,6 +74,8 @@ public class ExecutionParameters {
 
 	private String nluCommunicationFactName = null;
 
+	private String channelCommunicationFactName = null;
+
 	private String nextHopFactName = null;
 
 	private String memoryManagerFactName = null;
@@ -98,6 +104,10 @@ public class ExecutionParameters {
 
 		if (executionParameters.has(NEXT_HOP_FACT_LABEL)) {
 			nextHopFactName = executionParameters.getString(NEXT_HOP_FACT_LABEL);
+		}
+
+		if (executionParameters.has(CHANNEL_COMMUNICATION_FACT_LABEL)) {
+			channelCommunicationFactName = executionParameters.getString(CHANNEL_COMMUNICATION_FACT_LABEL);
 		}
 
 		if (executionParameters.has(NLU_COMMUNICATION_FACT_LABEL)) {
@@ -139,6 +149,10 @@ public class ExecutionParameters {
 
 	public String getAiManagerFactName() {
 		return aiManagerFactName != null ? aiManagerFactName : AI_MANAGER_FACT_NAME;
+	}
+
+	public String getChannelCommunicationFactName() {
+		return channelCommunicationFactName != null ? channelCommunicationFactName : CHANNEL_COMMUNICATION_FACT_NAME;
 	}
 
 	public String getExtensionsManagerFactName() {
@@ -192,6 +206,7 @@ public class ExecutionParameters {
 		json.put(EXTENSIONS_MANAGER_FACT_LABEL, getExtensionsManagerFactName());
 		json.put(MEMORY_MANAGER_FACT_LABEL, getMemoryManagerFactName());
 		json.put(NEXT_HOP_FACT_LABEL, getNextHopFactName());
+		json.put(CHANNEL_COMMUNICATION_FACT_LABEL, getNluCommunicationFactName());
 		json.put(NLU_COMMUNICATION_FACT_LABEL, getNluCommunicationFactName());
 		json.put(SUPER_MANAGER_FACT_LABEL, getSuperManagerFactName());
 		json.put(MAIN_TIME_UNIT_LABEL, getTimeoutMainExecutionTimeUnit());

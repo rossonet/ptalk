@@ -1,5 +1,6 @@
 package net.rossonet.ptalk.engine.runtime;
 
+import java.time.Instant;
 import java.util.Collection;
 
 import org.jeasy.rules.api.Facts;
@@ -29,6 +30,8 @@ public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 	ExecutionStatus getExecutionStatus();
 
 	Collection<NextHop> getNextHops();
+
+	Instant getStartingInstant();
 
 	String getTaskName();
 
