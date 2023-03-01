@@ -46,68 +46,6 @@ public final class RpcChannelUnitV1Grpc {
     return getCallSyncMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.grpc.ChannelMessageRequest,
-      net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CallAsync",
-      requestType = net.rossonet.ptalk.channel.grpc.ChannelMessageRequest.class,
-      responseType = net.rossonet.ptalk.base.grpc.Status.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.grpc.ChannelMessageRequest,
-      net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.grpc.ChannelMessageRequest, net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod;
-    if ((getCallAsyncMethod = RpcChannelUnitV1Grpc.getCallAsyncMethod) == null) {
-      synchronized (RpcChannelUnitV1Grpc.class) {
-        if ((getCallAsyncMethod = RpcChannelUnitV1Grpc.getCallAsyncMethod) == null) {
-          RpcChannelUnitV1Grpc.getCallAsyncMethod = getCallAsyncMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.channel.grpc.ChannelMessageRequest, net.rossonet.ptalk.base.grpc.Status>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CallAsync"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.channel.grpc.ChannelMessageRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.base.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcChannelUnitV1MethodDescriptorSupplier("CallAsync"))
-              .build();
-        }
-      }
-    }
-    return getCallAsyncMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.grpc.ChannelMessageReply,
-      net.rossonet.ptalk.base.grpc.Status> getReplyCallAsyncMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ReplyCallAsync",
-      requestType = net.rossonet.ptalk.channel.grpc.ChannelMessageReply.class,
-      responseType = net.rossonet.ptalk.base.grpc.Status.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.grpc.ChannelMessageReply,
-      net.rossonet.ptalk.base.grpc.Status> getReplyCallAsyncMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.channel.grpc.ChannelMessageReply, net.rossonet.ptalk.base.grpc.Status> getReplyCallAsyncMethod;
-    if ((getReplyCallAsyncMethod = RpcChannelUnitV1Grpc.getReplyCallAsyncMethod) == null) {
-      synchronized (RpcChannelUnitV1Grpc.class) {
-        if ((getReplyCallAsyncMethod = RpcChannelUnitV1Grpc.getReplyCallAsyncMethod) == null) {
-          RpcChannelUnitV1Grpc.getReplyCallAsyncMethod = getReplyCallAsyncMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.channel.grpc.ChannelMessageReply, net.rossonet.ptalk.base.grpc.Status>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReplyCallAsync"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.channel.grpc.ChannelMessageReply.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.base.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcChannelUnitV1MethodDescriptorSupplier("ReplyCallAsync"))
-              .build();
-        }
-      }
-    }
-    return getReplyCallAsyncMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -163,20 +101,6 @@ public final class RpcChannelUnitV1Grpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallSyncMethod(), responseObserver);
     }
 
-    /**
-     */
-    public void callAsync(net.rossonet.ptalk.channel.grpc.ChannelMessageRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallAsyncMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void replyCallAsync(net.rossonet.ptalk.channel.grpc.ChannelMessageReply request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReplyCallAsyncMethod(), responseObserver);
-    }
-
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -186,20 +110,6 @@ public final class RpcChannelUnitV1Grpc {
                 net.rossonet.ptalk.channel.grpc.ChannelMessageRequest,
                 net.rossonet.ptalk.channel.grpc.ChannelMessageReply>(
                   this, METHODID_CALL_SYNC)))
-          .addMethod(
-            getCallAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.channel.grpc.ChannelMessageRequest,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_CALL_ASYNC)))
-          .addMethod(
-            getReplyCallAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.channel.grpc.ChannelMessageReply,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_REPLY_CALL_ASYNC)))
           .build();
     }
   }
@@ -225,22 +135,6 @@ public final class RpcChannelUnitV1Grpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCallSyncMethod(), getCallOptions()), request, responseObserver);
     }
-
-    /**
-     */
-    public void callAsync(net.rossonet.ptalk.channel.grpc.ChannelMessageRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCallAsyncMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void replyCallAsync(net.rossonet.ptalk.channel.grpc.ChannelMessageReply request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getReplyCallAsyncMethod(), getCallOptions()), request, responseObserver);
-    }
   }
 
   /**
@@ -262,20 +156,6 @@ public final class RpcChannelUnitV1Grpc {
     public net.rossonet.ptalk.channel.grpc.ChannelMessageReply callSync(net.rossonet.ptalk.channel.grpc.ChannelMessageRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCallSyncMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public net.rossonet.ptalk.base.grpc.Status callAsync(net.rossonet.ptalk.channel.grpc.ChannelMessageRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCallAsyncMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public net.rossonet.ptalk.base.grpc.Status replyCallAsync(net.rossonet.ptalk.channel.grpc.ChannelMessageReply request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getReplyCallAsyncMethod(), getCallOptions(), request);
     }
   }
 
@@ -300,27 +180,9 @@ public final class RpcChannelUnitV1Grpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCallSyncMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> callAsync(
-        net.rossonet.ptalk.channel.grpc.ChannelMessageRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCallAsyncMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> replyCallAsync(
-        net.rossonet.ptalk.channel.grpc.ChannelMessageReply request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getReplyCallAsyncMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_CALL_SYNC = 0;
-  private static final int METHODID_CALL_ASYNC = 1;
-  private static final int METHODID_REPLY_CALL_ASYNC = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -342,14 +204,6 @@ public final class RpcChannelUnitV1Grpc {
         case METHODID_CALL_SYNC:
           serviceImpl.callSync((net.rossonet.ptalk.channel.grpc.ChannelMessageRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.channel.grpc.ChannelMessageReply>) responseObserver);
-          break;
-        case METHODID_CALL_ASYNC:
-          serviceImpl.callAsync((net.rossonet.ptalk.channel.grpc.ChannelMessageRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status>) responseObserver);
-          break;
-        case METHODID_REPLY_CALL_ASYNC:
-          serviceImpl.replyCallAsync((net.rossonet.ptalk.channel.grpc.ChannelMessageReply) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -413,8 +267,6 @@ public final class RpcChannelUnitV1Grpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RpcChannelUnitV1FileDescriptorSupplier())
               .addMethod(getCallSyncMethod())
-              .addMethod(getCallAsyncMethod())
-              .addMethod(getReplyCallAsyncMethod())
               .build();
         }
       }

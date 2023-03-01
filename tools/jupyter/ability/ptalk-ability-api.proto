@@ -160,7 +160,6 @@ message GeneralConfigurationManagementReply {
 }
 
 service RpcAbilityCoreV1 {
-  rpc ReplyAsync (AbilityMessageReply) returns (base.Status) {}
   rpc RegisterRule (RegisterRuleRequest) returns (RegisterRuleReply) {}
   rpc CancelRule (CancelRuleRequest) returns (CancelRuleReply) {}
   rpc ListRules (ListRulesRequest) returns (ListRulesReply) {}
@@ -171,7 +170,6 @@ service RpcAbilityCoreV1 {
 
 service RpcAbilityUnitV1 {
   rpc CallSync (AbilityMessageRequest) returns (AbilityMessageReply) {}
-  rpc CallAsync (AbilityMessageRequest) returns (base.Status) {}
 }
 
 service RpcSuperAbilityCoreV1 {

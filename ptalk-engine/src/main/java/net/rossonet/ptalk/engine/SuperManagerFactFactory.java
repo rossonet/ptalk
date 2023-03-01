@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.rossonet.ptalk.base.grpc.RegisterRequest;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.superManager.SuperManagerFact;
@@ -35,6 +36,11 @@ public class SuperManagerFactFactory implements PTalkFactFactory {
 
 	public PTalkEngineRuntime getpTalkEngineRuntime() {
 		return pTalkEngineRuntime;
+	}
+
+	public void registerUnit(RegisterRequest request) {
+		// TODO registrare self unit
+
 	}
 
 	@Override

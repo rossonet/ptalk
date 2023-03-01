@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.rossonet.ptalk.base.grpc.RegisterRequest;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluCommunicationFact;
+import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 
 public class NluCommunicationFactFactory implements PTalkFactFactory {
 
@@ -38,11 +40,21 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 		return pTalkEngineRuntime;
 	}
 
+	public void registerUnit(RegisterRequest request) {
+		// TODO registrare nlu unit
+
+	}
+
 	@Override
 	public void remove(Task rulesEngineTask) {
 		if (facts.containsKey(rulesEngineTask.getTraceId())) {
 			facts.remove(rulesEngineTask.getTraceId());
 		}
+	}
+
+	public void replyFromNluTrainingRequest(NluTrainingModelReply request) {
+		// TODO gestione risposta training nlu
+
 	}
 
 	@Override

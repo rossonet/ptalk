@@ -46,68 +46,6 @@ public final class RpcNluUnitV1Grpc {
     return getCallSyncMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluMessageRequest,
-      net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CallAsync",
-      requestType = net.rossonet.ptalk.nlu.grpc.NluMessageRequest.class,
-      responseType = net.rossonet.ptalk.base.grpc.Status.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluMessageRequest,
-      net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluMessageRequest, net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod;
-    if ((getCallAsyncMethod = RpcNluUnitV1Grpc.getCallAsyncMethod) == null) {
-      synchronized (RpcNluUnitV1Grpc.class) {
-        if ((getCallAsyncMethod = RpcNluUnitV1Grpc.getCallAsyncMethod) == null) {
-          RpcNluUnitV1Grpc.getCallAsyncMethod = getCallAsyncMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.nlu.grpc.NluMessageRequest, net.rossonet.ptalk.base.grpc.Status>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CallAsync"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.nlu.grpc.NluMessageRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.base.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcNluUnitV1MethodDescriptorSupplier("CallAsync"))
-              .build();
-        }
-      }
-    }
-    return getCallAsyncMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest,
-      net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply> getTrainModelSyncMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "TrainModelSync",
-      requestType = net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest.class,
-      responseType = net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest,
-      net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply> getTrainModelSyncMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest, net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply> getTrainModelSyncMethod;
-    if ((getTrainModelSyncMethod = RpcNluUnitV1Grpc.getTrainModelSyncMethod) == null) {
-      synchronized (RpcNluUnitV1Grpc.class) {
-        if ((getTrainModelSyncMethod = RpcNluUnitV1Grpc.getTrainModelSyncMethod) == null) {
-          RpcNluUnitV1Grpc.getTrainModelSyncMethod = getTrainModelSyncMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest, net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "TrainModelSync"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcNluUnitV1MethodDescriptorSupplier("TrainModelSync"))
-              .build();
-        }
-      }
-    }
-    return getTrainModelSyncMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest,
       net.rossonet.ptalk.base.grpc.Status> getTrainModelAsyncMethod;
 
@@ -258,20 +196,6 @@ public final class RpcNluUnitV1Grpc {
 
     /**
      */
-    public void callAsync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallAsyncMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void trainModelSync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTrainModelSyncMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void trainModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTrainModelAsyncMethod(), responseObserver);
@@ -300,20 +224,6 @@ public final class RpcNluUnitV1Grpc {
                 net.rossonet.ptalk.nlu.grpc.NluMessageRequest,
                 net.rossonet.ptalk.nlu.grpc.NluMessageReply>(
                   this, METHODID_CALL_SYNC)))
-          .addMethod(
-            getCallAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluMessageRequest,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_CALL_ASYNC)))
-          .addMethod(
-            getTrainModelSyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest,
-                net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply>(
-                  this, METHODID_TRAIN_MODEL_SYNC)))
           .addMethod(
             getTrainModelAsyncMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -359,22 +269,6 @@ public final class RpcNluUnitV1Grpc {
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluMessageReply> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCallSyncMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void callAsync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCallAsyncMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void trainModelSync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getTrainModelSyncMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -425,20 +319,6 @@ public final class RpcNluUnitV1Grpc {
 
     /**
      */
-    public net.rossonet.ptalk.base.grpc.Status callAsync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCallAsyncMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply trainModelSync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getTrainModelSyncMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public net.rossonet.ptalk.base.grpc.Status trainModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getTrainModelAsyncMethod(), getCallOptions(), request);
@@ -483,22 +363,6 @@ public final class RpcNluUnitV1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> callAsync(
-        net.rossonet.ptalk.nlu.grpc.NluMessageRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCallAsyncMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply> trainModelSync(
-        net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getTrainModelSyncMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> trainModelAsync(
         net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -523,11 +387,9 @@ public final class RpcNluUnitV1Grpc {
   }
 
   private static final int METHODID_CALL_SYNC = 0;
-  private static final int METHODID_CALL_ASYNC = 1;
-  private static final int METHODID_TRAIN_MODEL_SYNC = 2;
-  private static final int METHODID_TRAIN_MODEL_ASYNC = 3;
-  private static final int METHODID_LIST_MODELS = 4;
-  private static final int METHODID_DELETE_MODEL = 5;
+  private static final int METHODID_TRAIN_MODEL_ASYNC = 1;
+  private static final int METHODID_LIST_MODELS = 2;
+  private static final int METHODID_DELETE_MODEL = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -549,14 +411,6 @@ public final class RpcNluUnitV1Grpc {
         case METHODID_CALL_SYNC:
           serviceImpl.callSync((net.rossonet.ptalk.nlu.grpc.NluMessageRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluMessageReply>) responseObserver);
-          break;
-        case METHODID_CALL_ASYNC:
-          serviceImpl.callAsync((net.rossonet.ptalk.nlu.grpc.NluMessageRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status>) responseObserver);
-          break;
-        case METHODID_TRAIN_MODEL_SYNC:
-          serviceImpl.trainModelSync((net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply>) responseObserver);
           break;
         case METHODID_TRAIN_MODEL_ASYNC:
           serviceImpl.trainModelAsync((net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest) request,
@@ -632,8 +486,6 @@ public final class RpcNluUnitV1Grpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RpcNluUnitV1FileDescriptorSupplier())
               .addMethod(getCallSyncMethod())
-              .addMethod(getCallAsyncMethod())
-              .addMethod(getTrainModelSyncMethod())
               .addMethod(getTrainModelAsyncMethod())
               .addMethod(getListModelsMethod())
               .addMethod(getDeleteModelMethod())

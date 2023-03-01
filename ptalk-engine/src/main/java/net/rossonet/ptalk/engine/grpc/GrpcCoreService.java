@@ -17,7 +17,9 @@ public class GrpcCoreService {
 
 	public GrpcCoreService(PTalkEngineRuntime pTalkEngineRuntime, int grpcServerPort) {
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
-		server = ServerBuilder.forPort(grpcServerPort).addService(new GrpcNluServiceImpl(pTalkEngineRuntime))
+		server = ServerBuilder.forPort(grpcServerPort).addService(new GrpcEngineCoreServiceImpl(pTalkEngineRuntime))
+				.addService(new GrpcNluServiceImpl(pTalkEngineRuntime))
+				.addService(new GrpcChannelServiceImpl(pTalkEngineRuntime))
 				.addService(new GrpcChannelServiceImpl(pTalkEngineRuntime))
 				.addService(new GrpcAbilityServiceImpl(pTalkEngineRuntime))
 				.addService(new GrpcSuperAbilityServiceImpl(pTalkEngineRuntime)).build();

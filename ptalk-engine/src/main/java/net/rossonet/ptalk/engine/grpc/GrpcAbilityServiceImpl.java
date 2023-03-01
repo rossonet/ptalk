@@ -10,7 +10,6 @@ import org.joda.time.Instant;
 import org.json.JSONObject;
 
 import io.grpc.stub.StreamObserver;
-import net.rossonet.ptalk.ability.grpc.AbilityMessageReply;
 import net.rossonet.ptalk.ability.grpc.CancelRuleReply;
 import net.rossonet.ptalk.ability.grpc.CancelRuleRequest;
 import net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply;
@@ -24,7 +23,6 @@ import net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest;
 import net.rossonet.ptalk.ability.grpc.RegisterRuleReply;
 import net.rossonet.ptalk.ability.grpc.RegisterRuleRequest;
 import net.rossonet.ptalk.ability.grpc.RpcAbilityCoreV1Grpc.RpcAbilityCoreV1ImplBase;
-import net.rossonet.ptalk.base.grpc.Status;
 import net.rossonet.ptalk.base.grpc.StatusValue;
 import net.rossonet.ptalk.base.grpc.Timestamp;
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
@@ -142,13 +140,4 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 			responseObserver.onError(e);
 		}
 	}
-
-	@Override
-	public void replyAsync(AbilityMessageReply request, StreamObserver<Status> responseObserver) {
-		pTalkEngineRuntime.replyFromAbilityMessage(request);
-		final Status reply = Status.newBuilder().setStatus(StatusValue.STATUS_GOOD).build();
-		responseObserver.onNext(reply);
-		responseObserver.onCompleted();
-	}
-
 }

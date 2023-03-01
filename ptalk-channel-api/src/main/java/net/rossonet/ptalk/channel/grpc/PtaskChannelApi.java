@@ -47,20 +47,14 @@ public final class PtaskChannelApi {
       "se.Data\"\222\001\n\023ChannelMessageReply\022\025\n\rflowR" +
       "eference\030\001 \001(\t\022!\n\006status\030\002 \001(\0162\021.base.St" +
       "atusValue\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Time" +
-      "stamp\022\035\n\ttraceData\030\004 \003(\0132\n.base.Data2\333\001\n" +
-      "\020RpcChannelCoreV1\022J\n\010CallSync\022\036.channel." +
-      "ChannelMessageRequest\032\034.channel.ChannelM" +
-      "essageReply\"\000\022;\n\tCallAsync\022\036.channel.Cha" +
-      "nnelMessageRequest\032\014.base.Status\"\000\022>\n\016Re" +
-      "plyCallAsync\022\034.channel.ChannelMessageRep" +
-      "ly\032\014.base.Status\"\0002\333\001\n\020RpcChannelUnitV1\022" +
-      "J\n\010CallSync\022\036.channel.ChannelMessageRequ" +
-      "est\032\034.channel.ChannelMessageReply\"\000\022;\n\tC" +
-      "allAsync\022\036.channel.ChannelMessageRequest" +
-      "\032\014.base.Status\"\000\022>\n\016ReplyCallAsync\022\034.cha" +
-      "nnel.ChannelMessageReply\032\014.base.Status\"\000" +
-      "B4\n\037net.rossonet.ptalk.channel.grpcB\017Pta" +
-      "skChannelApiP\001b\006proto3"
+      "stamp\022\035\n\ttraceData\030\004 \003(\0132\n.base.Data2^\n\020" +
+      "RpcChannelCoreV1\022J\n\010CallSync\022\036.channel.C" +
+      "hannelMessageRequest\032\034.channel.ChannelMe" +
+      "ssageReply\"\0002^\n\020RpcChannelUnitV1\022J\n\010Call" +
+      "Sync\022\036.channel.ChannelMessageRequest\032\034.c" +
+      "hannel.ChannelMessageReply\"\000B4\n\037net.ross" +
+      "onet.ptalk.channel.grpcB\017PtaskChannelApi" +
+      "P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

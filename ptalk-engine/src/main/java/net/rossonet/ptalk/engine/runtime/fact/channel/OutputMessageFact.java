@@ -1,5 +1,7 @@
 package net.rossonet.ptalk.engine.runtime.fact.channel;
 
+import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
+
 public class OutputMessageFact {
 
 	private final String traceId;
@@ -16,6 +18,11 @@ public class OutputMessageFact {
 
 	public String getChannel() {
 		return channel;
+	}
+
+	public ChannelMessageRequest getChannelMessageRequest() {
+		// TODO generare il messaggio di risposta
+		return null;
 	}
 
 	public String getChannelUniqueName() {

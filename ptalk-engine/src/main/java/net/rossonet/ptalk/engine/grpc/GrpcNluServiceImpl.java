@@ -4,7 +4,6 @@ import io.grpc.stub.StreamObserver;
 import net.rossonet.ptalk.base.grpc.Status;
 import net.rossonet.ptalk.base.grpc.StatusValue;
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
-import net.rossonet.ptalk.nlu.grpc.NluMessageReply;
 import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.nlu.grpc.RpcNluCoreV1Grpc.RpcNluCoreV1ImplBase;
 
@@ -18,14 +17,6 @@ public class GrpcNluServiceImpl extends RpcNluCoreV1ImplBase {
 
 	public PTalkEngineRuntime getpTalkEngineRuntime() {
 		return pTalkEngineRuntime;
-	}
-
-	@Override
-	public void replyCallAsync(NluMessageReply request, StreamObserver<Status> responseObserver) {
-		pTalkEngineRuntime.replyFromNluCall(request);
-		final Status reply = Status.newBuilder().setStatus(StatusValue.STATUS_GOOD).build();
-		responseObserver.onNext(reply);
-		responseObserver.onCompleted();
 	}
 
 	@Override

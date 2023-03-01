@@ -9,9 +9,7 @@ import org.jeasy.rules.api.Fact;
 import org.jeasy.rules.api.Facts;
 import org.json.JSONObject;
 
-import net.rossonet.ptalk.ability.grpc.AbilityMessageReply;
 import net.rossonet.ptalk.base.grpc.LifecycleStatus;
-import net.rossonet.ptalk.channel.grpc.ChannelMessageReply;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.grpc.GrpcCoreService;
@@ -22,7 +20,6 @@ import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
 import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopSchedulerType;
 import net.rossonet.ptalk.engine.runtime.fact.channel.InputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
-import net.rossonet.ptalk.nlu.grpc.NluMessageReply;
 import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.utils.JsonHelper;
 
@@ -92,16 +89,16 @@ public class PTalkEngineRuntime {
 		lifecycleStatus = LifecycleStatus.RUNNING;
 	}
 
-	public Future<ChannelMessageReply> channelMessage(ChannelMessageRequest request, boolean async)
-			throws TaskManagerException {
+	public void channelMessage(ChannelMessageRequest request) throws TaskManagerException {
 		final Fact<InputMessageFact> inputMessageFact = new Fact<>(request.getChannelUniqueMessageId(),
 				new InputMessageFact(request));
+		getMemoryManager().registerInputMessage(inputMessageFact);
 		final Facts facts = new Facts();
 		facts.add(inputMessageFact);
 		final Task task = Task.fire(this, new NextHop(NextHopSchedulerType.LOCAL,
 				getGlobalConfiguration().getInputChannel(), null, request.getTraceLog()),
 				getGlobalConfiguration().getInputChannel(), facts);
-		return nextHopRuntimeEngine.getMessageReplyFuture(task);
+		nextHopRuntimeEngine.manageTasks(task);
 	}
 
 	public AbilityCommunicationFactFactory getAbilityCommunicationFactFactory() {
@@ -199,29 +196,14 @@ public class PTalkEngineRuntime {
 		replaceJsonConfiguration(new JSONObject(configuration));
 	}
 
-	public void replyFromAbilityMessage(AbilityMessageReply request) {
-		// TODO replyFromAbilityMessage
-
-	}
-
-	public Future<ChannelMessageReply> replyFromChannelMessage(ChannelMessageReply request) {
-		// TODO reply of async channle message
-		return null;
-	}
-
-	public void replyFromNluCall(NluMessageReply request) {
-		// TODO reply From NLU call
-
-	}
-
 	public void replyFromNluTrainingRequest(NluTrainingModelReply request) {
-		// TODO reply From NLU training request
-
+		getMemoryManager().registerReplyNluTraining(request);
+		getNluCommunicationFactFactory().replyFromNluTrainingRequest(request);
 	}
 
 	public void sendMessageToChannel(OutputMessageFact outputMessageFact) {
-		// TODO messaggi verso esterno tramite channel
-
+		getChannelCommunicationFactFactory().sendMessage(outputMessageFact);
+		getMemoryManager().registerOutputMessage(outputMessageFact);
 	}
 
 	public void stop() {

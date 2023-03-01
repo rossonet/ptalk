@@ -46,37 +46,6 @@ public final class RpcAbilityUnitV1Grpc {
     return getCallSyncMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.AbilityMessageRequest,
-      net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CallAsync",
-      requestType = net.rossonet.ptalk.ability.grpc.AbilityMessageRequest.class,
-      responseType = net.rossonet.ptalk.base.grpc.Status.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.AbilityMessageRequest,
-      net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.AbilityMessageRequest, net.rossonet.ptalk.base.grpc.Status> getCallAsyncMethod;
-    if ((getCallAsyncMethod = RpcAbilityUnitV1Grpc.getCallAsyncMethod) == null) {
-      synchronized (RpcAbilityUnitV1Grpc.class) {
-        if ((getCallAsyncMethod = RpcAbilityUnitV1Grpc.getCallAsyncMethod) == null) {
-          RpcAbilityUnitV1Grpc.getCallAsyncMethod = getCallAsyncMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.AbilityMessageRequest, net.rossonet.ptalk.base.grpc.Status>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CallAsync"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.AbilityMessageRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.base.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcAbilityUnitV1MethodDescriptorSupplier("CallAsync"))
-              .build();
-        }
-      }
-    }
-    return getCallAsyncMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -132,13 +101,6 @@ public final class RpcAbilityUnitV1Grpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallSyncMethod(), responseObserver);
     }
 
-    /**
-     */
-    public void callAsync(net.rossonet.ptalk.ability.grpc.AbilityMessageRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallAsyncMethod(), responseObserver);
-    }
-
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -148,13 +110,6 @@ public final class RpcAbilityUnitV1Grpc {
                 net.rossonet.ptalk.ability.grpc.AbilityMessageRequest,
                 net.rossonet.ptalk.ability.grpc.AbilityMessageReply>(
                   this, METHODID_CALL_SYNC)))
-          .addMethod(
-            getCallAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.AbilityMessageRequest,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_CALL_ASYNC)))
           .build();
     }
   }
@@ -180,14 +135,6 @@ public final class RpcAbilityUnitV1Grpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCallSyncMethod(), getCallOptions()), request, responseObserver);
     }
-
-    /**
-     */
-    public void callAsync(net.rossonet.ptalk.ability.grpc.AbilityMessageRequest request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCallAsyncMethod(), getCallOptions()), request, responseObserver);
-    }
   }
 
   /**
@@ -209,13 +156,6 @@ public final class RpcAbilityUnitV1Grpc {
     public net.rossonet.ptalk.ability.grpc.AbilityMessageReply callSync(net.rossonet.ptalk.ability.grpc.AbilityMessageRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCallSyncMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public net.rossonet.ptalk.base.grpc.Status callAsync(net.rossonet.ptalk.ability.grpc.AbilityMessageRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCallAsyncMethod(), getCallOptions(), request);
     }
   }
 
@@ -240,18 +180,9 @@ public final class RpcAbilityUnitV1Grpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCallSyncMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> callAsync(
-        net.rossonet.ptalk.ability.grpc.AbilityMessageRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCallAsyncMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_CALL_SYNC = 0;
-  private static final int METHODID_CALL_ASYNC = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -273,10 +204,6 @@ public final class RpcAbilityUnitV1Grpc {
         case METHODID_CALL_SYNC:
           serviceImpl.callSync((net.rossonet.ptalk.ability.grpc.AbilityMessageRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.AbilityMessageReply>) responseObserver);
-          break;
-        case METHODID_CALL_ASYNC:
-          serviceImpl.callAsync((net.rossonet.ptalk.ability.grpc.AbilityMessageRequest) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -340,7 +267,6 @@ public final class RpcAbilityUnitV1Grpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RpcAbilityUnitV1FileDescriptorSupplier())
               .addMethod(getCallSyncMethod())
-              .addMethod(getCallAsyncMethod())
               .build();
         }
       }

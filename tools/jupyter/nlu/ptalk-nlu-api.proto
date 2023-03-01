@@ -100,14 +100,11 @@ message NluDeleteModelReply {
 }
 
 service RpcNluCoreV1 {
-  rpc ReplyCallAsync (NluMessageReply) returns (base.Status) {}
   rpc ReplyTrainingModelAsync (NluTrainingModelReply) returns (base.Status) {}
 }
 
 service RpcNluUnitV1 {
   rpc CallSync (NluMessageRequest) returns (NluMessageReply) {}
-  rpc CallAsync (NluMessageRequest) returns (base.Status) {}
-  rpc TrainModelSync (NluTrainingModelRequest) returns (NluTrainingModelReply) {}
   rpc TrainModelAsync (NluTrainingModelRequest) returns (base.Status) {}
   rpc ListModels (NluListModelsRequest) returns (NluListModelsReply) {}
   rpc DeleteModel (NluDeleteModelRequest) returns (NluDeleteModelReply) {}

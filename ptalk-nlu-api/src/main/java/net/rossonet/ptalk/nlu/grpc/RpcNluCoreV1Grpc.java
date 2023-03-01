@@ -15,37 +15,6 @@ public final class RpcNluCoreV1Grpc {
   public static final String SERVICE_NAME = "nlu.RpcNluCoreV1";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluMessageReply,
-      net.rossonet.ptalk.base.grpc.Status> getReplyCallAsyncMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ReplyCallAsync",
-      requestType = net.rossonet.ptalk.nlu.grpc.NluMessageReply.class,
-      responseType = net.rossonet.ptalk.base.grpc.Status.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluMessageReply,
-      net.rossonet.ptalk.base.grpc.Status> getReplyCallAsyncMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluMessageReply, net.rossonet.ptalk.base.grpc.Status> getReplyCallAsyncMethod;
-    if ((getReplyCallAsyncMethod = RpcNluCoreV1Grpc.getReplyCallAsyncMethod) == null) {
-      synchronized (RpcNluCoreV1Grpc.class) {
-        if ((getReplyCallAsyncMethod = RpcNluCoreV1Grpc.getReplyCallAsyncMethod) == null) {
-          RpcNluCoreV1Grpc.getReplyCallAsyncMethod = getReplyCallAsyncMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.nlu.grpc.NluMessageReply, net.rossonet.ptalk.base.grpc.Status>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReplyCallAsync"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.nlu.grpc.NluMessageReply.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.base.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcNluCoreV1MethodDescriptorSupplier("ReplyCallAsync"))
-              .build();
-        }
-      }
-    }
-    return getReplyCallAsyncMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply,
       net.rossonet.ptalk.base.grpc.Status> getReplyTrainingModelAsyncMethod;
 
@@ -127,13 +96,6 @@ public final class RpcNluCoreV1Grpc {
 
     /**
      */
-    public void replyCallAsync(net.rossonet.ptalk.nlu.grpc.NluMessageReply request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReplyCallAsyncMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void replyTrainingModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReplyTrainingModelAsyncMethod(), responseObserver);
@@ -141,13 +103,6 @@ public final class RpcNluCoreV1Grpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getReplyCallAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluMessageReply,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_REPLY_CALL_ASYNC)))
           .addMethod(
             getReplyTrainingModelAsyncMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -175,14 +130,6 @@ public final class RpcNluCoreV1Grpc {
 
     /**
      */
-    public void replyCallAsync(net.rossonet.ptalk.nlu.grpc.NluMessageReply request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getReplyCallAsyncMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void replyTrainingModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -202,13 +149,6 @@ public final class RpcNluCoreV1Grpc {
     protected RpcNluCoreV1BlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new RpcNluCoreV1BlockingStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public net.rossonet.ptalk.base.grpc.Status replyCallAsync(net.rossonet.ptalk.nlu.grpc.NluMessageReply request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getReplyCallAsyncMethod(), getCallOptions(), request);
     }
 
     /**
@@ -235,14 +175,6 @@ public final class RpcNluCoreV1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> replyCallAsync(
-        net.rossonet.ptalk.nlu.grpc.NluMessageReply request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getReplyCallAsyncMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> replyTrainingModelAsync(
         net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -250,8 +182,7 @@ public final class RpcNluCoreV1Grpc {
     }
   }
 
-  private static final int METHODID_REPLY_CALL_ASYNC = 0;
-  private static final int METHODID_REPLY_TRAINING_MODEL_ASYNC = 1;
+  private static final int METHODID_REPLY_TRAINING_MODEL_ASYNC = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -270,10 +201,6 @@ public final class RpcNluCoreV1Grpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_REPLY_CALL_ASYNC:
-          serviceImpl.replyCallAsync((net.rossonet.ptalk.nlu.grpc.NluMessageReply) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status>) responseObserver);
-          break;
         case METHODID_REPLY_TRAINING_MODEL_ASYNC:
           serviceImpl.replyTrainingModelAsync((net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status>) responseObserver);
@@ -339,7 +266,6 @@ public final class RpcNluCoreV1Grpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RpcNluCoreV1FileDescriptorSupplier())
-              .addMethod(getReplyCallAsyncMethod())
               .addMethod(getReplyTrainingModelAsyncMethod())
               .build();
         }

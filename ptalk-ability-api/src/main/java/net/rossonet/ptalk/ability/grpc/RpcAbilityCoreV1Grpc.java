@@ -15,37 +15,6 @@ public final class RpcAbilityCoreV1Grpc {
   public static final String SERVICE_NAME = "ability.RpcAbilityCoreV1";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.AbilityMessageReply,
-      net.rossonet.ptalk.base.grpc.Status> getReplyAsyncMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ReplyAsync",
-      requestType = net.rossonet.ptalk.ability.grpc.AbilityMessageReply.class,
-      responseType = net.rossonet.ptalk.base.grpc.Status.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.AbilityMessageReply,
-      net.rossonet.ptalk.base.grpc.Status> getReplyAsyncMethod() {
-    io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.AbilityMessageReply, net.rossonet.ptalk.base.grpc.Status> getReplyAsyncMethod;
-    if ((getReplyAsyncMethod = RpcAbilityCoreV1Grpc.getReplyAsyncMethod) == null) {
-      synchronized (RpcAbilityCoreV1Grpc.class) {
-        if ((getReplyAsyncMethod = RpcAbilityCoreV1Grpc.getReplyAsyncMethod) == null) {
-          RpcAbilityCoreV1Grpc.getReplyAsyncMethod = getReplyAsyncMethod =
-              io.grpc.MethodDescriptor.<net.rossonet.ptalk.ability.grpc.AbilityMessageReply, net.rossonet.ptalk.base.grpc.Status>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReplyAsync"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.ability.grpc.AbilityMessageReply.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  net.rossonet.ptalk.base.grpc.Status.getDefaultInstance()))
-              .setSchemaDescriptor(new RpcAbilityCoreV1MethodDescriptorSupplier("ReplyAsync"))
-              .build();
-        }
-      }
-    }
-    return getReplyAsyncMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
       net.rossonet.ptalk.ability.grpc.RegisterRuleReply> getRegisterRuleMethod;
 
@@ -282,13 +251,6 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public void replyAsync(net.rossonet.ptalk.ability.grpc.AbilityMessageReply request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReplyAsyncMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void registerRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterRuleMethod(), responseObserver);
@@ -331,13 +293,6 @@ public final class RpcAbilityCoreV1Grpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getReplyAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.AbilityMessageReply,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_REPLY_ASYNC)))
           .addMethod(
             getRegisterRuleMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -396,14 +351,6 @@ public final class RpcAbilityCoreV1Grpc {
     protected RpcAbilityCoreV1Stub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new RpcAbilityCoreV1Stub(channel, callOptions);
-    }
-
-    /**
-     */
-    public void replyAsync(net.rossonet.ptalk.ability.grpc.AbilityMessageReply request,
-        io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getReplyAsyncMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -471,13 +418,6 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public net.rossonet.ptalk.base.grpc.Status replyAsync(net.rossonet.ptalk.ability.grpc.AbilityMessageReply request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getReplyAsyncMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public net.rossonet.ptalk.ability.grpc.RegisterRuleReply registerRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRegisterRuleMethod(), getCallOptions(), request);
@@ -535,14 +475,6 @@ public final class RpcAbilityCoreV1Grpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> replyAsync(
-        net.rossonet.ptalk.ability.grpc.AbilityMessageReply request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getReplyAsyncMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> registerRule(
         net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -590,13 +522,12 @@ public final class RpcAbilityCoreV1Grpc {
     }
   }
 
-  private static final int METHODID_REPLY_ASYNC = 0;
-  private static final int METHODID_REGISTER_RULE = 1;
-  private static final int METHODID_CANCEL_RULE = 2;
-  private static final int METHODID_LIST_RULES = 3;
-  private static final int METHODID_GET_RULE = 4;
-  private static final int METHODID_MEMORY_QUERY = 5;
-  private static final int METHODID_GENERAL_CONFIGURATION_QUERY = 6;
+  private static final int METHODID_REGISTER_RULE = 0;
+  private static final int METHODID_CANCEL_RULE = 1;
+  private static final int METHODID_LIST_RULES = 2;
+  private static final int METHODID_GET_RULE = 3;
+  private static final int METHODID_MEMORY_QUERY = 4;
+  private static final int METHODID_GENERAL_CONFIGURATION_QUERY = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -615,10 +546,6 @@ public final class RpcAbilityCoreV1Grpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_REPLY_ASYNC:
-          serviceImpl.replyAsync((net.rossonet.ptalk.ability.grpc.AbilityMessageReply) request,
-              (io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status>) responseObserver);
-          break;
         case METHODID_REGISTER_RULE:
           serviceImpl.registerRule((net.rossonet.ptalk.ability.grpc.RegisterRuleRequest) request,
               (io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply>) responseObserver);
@@ -704,7 +631,6 @@ public final class RpcAbilityCoreV1Grpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new RpcAbilityCoreV1FileDescriptorSupplier())
-              .addMethod(getReplyAsyncMethod())
               .addMethod(getRegisterRuleMethod())
               .addMethod(getCancelRuleMethod())
               .addMethod(getListRulesMethod())

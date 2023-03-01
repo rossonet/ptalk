@@ -9,7 +9,7 @@ public class InputMessageFact {
 	}
 
 	public String getChannelName() {
-		// TODO il canale del messaggio fi input
+		// TODO il canale del messaggio di input
 		return null;
 	}
 

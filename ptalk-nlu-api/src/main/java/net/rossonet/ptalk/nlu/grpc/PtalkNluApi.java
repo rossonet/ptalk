@@ -120,22 +120,17 @@ public final class PtalkNluApi {
       "\0132\017.base.Timestamp\"s\n\023NluDeleteModelRepl" +
       "y\022\025\n\rflowReference\030\001 \001(\t\022!\n\006status\030\002 \001(\016" +
       "2\021.base.StatusValue\022\"\n\ttimestamp\030\003 \001(\0132\017" +
-      ".base.Timestamp2\215\001\n\014RpcNluCoreV1\0226\n\016Repl" +
-      "yCallAsync\022\024.nlu.NluMessageReply\032\014.base." +
-      "Status\"\000\022E\n\027ReplyTrainingModelAsync\022\032.nl" +
-      "u.NluTrainingModelReply\032\014.base.Status\"\0002" +
-      "\231\003\n\014RpcNluUnitV1\022:\n\010CallSync\022\026.nlu.NluMe" +
-      "ssageRequest\032\024.nlu.NluMessageReply\"\000\0223\n\t" +
-      "CallAsync\022\026.nlu.NluMessageRequest\032\014.base" +
-      ".Status\"\000\022L\n\016TrainModelSync\022\034.nlu.NluTra" +
-      "iningModelRequest\032\032.nlu.NluTrainingModel" +
-      "Reply\"\000\022?\n\017TrainModelAsync\022\034.nlu.NluTrai" +
-      "ningModelRequest\032\014.base.Status\"\000\022B\n\nList" +
-      "Models\022\031.nlu.NluListModelsRequest\032\027.nlu." +
-      "NluListModelsReply\"\000\022E\n\013DeleteModel\022\032.nl" +
-      "u.NluDeleteModelRequest\032\030.nlu.NluDeleteM" +
-      "odelReply\"\000B,\n\033net.rossonet.ptalk.nlu.gr" +
-      "pcB\013PtalkNluApiP\001b\006proto3"
+      ".base.Timestamp2U\n\014RpcNluCoreV1\022E\n\027Reply" +
+      "TrainingModelAsync\022\032.nlu.NluTrainingMode" +
+      "lReply\032\014.base.Status\"\0002\226\002\n\014RpcNluUnitV1\022" +
+      ":\n\010CallSync\022\026.nlu.NluMessageRequest\032\024.nl" +
+      "u.NluMessageReply\"\000\022?\n\017TrainModelAsync\022\034" +
+      ".nlu.NluTrainingModelRequest\032\014.base.Stat" +
+      "us\"\000\022B\n\nListModels\022\031.nlu.NluListModelsRe" +
+      "quest\032\027.nlu.NluListModelsReply\"\000\022E\n\013Dele" +
+      "teModel\022\032.nlu.NluDeleteModelRequest\032\030.nl" +
+      "u.NluDeleteModelReply\"\000B,\n\033net.rossonet." +
+      "ptalk.nlu.grpcB\013PtalkNluApiP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

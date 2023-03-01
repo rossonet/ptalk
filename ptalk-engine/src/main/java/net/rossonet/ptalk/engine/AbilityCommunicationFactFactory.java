@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.rossonet.ptalk.base.grpc.RegisterRequest;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.ability.AbilityCommunicationFact;
@@ -37,6 +38,11 @@ public class AbilityCommunicationFactFactory implements PTalkFactFactory {
 
 	public PTalkEngineRuntime getpTalkEngineRuntime() {
 		return pTalkEngineRuntime;
+	}
+
+	public void registerUnit(RegisterRequest request) {
+		// TODO registrare ability unit
+
 	}
 
 	@Override

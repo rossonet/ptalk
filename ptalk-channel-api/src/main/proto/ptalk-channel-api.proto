@@ -36,13 +36,9 @@ message ChannelMessageReply {
 
 service RpcChannelCoreV1 {
   rpc CallSync (ChannelMessageRequest) returns (ChannelMessageReply) {}
-  rpc CallAsync (ChannelMessageRequest) returns (base.Status) {}
-  rpc ReplyCallAsync (ChannelMessageReply) returns (base.Status) {}
 }
 
 service RpcChannelUnitV1 {
   rpc CallSync (ChannelMessageRequest) returns (ChannelMessageReply) {}
-  rpc CallAsync (ChannelMessageRequest) returns (base.Status) {}
-  rpc ReplyCallAsync (ChannelMessageReply) returns (base.Status) {}
 }
 
