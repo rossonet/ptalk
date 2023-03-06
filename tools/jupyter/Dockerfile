@@ -9,6 +9,7 @@ RUN conda install -y -c plotly plotly
 RUN conda install -y -c conda-forge streamlit
 RUN conda install -y -c conda-forge librosa
 RUN conda install -y -c anaconda nltk
+RUN conda install -y -c conda-forge grpcio grpcio-tools 
 COPY ./examples /home/jovyan/examples
 COPY ./nlu /home/jovyan/nlu
 COPY ./channel /home/jovyan/channel
