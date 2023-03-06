@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import net.rossonet.ptalk.engine.GlobalConfiguration;
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
+import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 
 public class MainApp {
 
@@ -17,7 +18,11 @@ public class MainApp {
 
 	public static void main(final String[] args) {
 		final GlobalConfiguration configuration = GlobalConfiguration.getNewBuilder().build();
-		pTalkEngineRuntime = new PTalkEngineRuntime(configuration);
+		try {
+			pTalkEngineRuntime = new PTalkEngineRuntime(configuration);
+		} catch (final TaskManagerException e) {
+			e.printStackTrace();
+		}
 		runAppUntilStop();
 	}
 

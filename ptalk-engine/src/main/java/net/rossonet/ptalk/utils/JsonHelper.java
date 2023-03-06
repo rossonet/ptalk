@@ -18,17 +18,17 @@ public class JsonHelper {
 
 	public static final String RULE_NAME_LABEL = "name";
 	private static final String VALUE_LABEL = "value";
-	private static final String SHORT_DESCRIPTION_LABEL = "short-description";
+	private static final String SHORT_DESCRIPTION_LABEL = "short_description";
 	private static final String KEY_LABEL = "key";
-	private static final String DISPLAY_NAME_LABEL = "display-name";
+	private static final String DISPLAY_NAME_LABEL = "display_name";
 	private static final String DESCRIPTION_LABEL = "description";
 	private static final String WEIGHT_LABEL = "weight";
 	private static final String TYPEDATA_LABEL = "typedata";
 	private static final String QUALITY_LABEL = "quality";
 	private static final String PRIORITY_LABEL = "priority";
-	private static final String TASK_CONFIGURATION_LABEL = "task-configuration";
-	private static final String GLOBAL_CONFIGURATION_LABEL = "global-configuration";
-	private static final String CONFIGURATION_TYPE_LABEL = "configuration-type";
+	private static final String TASK_CONFIGURATION_LABEL = "task_configuration";
+	private static final String GLOBAL_CONFIGURATION_LABEL = "global_configuration";
+	private static final String CONFIGURATION_TYPE_LABEL = "configuration_type";
 	private static final String PTALK_CONF_VERSION = "ptalk_conf_v.1.0";
 
 	public static Data dataFromJson(JSONObject jsonObject) {

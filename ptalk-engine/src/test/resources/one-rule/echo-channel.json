@@ -1,0 +1,20 @@
+{
+  "global_configuration": {
+    "scheduler_thread_size": 4,
+    "hazelcast_embedded": true,
+    "input_channel": "input_channel",
+    "grpc_server_port": 8191
+  },
+  "configuration_type": "ptalk_conf_v.1.0",
+  "task_configuration": {"input_channel": {
+    "main_rules": [{
+        "condition": "true",
+        "name": "print input message",
+        "description": "when receive a message, print the content",
+        "priority": 2,
+        "actions": ["extensions_manager.println(message_fact);"]
+      }],
+
+    "name": "input channel rule test"
+  }}
+}

@@ -15,7 +15,7 @@ public class PTalkEngineRuntimeTests {
 	private static PTalkEngineRuntime pTalkEngineRuntime = null;
 
 	@BeforeAll
-	public static void createRuntime() {
+	public static void createRuntime() throws TaskManagerException {
 		final GlobalConfiguration configuration = GlobalConfiguration.getNewBuilder().setHazelcastEmbedded(true)
 				.build();
 		pTalkEngineRuntime = new PTalkEngineRuntime(configuration);
@@ -70,9 +70,9 @@ public class PTalkEngineRuntimeTests {
 				+ "        \"condition\": \"movie.rating == R\",\n" + "        \"actions\": [\n"
 				+ "          \"person.shouldProvideId(true);\"\n" + "        ]\n" + "      }\n" + "    ]\n" + "  }\n"
 				+ "]");
-		jsonTaskConfiguration.put("pre-rules", pre);
-		jsonTaskConfiguration.put("post-rules", post);
-		jsonTaskConfiguration.put("main-rules", main);
+		jsonTaskConfiguration.put("pre_rules", pre);
+		jsonTaskConfiguration.put("post_rules", post);
+		jsonTaskConfiguration.put("main_rules", main);
 		pTalkEngineRuntime.getConfigurationTasksManager().addOrUpdateTaskConfiguration(jsonTaskConfiguration);
 		final JSONObject configuration = pTalkEngineRuntime.getJsonConfiguration();
 		System.out.println(configuration.toString(2));
@@ -81,10 +81,10 @@ public class PTalkEngineRuntimeTests {
 
 	@Test
 	public void importFromString() throws TaskManagerException {
-		final String configuration = "{\n" + "  \"global-configuration\": {\n" + "    \"scheduler-thread-size\": 4,\n"
-				+ "    \"hazelcast-embedded\": true,\n" + "    \"input-channel\": \"input-channel\",\n"
-				+ "    \"grpc-server-port\": 8080\n" + "  },\n" + "  \"configuration-type\": \"ptalk_conf_v.1.0\",\n"
-				+ "  \"task-configuration\": {\"test task1\": {\n" + "    \"main-rules\": [{\n"
+		final String configuration = "{\n" + "  \"global_configuration\": {\n" + "    \"scheduler_thread_size\": 4,\n"
+				+ "    \"hazelcast_embedded\": true,\n" + "    \"input_channel\": \"input_channel\",\n"
+				+ "    \"grpc_server_port\": 9080\n" + "  },\n" + "  \"configuration_type\": \"ptalk_conf_v.1.0\",\n"
+				+ "  \"task_configuration\": {\"test task1\": {\n" + "    \"main_rules\": [{\n"
 				+ "      \"condition\": \"true\",\n" + "      \"name\": \"Movie id rule\",\n"
 				+ "      \"composingRules\": [\n" + "        {\n" + "          \"condition\": \"day.hour > 19\",\n"
 				+ "          \"name\": \"Time is evening\",\n"
@@ -94,7 +94,7 @@ public class PTalkEngineRuntimeTests {
 				+ "          \"description\": \"If the movie is rated R\",\n" + "          \"priority\": 1,\n"
 				+ "          \"actions\": [\"person.shouldProvideId(true);\"]\n" + "        }\n" + "      ],\n"
 				+ "      \"priority\": 1,\n" + "      \"actions\": [\"sout:println();\"],\n"
-				+ "      \"compositeRuleType\": \"UnitRuleGroup\"\n" + "    }],\n" + "    \"post-rules\": [\n"
+				+ "      \"compositeRuleType\": \"UnitRuleGroup\"\n" + "    }],\n" + "    \"post_rules\": [\n"
 				+ "      {\n" + "        \"name\": \"Movie id rule\",\n" + "        \"composingRules\": [\n"
 				+ "          {\n" + "            \"condition\": \"day.hour > 19\",\n"
 				+ "            \"name\": \"Time is evening\",\n"
@@ -108,15 +108,15 @@ public class PTalkEngineRuntimeTests {
 				+ "      {\n" + "        \"condition\": \"rain == True\",\n" + "        \"name\": \"weather rule\",\n"
 				+ "        \"description\": \"when it rains, then take an umbrella\",\n" + "        \"priority\": 1,\n"
 				+ "        \"actions\": [\"sout:println(\\\"It rains, take an umbrella!\\\");\"]\n" + "      }\n"
-				+ "    ],\n" + "    \"name\": \"test task1\",\n" + "    \"execution-parameters\": {\n"
-				+ "      \"extensions-manager-name\": \"extensions-manager\",\n"
-				+ "      \"super-manager-name\": \"super-manager\",\n"
-				+ "      \"nlu-communication-name\": \"nlu-communication\",\n"
-				+ "      \"post-time-unit\": \"milliseconds\",\n" + "      \"pre-time-unit\": \"milliseconds\",\n"
-				+ "      \"ability-communication-name\": \"ability-communication\",\n"
-				+ "      \"next-name\": \"next\",\n" + "      \"memory-manager-name\": \"memory-manager\",\n"
-				+ "      \"timeout-pre-execution\": \"60000\",\n" + "      \"main-time-unit\": \"milliseconds\",\n"
-				+ "      \"ai-manager-name\": \"ai-manager\"\n" + "    },\n" + "    \"pre-rules\": [\n" + "      {\n"
+				+ "    ],\n" + "    \"name\": \"test task1\",\n" + "    \"execution_parameters\": {\n"
+				+ "      \"extensions_manager_name\": \"extensions_manager\",\n"
+				+ "      \"super_manager_name\": \"super_manager\",\n"
+				+ "      \"nlu_communication_name\": \"nlu_communication\",\n"
+				+ "      \"post_time_unit\": \"milliseconds\",\n" + "      \"pre_time_unit\": \"milliseconds\",\n"
+				+ "      \"ability_communication_name\": \"ability_communication\",\n"
+				+ "      \"next_name\": \"next\",\n" + "      \"memory_manager_name\": \"memory_manager\",\n"
+				+ "      \"timeout_pre_execution\": \"60000\",\n" + "      \"main_time_unit\": \"milliseconds\",\n"
+				+ "      \"ai_manager_name\": \"ai_manager\"\n" + "    },\n" + "    \"pre_rules\": [\n" + "      {\n"
 				+ "        \"condition\": \"rain == true\",\n" + "        \"name\": \"weather rule\",\n"
 				+ "        \"description\": \"when it rains, then take an umbrella\",\n" + "        \"priority\": 2,\n"
 				+ "        \"actions\": [\"sout:println(\\\"It rains, take an umbrella!\\\");\"]\n" + "      },\n"

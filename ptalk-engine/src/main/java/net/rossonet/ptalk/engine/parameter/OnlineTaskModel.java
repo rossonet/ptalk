@@ -13,12 +13,12 @@ import net.rossonet.ptalk.utils.JsonHelper;
 
 public class OnlineTaskModel implements Serializable {
 
-	private static final String POST_RULES_LABEL = "post-rules";
-	private static final String MAIN_RULES_LABEL = "main-rules";
-	private static final String PRE_RULES_LABEL = "pre-rules";
+	private static final String POST_RULES_LABEL = "post_rules";
+	private static final String MAIN_RULES_LABEL = "main_rules";
+	private static final String PRE_RULES_LABEL = "pre_rules";
 	private static final String MODEL_NAME_LABEL = "name";
 	private static final long serialVersionUID = -9139834337155333462L;
-	private static final String EXECUTION_PARAMETER_LABEL = "execution-parameters";
+	private static final String EXECUTION_PARAMETER_LABEL = "execution_parameters";
 	private String executionParameter = null;
 	private Set<String> mainRules = new HashSet<>();
 	private Set<String> postRules = new HashSet<>();

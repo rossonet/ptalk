@@ -82,15 +82,15 @@ public class GlobalConfiguration implements Serializable {
 
 	}
 
-	private static final int DEFAULT_GRPC_SERVER_PORT = 8080;
-	private static final String GRPC_SERVER_PORT_LABEL = "grpc-server-port";
+	public static final int DEFAULT_GRPC_SERVER_PORT = 8191;
+	public static final String GRPC_SERVER_PORT_LABEL = "grpc_server_port";
 	private static final long serialVersionUID = -615842239868641069L;
-	private static final int DEFAULT_NORMAL_SCHEDULER_THREAD_SIZE = 4;
-	private static final String NORMAL_SCHEDULER_THREAD_SIZE_LABEL = "scheduler-thread-size";
-	private static final boolean DEFAULT_IS_HAZELCAST_EMBEDDED = false;
-	private static final String IS_HAZELCAST_EMBEDDED_LABEL = "hazelcast-embedded";
-	private static final String DEFAULT_INPUT_CHANNEL_TASK = "input-channel";
-	private static final String INPUT_CHANNEL_TASK_LABEL = "input-channel";
+	public static final int DEFAULT_NORMAL_SCHEDULER_THREAD_SIZE = 4;
+	public static final String NORMAL_SCHEDULER_THREAD_SIZE_LABEL = "scheduler_thread_size";
+	public static final boolean DEFAULT_IS_HAZELCAST_EMBEDDED = false;
+	public static final String IS_HAZELCAST_EMBEDDED_LABEL = "hazelcast_embedded";
+	public static final String DEFAULT_INPUT_CHANNEL_TASK = "input_channel";
+	public static final String INPUT_CHANNEL_TASK_LABEL = "input_channel";
 
 	public static GlobalConfigurationBuilder getNewBuilder() {
 		return new GlobalConfigurationBuilder();

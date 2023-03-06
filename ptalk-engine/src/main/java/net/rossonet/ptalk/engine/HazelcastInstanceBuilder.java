@@ -13,9 +13,9 @@ import net.rossonet.ptalk.engine.parameter.OnlineTaskModel;
 
 public class HazelcastInstanceBuilder implements Closeable {
 
-	private static final String TASK_MODEL_MAP_NAME = "task-model";
+	private static final String TASK_MODEL_MAP_NAME = "task_model";
 
-	private static final String SCHEDULER_MAP_NAME = "task-scheduler";
+	private static final String SCHEDULER_MAP_NAME = "task_scheduler";
 	private static HazelcastInstance hazelcastServer = null;
 	private HazelcastInstance hazelcastClient = null;
 

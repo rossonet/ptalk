@@ -1,5 +1,6 @@
 package net.rossonet.ptalk.engine;
 
+import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,6 +12,7 @@ import org.json.JSONObject;
 
 import net.rossonet.ptalk.base.grpc.LifecycleStatus;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
+import net.rossonet.ptalk.engine.exceptions.RuntimeEngineException;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.grpc.GrpcCoreService;
 import net.rossonet.ptalk.engine.runtime.NextHopRuntimeEngine;
@@ -24,6 +26,8 @@ import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.utils.JsonHelper;
 
 public class PTalkEngineRuntime {
+
+	private static final String MESSAGE_FACT = "message_fact";
 
 	private final HazelcastInstanceBuilder hazelcastInstanceBuilder;
 
@@ -62,7 +66,7 @@ public class PTalkEngineRuntime {
 
 	private final NextHopRuntimeEngine nextHopRuntimeEngine;
 
-	public PTalkEngineRuntime(GlobalConfiguration configuration) {
+	public PTalkEngineRuntime(GlobalConfiguration configuration) throws TaskManagerException {
 		this.globalConfiguration = configuration;
 		hazelcastInstanceBuilder = new HazelcastInstanceBuilder(this);
 		configurationTasksManager = new ConfigurationTasksManager(this);
@@ -86,12 +90,16 @@ public class PTalkEngineRuntime {
 				aiManagerFactFactory, extensionsManagerFactFactory, channelCommunicationFactFactory };
 		updateConfigurationAllFactories();
 		nextHopRuntimeEngine = new NextHopRuntimeEngine(this);
+		try {
+			grpcCoreService.start();
+		} catch (final IOException e) {
+			throw new RuntimeEngineException("fault starting GRPC server", e);
+		}
 		lifecycleStatus = LifecycleStatus.RUNNING;
 	}
 
 	public void channelMessage(ChannelMessageRequest request) throws TaskManagerException {
-		final Fact<InputMessageFact> inputMessageFact = new Fact<>(request.getChannelUniqueMessageId(),
-				new InputMessageFact(request));
+		final Fact<InputMessageFact> inputMessageFact = new Fact<>(MESSAGE_FACT, new InputMessageFact(request));
 		getMemoryManager().registerInputMessage(inputMessageFact);
 		final Facts facts = new Facts();
 		facts.add(inputMessageFact);

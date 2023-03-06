@@ -1,6 +1,9 @@
 package net.rossonet.ptalk.engine.grpc;
 
 import java.time.Instant;
+import java.util.logging.Logger;
+
+import org.rossonet.utils.LogHelper;
 
 import io.grpc.stub.StreamObserver;
 import net.rossonet.ptalk.base.grpc.StatusValue;
@@ -12,6 +15,8 @@ import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 
 public class GrpcChannelServiceImpl extends RpcChannelCoreV1ImplBase {
+
+	private static final Logger logger = Logger.getLogger(GrpcChannelServiceImpl.class.getName());
 
 	private final PTalkEngineRuntime pTalkEngineRuntime;
 
@@ -29,6 +34,7 @@ public class GrpcChannelServiceImpl extends RpcChannelCoreV1ImplBase {
 					.build());
 			responseObserver.onCompleted();
 		} catch (final TaskManagerException e) {
+			logger.severe(LogHelper.stackTraceToString(e));
 			responseObserver.onError(e);
 		}
 

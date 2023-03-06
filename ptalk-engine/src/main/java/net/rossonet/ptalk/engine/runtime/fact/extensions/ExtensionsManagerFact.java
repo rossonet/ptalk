@@ -14,4 +14,12 @@ public class ExtensionsManagerFact implements PTalkFact {
 	public String getTraceId() {
 		return traceId;
 	}
+
+	public void println(Object message) {
+		System.out.println(message);
+	}
+
+	public void println(String message) {
+		System.out.println(message);
+	}
 }

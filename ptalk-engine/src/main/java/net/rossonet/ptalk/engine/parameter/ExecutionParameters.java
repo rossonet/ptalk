@@ -4,23 +4,23 @@ import org.json.JSONObject;
 
 public class ExecutionParameters {
 
-	private static final String AI_MANAGER_FACT_NAME = "ai-manager";
+	private static final String AI_MANAGER_FACT_NAME = "ai_manager";
 
-	private static final String ABILITY_COMMUNICATION_FACT_NAME = "ability-communication";
+	private static final String ABILITY_COMMUNICATION_FACT_NAME = "ability_communication";
 
-	private static final String EXTENSIONS_MANAGER_FACT_NAME = "extensions-manager";
+	private static final String EXTENSIONS_MANAGER_FACT_NAME = "extensions_manager";
 
-	private static final String MEMORY_MANAGER_FACT_NAME = "memory-manager";
+	private static final String MEMORY_MANAGER_FACT_NAME = "memory_manager";
 
 	private static final String NEXT_HOP_FACT_NAME = "next";
 
-	private static final String NLU_COMMUNICATION_FACT_NAME = "nlu-communication";
+	private static final String NLU_COMMUNICATION_FACT_NAME = "nlu_communication";
 
-	private static final String CHANNEL_COMMUNICATION_FACT_NAME = "channel-communication";
+	private static final String CHANNEL_COMMUNICATION_FACT_NAME = "channel_communication";
 
-	private static final String SUPER_MANAGER_FACT_NAME = "super-manager";
+	private static final String SUPER_MANAGER_FACT_NAME = "super_manager";
 
-	private static final String DEFAULT_TIME_UNIT = "milliseconds";
+	private static final String DEFAULT_TIME_UNIT = "MILLISECONDS";
 
 	private static final String DEFAULT_TIMEOUT_PRE_EXECUTION_MS = "60000";
 
@@ -28,33 +28,33 @@ public class ExecutionParameters {
 
 	private static final String DEFAULT_TIMEOUT_MAIN_EXECUTION_MS = "60000";
 
-	private static final String AI_MANAGER_FACT_LABEL = "ai-manager-name";
+	private static final String AI_MANAGER_FACT_LABEL = "ai_manager_name";
 
-	private static final String ABILITY_COMMUNICATION_FACT_LABEL = "ability-communication-name";
+	private static final String ABILITY_COMMUNICATION_FACT_LABEL = "ability_communication_name";
 
-	private static final String EXTENSIONS_MANAGER_FACT_LABEL = "extensions-manager-name";
+	private static final String EXTENSIONS_MANAGER_FACT_LABEL = "extensions_manager_name";
 
-	private static final String MEMORY_MANAGER_FACT_LABEL = "memory-manager-name";
+	private static final String MEMORY_MANAGER_FACT_LABEL = "memory_manager_name";
 
-	private static final String NEXT_HOP_FACT_LABEL = "next-name";
+	private static final String NEXT_HOP_FACT_LABEL = "next_name";
 
-	private static final String NLU_COMMUNICATION_FACT_LABEL = "nlu-communication-name";
+	private static final String NLU_COMMUNICATION_FACT_LABEL = "nlu_communication_name";
 
-	private static final String CHANNEL_COMMUNICATION_FACT_LABEL = "channel-communication-name";
+	private static final String CHANNEL_COMMUNICATION_FACT_LABEL = "channel_communication_name";
 
-	private static final String SUPER_MANAGER_FACT_LABEL = "super-manager-name";
+	private static final String SUPER_MANAGER_FACT_LABEL = "super_manager_name";
 
-	private static final String MAIN_TIME_UNIT_LABEL = "main-time-unit";
+	private static final String MAIN_TIME_UNIT_LABEL = "main_time_unit";
 
-	private static final String PRE_TIME_UNIT_LABEL = "pre-time-unit";
+	private static final String PRE_TIME_UNIT_LABEL = "pre_time_unit";
 
-	private static final String POST_TIME_UNIT_LABEL = "post-time-unit";
+	private static final String POST_TIME_UNIT_LABEL = "post_time_unit";
 
-	private static final String TIMEOUT_PRE_EXECUTION_MS_LABEL = "timeout-pre-execution";
+	private static final String TIMEOUT_PRE_EXECUTION_MS_LABEL = "timeout_pre_execution";
 
-	private static final String TIMEOUT_POST_EXECUTION_MS_LABEL = "timeout-pre-execution";
+	private static final String TIMEOUT_POST_EXECUTION_MS_LABEL = "timeout_pre_execution";
 
-	private static final String TIMEOUT_MAIN_EXECUTION_MS_LABEL = "timeout-pre-execution";
+	private static final String TIMEOUT_MAIN_EXECUTION_MS_LABEL = "timeout_pre_execution";
 
 	private String abilityCommunicationFactName = null;
 
@@ -206,7 +206,7 @@ public class ExecutionParameters {
 		json.put(EXTENSIONS_MANAGER_FACT_LABEL, getExtensionsManagerFactName());
 		json.put(MEMORY_MANAGER_FACT_LABEL, getMemoryManagerFactName());
 		json.put(NEXT_HOP_FACT_LABEL, getNextHopFactName());
-		json.put(CHANNEL_COMMUNICATION_FACT_LABEL, getNluCommunicationFactName());
+		json.put(CHANNEL_COMMUNICATION_FACT_LABEL, getChannelCommunicationFactName());
 		json.put(NLU_COMMUNICATION_FACT_LABEL, getNluCommunicationFactName());
 		json.put(SUPER_MANAGER_FACT_LABEL, getSuperManagerFactName());
 		json.put(MAIN_TIME_UNIT_LABEL, getTimeoutMainExecutionTimeUnit());

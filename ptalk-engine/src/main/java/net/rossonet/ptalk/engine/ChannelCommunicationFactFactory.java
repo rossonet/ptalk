@@ -33,10 +33,9 @@ public class ChannelCommunicationFactFactory implements PTalkFactFactory {
 
 	}
 
-	private RpcChannelUnitV1BlockingStub getBlockingStub(String channel) {
-		final ManagedChannel mc = ManagedChannelBuilder
-				.forAddress(registeredChannels.get(channel).getHost(), registeredChannels.get(channel).getPort())
-				.usePlaintext().build();
+	private RpcChannelUnitV1BlockingStub getBlockingStub(String channelUniqueName) {
+		final ManagedChannel mc = ManagedChannelBuilder.forAddress(registeredChannels.get(channelUniqueName).getHost(),
+				registeredChannels.get(channelUniqueName).getPort()).usePlaintext().build();
 		return RpcChannelUnitV1Grpc.newBlockingStub(mc);
 
 	}
@@ -70,12 +69,12 @@ public class ChannelCommunicationFactFactory implements PTalkFactFactory {
 	}
 
 	public void sendMessage(OutputMessageFact outputMessageFact) {
-		if (!cacheBlockingStub.containsKey(outputMessageFact.getChannel())) {
-			final RpcChannelUnitV1BlockingStub blockingStub = getBlockingStub(outputMessageFact.getChannel());
-			cacheBlockingStub.put(outputMessageFact.getChannel(), blockingStub);
+		if (!cacheBlockingStub.containsKey(outputMessageFact.getChannelUniqueName())) {
+			final RpcChannelUnitV1BlockingStub blockingStub = getBlockingStub(outputMessageFact.getChannelUniqueName());
+			cacheBlockingStub.put(outputMessageFact.getChannelUniqueName(), blockingStub);
 			blockingStub.callSync(outputMessageFact.getChannelMessageRequest());
 		} else {
-			cacheBlockingStub.get(outputMessageFact.getChannel())
+			cacheBlockingStub.get(outputMessageFact.getChannelUniqueName())
 					.callSync(outputMessageFact.getChannelMessageRequest());
 		}
 
