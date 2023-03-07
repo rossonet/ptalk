@@ -4,22 +4,25 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.hazelcast.replicatedmap.ReplicatedMap;
+
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import net.rossonet.ptalk.base.grpc.RegisterRequest;
 import net.rossonet.ptalk.channel.grpc.RpcChannelUnitV1Grpc;
 import net.rossonet.ptalk.channel.grpc.RpcChannelUnitV1Grpc.RpcChannelUnitV1BlockingStub;
+import net.rossonet.ptalk.engine.grpc.UnitRegistered;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.channel.ChannelCommunicationFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
-import net.rossonet.ptalk.engine.runtime.fact.channel.ResgisteredChannel;
+import net.rossonet.ptalk.engine.runtime.fact.channel.RegisteredChannel;
 
 public class ChannelCommunicationFactFactory implements PTalkFactFactory {
 
 	private final Map<String, ChannelCommunicationFact> facts = new HashMap<>();
 	private final PTalkEngineRuntime pTalkEngineRuntime;
-	private final Map<String, ResgisteredChannel> registeredChannels = new HashMap<>();
+	private final Map<String, RegisteredChannel> registeredChannels = new HashMap<>();
 
 	private final Map<String, RpcChannelUnitV1BlockingStub> cacheBlockingStub = new HashMap<>();
 
@@ -57,8 +60,13 @@ public class ChannelCommunicationFactFactory implements PTalkFactFactory {
 	}
 
 	public void registerUnit(RegisterRequest request) {
-		// TODO registrare channel unit
+		getRegisterUnit().put(request.getUnitUniqueName(),
+				new UnitRegistered(request));
 
+	}
+
+	private ReplicatedMap<String, UnitRegistered> getRegisterUnit() {
+		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getRegisterChannelRepository();
 	}
 
 	@Override
@@ -82,7 +90,6 @@ public class ChannelCommunicationFactFactory implements PTalkFactFactory {
 
 	@Override
 	public void updateConfiguration() {
-		// forse da migliorare
 		facts.clear();
 
 	}

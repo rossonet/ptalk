@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.hazelcast.replicatedmap.ReplicatedMap;
+
 import net.rossonet.ptalk.base.grpc.RegisterRequest;
+import net.rossonet.ptalk.engine.grpc.UnitRegistered;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluCommunicationFact;
@@ -41,8 +44,13 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 	}
 
 	public void registerUnit(RegisterRequest request) {
-		// TODO registrare nlu unit
+		getRegisterUnit().put(request.getUnitUniqueName(),
+				new UnitRegistered(request));
 
+	}
+
+	private ReplicatedMap<String, UnitRegistered> getRegisterUnit() {
+		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getRegisterNluRepository();
 	}
 
 	@Override
@@ -59,7 +67,6 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 
 	@Override
 	public void updateConfiguration() {
-		// forse da migliorare
 		facts.clear();
 
 	}

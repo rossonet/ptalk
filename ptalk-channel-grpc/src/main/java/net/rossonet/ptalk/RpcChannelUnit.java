@@ -8,7 +8,11 @@ public class RpcChannelUnit extends RpcChannelUnitV1ImplBase {
 
 	public RpcChannelUnit(ChannelGrpc channelGrpc) {
 		this.channelGrpc = channelGrpc;
-		// TODO Auto-generated constructor stub
+		// TODO implementare metodi ricezione messagi da core
+	}
+
+	public ChannelGrpc getChannelGrpc() {
+		return channelGrpc;
 	}
 
 }

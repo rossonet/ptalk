@@ -4,10 +4,6 @@
 package net.rossonet.ptalk.ability.grpc;
 
 /**
- * <pre>
- * TODO GeneralConfigurationManagementRequest
- * </pre>
- *
  * Protobuf type {@code ability.GeneralConfigurationManagementRequest}
  */
 public final class GeneralConfigurationManagementRequest extends
@@ -20,6 +16,10 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private GeneralConfigurationManagementRequest() {
+    flowReference_ = "";
+    action_ = 0;
+    key_ = "";
+    value_ = "";
   }
 
   @java.lang.Override
@@ -47,6 +47,139 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest.class, net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest.Builder.class);
   }
 
+  public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
+  private volatile java.lang.Object flowReference_;
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The flowReference.
+   */
+  @java.lang.Override
+  public java.lang.String getFlowReference() {
+    java.lang.Object ref = flowReference_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      flowReference_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string flowReference = 1;</code>
+   * @return The bytes for flowReference.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getFlowReferenceBytes() {
+    java.lang.Object ref = flowReference_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      flowReference_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ACTION_FIELD_NUMBER = 2;
+  private int action_;
+  /**
+   * <code>.ability.ConfigurationAction action = 2;</code>
+   * @return The enum numeric value on the wire for action.
+   */
+  @java.lang.Override public int getActionValue() {
+    return action_;
+  }
+  /**
+   * <code>.ability.ConfigurationAction action = 2;</code>
+   * @return The action.
+   */
+  @java.lang.Override public net.rossonet.ptalk.ability.grpc.ConfigurationAction getAction() {
+    @SuppressWarnings("deprecation")
+    net.rossonet.ptalk.ability.grpc.ConfigurationAction result = net.rossonet.ptalk.ability.grpc.ConfigurationAction.valueOf(action_);
+    return result == null ? net.rossonet.ptalk.ability.grpc.ConfigurationAction.UNRECOGNIZED : result;
+  }
+
+  public static final int KEY_FIELD_NUMBER = 3;
+  private volatile java.lang.Object key_;
+  /**
+   * <code>string key = 3;</code>
+   * @return The key.
+   */
+  @java.lang.Override
+  public java.lang.String getKey() {
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      key_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string key = 3;</code>
+   * @return The bytes for key.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getKeyBytes() {
+    java.lang.Object ref = key_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      key_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int VALUE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object value_;
+  /**
+   * <code>string value = 4;</code>
+   * @return The value.
+   */
+  @java.lang.Override
+  public java.lang.String getValue() {
+    java.lang.Object ref = value_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      value_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string value = 4;</code>
+   * @return The bytes for value.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getValueBytes() {
+    java.lang.Object ref = value_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      value_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -61,6 +194,18 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, flowReference_);
+    }
+    if (action_ != net.rossonet.ptalk.ability.grpc.ConfigurationAction.ADD_OR_REPLACE.getNumber()) {
+      output.writeEnum(2, action_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, key_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, value_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -70,6 +215,19 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, flowReference_);
+    }
+    if (action_ != net.rossonet.ptalk.ability.grpc.ConfigurationAction.ADD_OR_REPLACE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(2, action_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, key_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, value_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -85,6 +243,13 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest other = (net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest) obj;
 
+    if (!getFlowReference()
+        .equals(other.getFlowReference())) return false;
+    if (action_ != other.action_) return false;
+    if (!getKey()
+        .equals(other.getKey())) return false;
+    if (!getValue()
+        .equals(other.getValue())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -96,6 +261,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + FLOWREFERENCE_FIELD_NUMBER;
+    hash = (53 * hash) + getFlowReference().hashCode();
+    hash = (37 * hash) + ACTION_FIELD_NUMBER;
+    hash = (53 * hash) + action_;
+    hash = (37 * hash) + KEY_FIELD_NUMBER;
+    hash = (53 * hash) + getKey().hashCode();
+    hash = (37 * hash) + VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getValue().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -192,10 +365,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * TODO GeneralConfigurationManagementRequest
-   * </pre>
-   *
    * Protobuf type {@code ability.GeneralConfigurationManagementRequest}
    */
   public static final class Builder extends
@@ -228,6 +397,14 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      flowReference_ = "";
+
+      action_ = 0;
+
+      key_ = "";
+
+      value_ = "";
+
       return this;
     }
 
@@ -254,6 +431,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest buildPartial() {
       net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest result = new net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest(this);
+      result.flowReference_ = flowReference_;
+      result.action_ = action_;
+      result.key_ = key_;
+      result.value_ = value_;
       onBuilt();
       return result;
     }
@@ -302,6 +483,21 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest other) {
       if (other == net.rossonet.ptalk.ability.grpc.GeneralConfigurationManagementRequest.getDefaultInstance()) return this;
+      if (!other.getFlowReference().isEmpty()) {
+        flowReference_ = other.flowReference_;
+        onChanged();
+      }
+      if (other.action_ != 0) {
+        setActionValue(other.getActionValue());
+      }
+      if (!other.getKey().isEmpty()) {
+        key_ = other.key_;
+        onChanged();
+      }
+      if (!other.getValue().isEmpty()) {
+        value_ = other.value_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -328,6 +524,26 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              flowReference_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 10
+            case 16: {
+              action_ = input.readEnum();
+
+              break;
+            } // case 16
+            case 26: {
+              key_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 26
+            case 34: {
+              value_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -341,6 +557,288 @@ private static final long serialVersionUID = 0L;
       } finally {
         onChanged();
       } // finally
+      return this;
+    }
+
+    private java.lang.Object flowReference_ = "";
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The flowReference.
+     */
+    public java.lang.String getFlowReference() {
+      java.lang.Object ref = flowReference_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        flowReference_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return The bytes for flowReference.
+     */
+    public com.google.protobuf.ByteString
+        getFlowReferenceBytes() {
+      java.lang.Object ref = flowReference_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        flowReference_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReference(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFlowReference() {
+      
+      flowReference_ = getDefaultInstance().getFlowReference();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string flowReference = 1;</code>
+     * @param value The bytes for flowReference to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFlowReferenceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      flowReference_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int action_ = 0;
+    /**
+     * <code>.ability.ConfigurationAction action = 2;</code>
+     * @return The enum numeric value on the wire for action.
+     */
+    @java.lang.Override public int getActionValue() {
+      return action_;
+    }
+    /**
+     * <code>.ability.ConfigurationAction action = 2;</code>
+     * @param value The enum numeric value on the wire for action to set.
+     * @return This builder for chaining.
+     */
+    public Builder setActionValue(int value) {
+      
+      action_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.ability.ConfigurationAction action = 2;</code>
+     * @return The action.
+     */
+    @java.lang.Override
+    public net.rossonet.ptalk.ability.grpc.ConfigurationAction getAction() {
+      @SuppressWarnings("deprecation")
+      net.rossonet.ptalk.ability.grpc.ConfigurationAction result = net.rossonet.ptalk.ability.grpc.ConfigurationAction.valueOf(action_);
+      return result == null ? net.rossonet.ptalk.ability.grpc.ConfigurationAction.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.ability.ConfigurationAction action = 2;</code>
+     * @param value The action to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAction(net.rossonet.ptalk.ability.grpc.ConfigurationAction value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      action_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.ability.ConfigurationAction action = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAction() {
+      
+      action_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object key_ = "";
+    /**
+     * <code>string key = 3;</code>
+     * @return The key.
+     */
+    public java.lang.String getKey() {
+      java.lang.Object ref = key_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        key_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string key = 3;</code>
+     * @return The bytes for key.
+     */
+    public com.google.protobuf.ByteString
+        getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string key = 3;</code>
+     * @param value The key to set.
+     * @return This builder for chaining.
+     */
+    public Builder setKey(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      key_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string key = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearKey() {
+      
+      key_ = getDefaultInstance().getKey();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string key = 3;</code>
+     * @param value The bytes for key to set.
+     * @return This builder for chaining.
+     */
+    public Builder setKeyBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      key_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object value_ = "";
+    /**
+     * <code>string value = 4;</code>
+     * @return The value.
+     */
+    public java.lang.String getValue() {
+      java.lang.Object ref = value_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        value_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string value = 4;</code>
+     * @return The bytes for value.
+     */
+    public com.google.protobuf.ByteString
+        getValueBytes() {
+      java.lang.Object ref = value_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        value_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string value = 4;</code>
+     * @param value The value to set.
+     * @return This builder for chaining.
+     */
+    public Builder setValue(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      value_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string value = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearValue() {
+      
+      value_ = getDefaultInstance().getValue();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string value = 4;</code>
+     * @param value The bytes for value to set.
+     * @return This builder for chaining.
+     */
+    public Builder setValueBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      value_ = value;
+      onChanged();
       return this;
     }
     @java.lang.Override

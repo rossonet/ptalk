@@ -6,6 +6,7 @@ import java.util.Set;
 
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
+import net.rossonet.ptalk.engine.runtime.fact.channel.InputMessageFact;
 
 public class NextHopManagerFact implements PTalkFact {
 
@@ -19,8 +20,15 @@ public class NextHopManagerFact implements PTalkFact {
 	}
 
 	public void addNextHop(String target) {
-		addNextHop(target, NextHopSchedulerType.LOCAL.name(),
-				pTalkEngineRuntime.getTaskByTraceId(traceId).isTraceOnLog());
+		addNextHop(target, false);
+	}
+
+	public void addNextHop(String target, boolean trace) {
+		addNextHop(target, NextHopSchedulerType.LOCAL.name(), trace);
+	}
+
+	public void addNextHop(String target, InputMessageFact inputMessageFact) {
+		addNextHop(target, inputMessageFact.isTraceEnable());
 	}
 
 	public void addNextHop(String target, String scheduler, boolean trace) {

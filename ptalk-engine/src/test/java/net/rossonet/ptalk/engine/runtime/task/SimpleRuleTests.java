@@ -33,7 +33,6 @@ public class SimpleRuleTests {
 		final GlobalConfiguration configuration = GlobalConfiguration.getNewBuilder().setHazelcastEmbedded(true)
 				.build();
 		pTalkEngineRuntime = new PTalkEngineRuntime(configuration);
-
 	}
 
 	@AfterAll
@@ -61,9 +60,10 @@ public class SimpleRuleTests {
 	public void loadSingleRuleConfiguration() throws TaskManagerException, IOException {
 		loadSingleRule();
 		final RpcChannelCoreV1BlockingStub inputChannel = getInputChannel();
+		final String checkValue = UUID.randomUUID().toString();
 		final ChannelMessageRequest request = ChannelMessageRequest.newBuilder()
 				.setChannelUniqueMessageId(UUID.randomUUID().toString())
-				.setMessage(Data.newBuilder().setValue("test message..").build()).build();
+				.setMessage(Data.newBuilder().setValue(checkValue).build()).build();
 		final ChannelMessageReply reply = inputChannel.callSync(request);
 		System.out.println(reply.toString());
 	}

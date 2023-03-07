@@ -131,12 +131,20 @@ message MemoryContextQueryReply {
   base.StatusValue status = 5;
 }
 
+enum MemoryAction {
+  REPLACE = 0;
+  ADD = 1;
+}
+
 message MemoryContextManagementRequest {
-// TODO MemoryContextManagementRequest
+  string context = 1;
+  MemoryAction action = 2;
+  repeated base.Data datas = 3;
+
 }
 
 message MemoryContextManagementReply {
-// TODO MemoryContextManagementReply
+  base.StatusValue status = 1;
 }
 
 message GeneralConfigurationQueryRequest {
@@ -151,12 +159,20 @@ message GeneralConfigurationQueryReply {
   base.Timestamp timestamp = 3;
 }
 
+enum ConfigurationAction {
+  ADD_OR_REPLACE = 0;
+  DELETE = 1;
+}
+
 message GeneralConfigurationManagementRequest {
-// TODO GeneralConfigurationManagementRequest
+  string flowReference = 1;
+  ConfigurationAction action = 2;
+  string key = 3;
+  string value = 4;
 }
 
 message GeneralConfigurationManagementReply {
-// TODO GeneralConfigurationManagementReply
+  base.StatusValue status = 1;
 }
 
 service RpcAbilityCoreV1 {

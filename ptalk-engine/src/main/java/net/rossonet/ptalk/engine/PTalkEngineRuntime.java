@@ -1,6 +1,7 @@
 package net.rossonet.ptalk.engine;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,6 +23,7 @@ import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
 import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopSchedulerType;
 import net.rossonet.ptalk.engine.runtime.fact.channel.InputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluTrainingModelReplyFact;
 import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.utils.JsonHelper;
 
@@ -100,13 +102,13 @@ public class PTalkEngineRuntime {
 
 	public void channelMessage(ChannelMessageRequest request) throws TaskManagerException {
 		final Fact<InputMessageFact> inputMessageFact = new Fact<>(MESSAGE_FACT, new InputMessageFact(request));
-		getMemoryManager().registerInputMessage(inputMessageFact);
+		getMemoryManager().registerInputMessage(inputMessageFact.getValue());
 		final Facts facts = new Facts();
 		facts.add(inputMessageFact);
 		final Task task = Task.fire(this, new NextHop(NextHopSchedulerType.LOCAL,
 				getGlobalConfiguration().getInputChannel(), null, request.getTraceLog()),
 				getGlobalConfiguration().getInputChannel(), facts);
-		nextHopRuntimeEngine.manageTasks(task);
+		nextHopRuntimeEngine.registerTask(task);
 	}
 
 	public AbilityCommunicationFactFactory getAbilityCommunicationFactFactory() {
@@ -185,8 +187,8 @@ public class PTalkEngineRuntime {
 		return (SuperManagerFactFactory) superManagerFactFactory;
 	}
 
-	public Task getTaskByTraceId(String traceId) {
-		return nextHopRuntimeEngine.getTaskByTraceId(traceId);
+	public Collection<Task> getTasksByTraceId(String traceId) {
+		return nextHopRuntimeEngine.getTasksByTraceId(traceId);
 	}
 
 	public boolean isRunning() {
@@ -205,7 +207,7 @@ public class PTalkEngineRuntime {
 	}
 
 	public void replyFromNluTrainingRequest(NluTrainingModelReply request) {
-		getMemoryManager().registerReplyNluTraining(request);
+		getMemoryManager().registerReplyNluTraining(new NluTrainingModelReplyFact(request));
 		getNluCommunicationFactFactory().replyFromNluTrainingRequest(request);
 	}
 

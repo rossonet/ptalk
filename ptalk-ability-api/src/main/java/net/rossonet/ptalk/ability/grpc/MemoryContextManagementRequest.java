@@ -4,10 +4,6 @@
 package net.rossonet.ptalk.ability.grpc;
 
 /**
- * <pre>
- * TODO MemoryContextManagementRequest
- * </pre>
- *
  * Protobuf type {@code ability.MemoryContextManagementRequest}
  */
 public final class MemoryContextManagementRequest extends
@@ -20,6 +16,9 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private MemoryContextManagementRequest() {
+    context_ = "";
+    action_ = 0;
+    datas_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -47,6 +46,103 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest.class, net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest.Builder.class);
   }
 
+  public static final int CONTEXT_FIELD_NUMBER = 1;
+  private volatile java.lang.Object context_;
+  /**
+   * <code>string context = 1;</code>
+   * @return The context.
+   */
+  @java.lang.Override
+  public java.lang.String getContext() {
+    java.lang.Object ref = context_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      context_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string context = 1;</code>
+   * @return The bytes for context.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getContextBytes() {
+    java.lang.Object ref = context_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      context_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ACTION_FIELD_NUMBER = 2;
+  private int action_;
+  /**
+   * <code>.ability.MemoryAction action = 2;</code>
+   * @return The enum numeric value on the wire for action.
+   */
+  @java.lang.Override public int getActionValue() {
+    return action_;
+  }
+  /**
+   * <code>.ability.MemoryAction action = 2;</code>
+   * @return The action.
+   */
+  @java.lang.Override public net.rossonet.ptalk.ability.grpc.MemoryAction getAction() {
+    @SuppressWarnings("deprecation")
+    net.rossonet.ptalk.ability.grpc.MemoryAction result = net.rossonet.ptalk.ability.grpc.MemoryAction.valueOf(action_);
+    return result == null ? net.rossonet.ptalk.ability.grpc.MemoryAction.UNRECOGNIZED : result;
+  }
+
+  public static final int DATAS_FIELD_NUMBER = 3;
+  private java.util.List<net.rossonet.ptalk.base.grpc.Data> datas_;
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  @java.lang.Override
+  public java.util.List<net.rossonet.ptalk.base.grpc.Data> getDatasList() {
+    return datas_;
+  }
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getDatasOrBuilderList() {
+    return datas_;
+  }
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  @java.lang.Override
+  public int getDatasCount() {
+    return datas_.size();
+  }
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.Data getDatas(int index) {
+    return datas_.get(index);
+  }
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  @java.lang.Override
+  public net.rossonet.ptalk.base.grpc.DataOrBuilder getDatasOrBuilder(
+      int index) {
+    return datas_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -61,6 +157,15 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(context_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, context_);
+    }
+    if (action_ != net.rossonet.ptalk.ability.grpc.MemoryAction.REPLACE.getNumber()) {
+      output.writeEnum(2, action_);
+    }
+    for (int i = 0; i < datas_.size(); i++) {
+      output.writeMessage(3, datas_.get(i));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -70,6 +175,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(context_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, context_);
+    }
+    if (action_ != net.rossonet.ptalk.ability.grpc.MemoryAction.REPLACE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(2, action_);
+    }
+    for (int i = 0; i < datas_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, datas_.get(i));
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -85,6 +201,11 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest other = (net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest) obj;
 
+    if (!getContext()
+        .equals(other.getContext())) return false;
+    if (action_ != other.action_) return false;
+    if (!getDatasList()
+        .equals(other.getDatasList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -96,6 +217,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + CONTEXT_FIELD_NUMBER;
+    hash = (53 * hash) + getContext().hashCode();
+    hash = (37 * hash) + ACTION_FIELD_NUMBER;
+    hash = (53 * hash) + action_;
+    if (getDatasCount() > 0) {
+      hash = (37 * hash) + DATAS_FIELD_NUMBER;
+      hash = (53 * hash) + getDatasList().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -192,10 +321,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * TODO MemoryContextManagementRequest
-   * </pre>
-   *
    * Protobuf type {@code ability.MemoryContextManagementRequest}
    */
   public static final class Builder extends
@@ -228,6 +353,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      context_ = "";
+
+      action_ = 0;
+
+      if (datasBuilder_ == null) {
+        datas_ = java.util.Collections.emptyList();
+      } else {
+        datas_ = null;
+        datasBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -254,6 +390,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest buildPartial() {
       net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest result = new net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest(this);
+      int from_bitField0_ = bitField0_;
+      result.context_ = context_;
+      result.action_ = action_;
+      if (datasBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          datas_ = java.util.Collections.unmodifiableList(datas_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.datas_ = datas_;
+      } else {
+        result.datas_ = datasBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -302,6 +450,39 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest other) {
       if (other == net.rossonet.ptalk.ability.grpc.MemoryContextManagementRequest.getDefaultInstance()) return this;
+      if (!other.getContext().isEmpty()) {
+        context_ = other.context_;
+        onChanged();
+      }
+      if (other.action_ != 0) {
+        setActionValue(other.getActionValue());
+      }
+      if (datasBuilder_ == null) {
+        if (!other.datas_.isEmpty()) {
+          if (datas_.isEmpty()) {
+            datas_ = other.datas_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureDatasIsMutable();
+            datas_.addAll(other.datas_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.datas_.isEmpty()) {
+          if (datasBuilder_.isEmpty()) {
+            datasBuilder_.dispose();
+            datasBuilder_ = null;
+            datas_ = other.datas_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            datasBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getDatasFieldBuilder() : null;
+          } else {
+            datasBuilder_.addAllMessages(other.datas_);
+          }
+        }
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -328,6 +509,29 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              context_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 10
+            case 16: {
+              action_ = input.readEnum();
+
+              break;
+            } // case 16
+            case 26: {
+              net.rossonet.ptalk.base.grpc.Data m =
+                  input.readMessage(
+                      net.rossonet.ptalk.base.grpc.Data.parser(),
+                      extensionRegistry);
+              if (datasBuilder_ == null) {
+                ensureDatasIsMutable();
+                datas_.add(m);
+              } else {
+                datasBuilder_.addMessage(m);
+              }
+              break;
+            } // case 26
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -342,6 +546,377 @@ private static final long serialVersionUID = 0L;
         onChanged();
       } // finally
       return this;
+    }
+    private int bitField0_;
+
+    private java.lang.Object context_ = "";
+    /**
+     * <code>string context = 1;</code>
+     * @return The context.
+     */
+    public java.lang.String getContext() {
+      java.lang.Object ref = context_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        context_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string context = 1;</code>
+     * @return The bytes for context.
+     */
+    public com.google.protobuf.ByteString
+        getContextBytes() {
+      java.lang.Object ref = context_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        context_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string context = 1;</code>
+     * @param value The context to set.
+     * @return This builder for chaining.
+     */
+    public Builder setContext(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      context_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string context = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearContext() {
+      
+      context_ = getDefaultInstance().getContext();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string context = 1;</code>
+     * @param value The bytes for context to set.
+     * @return This builder for chaining.
+     */
+    public Builder setContextBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      context_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int action_ = 0;
+    /**
+     * <code>.ability.MemoryAction action = 2;</code>
+     * @return The enum numeric value on the wire for action.
+     */
+    @java.lang.Override public int getActionValue() {
+      return action_;
+    }
+    /**
+     * <code>.ability.MemoryAction action = 2;</code>
+     * @param value The enum numeric value on the wire for action to set.
+     * @return This builder for chaining.
+     */
+    public Builder setActionValue(int value) {
+      
+      action_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.ability.MemoryAction action = 2;</code>
+     * @return The action.
+     */
+    @java.lang.Override
+    public net.rossonet.ptalk.ability.grpc.MemoryAction getAction() {
+      @SuppressWarnings("deprecation")
+      net.rossonet.ptalk.ability.grpc.MemoryAction result = net.rossonet.ptalk.ability.grpc.MemoryAction.valueOf(action_);
+      return result == null ? net.rossonet.ptalk.ability.grpc.MemoryAction.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.ability.MemoryAction action = 2;</code>
+     * @param value The action to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAction(net.rossonet.ptalk.ability.grpc.MemoryAction value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      action_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.ability.MemoryAction action = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAction() {
+      
+      action_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.util.List<net.rossonet.ptalk.base.grpc.Data> datas_ =
+      java.util.Collections.emptyList();
+    private void ensureDatasIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        datas_ = new java.util.ArrayList<net.rossonet.ptalk.base.grpc.Data>(datas_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> datasBuilder_;
+
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.base.grpc.Data> getDatasList() {
+      if (datasBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(datas_);
+      } else {
+        return datasBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public int getDatasCount() {
+      if (datasBuilder_ == null) {
+        return datas_.size();
+      } else {
+        return datasBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data getDatas(int index) {
+      if (datasBuilder_ == null) {
+        return datas_.get(index);
+      } else {
+        return datasBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder setDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data value) {
+      if (datasBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureDatasIsMutable();
+        datas_.set(index, value);
+        onChanged();
+      } else {
+        datasBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder setDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data.Builder builderForValue) {
+      if (datasBuilder_ == null) {
+        ensureDatasIsMutable();
+        datas_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        datasBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder addDatas(net.rossonet.ptalk.base.grpc.Data value) {
+      if (datasBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureDatasIsMutable();
+        datas_.add(value);
+        onChanged();
+      } else {
+        datasBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder addDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data value) {
+      if (datasBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureDatasIsMutable();
+        datas_.add(index, value);
+        onChanged();
+      } else {
+        datasBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder addDatas(
+        net.rossonet.ptalk.base.grpc.Data.Builder builderForValue) {
+      if (datasBuilder_ == null) {
+        ensureDatasIsMutable();
+        datas_.add(builderForValue.build());
+        onChanged();
+      } else {
+        datasBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder addDatas(
+        int index, net.rossonet.ptalk.base.grpc.Data.Builder builderForValue) {
+      if (datasBuilder_ == null) {
+        ensureDatasIsMutable();
+        datas_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        datasBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder addAllDatas(
+        java.lang.Iterable<? extends net.rossonet.ptalk.base.grpc.Data> values) {
+      if (datasBuilder_ == null) {
+        ensureDatasIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, datas_);
+        onChanged();
+      } else {
+        datasBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder clearDatas() {
+      if (datasBuilder_ == null) {
+        datas_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        datasBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public Builder removeDatas(int index) {
+      if (datasBuilder_ == null) {
+        ensureDatasIsMutable();
+        datas_.remove(index);
+        onChanged();
+      } else {
+        datasBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data.Builder getDatasBuilder(
+        int index) {
+      return getDatasFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.DataOrBuilder getDatasOrBuilder(
+        int index) {
+      if (datasBuilder_ == null) {
+        return datas_.get(index);  } else {
+        return datasBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+         getDatasOrBuilderList() {
+      if (datasBuilder_ != null) {
+        return datasBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(datas_);
+      }
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data.Builder addDatasBuilder() {
+      return getDatasFieldBuilder().addBuilder(
+          net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public net.rossonet.ptalk.base.grpc.Data.Builder addDatasBuilder(
+        int index) {
+      return getDatasFieldBuilder().addBuilder(
+          index, net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .base.Data datas = 3;</code>
+     */
+    public java.util.List<net.rossonet.ptalk.base.grpc.Data.Builder> 
+         getDatasBuilderList() {
+      return getDatasFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+        getDatasFieldBuilder() {
+      if (datasBuilder_ == null) {
+        datasBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder>(
+                datas_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        datas_ = null;
+      }
+      return datasBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

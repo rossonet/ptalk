@@ -1,9 +1,14 @@
 package net.rossonet.ptalk.engine.runtime.fact.channel;
 
+import java.util.UUID;
+
+import net.rossonet.ptalk.base.grpc.Data;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
+import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
 
-public class OutputMessageFact {
+public class OutputMessageFact extends MemoryData<OutputMessageFact> {
 
+	private static final long serialVersionUID = -4363439337218687662L;
 	private final String traceId;
 	private final String channelUniqueName;
 	private final String message;
@@ -15,8 +20,9 @@ public class OutputMessageFact {
 	}
 
 	public ChannelMessageRequest getChannelMessageRequest() {
-		// TODO generare il messaggio di risposta
-		return null;
+		return ChannelMessageRequest.newBuilder().setFlowReference(traceId).setChannelUniqueName(channelUniqueName)
+				.setChannelUniqueMessageId(UUID.randomUUID().toString())
+				.setMessage(Data.newBuilder().setValue(message).build()).build();
 	}
 
 	public String getChannelUniqueName() {

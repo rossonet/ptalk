@@ -1,12 +1,17 @@
 package net.rossonet.ptalk.engine;
 
-import org.jeasy.rules.api.Fact;
+import java.io.Serializable;
+
+import org.joda.time.Instant;
+
+import com.hazelcast.replicatedmap.ReplicatedMap;
 
 import net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest;
 import net.rossonet.ptalk.engine.grpc.ReplyMemoryQuery;
 import net.rossonet.ptalk.engine.runtime.fact.channel.InputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
-import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
+import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluTrainingModelReplyFact;
 
 public class MemoryManager {
 
@@ -16,27 +21,31 @@ public class MemoryManager {
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
 	}
 
+	private ReplicatedMap<Long, MemoryData<? extends Serializable>> getMemoryMap() {
+		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getMemoryMapRepository();
+	}
+
 	public PTalkEngineRuntime getpTalkEngineRuntime() {
 		return pTalkEngineRuntime;
 	}
 
-	public ReplyMemoryQuery query(MemoryContextQueryRequest request) {
+	public ReplyMemoryQuery query(MemoryContextQueryRequest memoryRequest) {
 		// TODO query
 		return null;
 	}
 
-	public void registerInputMessage(Fact<InputMessageFact> inputMessageFact) {
-		// TODO Auto-generated method stub
+	public void registerInputMessage(InputMessageFact inputMessageFact) {
+		getMemoryMap().put(Instant.now().getMillis(), inputMessageFact);
 
 	}
 
 	public void registerOutputMessage(OutputMessageFact outputMessageFact) {
-		// TODO register message sent to
+		getMemoryMap().put(Instant.now().getMillis(), outputMessageFact);
 
 	}
 
-	public void registerReplyNluTraining(NluTrainingModelReply request) {
-		// TODO register nlu training done
+	public void registerReplyNluTraining(NluTrainingModelReplyFact nluTrainingModelReplyFact) {
+		getMemoryMap().put(Instant.now().getMillis(), nluTrainingModelReplyFact);
 
 	}
 

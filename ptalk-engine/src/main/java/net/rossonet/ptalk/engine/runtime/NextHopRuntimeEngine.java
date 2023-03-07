@@ -1,5 +1,6 @@
 package net.rossonet.ptalk.engine.runtime;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,14 +17,23 @@ public class NextHopRuntimeEngine {
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
 	}
 
-	public Task getTaskByTraceId(String traceId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Collection<Task> getTasksByTraceId(String traceId) {
+		final Set<Task> results = new HashSet<>();
+		for (final Task t : tasks) {
+			if (traceId.equals(t.getTraceId())) {
+				results.add(t);
+			}
+		}
+		return results;
 	}
 
-	public void manageTasks(Task task) {
-		// TODO Auto-generated method stub
+	public void registerTask(Task task) {
+		tasks.add(task);
 
+	}
+
+	public PTalkEngineRuntime getpTalkEngineRuntime() {
+		return pTalkEngineRuntime;
 	}
 
 }

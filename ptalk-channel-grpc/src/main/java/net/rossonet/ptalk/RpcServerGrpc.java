@@ -8,7 +8,7 @@ public class RpcServerGrpc extends RpcChannelGrpcServerV1ImplBase {
 
 	public RpcServerGrpc(ChannelGrpc channelGrpc) {
 		this.channelGrpc = channelGrpc;
-		// TODO Auto-generated constructor stub
+		// TODO implementare metodi ricezione messaggi da client esterni
 	}
 
 }

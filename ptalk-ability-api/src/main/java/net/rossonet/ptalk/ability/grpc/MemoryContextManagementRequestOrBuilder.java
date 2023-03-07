@@ -6,4 +6,51 @@ package net.rossonet.ptalk.ability.grpc;
 public interface MemoryContextManagementRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:ability.MemoryContextManagementRequest)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>string context = 1;</code>
+   * @return The context.
+   */
+  java.lang.String getContext();
+  /**
+   * <code>string context = 1;</code>
+   * @return The bytes for context.
+   */
+  com.google.protobuf.ByteString
+      getContextBytes();
+
+  /**
+   * <code>.ability.MemoryAction action = 2;</code>
+   * @return The enum numeric value on the wire for action.
+   */
+  int getActionValue();
+  /**
+   * <code>.ability.MemoryAction action = 2;</code>
+   * @return The action.
+   */
+  net.rossonet.ptalk.ability.grpc.MemoryAction getAction();
+
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  java.util.List<net.rossonet.ptalk.base.grpc.Data> 
+      getDatasList();
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  net.rossonet.ptalk.base.grpc.Data getDatas(int index);
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  int getDatasCount();
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
+      getDatasOrBuilderList();
+  /**
+   * <code>repeated .base.Data datas = 3;</code>
+   */
+  net.rossonet.ptalk.base.grpc.DataOrBuilder getDatasOrBuilder(
+      int index);
 }
