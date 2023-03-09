@@ -45,7 +45,7 @@ dependencies {
   api 'org.eclipse.jgit:org.eclipse.jgit.ssh.jsch:6.4.0.202211300538-r'
   api 'org.eclipse.jgit:org.eclipse.jgit.http.apache:6.4.0.202211300538-r'
   api group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
-  api group: 'org.json', name: 'json', version: '20220924'
+  api group: 'org.json', name: 'json', version: '20230227'
   api group: 'org.yaml', name: 'snakeyaml', version: '1.30'
   api group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
   api group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
