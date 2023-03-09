@@ -7,7 +7,7 @@ import java.util.Map;
 import com.hazelcast.replicatedmap.ReplicatedMap;
 
 import net.rossonet.ptalk.base.grpc.RegisterRequest;
-import net.rossonet.ptalk.engine.grpc.UnitRegistered;
+import net.rossonet.ptalk.engine.parameter.UnitRegistered;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.ability.AbilityCommunicationFact;

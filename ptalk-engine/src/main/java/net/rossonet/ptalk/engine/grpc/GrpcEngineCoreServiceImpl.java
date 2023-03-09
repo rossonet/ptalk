@@ -82,6 +82,7 @@ public class GrpcEngineCoreServiceImpl extends RpcCoreV1ImplBase {
 				throw new RegistrationErrorException("UNRECOGNIZED unit type");
 			}
 			responseObserver.onNext(prepareReplyWithCertificateSign(request));
+			responseObserver.onCompleted();
 		} catch (final TaskManagerException e) {
 			responseObserver.onError(e);
 		}

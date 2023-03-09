@@ -3,6 +3,7 @@ package net.rossonet.ptalk.engine;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
@@ -10,11 +11,16 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.durableexecutor.DurableExecutorService;
 import com.hazelcast.replicatedmap.ReplicatedMap;
 
-import net.rossonet.ptalk.engine.grpc.UnitRegistered;
 import net.rossonet.ptalk.engine.parameter.OnlineTaskModel;
+import net.rossonet.ptalk.engine.parameter.UnitRegistered;
+import net.rossonet.ptalk.engine.parameter.UnitRegisteredSerializer;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
 
 public class HazelcastInstanceBuilder implements Closeable {
+
+	private static final int HAZELCAST_CLUSTER_PORT = 5777;
+
+	private static final String HAZELCAST_CLUSTER_NAME = "dev";
 
 	private static final String TASK_MODEL_MAP_NAME = "task_model";
 
@@ -24,6 +30,8 @@ public class HazelcastInstanceBuilder implements Closeable {
 	private static final String REGISTER_ABILITY_NAME = "register_ability_map";
 	private static final String REGISTER_NLU_NAME = "register_nlu_map";
 	private static final String REGISTER_CHANNEL_NAME = "register_channel_map";
+
+	private static final String MODELS_NLU_NAME = "nlu_models";
 
 	private static HazelcastInstance hazelcastServer = null;
 	private HazelcastInstance hazelcastClient = null;
@@ -38,6 +46,7 @@ public class HazelcastInstanceBuilder implements Closeable {
 
 	private ReplicatedMap<String, UnitRegistered> registerAbilityRepository;
 	private ReplicatedMap<String, UnitRegistered> registerNluRepository;
+	private ReplicatedMap<String, List<String>> nluModels;
 	private ReplicatedMap<String, UnitRegistered> registerChannelRepository;
 
 	HazelcastInstanceBuilder(PTalkEngineRuntime pTalkEngineRuntime) {
@@ -67,6 +76,8 @@ public class HazelcastInstanceBuilder implements Closeable {
 
 	private void createInstance() {
 		final Config clusterConfig = getConfig();
+		clusterConfig.getSerializationConfig().getCompactSerializationConfig()
+				.addSerializer(new UnitRegisteredSerializer());
 		hazelcastClient = Hazelcast.newHazelcastInstance(clusterConfig);
 		createMapsAndScheduler();
 	}
@@ -77,13 +88,14 @@ public class HazelcastInstanceBuilder implements Closeable {
 		scheduler = hazelcastClient.getDurableExecutorService(SCHEDULER_MAP_NAME);
 		registerAbilityRepository = hazelcastClient.getReplicatedMap(REGISTER_ABILITY_NAME);
 		registerNluRepository = hazelcastClient.getReplicatedMap(REGISTER_NLU_NAME);
+		nluModels = hazelcastClient.getReplicatedMap(MODELS_NLU_NAME);
 		registerChannelRepository = hazelcastClient.getReplicatedMap(REGISTER_CHANNEL_NAME);
 	}
 
 	private Config getConfig() {
 		final Config clusterConfig = new Config();
-		clusterConfig.setClusterName("dev");
-		clusterConfig.getNetworkConfig().setPort(5777);
+		clusterConfig.setClusterName(HAZELCAST_CLUSTER_NAME);
+		clusterConfig.getNetworkConfig().setPort(HAZELCAST_CLUSTER_PORT);
 		clusterConfig.getJetConfig().setEnabled(true);
 		clusterConfig.getUserCodeDeploymentConfig().setEnabled(true);
 		return clusterConfig;
@@ -97,6 +109,10 @@ public class HazelcastInstanceBuilder implements Closeable {
 	public ReplicatedMap<Long, MemoryData<? extends Serializable>> getMemoryMapRepository() {
 		checkCreated();
 		return memoryMapRepository;
+	}
+
+	public ReplicatedMap<String, List<String>> getNluModels() {
+		return nluModels;
 	}
 
 	public PTalkEngineRuntime getPTalkEngineRuntime() {

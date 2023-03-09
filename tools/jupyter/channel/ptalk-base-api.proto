@@ -121,15 +121,17 @@ message RegisterRequest {
   string unitUniqueName = 1;
   UnitType unitType = 2;
   string displayName = 3;
-  string shortDescription = 4;
-  string description = 5;
-  string jsonHealth = 6;
-  string certificateCrt = 7;
-  repeated string capabilities = 8;
-  repeated Data additionalDatas = 9;
-  repeated Tag tags = 10;
-  string selfSuperAbilityCode = 11;
-  Timestamp timestamp = 12;
+  string host = 4;
+  int32 port = 5;
+  string shortDescription = 6;
+  string description = 7;
+  string jsonHealth = 8;
+  string certificateCrt = 9;
+  repeated string capabilities = 10;
+  repeated Data additionalDatas = 11;
+  repeated Tag tags = 12;
+  string selfSuperAbilityCode = 13;
+  Timestamp timestamp = 14;
 }
 
 message RegisterReply {

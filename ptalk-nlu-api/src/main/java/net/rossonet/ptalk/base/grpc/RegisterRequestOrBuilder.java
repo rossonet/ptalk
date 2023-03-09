@@ -43,72 +43,90 @@ public interface RegisterRequestOrBuilder extends
       getDisplayNameBytes();
 
   /**
-   * <code>string shortDescription = 4;</code>
+   * <code>string host = 4;</code>
+   * @return The host.
+   */
+  java.lang.String getHost();
+  /**
+   * <code>string host = 4;</code>
+   * @return The bytes for host.
+   */
+  com.google.protobuf.ByteString
+      getHostBytes();
+
+  /**
+   * <code>int32 port = 5;</code>
+   * @return The port.
+   */
+  int getPort();
+
+  /**
+   * <code>string shortDescription = 6;</code>
    * @return The shortDescription.
    */
   java.lang.String getShortDescription();
   /**
-   * <code>string shortDescription = 4;</code>
+   * <code>string shortDescription = 6;</code>
    * @return The bytes for shortDescription.
    */
   com.google.protobuf.ByteString
       getShortDescriptionBytes();
 
   /**
-   * <code>string description = 5;</code>
+   * <code>string description = 7;</code>
    * @return The description.
    */
   java.lang.String getDescription();
   /**
-   * <code>string description = 5;</code>
+   * <code>string description = 7;</code>
    * @return The bytes for description.
    */
   com.google.protobuf.ByteString
       getDescriptionBytes();
 
   /**
-   * <code>string jsonHealth = 6;</code>
+   * <code>string jsonHealth = 8;</code>
    * @return The jsonHealth.
    */
   java.lang.String getJsonHealth();
   /**
-   * <code>string jsonHealth = 6;</code>
+   * <code>string jsonHealth = 8;</code>
    * @return The bytes for jsonHealth.
    */
   com.google.protobuf.ByteString
       getJsonHealthBytes();
 
   /**
-   * <code>string certificateCrt = 7;</code>
+   * <code>string certificateCrt = 9;</code>
    * @return The certificateCrt.
    */
   java.lang.String getCertificateCrt();
   /**
-   * <code>string certificateCrt = 7;</code>
+   * <code>string certificateCrt = 9;</code>
    * @return The bytes for certificateCrt.
    */
   com.google.protobuf.ByteString
       getCertificateCrtBytes();
 
   /**
-   * <code>repeated string capabilities = 8;</code>
+   * <code>repeated string capabilities = 10;</code>
    * @return A list containing the capabilities.
    */
   java.util.List<java.lang.String>
       getCapabilitiesList();
   /**
-   * <code>repeated string capabilities = 8;</code>
+   * <code>repeated string capabilities = 10;</code>
    * @return The count of capabilities.
    */
   int getCapabilitiesCount();
   /**
-   * <code>repeated string capabilities = 8;</code>
+   * <code>repeated string capabilities = 10;</code>
    * @param index The index of the element to return.
    * @return The capabilities at the given index.
    */
   java.lang.String getCapabilities(int index);
   /**
-   * <code>repeated string capabilities = 8;</code>
+   * <code>repeated string capabilities = 10;</code>
    * @param index The index of the value to return.
    * @return The bytes of the capabilities at the given index.
    */
@@ -116,77 +134,77 @@ public interface RegisterRequestOrBuilder extends
       getCapabilitiesBytes(int index);
 
   /**
-   * <code>repeated .base.Data additionalDatas = 9;</code>
+   * <code>repeated .base.Data additionalDatas = 11;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.Data> 
       getAdditionalDatasList();
   /**
-   * <code>repeated .base.Data additionalDatas = 9;</code>
+   * <code>repeated .base.Data additionalDatas = 11;</code>
    */
   net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index);
   /**
-   * <code>repeated .base.Data additionalDatas = 9;</code>
+   * <code>repeated .base.Data additionalDatas = 11;</code>
    */
   int getAdditionalDatasCount();
   /**
-   * <code>repeated .base.Data additionalDatas = 9;</code>
+   * <code>repeated .base.Data additionalDatas = 11;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
       getAdditionalDatasOrBuilderList();
   /**
-   * <code>repeated .base.Data additionalDatas = 9;</code>
+   * <code>repeated .base.Data additionalDatas = 11;</code>
    */
   net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
       int index);
 
   /**
-   * <code>repeated .base.Tag tags = 10;</code>
+   * <code>repeated .base.Tag tags = 12;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.Tag> 
       getTagsList();
   /**
-   * <code>repeated .base.Tag tags = 10;</code>
+   * <code>repeated .base.Tag tags = 12;</code>
    */
   net.rossonet.ptalk.base.grpc.Tag getTags(int index);
   /**
-   * <code>repeated .base.Tag tags = 10;</code>
+   * <code>repeated .base.Tag tags = 12;</code>
    */
   int getTagsCount();
   /**
-   * <code>repeated .base.Tag tags = 10;</code>
+   * <code>repeated .base.Tag tags = 12;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.TagOrBuilder> 
       getTagsOrBuilderList();
   /**
-   * <code>repeated .base.Tag tags = 10;</code>
+   * <code>repeated .base.Tag tags = 12;</code>
    */
   net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(
       int index);
 
   /**
-   * <code>string selfSuperAbilityCode = 11;</code>
+   * <code>string selfSuperAbilityCode = 13;</code>
    * @return The selfSuperAbilityCode.
    */
   java.lang.String getSelfSuperAbilityCode();
   /**
-   * <code>string selfSuperAbilityCode = 11;</code>
+   * <code>string selfSuperAbilityCode = 13;</code>
    * @return The bytes for selfSuperAbilityCode.
    */
   com.google.protobuf.ByteString
       getSelfSuperAbilityCodeBytes();
 
   /**
-   * <code>.base.Timestamp timestamp = 12;</code>
+   * <code>.base.Timestamp timestamp = 14;</code>
    * @return Whether the timestamp field is set.
    */
   boolean hasTimestamp();
   /**
-   * <code>.base.Timestamp timestamp = 12;</code>
+   * <code>.base.Timestamp timestamp = 14;</code>
    * @return The timestamp.
    */
   net.rossonet.ptalk.base.grpc.Timestamp getTimestamp();
   /**
-   * <code>.base.Timestamp timestamp = 12;</code>
+   * <code>.base.Timestamp timestamp = 14;</code>
    */
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 }
