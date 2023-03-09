@@ -82,6 +82,10 @@ public class GlobalConfiguration implements Serializable {
 
 	}
 
+	public enum LoadBalancingPolicy {
+		RANDOM
+	}
+
 	public static final int DEFAULT_GRPC_SERVER_PORT = 8191;
 	public static final String GRPC_SERVER_PORT_LABEL = "grpc_server_port";
 	private static final long serialVersionUID = -615842239868641069L;
@@ -119,6 +123,10 @@ public class GlobalConfiguration implements Serializable {
 
 	public String getInputChannel() {
 		return inputChannel != null ? inputChannel : DEFAULT_INPUT_CHANNEL_TASK;
+	}
+
+	public LoadBalancingPolicy getNluLoadBalancingPolicy() {
+		return LoadBalancingPolicy.RANDOM;
 	}
 
 	public int getNormalSchedulerThreadSize() {

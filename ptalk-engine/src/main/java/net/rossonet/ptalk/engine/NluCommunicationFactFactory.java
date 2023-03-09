@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.hazelcast.replicatedmap.ReplicatedMap;
 
@@ -15,8 +16,11 @@ import net.rossonet.ptalk.engine.parameter.UnitRegistered;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluCommunicationFact;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluReplyFact;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluRequestFact;
 import net.rossonet.ptalk.nlu.grpc.NluListModelsReply;
 import net.rossonet.ptalk.nlu.grpc.NluListModelsRequest;
+import net.rossonet.ptalk.nlu.grpc.NluMessageReply;
 import net.rossonet.ptalk.nlu.grpc.NluModel;
 import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.nlu.grpc.RpcNluUnitV1Grpc;
@@ -28,6 +32,8 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 	private final PTalkEngineRuntime pTalkEngineRuntime;
 
 	private final Map<String, RpcNluUnitV1BlockingStub> cacheBlockingStub = new HashMap<>();
+
+	private Random rand = null;
 
 	NluCommunicationFactFactory(PTalkEngineRuntime pTalkEngineRuntime) {
 		this.pTalkEngineRuntime = pTalkEngineRuntime;
@@ -77,7 +83,7 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 		if (facts.containsKey(rulesEngineTask.getTraceId())) {
 			return facts.get(rulesEngineTask.getTraceId());
 		} else {
-			final NluCommunicationFact f = new NluCommunicationFact(rulesEngineTask.getTraceId());
+			final NluCommunicationFact f = new NluCommunicationFact(pTalkEngineRuntime, rulesEngineTask.getTraceId());
 			facts.put(rulesEngineTask.getTraceId(), f);
 			return f;
 		}
@@ -89,6 +95,12 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 
 	private ReplicatedMap<String, UnitRegistered> getRegisterUnit() {
 		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getRegisterNluRepository();
+	}
+
+	public NluReplyFact query(String model, NluRequestFact input) {
+		final String uniqueName = selectOneNluUnit(getModelMap().get(model));
+		final NluMessageReply nluReply = cacheBlockingStub.get(uniqueName).callSync(input.getNluMessageRequest(model));
+		return new NluReplyFact(nluReply);
 	}
 
 	public void registerUnit(RegisterRequest request) {
@@ -107,6 +119,18 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 	public void replyFromNluTrainingRequest(NluTrainingModelReply request) {
 		// TODO gestione risposta training nlu
 
+	}
+
+	private String selectOneNluUnit(List<String> nluUnitList) {
+		switch (pTalkEngineRuntime.getGlobalConfiguration().getNluLoadBalancingPolicy()) {
+		case RANDOM:
+			if (rand == null) {
+				rand = new Random();
+			}
+			return nluUnitList.get(rand.nextInt(nluUnitList.size()));
+		default:
+			return nluUnitList.get(0);
+		}
 	}
 
 	@Override

@@ -41,15 +41,17 @@ import net.rossonet.ptalk.nlu.grpc.NluListModelsRequest;
 import net.rossonet.ptalk.nlu.grpc.NluModel;
 import net.rossonet.ptalk.nlu.grpc.RpcNluUnitV1Grpc.RpcNluUnitV1ImplBase;
 
-public class SimpleRuleNluTests {
+public class SimpleRuleAbilitySelfTests {
 
-	// TODO salvare dati di contesto in memoria per ultima sessione e recuperarli
+	// TODO registrare le regole base, sostituirle in runtime
+	// TODO da questa classe copiare SimpleRuleAbilityTests con registrazione regole
+	// da ability e query interpretando meta comnado risposta nlu
 
 	public class GrpcChannelServiceImpl extends RpcChannelUnitV1ImplBase {
 
-		private final SimpleRuleNluTests simpleRuleTests;
+		private final SimpleRuleAbilitySelfTests simpleRuleTests;
 
-		public GrpcChannelServiceImpl(SimpleRuleNluTests simpleRuleTests) {
+		public GrpcChannelServiceImpl(SimpleRuleAbilitySelfTests simpleRuleTests) {
 			this.simpleRuleTests = simpleRuleTests;
 		}
 
@@ -69,9 +71,9 @@ public class SimpleRuleNluTests {
 
 	public class GrpcNluServiceImpl extends RpcNluUnitV1ImplBase {
 
-		private final SimpleRuleNluTests simpleRuleTests;
+		private final SimpleRuleAbilitySelfTests simpleRuleTests;
 
-		public GrpcNluServiceImpl(SimpleRuleNluTests simpleRuleTests) {
+		public GrpcNluServiceImpl(SimpleRuleAbilitySelfTests simpleRuleTests) {
 			this.simpleRuleTests = simpleRuleTests;
 		}
 
