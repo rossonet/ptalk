@@ -1,0 +1,205 @@
+// Andrea Ambrosini - Rossonet s.c.a r.l.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "net.rossonet.ptalk.ability.grpc";
+option java_outer_classname = "PtaskAbilityApi";
+
+import "ptalk-base-api.proto";
+
+package ability;
+
+message AbilityMessageRequest {
+  string flowReference = 1;
+  string messageReference = 2;
+  string replyTask = 3;
+  base.Data message = 4;
+  repeated base.Data additionalDatas = 5;
+  repeated base.Tag tags = 6;
+  base.Timestamp timestamp = 7;
+}
+
+message AbilityMessageReply {
+  string flowReference = 1;
+  string messageReference = 2;
+  string task = 3;
+  base.Data reply = 4;
+  base.StatusValue status = 5;
+  repeated base.Data additionalDatas = 6;
+  repeated base.Tag tags = 7;
+  base.Timestamp timestamp = 8;
+}
+
+message Rule {
+  string ruleUniqueName = 1;
+  string task = 2;
+}
+
+message CancelRuleRequest {
+  string flowReference = 1;
+  Rule rule= 2;
+  base.Timestamp timestamp = 3;
+}
+
+message CancelRuleReply {
+  string flowReference = 1;
+  base.StatusValue status = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message GetRuleRequest {
+  string flowReference = 1;
+  Rule rule= 2;
+  base.Timestamp timestamp = 3;
+}
+
+message GetRuleReply {
+  string flowReference = 1;
+  string jsonRule = 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
+}
+
+message RegisterRuleRequest {
+  string flowReference = 1;
+  Rule rule= 2;
+  string jsonRule = 3;
+  repeated base.Data additionalDatas = 4;
+  repeated base.Tag tags = 5;
+  base.Timestamp timestamp = 6;
+}
+
+message RegisterRuleReply {
+  string flowReference = 1;
+  Rule rule= 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
+}
+
+message ListRulesRequest {
+  string flowReference = 1;
+  base.Timestamp timestamp = 3;
+}
+
+message ListRulesReply {
+  string flowReference = 1;
+  repeated Rule rule = 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
+}
+
+message DumpConfigurationRequest {
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message DumpConfigurationReply {
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
+  base.StatusValue status = 4;
+  string configurationJson = 5;
+}
+
+message PushConfigurationRequest {
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
+  string configurationJson = 4;
+}
+
+message PushConfigurationReply {
+  string flowReference = 1;
+  repeated base.Data additionalDatas = 2;
+  base.Timestamp timestamp = 3;
+  base.StatusValue status = 4;
+}
+
+message MemoryContextQueryRequest {
+  string flowReference = 1;
+  string context = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message MemoryContextQueryReply {
+  string flowReference = 1;
+  string context = 2;
+  repeated base.Data datas = 3;
+  base.Timestamp timestamp = 4;
+  base.StatusValue status = 5;
+}
+
+enum MemoryAction {
+  REPLACE = 0;
+  ADD = 1;
+}
+
+message MemoryContextManagementRequest {
+  string context = 1;
+  MemoryAction action = 2;
+  repeated base.Data datas = 3;
+
+}
+
+message MemoryContextManagementReply {
+  base.StatusValue status = 1;
+}
+
+message GeneralConfigurationQueryRequest {
+  string flowReference = 1;
+  string key = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message GeneralConfigurationQueryReply {
+  string flowReference = 1;
+  base.Data value = 2;
+  base.Timestamp timestamp = 3;
+}
+
+enum ConfigurationAction {
+  ADD_OR_REPLACE = 0;
+  DELETE = 1;
+}
+
+message GeneralConfigurationManagementRequest {
+  string flowReference = 1;
+  ConfigurationAction action = 2;
+  string key = 3;
+  string value = 4;
+}
+
+message GeneralConfigurationManagementReply {
+  base.StatusValue status = 1;
+}
+
+service RpcAbilityCoreV1 {
+  rpc RegisterRule (RegisterRuleRequest) returns (RegisterRuleReply) {}
+  rpc CancelRule (CancelRuleRequest) returns (CancelRuleReply) {}
+  rpc ListRules (ListRulesRequest) returns (ListRulesReply) {}
+  rpc GetRule (GetRuleRequest) returns (GetRuleReply) {}
+  rpc MemoryQuery (MemoryContextQueryRequest) returns (MemoryContextQueryReply) {}
+  rpc GeneralConfigurationQuery (GeneralConfigurationQueryRequest) returns (GeneralConfigurationQueryReply) {}
+}
+
+service RpcAbilityUnitV1 {
+  rpc CallSync (AbilityMessageRequest) returns (AbilityMessageReply) {}
+}
+
+service RpcSuperAbilityCoreV1 {
+  rpc PushConfiguration (PushConfigurationRequest) returns (PushConfigurationReply) {}
+  rpc DumpConfiguration (DumpConfigurationRequest) returns (DumpConfigurationReply) {}
+  rpc RegisterPreRule (RegisterRuleRequest) returns (RegisterRuleReply) {}
+  rpc CancelPreRule (CancelRuleRequest) returns (CancelRuleReply) {}
+  rpc ListPreRules (ListRulesRequest) returns (ListRulesReply) {}
+  rpc GetPreRule (GetRuleRequest) returns (GetRuleReply) {}
+  rpc RegisterPostRule (RegisterRuleRequest) returns (RegisterRuleReply) {}
+  rpc CancelPostRule (CancelRuleRequest) returns (CancelRuleReply) {}
+  rpc ListPostRules (ListRulesRequest) returns (ListRulesReply) {}
+  rpc GetPostRule (GetRuleRequest) returns (GetRuleReply) {}
+  rpc MemoryManagement (MemoryContextManagementRequest) returns (MemoryContextManagementReply) {}
+  rpc GeneralConfigurationManagement (GeneralConfigurationManagementRequest) returns (GeneralConfigurationManagementReply) {}
+}
+

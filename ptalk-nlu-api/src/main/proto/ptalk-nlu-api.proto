@@ -1,0 +1,112 @@
+// Andrea Ambrosini - Rossonet s.c.a r.l.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "net.rossonet.ptalk.nlu.grpc";
+option java_outer_classname = "PtalkNluApi";
+
+import "ptalk-base-api.proto";
+
+package nlu;
+
+message NluModel {
+  string capability = 1;
+  string model = 2;
+  string modelVersion = 3;
+}
+
+message TrainingLineLog {
+  base.Timestamp timestamp = 1;
+  string logLevel = 2;
+  string message = 3;
+}
+
+message NluMessageRequest {
+  string flowReference = 1;
+  string messageReference = 2;
+  string originContext = 3;
+  NluModel model = 4;
+  string replyTask = 5;
+  base.Data message = 6;
+  string contextJson = 7;
+  repeated base.Data additionalDatas = 8;
+  repeated base.Tag tags = 9;
+  base.Timestamp timestamp = 10;
+  bool traceLog = 11;
+}
+
+message NluMessageReply {
+  string flowReference = 1;
+  string messageReference = 2;
+  string originContext = 3;
+  NluModel model = 4;
+  string task = 5;
+  base.Data reply = 6;
+  string contextJson = 7;
+  base.StatusValue status = 8;
+  repeated base.Data additionalDatas = 9;
+  repeated base.Tag tags = 10;
+  base.Timestamp timestamp = 11;
+  bool traceLog = 12;
+}
+
+message NluTrainingModelRequest {
+  string flowReference = 1;
+  NluModel model = 2;
+  string trainingJob = 3;
+  string testJob = 4;
+  repeated base.Data trainingData = 5;
+  repeated base.Data testData = 6;
+  repeated base.Data trainingSecret = 7;
+  repeated base.Data testSecret = 8;
+  int32 timeoutMinutes = 9;
+  base.Timestamp timestamp = 10;
+}
+
+message NluTrainingModelReply {
+  string flowReference = 1;
+  NluModel model = 2;
+  base.StatusValue status = 3;
+  int64 trainingTime = 4;
+  int64 testTime = 5;
+  repeated TrainingLineLog trainingLog = 6;
+  repeated TrainingLineLog testLog = 7;
+  base.Timestamp timestamp = 8;
+}
+
+message NluListModelsRequest {
+  string flowReference = 1;
+  base.Timestamp timestamp = 2;
+}
+
+message NluListModelsReply {
+  string flowReference = 1;
+  repeated NluModel model = 2;
+  base.StatusValue status = 3;
+  base.Timestamp timestamp = 4;
+}
+
+message NluDeleteModelRequest {
+  string flowReference = 1;
+  NluModel model = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message NluDeleteModelReply {
+  string flowReference = 1;
+  base.StatusValue status = 2;
+  base.Timestamp timestamp = 3;
+}
+
+service RpcNluCoreV1 {
+  rpc ReplyTrainingModelAsync (NluTrainingModelReply) returns (base.Status) {}
+}
+
+service RpcNluUnitV1 {
+  rpc CallSync (NluMessageRequest) returns (NluMessageReply) {}
+  rpc TrainModelAsync (NluTrainingModelRequest) returns (base.Status) {}
+  rpc ListModels (NluListModelsRequest) returns (NluListModelsReply) {}
+  rpc DeleteModel (NluDeleteModelRequest) returns (NluDeleteModelReply) {}
+}
+

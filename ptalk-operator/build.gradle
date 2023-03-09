@@ -1,0 +1,168 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    jcenter()
+    gradlePluginPortal()
+    maven { url "https://plugins.gradle.org/m2/" }
+  }
+  dependencies {
+    classpath "com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.0"
+    classpath 'de.undercouch:gradle-download-task:5.3.0'
+    classpath "com.palantir.gradle.docker:gradle-docker:0.34.0"
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: "com.gorylenko.gradle-git-properties"
+apply plugin: 'base'
+apply plugin: 'signing'
+apply plugin: 'maven-publish'
+apply plugin: 'java-library'
+apply plugin: 'distribution'
+apply plugin: 'jacoco'
+apply plugin: 'com.palantir.docker'
+apply plugin: 'application'
+
+description = "Ptalk Kubernetes Operator"
+group = rootProject.group
+version = rootProject.version
+
+ext {
+  sourceCompatibility = 1.8
+  packageName = 'ptalk-operator'
+}
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  implementation project(':ptalk-ability-api')
+  implementation group: 'io.javaoperatorsdk', name: 'operator-framework', version: '3.0.3'
+  annotationProcessor "io.javaoperatorsdk:operator-framework:3.0.3"
+  annotationProcessor 'io.fabric8:crd-generator-apt:5.12.2'
+  implementation 'org.apache.commons:commons-compress:1.21' // per passaggio file tramite API k8s
+  implementation 'org.takes:takes:1.24.4'
+  implementation 'javax.validation:validation-api:2.0.1.Final'
+  implementation group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
+  implementation group: 'org.json', name: 'json', version: '20220924'
+  implementation group: 'org.yaml', name: 'snakeyaml', version: '1.30'
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+  testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+  useJUnitPlatform()
+}
+
+eclipse {
+  classpath {
+    downloadJavadoc = true
+    downloadSources = true
+  }
+}
+
+task eclipseClosedDependencies {}
+
+task eclipseClosedDependencies_ {}
+
+java {
+  withJavadocJar()
+  withSourcesJar()
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication){
+      artifactId = "${project.name}"
+      from components.java
+      versionMapping {
+        usage('java-api') {
+          fromResolutionOf('runtimeClasspath')
+        }
+        usage('java-runtime') {
+          fromResolutionResult()
+        }
+      }
+      pom {
+        name = "${project.name}"
+        description = "${project.description}"
+        url = 'https://app.rossonet.net/'
+        licenses {
+          license {
+            name = 'Apache-2.0 license'
+            url = 'https://www.apache.org/licenses/LICENSE-2.0'
+          }
+        }
+        developers {
+          developer {
+            id = 'ar4k'
+            name = 'Andrea Ambrosini'
+            email = 'andrea.ambrosini@rossonet.org'
+          }
+        }
+        scm {
+          connection = 'scm:git:git://github.com/rossonet/ptalk.git'
+          developerConnection = 'scm:git:ssh://github.com:rossonet/ptalk.git'
+          url = 'https://github.com/rossonet/ptalk/tree/master'
+        }
+      }
+    }
+  }
+  repositories {
+    maven {
+      url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+      name = "sonatype"
+      credentials {
+        username "rossonet"
+        password "${ossrhPassword}"
+      }
+    }
+  }
+}
+
+signing {
+  sign publishing.publications.mavenJava
+}
+
+gitProperties {
+  failOnNoGitDirectory = false
+  customProperty 'component', "${project.name}"
+  customProperty 'version', "${version}"
+  dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+  dateFormatTimeZone = 'GMT'
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+    html.enabled false
+  }
+}
+
+javadoc{
+  destinationDir = file("${rootProject.buildDir}/docs/javadoc/${project.name}/")
+  failOnError=true
+}
+
+docker {
+  name "rossonet.net/${project.name}:latest"
+  dockerfile file('Dockerfile_gradle')
+  files "$buildDir/distributions/${project.name}-${version}.tar"
+}
+
+task buildDocker() {
+  buildDocker.dependsOn("distTar")
+  buildDocker.finalizedBy("docker")
+}
+
+application {
+  mainClass = 'net.rossonet.ptalk.MainApp'
+}

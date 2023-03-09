@@ -1,0 +1,34 @@
+{
+  "global_configuration": {
+    "scheduler_thread_size": 4,
+    "hazelcast_embedded": true,
+    "input_channel": "input_channel",
+    "grpc_server_port": 8191
+  },
+  "configuration_type": "ptalk_conf_v.1.0",
+  "task_configuration": {"input_channel": {
+    "main_rules": [{
+        "condition": "true",
+        "name": "print input message",
+        "description": "when receive a message, print the content",
+        "priority": 1,
+        "actions": ["extensions_manager.println(message_fact);"]
+      },
+      {
+        "condition": "true",
+        "name": "query NLU",
+        "description": "send message string to nlu",
+        "priority": 6,
+        "actions": ["nlu_reply = nlu_communication.query(\"test_model\", message_fact.getMessageValue());"]
+      },
+      {
+        "condition": "true",
+        "name": "reply to message",
+        "description": "when receive a message, print the content",
+        "priority": 9,
+        "actions": ["channel_communication.sendMessage(message_fact, \"NLU REPLY \" + nlu_reply.getMessageValue());"]
+      }],
+
+    "name": "input channel rule test"
+  }}
+}

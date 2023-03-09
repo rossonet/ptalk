@@ -1,0 +1,44 @@
+// Andrea Ambrosini - Rossonet s.c.a r.l.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "net.rossonet.ptalk.channel.grpc";
+option java_outer_classname = "PtaskChannelApi";
+
+import "ptalk-base-api.proto";
+
+package channel;
+
+message ChannelMessageRequest {
+  string flowReference = 1;
+  string messageReference = 2;
+  string originContext = 3;
+  string channelUniqueName = 4;
+  string channelUniqueMessageId = 5;
+  string replyTask = 6;
+  base.Data message = 7;
+  string contextJson = 8;
+  repeated base.Data additionalDatas = 9;
+  repeated base.Tag tags = 10;
+  int32 priority = 11;
+  bool traceLog = 12;
+  base.Timestamp timestamp = 13;
+  repeated base.Data traceData = 14;
+}
+
+message ChannelMessageReply {
+  string flowReference = 1;
+  base.StatusValue status = 2;
+  base.Timestamp timestamp = 3;
+  repeated base.Data traceData = 4;
+}
+
+service RpcChannelCoreV1 {
+  rpc CallSync (ChannelMessageRequest) returns (ChannelMessageReply) {}
+}
+
+service RpcChannelUnitV1 {
+  rpc CallSync (ChannelMessageRequest) returns (ChannelMessageReply) {}
+}
+

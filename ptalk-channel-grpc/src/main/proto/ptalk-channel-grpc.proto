@@ -1,0 +1,73 @@
+// Andrea Ambrosini - Rossonet s.c.a r.l.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "net.rossonet.ptalk.channel.protobuf.server.grpc";
+option java_outer_classname = "PtalkChannelGrpcServerGrpc";
+
+package channelGrpc;
+
+message Parameter {
+  string key = 1;
+  string value = 2;
+  string description = 3;
+  int32 quality = 4;
+  int32 priority = 5;
+  int64 weight = 6;
+}
+
+message Command {
+  string command = 1;
+  string language = 2;
+}
+
+message Status {
+  string statusDescription = 1;
+  int32 statusId =2;
+}
+
+message Tag {
+  string tag = 1;
+  string description = 2;
+  string tagFather = 3;
+}
+
+message MessageRequest {
+  string messageReference = 1;
+  string message = 2;
+  string UniqueName = 3;
+  string UniqueMessageId = 4;
+  repeated Parameter parameters = 5;
+  string contextJson = 6;
+  int32 priority = 7;
+  bool traceLog = 8;
+  int64 timestamp = 9;
+  repeated Command commands = 10;
+}
+
+message MessageReply {
+  string messageReference = 1;
+  string message = 2;
+  string UniqueName = 3;
+  string UniqueMessageId = 4;
+  string status = 5;
+  int64 timestamp = 6;
+  string messageReply = 7;
+  repeated Parameter parameters = 8;
+  string contextJson = 9;
+  repeated Command commands = 10;
+}
+
+service RpcChannelGrpcServerV1 {
+  rpc CallSync (MessageRequest) returns (MessageReply) {}
+  rpc CallAsync (MessageRequest) returns (Status) {}
+  rpc ReplyCallAsync (MessageReply) returns (Status) {}
+}
+
+service RpcChannelGrpcClientV1 {
+  rpc CallSync (MessageRequest) returns (MessageReply) {}
+  rpc CallAsync (MessageRequest) returns (Status) {}
+  rpc ReplyCallAsync (MessageReply) returns (Status) {}
+}
+

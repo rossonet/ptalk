@@ -1,0 +1,189 @@
+// Andrea Ambrosini - Rossonet s.c.a r.l.
+// the original copy of this file is in ptalk-base-api directory at the root of the main project.
+// Doesn't edit the file in other location, it'll be overwritten.
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "net.rossonet.ptalk.base.grpc";
+option java_outer_classname = "PtalkBaseObject";
+
+package base;
+
+message Empty {
+}
+
+message Timestamp {
+  int64 milliSeconds = 1;
+  int32 nanos = 2;
+}
+
+enum StatusValue {
+  STATUS_GOOD = 0;
+  STATUS_BAD = 1;
+  STATUS_FAULT = 2;
+  STATUS_WAIT_HUMAN = 3;
+  STATUS_NOT_APPROVED = 4;
+}
+
+message Status {
+  StatusValue status = 1;
+}
+
+enum LifecycleStatus {
+    INIT = 0;
+    CONFIGURED = 2;
+    RUNNING = 3;
+    KILLED = 4;
+    FAULTED = 5;
+    STOPPED = 6;
+ }
+
+enum LogSeverity {
+  DEFAULT = 0;
+  DEBUG = 100;
+  INFO = 200;
+  NOTICE = 300;
+  WARNING = 400;
+  ERROR = 500;
+  CRITICAL = 600;
+  ALERT = 700;
+  EMERGENCY = 800;
+}
+
+enum DataType {
+  STRING = 0;
+  CHAR = 1;
+  INT32 = 2;
+  INT64 = 3;
+  FLOAT = 4;
+  DOUBLE = 5;
+  BOOLEAN = 6;
+  TIMESTAMP = 7;
+  UNKNOWN = 8;
+  JSONDATA = 9;
+  BASE64DATA = 10;
+}
+
+enum Quality {
+  QUALITY_UNKNOWN = 0;
+  GOOD = 200;
+  BAD = 400;
+  CACHED = 1000;
+}
+
+enum UnitType {
+  ABILITY = 0;
+  CHANNEL = 20;
+  NLU = 40;
+  SELF = 80;
+}
+
+message Data {
+  string key = 1;
+  string value = 2;
+  DataType typeData = 3;
+  Timestamp timestamp = 4;
+  string displayName = 5;
+  string shortDescription = 6;
+  string description = 7;
+  Quality quality = 8;
+  int32 priority = 9;
+  int64 weight = 10;
+}
+
+message Tag {
+  string tag = 1;
+  string displayName = 2;
+  string shortDescription = 3;
+  string description = 4;
+  string tagFather = 5;
+}
+
+message GenericMessageRequest {
+  string flowReference = 1;
+  string messageReference = 2;
+  repeated Data additionalDatas = 3;
+  repeated Tag tags = 4;
+  Timestamp timestamp = 5;
+}
+
+message GenericMessageReply {
+  string flowReference = 1;
+  string messageReference = 2;
+  StatusValue generalStatus = 3;
+  repeated Data additionalDatas = 4;
+  repeated Tag tags = 5;
+  Timestamp timestamp = 6;
+}
+
+message RegisterRequest {
+  string unitUniqueName = 1;
+  UnitType unitType = 2;
+  string displayName = 3;
+  string host = 4;
+  int32 port = 5;
+  string shortDescription = 6;
+  string description = 7;
+  string jsonHealth = 8;
+  string certificateCrt = 9;
+  repeated string capabilities = 10;
+  repeated Data additionalDatas = 11;
+  repeated Tag tags = 12;
+  string selfSuperAbilityCode = 13;
+  Timestamp timestamp = 14;
+}
+
+message RegisterReply {
+  string unitUniqueName = 1;
+  int32 monitoringFrequency = 2;
+  string globalJsonConfig = 3;
+  string certificate = 4;
+  string certificateFullChain = 5;
+  StatusValue statusRegistration = 6;
+  int64 timestampRegistration = 7;
+  string otpSeed = 8;
+  repeated Data additionalDatas = 9;
+  repeated Tag tags = 10;
+  Timestamp timestamp = 11;
+}
+
+message HealthRequest {
+  string flowReference = 1;
+  string unitUniqueName = 2;
+  string jsonHardwareInfo = 3;
+  StatusValue status = 4;
+  LifecycleStatus lifecycleStatus = 5;
+  Timestamp timestamp = 6;
+}
+
+message StackTraceLine {
+  string message = 1;
+  string exceptionClass = 2;
+  string class = 3;
+  string file = 4;
+  int32 line = 5;
+}
+
+message LogRequest {
+  string flowReference = 1;
+  string unitUniqueName = 2;
+  LogSeverity severity = 3;
+  string logLine = 4;
+  string messageReference = 6;
+  repeated StackTraceLine stacktrace = 7;
+  StatusValue status = 8;
+  LifecycleStatus lifecycleStatus = 9;
+  Timestamp timestamp = 10;
+}
+
+service RpcCoreV1 {
+  rpc Register (RegisterRequest) returns (RegisterReply) {}
+  rpc Log (LogRequest) returns (Status) {}
+  rpc Health (HealthRequest) returns (Status) {}
+  rpc Message (GenericMessageRequest) returns (GenericMessageReply) {}
+}
+
+service RpcSlaveUnitV1 {
+  rpc Message (GenericMessageRequest) returns (GenericMessageReply) {}
+}
