@@ -56,6 +56,7 @@ public class PTalkEngineRuntime {
 	private final ExecutionLogger executionLogger;
 
 	private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
+
 	private final GrpcCoreService grpcCoreService;
 
 	private final ExecutorService normalScheduler;
