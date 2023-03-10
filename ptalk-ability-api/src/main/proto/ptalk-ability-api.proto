@@ -188,6 +188,7 @@ service RpcAbilityUnitV1 {
   rpc CallSync (AbilityMessageRequest) returns (AbilityMessageReply) {}
 }
 
+//only for super ability ( homunculus )
 service RpcSuperAbilityCoreV1 {
   rpc PushConfiguration (PushConfigurationRequest) returns (PushConfigurationReply) {}
   rpc DumpConfiguration (DumpConfigurationRequest) returns (DumpConfigurationReply) {}

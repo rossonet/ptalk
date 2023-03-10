@@ -2,36 +2,41 @@ package net.rossonet.ptalk;
 
 import java.util.logging.Logger;
 
+import net.rossonet.ptalk.channel.telegram.PTalkChannelRuntime;
+
 public class MainApp {
 
 	private static final Logger logger = Logger.getLogger(MainApp.class.getName());
 
-	private static final long WHILE_DELAY = 60000L;
-	private static boolean running = true;
+	private static PTalkChannelRuntime pTalkChannelRuntime = null;
 
 	public static boolean isRunning() {
-		return running;
+		return pTalkChannelRuntime != null ? pTalkChannelRuntime.isRunning() : false;
 	}
 
 	public static void main(final String[] args) {
-		runApp();
+		try {
+			pTalkChannelRuntime = new PTalkChannelRuntime();
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+		runAppUntilStop();
 	}
 
-	public static void runApp() {
+	public static void runAppUntilStop() {
 		logger.info("system started");
 		Thread.currentThread().setName("main");
-		while (running) {
+		while (pTalkChannelRuntime.isRunning()) {
 			try {
-				Thread.sleep(WHILE_DELAY);
 				logger.info("running");
-			} catch (final InterruptedException e) {
+				synchronized (pTalkChannelRuntime) {
+					pTalkChannelRuntime.wait();
+				}
+			} catch (final Exception e) {
 				e.printStackTrace();
 			}
 		}
-	}
-
-	public static void setRunning(boolean running) {
-		MainApp.running = running;
+		logger.info("system shutdown completed");
 	}
 
 }
