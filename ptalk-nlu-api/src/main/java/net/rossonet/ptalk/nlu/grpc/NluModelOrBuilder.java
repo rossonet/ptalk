@@ -8,16 +8,16 @@ public interface NluModelOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string capability = 1;</code>
-   * @return The capability.
+   * <code>string requiredCapability = 1;</code>
+   * @return The requiredCapability.
    */
-  java.lang.String getCapability();
+  java.lang.String getRequiredCapability();
   /**
-   * <code>string capability = 1;</code>
-   * @return The bytes for capability.
+   * <code>string requiredCapability = 1;</code>
+   * @return The bytes for requiredCapability.
    */
   com.google.protobuf.ByteString
-      getCapabilityBytes();
+      getRequiredCapabilityBytes();
 
   /**
    * <code>string model = 2;</code>

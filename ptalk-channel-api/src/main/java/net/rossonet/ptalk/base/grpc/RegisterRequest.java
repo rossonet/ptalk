@@ -469,6 +469,10 @@ private static final long serialVersionUID = 0L;
   public static final int SELFSUPERABILITYCODE_FIELD_NUMBER = 13;
   private volatile java.lang.Object selfSuperAbilityCode_;
   /**
+   * <pre>
+   * OTP code if the unit is Homunculus
+   * </pre>
+   *
    * <code>string selfSuperAbilityCode = 13;</code>
    * @return The selfSuperAbilityCode.
    */
@@ -486,6 +490,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * OTP code if the unit is Homunculus
+   * </pre>
+   *
    * <code>string selfSuperAbilityCode = 13;</code>
    * @return The bytes for selfSuperAbilityCode.
    */
@@ -2466,6 +2474,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object selfSuperAbilityCode_ = "";
     /**
+     * <pre>
+     * OTP code if the unit is Homunculus
+     * </pre>
+     *
      * <code>string selfSuperAbilityCode = 13;</code>
      * @return The selfSuperAbilityCode.
      */
@@ -2482,6 +2494,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * OTP code if the unit is Homunculus
+     * </pre>
+     *
      * <code>string selfSuperAbilityCode = 13;</code>
      * @return The bytes for selfSuperAbilityCode.
      */
@@ -2499,6 +2515,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * OTP code if the unit is Homunculus
+     * </pre>
+     *
      * <code>string selfSuperAbilityCode = 13;</code>
      * @param value The selfSuperAbilityCode to set.
      * @return This builder for chaining.
@@ -2514,6 +2534,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * OTP code if the unit is Homunculus
+     * </pre>
+     *
      * <code>string selfSuperAbilityCode = 13;</code>
      * @return This builder for chaining.
      */
@@ -2524,6 +2548,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * OTP code if the unit is Homunculus
+     * </pre>
+     *
      * <code>string selfSuperAbilityCode = 13;</code>
      * @param value The bytes for selfSuperAbilityCode to set.
      * @return This builder for chaining.

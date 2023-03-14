@@ -1,4 +1,4 @@
-package net.rossonet.ptalk.channel.telegram;
+package net.rossonet.ptalk.channel.implementation;
 
 import java.time.Instant;
 
@@ -7,20 +7,16 @@ import net.rossonet.ptalk.base.grpc.StatusValue;
 import net.rossonet.ptalk.base.grpc.Timestamp;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageReply;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
-import net.rossonet.ptalk.channel.grpc.RpcChannelCoreV1Grpc.RpcChannelCoreV1ImplBase;
+import net.rossonet.ptalk.channel.grpc.RpcChannelUnitV1Grpc.RpcChannelUnitV1ImplBase;
 
-public class GrpcChannelTelegramServiceImpl extends RpcChannelCoreV1ImplBase {
+public abstract class CommunicationHandler extends RpcChannelUnitV1ImplBase {
 
-	private final PTalkChannelRuntime pTalkChannelRuntime;
-
-	public GrpcChannelTelegramServiceImpl(PTalkChannelRuntime pTalkChannelRuntime) {
-		this.pTalkChannelRuntime = pTalkChannelRuntime;
-	}
+	protected PTalkChannelRuntime pTalkChannelRuntime;
 
 	@Override
 	public void callSync(ChannelMessageRequest request, StreamObserver<ChannelMessageReply> responseObserver) {
 		try {
-			final boolean status = pTalkChannelRuntime.getTelegram().messageFromPtalkEngine(request);
+			final boolean status = messageFromPTalkEngine(request);
 			if (status) {
 				responseObserver.onNext(ChannelMessageReply.newBuilder().setFlowReference(request.getFlowReference())
 						.setStatus(StatusValue.STATUS_GOOD)
@@ -35,4 +31,12 @@ public class GrpcChannelTelegramServiceImpl extends RpcChannelCoreV1ImplBase {
 		}
 	}
 
+	protected abstract boolean messageFromPTalkEngine(ChannelMessageRequest message);
+
+	public void setChannelRuntime(PTalkChannelRuntime pTalkChannelRuntime) {
+		this.pTalkChannelRuntime = pTalkChannelRuntime;
+
+	}
+
+	public abstract void start();
 }

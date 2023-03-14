@@ -3,6 +3,9 @@ package net.rossonet.ptalk.ability.grpc;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ *only for super ability ( homunculus )
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.53.0)",
@@ -432,6 +435,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
   }
 
   /**
+   * <pre>
+   *only for super ability ( homunculus )
+   * </pre>
    */
   public static abstract class RpcSuperAbilityCoreV1ImplBase implements io.grpc.BindableService {
 
@@ -610,6 +616,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
   }
 
   /**
+   * <pre>
+   *only for super ability ( homunculus )
+   * </pre>
    */
   public static final class RpcSuperAbilityCoreV1Stub extends io.grpc.stub.AbstractAsyncStub<RpcSuperAbilityCoreV1Stub> {
     private RpcSuperAbilityCoreV1Stub(
@@ -721,6 +730,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
   }
 
   /**
+   * <pre>
+   *only for super ability ( homunculus )
+   * </pre>
    */
   public static final class RpcSuperAbilityCoreV1BlockingStub extends io.grpc.stub.AbstractBlockingStub<RpcSuperAbilityCoreV1BlockingStub> {
     private RpcSuperAbilityCoreV1BlockingStub(
@@ -820,6 +832,9 @@ public final class RpcSuperAbilityCoreV1Grpc {
   }
 
   /**
+   * <pre>
+   *only for super ability ( homunculus )
+   * </pre>
    */
   public static final class RpcSuperAbilityCoreV1FutureStub extends io.grpc.stub.AbstractFutureStub<RpcSuperAbilityCoreV1FutureStub> {
     private RpcSuperAbilityCoreV1FutureStub(

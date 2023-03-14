@@ -2,7 +2,9 @@ package net.rossonet.ptalk;
 
 import java.util.logging.Logger;
 
-import net.rossonet.ptalk.channel.telegram.PTalkChannelRuntime;
+import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
+import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
+import net.rossonet.ptalk.channel.telegram.TelegramConnector;
 
 public class MainApp {
 
@@ -16,7 +18,8 @@ public class MainApp {
 
 	public static void main(final String[] args) {
 		try {
-			pTalkChannelRuntime = new PTalkChannelRuntime();
+			final UnitChannelConfiguration configuration = new UnitChannelConfiguration();
+			pTalkChannelRuntime = new PTalkChannelRuntime(configuration, new TelegramConnector());
 		} catch (final Exception e) {
 			e.printStackTrace();
 		}
