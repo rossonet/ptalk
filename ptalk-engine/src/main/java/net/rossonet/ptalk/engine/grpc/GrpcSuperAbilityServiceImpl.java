@@ -1,12 +1,12 @@
 package net.rossonet.ptalk.engine.grpc;
 
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;
-import org.joda.time.Instant;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,7 +47,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 		pTalkEngineRuntime.getConfigurationTasksManager().removePostRule(request.getRule().getTask(),
 				request.getRule().getRuleUniqueName());
 		final CancelRuleReply reply = CancelRuleReply.newBuilder().setFlowReference(request.getFlowReference())
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setStatus(StatusValue.STATUS_GOOD).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -58,7 +58,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 		pTalkEngineRuntime.getConfigurationTasksManager().removePreRule(request.getRule().getTask(),
 				request.getRule().getRuleUniqueName());
 		final CancelRuleReply reply = CancelRuleReply.newBuilder().setFlowReference(request.getFlowReference())
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setStatus(StatusValue.STATUS_GOOD).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -70,7 +70,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 		final String jsonConfiguration = pTalkEngineRuntime.getJsonConfiguration().toString(0);
 		final DumpConfigurationReply reply = DumpConfigurationReply.newBuilder().setConfigurationJson(jsonConfiguration)
 				.setFlowReference(request.getFlowReference())
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setStatus(StatusValue.STATUS_GOOD).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -98,7 +98,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 		}
 		final GetRuleReply reply = GetRuleReply.newBuilder().setFlowReference(request.getFlowReference())
 				.setJsonRule(ruleAsJson.toString(0))
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setStatus(StatusValue.STATUS_GOOD).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -119,7 +119,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 		}
 		final GetRuleReply reply = GetRuleReply.newBuilder().setFlowReference(request.getFlowReference())
 				.setJsonRule(ruleAsJson.toString(0))
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setStatus(StatusValue.STATUS_GOOD).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -144,7 +144,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 			}
 			final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
 					.addAllRule(rulesList)
-					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.setStatus(StatusValue.STATUS_GOOD).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
@@ -168,7 +168,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 			}
 			final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
 					.addAllRule(rulesList)
-					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.setStatus(StatusValue.STATUS_GOOD).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
@@ -192,7 +192,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 			pTalkEngineRuntime.replaceJsonConfiguration(new JSONObject(jsonConfiguration));
 			final PushConfigurationReply reply = PushConfigurationReply.newBuilder()
 					.setFlowReference(request.getFlowReference())
-					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.setStatus(StatusValue.STATUS_GOOD).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
@@ -211,7 +211,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 			final RegisterRuleReply reply = RegisterRuleReply.newBuilder().setFlowReference(request.getFlowReference())
 					.setRule(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
 							.setTask(request.getRule().getTask()))
-					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.setStatus(StatusValue.STATUS_GOOD).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
@@ -229,7 +229,7 @@ public class GrpcSuperAbilityServiceImpl extends RpcSuperAbilityCoreV1ImplBase {
 			final RegisterRuleReply reply = RegisterRuleReply.newBuilder().setFlowReference(request.getFlowReference())
 					.setRule(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
 							.setTask(request.getRule().getTask()))
-					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.setStatus(StatusValue.STATUS_GOOD).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();

@@ -1,8 +1,7 @@
 package net.rossonet.ptalk.engine;
 
 import java.io.Serializable;
-
-import org.joda.time.Instant;
+import java.time.Instant;
 
 import com.hazelcast.replicatedmap.ReplicatedMap;
 
@@ -35,17 +34,17 @@ public class MemoryManager {
 	}
 
 	public void registerInputMessage(InputMessageFact inputMessageFact) {
-		getMemoryMap().put(Instant.now().getMillis(), inputMessageFact);
+		getMemoryMap().put(Instant.now().toEpochMilli(), inputMessageFact);
 
 	}
 
 	public void registerOutputMessage(OutputMessageFact outputMessageFact) {
-		getMemoryMap().put(Instant.now().getMillis(), outputMessageFact);
+		getMemoryMap().put(Instant.now().toEpochMilli(), outputMessageFact);
 
 	}
 
 	public void registerReplyNluTraining(NluTrainingModelReplyFact nluTrainingModelReplyFact) {
-		getMemoryMap().put(Instant.now().getMillis(), nluTrainingModelReplyFact);
+		getMemoryMap().put(Instant.now().toEpochMilli(), nluTrainingModelReplyFact);
 
 	}
 
