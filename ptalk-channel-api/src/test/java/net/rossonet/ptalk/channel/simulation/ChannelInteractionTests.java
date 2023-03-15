@@ -1,4 +1,6 @@
-package net.rossonet.ptalk.channel.telegram;
+package net.rossonet.ptalk.channel.simulation;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -9,19 +11,16 @@ import org.junit.jupiter.api.Test;
 
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
 import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
-import net.rossonet.ptalk.channel.simulation.FakePTalkEngine;
 
-public class TelegramInteractionTests {
+public class ChannelInteractionTests {
 
 	private static final ExecutorService EXECUTOR_SERVICE = Executors.newCachedThreadPool();
 
 	private static final String ADDRESS = "127.0.0.1";
 
-	private static final int UNIT_PORT = 11254;
+	private static final int UNIT_PORT = 11214;
 
-	private static final int CORE_PORT = 11256;
-
-	private static final long SLEEP = 5 * 60000; // 5 min.
+	private static final int CORE_PORT = 11216;
 
 	private FakePTalkEngine ptalkEngine = null;
 
@@ -38,8 +37,12 @@ public class TelegramInteractionTests {
 			unitConfiguration.setParameter(PTalkChannelRuntime.MY_HOST_ENV, ADDRESS);
 			unitConfiguration.setParameter(PTalkChannelRuntime.UNIQUENAME_ENV, uniqueName);
 			unitConfiguration.setParameter(PTalkChannelRuntime.IS_REGISTER_UNIT_ENV, "false");
-			new PTalkChannelRuntime(unitConfiguration, new TelegramConnector());
-			Thread.sleep(SLEEP);
+			final PTalkChannelRuntime pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration,
+					new FakeCommunicationHandler());
+			final FakeCommunicationHandler fakeCommunicationHandler = (FakeCommunicationHandler) pTalkChannelRuntime
+					.getCommunicationHandler();
+			fakeCommunicationHandler.waitSimulation();
+			assertTrue(fakeCommunicationHandler.isSimulationCompletedSuccessful());
 			ptalkEngine.close();
 		} catch (final Exception a) {
 			a.printStackTrace();

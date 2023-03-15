@@ -130,7 +130,7 @@ message RegisterRequest {
   repeated string capabilities = 10;
   repeated Data additionalDatas = 11;
   repeated Tag tags = 12;
-  string selfSuperAbilityCode = 13;
+  string selfSuperAbilityCode = 13;  // OTP code if the unit is Homunculus
   Timestamp timestamp = 14;
 }
 
@@ -178,8 +178,11 @@ message LogRequest {
 }
 
 service RpcCoreV1 {
+  // register unit (ability, channel or nlu) to ptalk engine
   rpc Register (RegisterRequest) returns (RegisterReply) {}
+  // log from unit
   rpc Log (LogRequest) returns (Status) {}
+  //health from unit
   rpc Health (HealthRequest) returns (Status) {}
   rpc Message (GenericMessageRequest) returns (GenericMessageReply) {}
 }

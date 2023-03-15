@@ -182,11 +182,19 @@ public interface RegisterRequestOrBuilder extends
       int index);
 
   /**
+   * <pre>
+   * OTP code if the unit is Homunculus
+   * </pre>
+   *
    * <code>string selfSuperAbilityCode = 13;</code>
    * @return The selfSuperAbilityCode.
    */
   java.lang.String getSelfSuperAbilityCode();
   /**
+   * <pre>
+   * OTP code if the unit is Homunculus
+   * </pre>
+   *
    * <code>string selfSuperAbilityCode = 13;</code>
    * @return The bytes for selfSuperAbilityCode.
    */

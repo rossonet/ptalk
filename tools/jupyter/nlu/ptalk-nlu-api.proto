@@ -11,7 +11,7 @@ import "ptalk-base-api.proto";
 package nlu;
 
 message NluModel {
-  string capability = 1;
+  string requiredCapability = 1;
   string model = 2;
   string modelVersion = 3;
 }
@@ -99,6 +99,32 @@ message NluDeleteModelReply {
   base.Timestamp timestamp = 3;
 }
 
+message NluSnapshotModelRequest {
+  string flowReference = 1;
+  NluModel model = 2;
+  base.Timestamp timestamp = 3;
+}
+
+message NluSnapshotModelReply {
+  string flowReference = 1;
+  base.StatusValue status = 2;
+  base.Timestamp timestamp = 3;
+  repeated base.Data modelSnapshotData = 4;
+}
+
+message NluRestoreModelRequest {
+  string flowReference = 1;
+  NluModel model = 2;
+  base.Timestamp timestamp = 3;
+  repeated base.Data modelSnapshotData = 4;
+}
+
+message NluRestoreModelReply {
+  string flowReference = 1;
+  base.StatusValue status = 2;
+  base.Timestamp timestamp = 3;
+}
+
 service RpcNluCoreV1 {
   rpc ReplyTrainingModelAsync (NluTrainingModelReply) returns (base.Status) {}
 }
@@ -108,5 +134,7 @@ service RpcNluUnitV1 {
   rpc TrainModelAsync (NluTrainingModelRequest) returns (base.Status) {}
   rpc ListModels (NluListModelsRequest) returns (NluListModelsReply) {}
   rpc DeleteModel (NluDeleteModelRequest) returns (NluDeleteModelReply) {}
+  rpc SnapshotModel (NluSnapshotModelRequest) returns (NluSnapshotModelReply) {}
+  rpc RestoreModel (NluRestoreModelRequest) returns (NluRestoreModelReply) {}
 }
 

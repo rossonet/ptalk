@@ -188,6 +188,9 @@ public final class RpcCoreV1Grpc {
   public static abstract class RpcCoreV1ImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * register unit (ability, channel or nlu) to ptalk engine
+     * </pre>
      */
     public void register(net.rossonet.ptalk.base.grpc.RegisterRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.RegisterReply> responseObserver) {
@@ -195,6 +198,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * log from unit
+     * </pre>
      */
     public void log(net.rossonet.ptalk.base.grpc.LogRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
@@ -202,6 +208,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     *health from unit
+     * </pre>
      */
     public void health(net.rossonet.ptalk.base.grpc.HealthRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
@@ -264,6 +273,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * register unit (ability, channel or nlu) to ptalk engine
+     * </pre>
      */
     public void register(net.rossonet.ptalk.base.grpc.RegisterRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.RegisterReply> responseObserver) {
@@ -272,6 +284,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * log from unit
+     * </pre>
      */
     public void log(net.rossonet.ptalk.base.grpc.LogRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
@@ -280,6 +295,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     *health from unit
+     * </pre>
      */
     public void health(net.rossonet.ptalk.base.grpc.HealthRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
@@ -311,6 +329,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * register unit (ability, channel or nlu) to ptalk engine
+     * </pre>
      */
     public net.rossonet.ptalk.base.grpc.RegisterReply register(net.rossonet.ptalk.base.grpc.RegisterRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -318,6 +339,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * log from unit
+     * </pre>
      */
     public net.rossonet.ptalk.base.grpc.Status log(net.rossonet.ptalk.base.grpc.LogRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -325,6 +349,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     *health from unit
+     * </pre>
      */
     public net.rossonet.ptalk.base.grpc.Status health(net.rossonet.ptalk.base.grpc.HealthRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -354,6 +381,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * register unit (ability, channel or nlu) to ptalk engine
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.RegisterReply> register(
         net.rossonet.ptalk.base.grpc.RegisterRequest request) {
@@ -362,6 +392,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * log from unit
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> log(
         net.rossonet.ptalk.base.grpc.LogRequest request) {
@@ -370,6 +403,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     *health from unit
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> health(
         net.rossonet.ptalk.base.grpc.HealthRequest request) {

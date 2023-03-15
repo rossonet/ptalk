@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private NluModel() {
-    capability_ = "";
+    requiredCapability_ = "";
     model_ = "";
     modelVersion_ = "";
   }
@@ -46,38 +46,38 @@ private static final long serialVersionUID = 0L;
             net.rossonet.ptalk.nlu.grpc.NluModel.class, net.rossonet.ptalk.nlu.grpc.NluModel.Builder.class);
   }
 
-  public static final int CAPABILITY_FIELD_NUMBER = 1;
-  private volatile java.lang.Object capability_;
+  public static final int REQUIREDCAPABILITY_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requiredCapability_;
   /**
-   * <code>string capability = 1;</code>
-   * @return The capability.
+   * <code>string requiredCapability = 1;</code>
+   * @return The requiredCapability.
    */
   @java.lang.Override
-  public java.lang.String getCapability() {
-    java.lang.Object ref = capability_;
+  public java.lang.String getRequiredCapability() {
+    java.lang.Object ref = requiredCapability_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      capability_ = s;
+      requiredCapability_ = s;
       return s;
     }
   }
   /**
-   * <code>string capability = 1;</code>
-   * @return The bytes for capability.
+   * <code>string requiredCapability = 1;</code>
+   * @return The bytes for requiredCapability.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getCapabilityBytes() {
-    java.lang.Object ref = capability_;
+      getRequiredCapabilityBytes() {
+    java.lang.Object ref = requiredCapability_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      capability_ = b;
+      requiredCapability_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -174,8 +174,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(capability_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, capability_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(requiredCapability_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requiredCapability_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(model_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, model_);
@@ -192,8 +192,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(capability_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, capability_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(requiredCapability_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requiredCapability_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(model_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, model_);
@@ -216,8 +216,8 @@ private static final long serialVersionUID = 0L;
     }
     net.rossonet.ptalk.nlu.grpc.NluModel other = (net.rossonet.ptalk.nlu.grpc.NluModel) obj;
 
-    if (!getCapability()
-        .equals(other.getCapability())) return false;
+    if (!getRequiredCapability()
+        .equals(other.getRequiredCapability())) return false;
     if (!getModel()
         .equals(other.getModel())) return false;
     if (!getModelVersion()
@@ -233,8 +233,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CAPABILITY_FIELD_NUMBER;
-    hash = (53 * hash) + getCapability().hashCode();
+    hash = (37 * hash) + REQUIREDCAPABILITY_FIELD_NUMBER;
+    hash = (53 * hash) + getRequiredCapability().hashCode();
     hash = (37 * hash) + MODEL_FIELD_NUMBER;
     hash = (53 * hash) + getModel().hashCode();
     hash = (37 * hash) + MODELVERSION_FIELD_NUMBER;
@@ -367,7 +367,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      capability_ = "";
+      requiredCapability_ = "";
 
       model_ = "";
 
@@ -399,7 +399,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.nlu.grpc.NluModel buildPartial() {
       net.rossonet.ptalk.nlu.grpc.NluModel result = new net.rossonet.ptalk.nlu.grpc.NluModel(this);
-      result.capability_ = capability_;
+      result.requiredCapability_ = requiredCapability_;
       result.model_ = model_;
       result.modelVersion_ = modelVersion_;
       onBuilt();
@@ -450,8 +450,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(net.rossonet.ptalk.nlu.grpc.NluModel other) {
       if (other == net.rossonet.ptalk.nlu.grpc.NluModel.getDefaultInstance()) return this;
-      if (!other.getCapability().isEmpty()) {
-        capability_ = other.capability_;
+      if (!other.getRequiredCapability().isEmpty()) {
+        requiredCapability_ = other.requiredCapability_;
         onChanged();
       }
       if (!other.getModel().isEmpty()) {
@@ -489,7 +489,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              capability_ = input.readStringRequireUtf8();
+              requiredCapability_ = input.readStringRequireUtf8();
 
               break;
             } // case 10
@@ -519,78 +519,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object capability_ = "";
+    private java.lang.Object requiredCapability_ = "";
     /**
-     * <code>string capability = 1;</code>
-     * @return The capability.
+     * <code>string requiredCapability = 1;</code>
+     * @return The requiredCapability.
      */
-    public java.lang.String getCapability() {
-      java.lang.Object ref = capability_;
+    public java.lang.String getRequiredCapability() {
+      java.lang.Object ref = requiredCapability_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        capability_ = s;
+        requiredCapability_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string capability = 1;</code>
-     * @return The bytes for capability.
+     * <code>string requiredCapability = 1;</code>
+     * @return The bytes for requiredCapability.
      */
     public com.google.protobuf.ByteString
-        getCapabilityBytes() {
-      java.lang.Object ref = capability_;
+        getRequiredCapabilityBytes() {
+      java.lang.Object ref = requiredCapability_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        capability_ = b;
+        requiredCapability_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string capability = 1;</code>
-     * @param value The capability to set.
+     * <code>string requiredCapability = 1;</code>
+     * @param value The requiredCapability to set.
      * @return This builder for chaining.
      */
-    public Builder setCapability(
+    public Builder setRequiredCapability(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      capability_ = value;
+      requiredCapability_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string capability = 1;</code>
+     * <code>string requiredCapability = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCapability() {
+    public Builder clearRequiredCapability() {
       
-      capability_ = getDefaultInstance().getCapability();
+      requiredCapability_ = getDefaultInstance().getRequiredCapability();
       onChanged();
       return this;
     }
     /**
-     * <code>string capability = 1;</code>
-     * @param value The bytes for capability to set.
+     * <code>string requiredCapability = 1;</code>
+     * @param value The bytes for requiredCapability to set.
      * @return This builder for chaining.
      */
-    public Builder setCapabilityBytes(
+    public Builder setRequiredCapabilityBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      capability_ = value;
+      requiredCapability_ = value;
       onChanged();
       return this;
     }

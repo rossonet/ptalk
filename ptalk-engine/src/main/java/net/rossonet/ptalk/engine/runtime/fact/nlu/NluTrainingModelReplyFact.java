@@ -28,7 +28,7 @@ public class NluTrainingModelReplyFact extends MemoryData<NluTrainingModelReply>
 	public NluTrainingModelReplyFact(NluTrainingModelReply request) {
 		this.flowReference = request.getFlowReference();
 		this.model = request.getModel().getModel();
-		this.capability = request.getModel().getCapability();
+		this.capability = request.getModel().getRequiredCapability();
 		this.modelVersion = request.getModel().getModelVersion();
 		this.status = request.getStatus().name();
 		this.timestamp = request.getTimestamp();
