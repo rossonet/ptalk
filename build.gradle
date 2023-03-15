@@ -93,6 +93,16 @@ task theiaIdeLocalBrowser(type: Exec) {
   commandLine 'xdg-open', 'http://localhost:3000'
 }
 
+task prepareEclipseImport() {
+  group "IDE"
+  description 'Prepara project for Eclipse import'
+  dependsOn "cleanEclipse"
+  dependsOn "eclipse"
+  dependsOn ":ptalk-channel-api:generateProto"
+  dependsOn ":ptalk-nlu-api:generateProto"
+  dependsOn ":ptalk-ability-api:generateProto"
+}
+
 task buildBottegaioTerminalClient() {
   group "Bottegaio Terminal Client"
   description 'Build Bottegaio Terminal Client in fat jar format'
