@@ -11,10 +11,12 @@ RUN conda install -y -c conda-forge librosa
 RUN conda install -y -c anaconda nltk
 RUN conda install -y -c conda-forge grpcio grpcio-tools 
 COPY ./examples /home/jovyan/examples
+COPY ./base /home/jovyan/base
 COPY ./nlu /home/jovyan/nlu
 COPY ./channel /home/jovyan/channel
 COPY ./ability /home/jovyan/ability
-COPY ./grpc-client /home/jovyan/grpc-client
+COPY ./channel-grpc /home/jovyan/channel-grpc
+COPY ./tools /home/jovyan/tools
 USER root
 RUN whoami && chown -R jovyan /home/jovyan/examples && chmod -R g+rw /home/jovyan/examples
 USER jovyan

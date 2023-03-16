@@ -129,6 +129,10 @@ task copyProtosToJupyter() {
   description 'Copy proto file to Jupyter directories'
   copy {
     from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'tools/jupyter/base/'
+  }
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
     into 'tools/jupyter/channel/'
   }
   copy {
@@ -152,8 +156,8 @@ task copyProtosToJupyter() {
     into 'tools/jupyter/ability/'
   }
    copy {
-    from 'ptalk-channel-grpc/src/main/proto/ptalk-channel-grpc.proto'
-    into 'tools/jupyter/grpc-client/'
+    from 'ptalk-channel-grpc/src/main/proto/ptalk-channel-grpc-api.proto'
+    into 'tools/jupyter/channel-grpc/'
   }
 }
 

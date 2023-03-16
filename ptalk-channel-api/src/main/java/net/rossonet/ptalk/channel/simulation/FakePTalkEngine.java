@@ -3,6 +3,8 @@ package net.rossonet.ptalk.channel.simulation;
 import java.io.Closeable;
 import java.io.IOException;
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Callable;
@@ -39,7 +41,7 @@ public class FakePTalkEngine extends RpcChannelCoreV1ImplBase implements Closeab
 
 	private int unitPort;
 
-	private RpcChannelUnitV1BlockingStub cacheBlockingStub = null;
+	private final Map<String, RpcChannelUnitV1BlockingStub> cacheBlockingStub = new HashMap<>();
 
 	private Server server;
 
@@ -94,21 +96,25 @@ public class FakePTalkEngine extends RpcChannelCoreV1ImplBase implements Closeab
 
 	}
 
-	private RpcChannelUnitV1BlockingStub getBlockingStub() {
-		final ManagedChannel mc = ManagedChannelBuilder.forAddress(unitAddress, unitPort).usePlaintext().build();
+	private RpcChannelUnitV1BlockingStub getBlockingStub(String targetIp) {
+		final ManagedChannel mc = ManagedChannelBuilder.forAddress(targetIp, unitPort).usePlaintext().build();
 		return RpcChannelUnitV1Grpc.newBlockingStub(mc);
 
 	}
 
 	private void replyToMessage(ChannelMessageRequest inputMessage) {
-		if (cacheBlockingStub == null) {
-			cacheBlockingStub = getBlockingStub();
+		final String targetIp = unitAddress;
+		if (targetIp == null) {
+			// se implementata la registrazione
+		}
+		if (!cacheBlockingStub.containsKey(targetIp)) {
+			cacheBlockingStub.put(targetIp, getBlockingStub(targetIp));
 		}
 		final Data message = Data.newBuilder(inputMessage.getMessage())
 				.setValue(ECHO_MESSAGE_PREFIX + inputMessage.getMessage().getValue()).build();
 		final ChannelMessageRequest outputMessage = ChannelMessageRequest.newBuilder(inputMessage).setMessage(message)
 				.build();
-		cacheBlockingStub.callSync(outputMessage);
+		cacheBlockingStub.get(targetIp).callSync(outputMessage);
 	}
 
 	private void runService(int grpcServerPort) throws IOException {
