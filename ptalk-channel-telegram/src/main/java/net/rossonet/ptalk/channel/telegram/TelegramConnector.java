@@ -3,21 +3,19 @@ package net.rossonet.ptalk.channel.telegram;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.UUID;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
-import io.grpc.BindableService;
+import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
+
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import net.rossonet.ptalk.PTalkBot;
 import net.rossonet.ptalk.base.grpc.LifecycleStatus;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.CommunicationHandler;
-import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
 import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
-import net.rossonet.ptalk.channel.simulation.FakePTalkEngine;
-import net.rossonet.ptalk.engine.GlobalConfiguration;
-import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 
 public class TelegramConnector extends CommunicationHandler implements Closeable{
 
@@ -32,7 +30,6 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 
 	@Override
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
 		server = ServerBuilder.forPort(UNIT_PORT).addService(this).build();
 		if (server != null) {
 			logger.info("Shutting Down Server, please wait...");
@@ -63,16 +60,15 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		// TODO avviare il connettore
 		logger.info("Starting...");
 		try {
-			pTalkChannelRuntime.sendMessage(uniqueName, "/start");
 			
-			while (!lifecycleStatus.equals(LifecycleStatus.RUNNING)) {
-				logger.info("Waiting for connector to start; Connector status: " + lifecycleStatus.getValueDescriptor());
-				Thread.sleep(5000);
-			}   
-			if (lifecycleStatus.equals(LifecycleStatus.RUNNING)) 
-				logger.info("Connector Started!");
-			else 
-				logger.info("Connector NOT Started!");
+			  ApiContextInitializer.init();
+		        TelegramBotsApi api = new TelegramBotsApi();
+		        try {
+		            api.registerBot(new PTalkBot());
+		        } catch (TelegramApiRequestException e) {
+		        	e.printStackTrace();        
+		        }
+			
 
 		} catch (Exception e) {
 			logger.severe("Error starting the server: " + e.getMessage());

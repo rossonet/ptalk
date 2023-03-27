@@ -33,7 +33,7 @@ public class TelegramInteractionTests {
 	private final String uniqueName = UUID.randomUUID().toString();
 	private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
 	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
-	TelegramConnector telegramConnector = new TelegramConnector();
+	TelegramConnector telegramConnector;
 
 
 	@Test
@@ -47,11 +47,12 @@ public class TelegramInteractionTests {
 			unitConfiguration.setParameter(PTalkChannelRuntime.MY_HOST_ENV, ADDRESS);
 			unitConfiguration.setParameter(PTalkChannelRuntime.UNIQUENAME_ENV, uniqueName);
 			unitConfiguration.setParameter(PTalkChannelRuntime.IS_REGISTER_UNIT_ENV, "false");
-						
+			telegramConnector = new TelegramConnector();
 	        PTalkChannelRuntime pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
 	        telegramConnector.setChannelRuntime(pTalkChannelRuntime);
 	        telegramConnector.start();
-	        //Thread.sleep(SLEEP);
+	        Thread.sleep(SLEEP);
+	        logger.info("Shutting Down");
 	        telegramConnector.close();
 			ptalkEngine.close(); 
 
@@ -77,6 +78,7 @@ public class TelegramInteractionTests {
 		unitConfiguration.setParameter(PTalkChannelRuntime.MY_HOST_ENV, ADDRESS);
 		unitConfiguration.setParameter(PTalkChannelRuntime.UNIQUENAME_ENV, uniqueName);
 		unitConfiguration.setParameter(PTalkChannelRuntime.IS_REGISTER_UNIT_ENV, "false");
+		telegramConnector = new TelegramConnector();
         PTalkChannelRuntime pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
         telegramConnector.setChannelRuntime(pTalkChannelRuntime);
         
