@@ -1,4 +1,4 @@
-package net.rossonet.ptalk;
+package net.rossonet.ptalk.channel.telegram;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -9,12 +9,12 @@ public class PTalkBot extends TelegramLongPollingBot{
 
 	@Override
 	public String getBotUsername() {
-		return "MyPTalkBot";
+		return System.getenv("botUsername");
 	}
 	
 	@Override
 	public String getBotToken() {
-		return "6220615065:AAGq3kVGGPFJImTiOvK0ib6Xub0rBcKflXQ";
+		return System.getenv("botToken");
 	}
 	
 	@Override

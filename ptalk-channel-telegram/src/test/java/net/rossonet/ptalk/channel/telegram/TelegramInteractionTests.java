@@ -52,7 +52,7 @@ public class TelegramInteractionTests {
 	        telegramConnector.setChannelRuntime(pTalkChannelRuntime);
 	        telegramConnector.start();
 	        Thread.sleep(SLEEP);
-	        logger.info("Shutting Down");
+	        logger.info("Shutting Down...");
 	        telegramConnector.close();
 			ptalkEngine.close(); 
 
@@ -68,21 +68,4 @@ public class TelegramInteractionTests {
 		}
 	}
 	
-	@Test
-	public void testShutdown() throws Exception {  
-		//ptalkEngine = new FakePTalkEngine(EXECUTOR_SERVICE, ADDRESS, UNIT_PORT, CORE_PORT);
-		final UnitChannelConfiguration unitConfiguration = new UnitChannelConfiguration();
-		unitConfiguration.setParameter(PTalkChannelRuntime.LOCAL_GRPC_PORT_ENV, String.valueOf(UNIT_PORT));
-		unitConfiguration.setParameter(PTalkChannelRuntime.ENGINE_GRPC_PORT_ENV, String.valueOf(CORE_PORT));
-		unitConfiguration.setParameter(PTalkChannelRuntime.ENGINE_GRPC_HOST_ENV, ADDRESS);
-		unitConfiguration.setParameter(PTalkChannelRuntime.MY_HOST_ENV, ADDRESS);
-		unitConfiguration.setParameter(PTalkChannelRuntime.UNIQUENAME_ENV, uniqueName);
-		unitConfiguration.setParameter(PTalkChannelRuntime.IS_REGISTER_UNIT_ENV, "false");
-		telegramConnector = new TelegramConnector();
-        PTalkChannelRuntime pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
-        telegramConnector.setChannelRuntime(pTalkChannelRuntime);
-        
-		telegramConnector.close();
-	}
-
 }

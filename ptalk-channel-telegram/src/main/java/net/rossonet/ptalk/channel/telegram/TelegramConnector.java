@@ -11,7 +11,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import net.rossonet.ptalk.PTalkBot;
 import net.rossonet.ptalk.base.grpc.LifecycleStatus;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.CommunicationHandler;
