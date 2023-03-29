@@ -1,11 +1,21 @@
 package net.rossonet.ptalk.channel.telegram;
 
+import java.util.logging.Logger;
+
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
+
+
+@SuppressWarnings("deprecation")
 public class PTalkBot extends TelegramLongPollingBot{
+	
+	private static final Logger logger = Logger.getLogger(PTalkBot.class.getName());
+	private Message message;
 
 	@Override
 	public String getBotUsername() {
@@ -19,15 +29,25 @@ public class PTalkBot extends TelegramLongPollingBot{
 	
 	@Override
 	public void onUpdateReceived(Update update) {
-		String msg = update.getMessage().getText();
-		String chatId=update.getMessage().getChatId().toString();
+		message = update.getMessage();
+		String msg = message.getText();
+		String chatId = message.getChatId().toString();
+		String userName = message.getFrom().getUserName();
+		String reply = userName + " said: \"" + msg + "\"; chatId: " + chatId;
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(chatId);
-        sendMessage.setText("You said: " + msg);
+        sendMessage.setText(reply);
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
            e.printStackTrace();
         }		
+		
 	}
+	
+	
+	public Message getMessage() {
+		return message;
+	}
+	
 }

@@ -3,11 +3,18 @@ package net.rossonet.ptalk.channel.telegram;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.UUID;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
-import org.telegram.telegrambots.ApiContextInitializer;
+import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
+import org.telegram.telegrambots.meta.generics.BotSession;
+import org.telegram.telegrambots.meta.generics.Webhook;
+import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -19,14 +26,13 @@ import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
 public class TelegramConnector extends CommunicationHandler implements Closeable{
 
 	private final String uniqueName = UUID.randomUUID().toString();
-	private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
 	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
 	final UnitChannelConfiguration unitConfiguration = new UnitChannelConfiguration();
-	private static final long SLEEP = 5 * 60000; // 5 min.
 	private static final int UNIT_PORT = 11254;
-	Server server = null;
-
-
+	private Server server = null;
+	private PTalkBot myBot;
+	private BotSession botSession;
+	
 	@Override
 	public void close() throws IOException {
 		server = ServerBuilder.forPort(UNIT_PORT).addService(this).build();
@@ -49,9 +55,10 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 
 	@Override
 	protected boolean messageFromPTalkEngine(ChannelMessageRequest message) {
-		// TODO inviare il messaggio all'utente Telegram
-		//pTalkChannelRuntime.sendMessage(uniqueName, message.toString());
-		return false;
+		String name = message.getChannelUniqueName();
+		logger.info("messageFromPTalkEngine - RECEIVED: " + message + " FROM " + name);
+		
+		return true;
 	}
 
 	@Override
@@ -59,20 +66,23 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		// TODO avviare il connettore
 		logger.info("Starting...");
 		try {
+			TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
+			myBot = new PTalkBot();
+			botSession = api.registerBot(myBot);
+			pTalkChannelRuntime.sendMessage(myBot.getBotUsername(), "Successfully Connected");
+			Thread.sleep(5000);
+			String msg = "";
+			while(!msg.equals("/stop")) {
+				Thread.sleep(1000);
+				msg = myBot.getMessage().getText();
+				pTalkChannelRuntime.sendMessage(myBot.getBotUsername(), msg);					
+			}
 			
-			  ApiContextInitializer.init();
-		        TelegramBotsApi api = new TelegramBotsApi();
-		        try {
-		            api.registerBot(new PTalkBot());
-		        } catch (TelegramApiRequestException e) {
-		        	e.printStackTrace();        
-		        }
-			
-
+		} catch (TelegramApiRequestException e) {
+			e.printStackTrace();        
 		} catch (Exception e) {
 			logger.severe("Error starting the server: " + e.getMessage());
 		}
-
 	}
 
 

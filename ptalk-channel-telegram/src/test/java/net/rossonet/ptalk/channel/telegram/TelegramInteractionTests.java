@@ -26,14 +26,15 @@ public class TelegramInteractionTests {
 
 	private static final int CORE_PORT = 11256;
 
-	private static final long SLEEP = 5 * 60000; // 5 min.
+	private static final long SLEEP = 2 * 60000; // 2 min.
 
 	private FakePTalkEngine ptalkEngine = null;
 
 	private final String uniqueName = UUID.randomUUID().toString();
 	private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
 	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
-	TelegramConnector telegramConnector;
+	private TelegramConnector telegramConnector;
+	private PTalkChannelRuntime pTalkChannelRuntime;
 
 
 	@Test
@@ -48,11 +49,10 @@ public class TelegramInteractionTests {
 			unitConfiguration.setParameter(PTalkChannelRuntime.UNIQUENAME_ENV, uniqueName);
 			unitConfiguration.setParameter(PTalkChannelRuntime.IS_REGISTER_UNIT_ENV, "false");
 			telegramConnector = new TelegramConnector();
-	        PTalkChannelRuntime pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
+	        pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
 	        telegramConnector.setChannelRuntime(pTalkChannelRuntime);
 	        telegramConnector.start();
-	        Thread.sleep(SLEEP);
-	        logger.info("Shutting Down...");
+	        Thread.sleep(10000);
 	        telegramConnector.close();
 			ptalkEngine.close(); 
 
@@ -67,5 +67,6 @@ public class TelegramInteractionTests {
 			}
 		}
 	}
+	
 	
 }
