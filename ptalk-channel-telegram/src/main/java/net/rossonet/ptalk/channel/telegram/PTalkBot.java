@@ -16,6 +16,7 @@ public class PTalkBot extends TelegramLongPollingBot{
 	
 	private static final Logger logger = Logger.getLogger(PTalkBot.class.getName());
 	private Message message;
+	private PTalkChannelRuntime pTalkChannelRuntime;
 
 	@Override
 	public String getBotUsername() {
@@ -30,24 +31,35 @@ public class PTalkBot extends TelegramLongPollingBot{
 	@Override
 	public void onUpdateReceived(Update update) {
 		message = update.getMessage();
-		String msg = message.getText();
-		String chatId = message.getChatId().toString();
-		String userName = message.getFrom().getUserName();
-		String reply = userName + " said: \"" + msg + "\"; chatId: " + chatId;
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.setChatId(chatId);
-        sendMessage.setText(reply);
-        try {
-            execute(sendMessage);
-        } catch (TelegramApiException e) {
-           e.printStackTrace();
-        }		
-		
+		sendMessageToUser();
+		sendMessageToPTalk();	
 	}
 	
 	
+	private void sendMessageToUser() {
+		String chatId = message.getChatId().toString();
+		String userName = message.getFrom().getUserName();
+		String reply = userName + " said: \"" + message.getText() + "\"; chatId: " + chatId;
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(chatId);
+        sendMessage.setText(reply);		
+        try {
+            execute(sendMessage);
+        } catch (TelegramApiException e) {		
+           e.printStackTrace();
+        }	
+	}
+
+	private void sendMessageToPTalk() {
+		pTalkChannelRuntime.sendMessage(this.getBotUsername(), message.getText());	
+	}
+
 	public Message getMessage() {
 		return message;
+	}
+
+	public void setPTalkChannelRuntime(PTalkChannelRuntime pTalkChannelRuntime) {
+		this.pTalkChannelRuntime = pTalkChannelRuntime;
 	}
 	
 }

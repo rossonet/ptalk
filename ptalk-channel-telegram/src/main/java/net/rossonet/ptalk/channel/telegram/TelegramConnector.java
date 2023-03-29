@@ -31,8 +31,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 	private static final int UNIT_PORT = 11254;
 	private Server server = null;
 	private PTalkBot myBot;
-	private BotSession botSession;
-	
+
 	@Override
 	public void close() throws IOException {
 		server = ServerBuilder.forPort(UNIT_PORT).addService(this).build();
@@ -56,7 +55,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 	@Override
 	protected boolean messageFromPTalkEngine(ChannelMessageRequest message) {
 		String name = message.getChannelUniqueName();
-		logger.info("messageFromPTalkEngine - RECEIVED: " + message + " FROM " + name);
+		logger.info("messageFromPTalkEngine - RECEIVED: " + message.getMessage() + " FROM " + name);
 		
 		return true;
 	}
@@ -68,16 +67,9 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		try {
 			TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
 			myBot = new PTalkBot();
-			botSession = api.registerBot(myBot);
+			BotSession botSession = api.registerBot(myBot);
 			pTalkChannelRuntime.sendMessage(myBot.getBotUsername(), "Successfully Connected");
-			Thread.sleep(5000);
-			String msg = "";
-			while(!msg.equals("/stop")) {
-				Thread.sleep(1000);
-				msg = myBot.getMessage().getText();
-				pTalkChannelRuntime.sendMessage(myBot.getBotUsername(), msg);					
-			}
-			
+			myBot.setPTalkChannelRuntime(pTalkChannelRuntime);
 		} catch (TelegramApiRequestException e) {
 			e.printStackTrace();        
 		} catch (Exception e) {
@@ -85,7 +77,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		}
 	}
 
-
+	
 
 	// TODO Ricevere messaggi dall'utente telegram
 	// esempio ricezione messaggio da Telegram, per inviarlo all'engine

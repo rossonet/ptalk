@@ -52,7 +52,7 @@ public class TelegramInteractionTests {
 	        pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
 	        telegramConnector.setChannelRuntime(pTalkChannelRuntime);
 	        telegramConnector.start();
-	        Thread.sleep(10000);
+	        Thread.sleep(SLEEP);
 	        telegramConnector.close();
 			ptalkEngine.close(); 
 
