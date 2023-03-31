@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.api.methods.updates.Close;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import org.telegram.telegrambots.meta.generics.BotSession;
 import org.telegram.telegrambots.meta.generics.Webhook;
@@ -30,10 +32,19 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 	final UnitChannelConfiguration unitConfiguration = new UnitChannelConfiguration();
 	private static final int UNIT_PORT = 11254;
 	private Server server = null;
-	private PTalkBot myBot;
+	private TelegramBot telegramBot;
 
 	@Override
 	public void close() throws IOException {
+		Boolean closed = false;
+		logger.info("Stopping Bot, please wait...");
+		try {
+			closed = telegramBot.execute(new Close());
+		} catch (TelegramApiException e1) {
+			logger.severe("Error stopping bot: " + e1.getMessage());
+		}
+		if (closed) logger.info("Bot Stopped");
+		else logger.info("Bot NOT Stopped");
 		server = ServerBuilder.forPort(UNIT_PORT).addService(this).build();
 		if (server != null) {
 			logger.info("Shutting Down Server, please wait...");
@@ -41,7 +52,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 				server.shutdown();
 				server.awaitTermination();
 				Thread.sleep(1000);
-				if (server.isShutdown()) {
+				if (server.isTerminated()) {
 					logger.info("Server stopped");
 				} else {
 					logger.info("Server NOT stopped");
@@ -49,39 +60,34 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 			} catch (InterruptedException e) {
 				logger.severe("Error waiting for server termination: " + e.getMessage());
 			}
-		} else logger.info("Server is null");
+		} else logger.severe("Server is null");
+
 	}
 
 	@Override
 	protected boolean messageFromPTalkEngine(ChannelMessageRequest message) {
 		String name = message.getChannelUniqueName();
-		logger.info("messageFromPTalkEngine - RECEIVED: " + message.getMessage() + " FROM " + name);
-		
+		String text = message.getMessage().getValue();
+		logger.info("messageFromPTalkEngine - RECEIVED: " + text + " FROM " + name);
+		telegramBot.sendMessageToUser(message);
+
 		return true;
 	}
 
 	@Override
 	public void start() {
-		// TODO avviare il connettore
 		logger.info("Starting...");
 		try {
 			TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
-			myBot = new PTalkBot();
-			BotSession botSession = api.registerBot(myBot);
-			pTalkChannelRuntime.sendMessage(myBot.getBotUsername(), "Successfully Connected");
-			myBot.setPTalkChannelRuntime(pTalkChannelRuntime);
-		} catch (TelegramApiRequestException e) {
-			e.printStackTrace();        
-		} catch (Exception e) {
-			logger.severe("Error starting the server: " + e.getMessage());
+			telegramBot = new TelegramBot();
+			BotSession botSession = api.registerBot(telegramBot);
+			logger.info("Bot Successfully Connected");
+			telegramBot.setPTalkChannelRuntime(pTalkChannelRuntime);
+			telegramBot.setTelegramConnector(this);
+		} catch (TelegramApiRequestException e1) {
+			logger.severe("Error starting the server: " + e1.getMessage());     
+		} catch (Exception e2) {
+			logger.severe("Error starting the server: " + e2.getMessage());
 		}
 	}
-
-	
-
-	// TODO Ricevere messaggi dall'utente telegram
-	// esempio ricezione messaggio da Telegram, per inviarlo all'engine
-	// pTalkChannelRuntime.sendMessage(name1, message1);
-	// pTalkChannelRuntime.sendMessage(...);
-
 }
