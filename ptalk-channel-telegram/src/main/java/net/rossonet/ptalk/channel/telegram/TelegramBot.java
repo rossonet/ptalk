@@ -1,6 +1,7 @@
 package net.rossonet.ptalk.channel.telegram;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
 import java.util.logging.Logger;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -12,7 +13,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
-
 
 @SuppressWarnings("deprecation")
 public class TelegramBot extends TelegramLongPollingBot{
@@ -63,6 +63,14 @@ public class TelegramBot extends TelegramLongPollingBot{
 
 	public void setTelegramConnector(TelegramConnector telegramConnector) {
 		this.telegramConnector = telegramConnector;
+	}
+	@Override
+    public void onClosing() {
+        exe.shutdown();
+    }
+
+	public ExecutorService getExecutor() {
+		return exe;
 	}
 
 }

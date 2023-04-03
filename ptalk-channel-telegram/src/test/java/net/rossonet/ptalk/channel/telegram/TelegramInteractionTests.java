@@ -7,10 +7,6 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import org.junit.jupiter.api.Test;
-
-import io.grpc.BindableService;
-import io.grpc.Server;
-import io.grpc.ServerBuilder;
 import net.rossonet.ptalk.base.grpc.LifecycleStatus;
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
 import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
@@ -49,11 +45,12 @@ public class TelegramInteractionTests {
 			unitConfiguration.setParameter(PTalkChannelRuntime.UNIQUENAME_ENV, uniqueName);
 			unitConfiguration.setParameter(PTalkChannelRuntime.IS_REGISTER_UNIT_ENV, "false");
 			telegramConnector = new TelegramConnector();
-	        pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
-	        telegramConnector.setChannelRuntime(pTalkChannelRuntime);
-	        telegramConnector.start();
-	        Thread.sleep(SLEEP);
-	        telegramConnector.close();
+			pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
+			telegramConnector.setChannelRuntime(pTalkChannelRuntime);
+			telegramConnector.start();
+			Thread.sleep(SLEEP);
+			telegramConnector.close();
+			
 			ptalkEngine.close(); 
 
 		} catch (final Exception a) {
@@ -62,11 +59,37 @@ public class TelegramInteractionTests {
 				try {
 					ptalkEngine.close();
 				} catch (final IOException e) {
-					e.printStackTrace();
+					logger.severe("Error: " + e.getMessage());
 				}
 			}
 		}
 	}
-	
+
+	@Test
+	public void tryClose() {
+		try {
+			ptalkEngine = new FakePTalkEngine(EXECUTOR_SERVICE, ADDRESS, UNIT_PORT, CORE_PORT);
+
+			final UnitChannelConfiguration unitConfiguration = new UnitChannelConfiguration();
+			unitConfiguration.setParameter(PTalkChannelRuntime.LOCAL_GRPC_PORT_ENV, String.valueOf(UNIT_PORT));
+			unitConfiguration.setParameter(PTalkChannelRuntime.ENGINE_GRPC_PORT_ENV, String.valueOf(CORE_PORT));
+			unitConfiguration.setParameter(PTalkChannelRuntime.ENGINE_GRPC_HOST_ENV, ADDRESS);
+			unitConfiguration.setParameter(PTalkChannelRuntime.MY_HOST_ENV, ADDRESS);
+			unitConfiguration.setParameter(PTalkChannelRuntime.UNIQUENAME_ENV, uniqueName);
+			unitConfiguration.setParameter(PTalkChannelRuntime.IS_REGISTER_UNIT_ENV, "false");
+			telegramConnector = new TelegramConnector();
+			telegramConnector.setChannelRuntime(pTalkChannelRuntime);
+			pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
+			telegramConnector.close();
+			ptalkEngine.close(); 
+		}catch (IOException e1) {
+			logger.severe("Error: " + e1.getMessage());
+
+		} catch (Exception e) {
+			logger.severe("Error: " + e.getMessage());
+
+
+		}
+	}
 	
 }

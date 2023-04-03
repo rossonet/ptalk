@@ -33,18 +33,22 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 	private static final int UNIT_PORT = 11254;
 	private Server server = null;
 	private TelegramBot telegramBot;
-
+	private BotSession botSession;
 	@Override
 	public void close() throws IOException {
 		Boolean closed = false;
 		logger.info("Stopping Bot, please wait...");
 		try {
 			closed = telegramBot.execute(new Close());
+			telegramBot.onClosing();
 		} catch (TelegramApiException e1) {
 			logger.severe("Error stopping bot: " + e1.getMessage());
 		}
-		if (closed) logger.info("Bot Stopped");
-		else logger.info("Bot NOT Stopped");
+		if (closed) logger.info("Bot Stopped.");
+		else logger.info("Bot NOT Stopped!");
+		logger.info("Stopping Session, please wait...");
+		botSession.stop();
+		if (!botSession.isRunning()) logger.info("Session Stopped.");
 		server = ServerBuilder.forPort(UNIT_PORT).addService(this).build();
 		if (server != null) {
 			logger.info("Shutting Down Server, please wait...");
@@ -53,24 +57,24 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 				server.awaitTermination();
 				Thread.sleep(1000);
 				if (server.isTerminated()) {
-					logger.info("Server stopped");
+					logger.info("Server stopped.");
 				} else {
-					logger.info("Server NOT stopped");
+					logger.info("Server NOT stopped!");
 				}
 			} catch (InterruptedException e) {
 				logger.severe("Error waiting for server termination: " + e.getMessage());
 			}
-		} else logger.severe("Server is null");
-
+		} else logger.severe("Server is null!");
+		
 	}
 
 	@Override
 	protected boolean messageFromPTalkEngine(ChannelMessageRequest message) {
 		String name = message.getChannelUniqueName();
 		String text = message.getMessage().getValue();
-		logger.info("messageFromPTalkEngine - RECEIVED: " + text + " FROM " + name);
+		logger.info("MessageFromPTalkEngine - RECEIVED: " + text + " FROM " + name);
 		telegramBot.sendMessageToUser(message);
-
+		
 		return true;
 	}
 
@@ -80,7 +84,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		try {
 			TelegramBotsApi api = new TelegramBotsApi(DefaultBotSession.class);
 			telegramBot = new TelegramBot();
-			BotSession botSession = api.registerBot(telegramBot);
+			botSession = api.registerBot(telegramBot);
 			logger.info("Bot Successfully Connected");
 			telegramBot.setPTalkChannelRuntime(pTalkChannelRuntime);
 			telegramBot.setTelegramConnector(this);
