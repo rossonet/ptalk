@@ -3,24 +3,17 @@ package net.rossonet.ptalk.channel.telegram;
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.UUID;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.logging.Logger;
 
-import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.updates.Close;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import org.telegram.telegrambots.meta.generics.BotSession;
-import org.telegram.telegrambots.meta.generics.Webhook;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import net.rossonet.ptalk.base.grpc.LifecycleStatus;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.CommunicationHandler;
 import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
@@ -34,6 +27,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 	private Server server = null;
 	private TelegramBot telegramBot;
 	private BotSession botSession;
+
 	@Override
 	public void close() throws IOException {
 		Boolean closed = false;
@@ -65,7 +59,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 				logger.severe("Error waiting for server termination: " + e.getMessage());
 			}
 		} else logger.severe("Server is null!");
-		
+
 	}
 
 	@Override
@@ -73,8 +67,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		String name = message.getChannelUniqueName();
 		String text = message.getMessage().getValue();
 		logger.info("MessageFromPTalkEngine - RECEIVED: " + text + " FROM " + name);
-		telegramBot.sendMessageToUser(message);
-		
+		telegramBot.sendMessageToUser(message);		
 		return true;
 	}
 

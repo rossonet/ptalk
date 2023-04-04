@@ -47,14 +47,12 @@ public class TelegramInteractionTests {
 			telegramConnector = new TelegramConnector();
 			pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
 			telegramConnector.setChannelRuntime(pTalkChannelRuntime);
-			telegramConnector.start();
+			//telegramConnector.start();
 			Thread.sleep(SLEEP);
-			telegramConnector.close();
-			
+			telegramConnector.close();			
 			ptalkEngine.close(); 
-
 		} catch (final Exception a) {
-			a.printStackTrace();
+			logger.severe("Error: " + a.getMessage());
 			if (ptalkEngine != null) {
 				try {
 					ptalkEngine.close();
