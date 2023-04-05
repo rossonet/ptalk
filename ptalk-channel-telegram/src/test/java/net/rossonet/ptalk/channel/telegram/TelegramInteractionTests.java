@@ -22,7 +22,7 @@ public class TelegramInteractionTests {
 
 	private static final int CORE_PORT = 11256;
 
-	private static final long SLEEP = 2 * 60000; // 2 min.
+	private static final long SLEEP = 3 * 60000; // 2 min.
 
 	private FakePTalkEngine ptalkEngine = null;
 
@@ -47,7 +47,6 @@ public class TelegramInteractionTests {
 			telegramConnector = new TelegramConnector();
 			pTalkChannelRuntime = new PTalkChannelRuntime(unitConfiguration, telegramConnector);
 			telegramConnector.setChannelRuntime(pTalkChannelRuntime);
-			//telegramConnector.start();
 			Thread.sleep(SLEEP);
 			telegramConnector.close();			
 			ptalkEngine.close(); 

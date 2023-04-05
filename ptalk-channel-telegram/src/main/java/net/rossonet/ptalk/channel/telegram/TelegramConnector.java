@@ -70,7 +70,7 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		telegramBot.sendMessageToUser(message);		
 		return true;
 	}
-
+	
 	@Override
 	public void start() {
 		logger.info("Starting...");
