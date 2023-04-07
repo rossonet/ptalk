@@ -22,7 +22,7 @@ public class TelegramInteractionTests {
 
 	private static final int CORE_PORT = 11256;
 
-	private static final long SLEEP = 3 * 60000; // 2 min.
+	private static final long SLEEP = 4 * 60000; // n minuti
 
 	private FakePTalkEngine ptalkEngine = null;
 
@@ -31,7 +31,6 @@ public class TelegramInteractionTests {
 	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
 	private TelegramConnector telegramConnector;
 	private PTalkChannelRuntime pTalkChannelRuntime;
-
 
 	@Test
 	public void tryDialog() {
@@ -66,7 +65,6 @@ public class TelegramInteractionTests {
 	public void tryClose() {
 		try {
 			ptalkEngine = new FakePTalkEngine(EXECUTOR_SERVICE, ADDRESS, UNIT_PORT, CORE_PORT);
-
 			final UnitChannelConfiguration unitConfiguration = new UnitChannelConfiguration();
 			unitConfiguration.setParameter(PTalkChannelRuntime.LOCAL_GRPC_PORT_ENV, String.valueOf(UNIT_PORT));
 			unitConfiguration.setParameter(PTalkChannelRuntime.ENGINE_GRPC_PORT_ENV, String.valueOf(CORE_PORT));
@@ -81,12 +79,8 @@ public class TelegramInteractionTests {
 			ptalkEngine.close(); 
 		}catch (IOException e1) {
 			logger.severe("Error: " + e1.getMessage());
-
 		} catch (Exception e) {
 			logger.severe("Error: " + e.getMessage());
-
-
 		}
-	}
-	
+	}	
 }

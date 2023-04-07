@@ -59,18 +59,19 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 				logger.severe("Error waiting for server termination: " + e.getMessage());
 			}
 		} else logger.severe("Server is null!");
-
 	}
 
 	@Override
 	protected boolean messageFromPTalkEngine(ChannelMessageRequest message) {
+		///message.getAdditionalDatasList();
+		//TODO mandare indietro al mittente lo stesso messaggio che ha inviato (inclusa foto o documento)
 		String name = message.getChannelUniqueName();
 		String text = message.getMessage().getValue();
 		logger.info("MessageFromPTalkEngine - RECEIVED: " + text + " FROM " + name);
 		telegramBot.sendMessageToUser(message);		
 		return true;
 	}
-	
+
 	@Override
 	public void start() {
 		logger.info("Starting...");
