@@ -43,7 +43,7 @@ dependencies {
   api project(':ptalk-ability-api')
   api project(':ptalk-nlu-api')
   api group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
-  api group: 'org.json', name: 'json', version: '20220924'
+  api group: 'org.json', name: 'json', version: '20230227'
   api group: 'org.yaml', name: 'snakeyaml', version: '1.30'
   api group: 'com.hazelcast', name: 'hazelcast', version: '5.2.2'
   api 'org.jeasy:easy-rules-core:4.1.0'
