@@ -2,10 +2,14 @@ package net.rossonet.ptalk.channel.telegram;
 
 import java.util.List;
 import java.util.Map;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.concurrent.ExecutorService;
@@ -38,6 +42,12 @@ import net.rossonet.ptalk.base.grpc.Quality;
 import net.rossonet.ptalk.base.grpc.DataType;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
+import java.io.ByteArrayInputStream;
+import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
+
+
+
 
 @SuppressWarnings("deprecation")
 public class TelegramBot extends TelegramLongPollingBot{
@@ -124,15 +134,15 @@ public class TelegramBot extends TelegramLongPollingBot{
 				fileId = video.getFileId();
 				filename = video.getFileName();
 				reply = "Video: " + filename;
-			} else
+			} 
 
-				if (currentMessage.hasText()){
-					String txt = currentMessage.getText();
-					if(reply.equals("")) 
-						reply = "Message " + txt;
-					else 
-						reply += "; Message " + txt;
-				}
+			if (currentMessage.hasText()){
+				String txt = currentMessage.getText();
+				if(reply.equals("")) 
+					reply = "Message " + txt;
+				else 
+					reply += "; Message " + txt;
+			}
 			if(reply.equals("")) reply = "Invalid Message";
 			if (fileId.equals("")) 
 				sendMessageToPTalk(chatId, reply);
@@ -141,11 +151,11 @@ public class TelegramBot extends TelegramLongPollingBot{
 				requestFile.setFileId(fileId);
 				File file = execute(requestFile);
 				byte[] fileBytes = new URL(file.getFileUrl(getBotToken())).getFile().getBytes();
-				payload = Base64.getMimeEncoder().encodeToString(fileBytes);
+				logger.info("\nfileBytes: " + fileBytes);
+				payload = Base64.getMimeEncoder().encodeToString(fileBytes).replace("\n", "").replace("\r", "");
+				logger.info("\npayload: " + payload);
 				sendMessageToPTalk(chatId, reply, dataType, payload, filename, fileId);
 			}  
-
-
 		} catch (TelegramApiException e) {
 			logger.severe(e.getMessage());
 		} catch (MalformedURLException e1) {
@@ -174,48 +184,72 @@ public class TelegramBot extends TelegramLongPollingBot{
 			datas.add(metadata);
 		}
 		if (fileId != "" && fileId != null) {
-			Data metadata= Data.newBuilder()
+			Data fileData= Data.newBuilder()
 					.setKey("fileId")
 					.setQuality(Quality.GOOD)
 					.setTypeData(DataType.STRING)
 					.setValue(fileId).build();
-			datas.add(metadata);
+			datas.add(fileData);
 		}
 		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), message, new JSONObject(), datas);	
 	}
-
-	@SuppressWarnings("unlikely-arg-type")
+	//https://core.telegram.org/bots/api#sending-files
+	//fare untest che manda i documenti al bot oppure due bot che si mandano i mess a vicenda
 	public void sendMessageToUser(ChannelMessageRequest messageRequest) {
 		String chatId = messageRequest.getChannelUniqueName(); 
-		//String reply = messageRequest.getMessage().getValue().replace("ECHO MESSAGE OF:", "You sent ");
 		List<Data> dataList = messageRequest.getAdditionalDatasList();
-		String reply = "\nYou sent:\n{";
+		String reply = "";
 		String dataType = "";
-		String nomefile = null;
-		int i = 0;
-		for (Data elem : dataList) {//per i messaggi di testo non ci sono datas quindi non entra
-			logger.info("\ni:" + i++);
-			
+		String nomefile = "";
+		String fileId = "";
+		for (Data elem : dataList) {// nei messaggi di testo non ci sono datas, quindi non entra
 			if (elem.getTypeData().equals(DataType.BASE64DATA)) {
 				dataType = "BASE64DATA";
-				Map<FieldDescriptor, Object> allFields = elem.getAllFields();
-				nomefile = (String)allFields.get("filename");
 			}
-			reply += elem.getKey() + ": " + elem.getValue() + ";\n";
-			logger.info(reply);
+			if (elem.getKey().equals("filename")) nomefile = elem.getValue();
+			if (elem.getKey().equals("fileId")) fileId = elem.getValue();
 		}
-		reply += "}";
-		if (dataType.equals("BASE64DATA")) {
-			SendDocument responseDocument = new SendDocument();
-			responseDocument.setChatId(chatId);
-			responseDocument.setDocument(new InputFile(nomefile));
-			try {
-				execute(responseDocument);
-			}catch (TelegramApiException e) {		
-				logger.severe("ERROR WHILE SENDING MESSAGE: " + e.getMessage());
-			}	
 
+		if (dataType.equals("BASE64DATA")) {
+			try {
+
+
+				// Ottieni l'URL del file dal server di Telegram
+				/*GetFile requestFile = new GetFile();
+				requestFile.setFileId(fileId);
+				File file = execute(requestFile);
+				String fileUrl = file.getFileUrl(getBotToken());
+				logger.info("URL = " + fileUrl);	*/	
+
+				String payload = dataList.get(0).getValue();  
+				logger.info("\npayload: " + payload);
+
+				byte[] decodedFileBytes = Base64.getMimeDecoder().decode(payload);
+				logger.info("\ndata: " + decodedFileBytes);
+
+				InputFile inputFile = new InputFile(new ByteArrayInputStream(decodedFileBytes), nomefile);
+
+				SendDocument responseDocument = new SendDocument();
+				responseDocument.setChatId(chatId);
+				responseDocument.setDocument(inputFile);
+				execute(responseDocument);
+
+				/*GetFile requestFile = new GetFile();
+				requestFile.setFileId(fileId);
+				File file = execute(requestFile);
+				//java.io.File file = downloadFile(fileId);
+				String fileUrl = file.getFileUrl(getBotToken());
+				logger.info("URL = " + fileUrl);
+				SendDocument responseDocument = new SendDocument();
+				responseDocument.setChatId(chatId);
+				responseDocument.setDocument(new InputFile(fileUrl));
+				execute(responseDocument);//+++++++++++Bad Request: failed to get HTTP URL content*/
+			} catch (TelegramApiException e) {		
+				logger.severe("ERROR WHILE SENDING DOCUMENT: ");
+				e.printStackTrace();
+			}	
 		} else {
+			reply = messageRequest.getMessage().getValue().replace("ECHO MESSAGE OF:", "You sent: ");
 			SendMessage sendMessage = new SendMessage();
 			sendMessage.setChatId(chatId);
 			sendMessage.setText(reply);		
@@ -226,6 +260,14 @@ public class TelegramBot extends TelegramLongPollingBot{
 			}	
 		}
 	}
+
+
+
+
+
+
+
+
 
 	public void setPTalkChannelRuntime(PTalkChannelRuntime pTalkChannelRuntime) {
 		this.pTalkChannelRuntime = pTalkChannelRuntime;
