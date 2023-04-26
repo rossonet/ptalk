@@ -61,7 +61,6 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 
 	@Override
 	protected boolean messageFromPTalkEngine(ChannelMessageRequest message) {
-		
 		String name = message.getChannelUniqueName();
 		String text = message.getMessage().getValue();
 		logger.info("MessageFromPTalkEngine - RECEIVED: " + text + " FROM " + name);
