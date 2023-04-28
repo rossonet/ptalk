@@ -53,7 +53,7 @@ dependencies {
   api 'org.jeasy:easy-rules-core:4.1.0'
   api 'org.jeasy:easy-rules-jexl:4.1.0'
   api 'ai.djl:api:0.21.0'
-  api 'ai.djl.pytorch:pytorch-engine:0.21.0'
+  api 'ai.djl.pytorch:pytorch-engine:0.22.1'
   api 'ai.djl.tensorflow:tensorflow-engine:0.21.0'
   api 'ai.djl.mxnet:mxnet-engine:0.21.0'
   api 'ai.djl:model-zoo:0.21.0'
