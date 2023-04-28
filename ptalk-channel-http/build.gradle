@@ -7,7 +7,7 @@ buildscript {
   }
   dependencies {
     classpath "com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.0"
-    classpath 'de.undercouch:gradle-download-task:5.3.0'
+    classpath 'de.undercouch:gradle-download-task:5.4.0'
     classpath "com.palantir.gradle.docker:gradle-docker:0.34.0"
   }
 }
@@ -41,15 +41,15 @@ repositories {
 dependencies {
   implementation project(':ptalk-channel-api')
   implementation group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
-  implementation group: 'org.json', name: 'json', version: '20220924'
+  implementation group: 'org.json', name: 'json', version: '20230227'
   implementation group: 'org.yaml', name: 'snakeyaml', version: '1.30'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
+  implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
   testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
-  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }
 
 test {
