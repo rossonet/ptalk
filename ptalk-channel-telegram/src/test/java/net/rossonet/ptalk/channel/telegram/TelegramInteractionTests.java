@@ -22,7 +22,7 @@ public class TelegramInteractionTests {
 
 	private static final int CORE_PORT = 11256;
 
-	private static final long SLEEP = 2 * 60000; // n minuti
+	private static final long SLEEP = 20 * 60000; // n minuti
 
 	private FakePTalkEngine ptalkEngine = null;
 

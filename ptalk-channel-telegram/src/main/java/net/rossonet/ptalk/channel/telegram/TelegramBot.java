@@ -1,14 +1,17 @@
 package net.rossonet.ptalk.channel.telegram;
 
 import java.util.List;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 import java.util.concurrent.ExecutorService;
 import java.util.logging.Logger;
 
@@ -17,20 +20,16 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
 import org.telegram.telegrambots.meta.api.methods.send.SendAudio;
-import org.telegram.telegrambots.meta.api.methods.send.SendContact;
 import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.send.SendSticker;
-import org.telegram.telegrambots.meta.api.methods.send.SendVenue;
 import org.telegram.telegrambots.meta.api.methods.send.SendVideo;
 import org.telegram.telegrambots.meta.api.methods.send.SendVoice;
-import org.telegram.telegrambots.meta.api.objects.Contact;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.Venue;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import org.telegram.telegrambots.meta.api.objects.File;
@@ -41,9 +40,14 @@ import net.rossonet.ptalk.base.grpc.Quality;
 import net.rossonet.ptalk.base.grpc.DataType;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
+
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 
-
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 @SuppressWarnings("deprecation")
@@ -54,7 +58,8 @@ public class TelegramBot extends TelegramLongPollingBot{
 	private PTalkChannelRuntime pTalkChannelRuntime;
 	@SuppressWarnings("unused")
 	private TelegramConnector telegramConnector; 
-
+	byte[] fileBytes;
+	byte[] decodedFileBytes;
 	@Override
 	public String getBotUsername() {
 		return System.getenv(BOT_USR_ENV);
@@ -163,54 +168,26 @@ public class TelegramBot extends TelegramLongPollingBot{
 		}
 	}*/
 
+
+	// onUpdateReceived deve ricevere il file, scaricarlo, codificarlo ed inviarlo a ptalk (sendMessageToPTalk)
+
+	// sendMessageToUser deve ricevere il messaggio con il file codificato, decodificarlo ed inviarlo all'utente
+
+
 	@Override
 	public void onUpdateReceived(Update update) {
-		String currentId = "";
-		String caption = "";
 		Message message = update.getMessage();
+		String caption = (message.getCaption() != null ? message.getCaption() : "");
 		Long chatId = message.getChatId();
+		String dataType = "Text";
+		String currentId = "";
+		String fileName =  "";
+		//Importa file
 
-		if (message.hasAnimation()){
-			caption = (message.getCaption() != null ? message.getCaption() : "");
-			currentId = message.getAnimation().getFileId();
-
-			getFile(currentId, caption, chatId);
-
-		} else if (message.hasAudio()){
-			caption = (message.getCaption() != null ? message.getCaption() : "");
-			currentId = message.getAudio().getFileId();
-
-			getFile(currentId, caption, chatId);
-
-		}  else if (message.hasPhoto()){
-			List<PhotoSize> photoSizes = message.getPhoto();
-			PhotoSize photoSize = photoSizes.get(photoSizes.size() - 1); 
-			currentId = photoSize.getFileId();
-			caption = (message.getCaption() != null ? message.getCaption() : "");
-
-			getFile(currentId, caption, chatId);
-
-		} else if (message.hasSticker()){
-			currentId = message.getSticker().getFileId();
-			caption = (message.getCaption() != null ? message.getCaption() : "");
-
-			getFile(currentId, caption, chatId);
-
-		} else if (message.hasVideo()){
-			currentId = message.getVideo().getFileId();
-			caption = (message.getCaption() != null ? message.getCaption() : "");
-
-			getFile(currentId, caption, chatId);
-
-		} else if (message.hasVoice()){
-			currentId = message.getVoice().getFileId();
-			caption = (message.getCaption() != null ? message.getCaption() : "");
-
-			getFile(currentId, caption, chatId);
-
-		} else if (message.hasContact()){
-			caption = (message.getCaption() != null ? message.getCaption() : "");
+		//contact e location sono casi particolari; non esiste file o documento TODO implementarli
+		/*	if (message.hasContact()){
 			Contact contact = message.getContact();
+			dataType = "Contact";
 			try {					
 				SendContact sendContact = new SendContact();
 				sendContact.setChatId(chatId);
@@ -225,8 +202,8 @@ public class TelegramBot extends TelegramLongPollingBot{
 				e.printStackTrace();
 			} 
 		} else if (message.hasLocation()){
+			dataType = "Location";
 			Venue location = message.getVenue();
-			caption = (message.getCaption() != null ? message.getCaption() : "");
 			try {					
 				SendVenue sendLocation = new SendVenue();
 				sendLocation.setChatId(chatId);
@@ -240,33 +217,75 @@ public class TelegramBot extends TelegramLongPollingBot{
 			} catch (TelegramApiException e) {
 				logger.severe(e.getMessage());
 			} 
-		} else if (message.hasDocument()){
+		} else*/ 
+		if (message.hasDocument()){
+			dataType = "Document";
 			Document document = message.getDocument();
 			currentId = document.getFileId();
-			String fileName = document.getFileName();
+			fileName = document.getFileName();
 
-			caption = (message.getCaption() != null ? message.getCaption() : "");
+		}  else	if (message.hasAnimation()){
+			dataType = "Animation";
+			currentId = message.getAnimation().getFileId();
+			
+		} else if (message.hasAudio()){
+			dataType = "Audio";
+			currentId = message.getAudio().getFileId();
 
+		}  else if (message.hasPhoto()){
+			List<PhotoSize> photoSizes = message.getPhoto();
+			dataType = "Photo";
+			PhotoSize photoSize = photoSizes.get(photoSizes.size() - 1); 
+			currentId = photoSize.getFileId();
+
+		} else if (message.hasSticker()){
+			dataType = "Sticker";
+			currentId = message.getSticker().getFileId();
+
+		} else if (message.hasVideo()){
+			dataType = "Video";
+			currentId = message.getVideo().getFileId();
+
+		} else if (message.hasVoice()){
+			dataType = "Voice";
+			currentId = message.getVoice().getFileId();
+		} 
+
+		if (!dataType.equals("Text")) {
 			try {
-				URL url = new URL("https://api.telegram.org/file/bot" + getBotToken() + "/" + fileName);
+				//scarica file
+				File  file = execute(new GetFile(currentId));
 
+				if (fileName.equals("")) fileName =  file.getFilePath();
+				URL url = new URL("https://api.telegram.org/file/bot" + getBotToken() + "/" + fileName);
 				URLConnection connection = url.openConnection();
 				InputStream inputStream = connection.getInputStream();
+				StringBuilder resultStringBuilder = new StringBuilder();
+				BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+				String line;
+				while ((line = br.readLine()) != null) {
+					resultStringBuilder.append(line).append("\n");
+				}
+				br.close();
+				fileBytes  = resultStringBuilder.toString().getBytes();
 
-				InputFile importedFile = new InputFile(inputStream, fileName);	
+				//codifica file
+				Encoder encoder = Base64.getMimeEncoder();
+				String payload = encoder.encodeToString(fileBytes);
 
-				SendDocument sendDocument = new SendDocument();
-				sendDocument.setChatId(chatId);
-				sendDocument.setDocument(importedFile);
-				execute(sendDocument);
-			} catch (MalformedURLException e) {
-				logger.severe(e.getMessage());
-			} catch (TelegramApiException e) {
-				logger.severe(e.getMessage());
+				//invia a PTalk
+				String reply = dataType + ": " + fileName;
+				
+				sendMessageToPTalk(chatId, reply, dataType, payload, fileName, currentId, caption);
+
 			} catch (IOException e) {
-				logger.severe(e.getMessage());
+				logger.severe("IOException Importing File: " + fileName);
+				e.printStackTrace();
+			} catch (TelegramApiException e) {
+				logger.severe("TelegramApiException Importing File: " + fileName);
+				e.printStackTrace();
 			}
-		}  
+		}
 
 		if (message.hasText()){
 			sendMessageToPTalk(chatId, message.getText());
@@ -274,93 +293,83 @@ public class TelegramBot extends TelegramLongPollingBot{
 
 	}
 
-	private void getFile(String currentId, String caption, Long chatId)
-	{
-		try {
-			File file = execute(new GetFile(currentId));
+	private void sendFile(Long chatId, InputFile fileToSend, String caption, String mediaType) 
+			throws TelegramApiException {
+		logger.info("Sending " + mediaType + ": "+ fileToSend.getMediaName() + "..."); 
+		logger.info("fileToSend " + fileToSend.toString());
+		switch (mediaType){
+		case "Audio": 
+			SendAudio sendAudio = new SendAudio();
+			sendAudio.setChatId(chatId);
+			sendAudio.setAudio(fileToSend);
+			sendAudio.setCaption(caption);
 
-			String fileName =  file.getFilePath();
+			execute(sendAudio);
+			break;
+		case "Animation":
+			SendAnimation sendAnimation = new SendAnimation();
+			sendAnimation.setChatId(chatId);
+			sendAnimation.setAnimation(fileToSend);
+			sendAnimation.setCaption(caption);
 
-			URL url = new URL("https://api.telegram.org/file/bot" + getBotToken() + "/" + fileName);
-			URLConnection connection = url.openConnection();
-			InputStream inputStream = connection.getInputStream();
+			execute(sendAnimation);
+			break;
+		case "Document":
+			SendDocument sendDocument = new SendDocument();
+			sendDocument.setChatId(chatId);
+			sendDocument.setDocument(fileToSend);
+			sendDocument.setCaption(caption);
 
-			InputFile importedFile = new InputFile(inputStream, fileName);	
+			execute(sendDocument);
+			break;
+		case "Photo":
+			SendPhoto sendPhoto = new SendPhoto();
+			sendPhoto.setChatId(chatId);
+			sendPhoto.setPhoto(fileToSend);
+			sendPhoto.setCaption(caption);
 
-			sendFile(chatId, importedFile, caption);
+			execute(sendPhoto);
+			break;
+		case "Sticker":
+			SendSticker sendSticker = new SendSticker();
+			sendSticker.setChatId(chatId);
+			sendSticker.setSticker(fileToSend);
 
-		}  catch (MalformedURLException e) {
-			logger.severe(e.getMessage());
-		} catch (IOException e) {
-			logger.severe(e.getMessage());
-		} catch (TelegramApiException e) {
-			logger.severe(e.getMessage());
-		} 
+			execute(sendSticker);
+			break;
+		case "Video":
+			SendVideo sendVideo = new SendVideo();
+			sendVideo.setChatId(chatId);
+			sendVideo.setVideo(fileToSend);
+			sendVideo.setCaption(caption);
 
-	}
+			execute(sendVideo);
+			break;
+		case "Voice":
+			SendVoice sendVoice = new SendVoice();
+			sendVoice.setChatId(chatId);
+			sendVoice.setVoice(fileToSend);
+			sendVoice.setCaption(caption);
 
-	private void sendFile(Long chatId, InputFile fileToSend, String caption) throws TelegramApiException {
-
-		/////////////////////
-		SendAudio sendAudio = new SendAudio();
-		sendAudio.setChatId(chatId);
-		sendAudio.setAudio(fileToSend);
-		sendAudio.setCaption(caption);
-
-		execute(sendAudio);
-		/////////////////////
-		SendAnimation sendAnimation = new SendAnimation();
-		sendAnimation.setChatId(chatId);
-		sendAnimation.setAnimation(fileToSend);
-		sendAnimation.setCaption(caption);
-
-		execute(sendAnimation);
-		/////////////////////
-		SendDocument sendDocument = new SendDocument();
-		sendDocument.setChatId(chatId);
-		sendDocument.setDocument(fileToSend);
-		sendDocument.setCaption(caption);
-
-		execute(sendDocument);
-		/////////////////////
-		SendPhoto sendPhoto = new SendPhoto();
-		sendPhoto.setChatId(chatId);
-		sendPhoto.setPhoto(fileToSend);
-		sendPhoto.setCaption(caption);
-
-		execute(sendPhoto);
-		/////////////////////
-		SendSticker sendSticker = new SendSticker();
-		sendSticker.setChatId(chatId);
-		sendSticker.setSticker(fileToSend);
-
-		execute(sendSticker);
-		/////////////////////
-		SendVideo sendVideo = new SendVideo();
-		sendVideo.setChatId(chatId);
-		sendVideo.setVideo(fileToSend);
-		sendVideo.setCaption(caption);
-
-		execute(sendVideo);
-		/////////////////////
-		SendVoice sendVoice = new SendVoice();
-		sendVoice.setChatId(chatId);
-		sendVoice.setVoice(fileToSend);
-		sendVoice.setCaption(caption);
-
-		execute(sendVoice);
-		/////////////////////
-
-//questa roba va in sendMessageToUser
-
+			execute(sendVoice);
+			break;
+		default:
+			SendMessage sendMessage = new SendMessage();
+			sendMessage.setChatId(chatId);
+			sendMessage.setText("MEDIATYPE ERROR");
+			execute(sendMessage);
+		}
 
 	}
 
 	private void sendMessageToPTalk(Long chatId, String message) {
+		logger.info("Sending text to PTalk");
 		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), message);		
 	}
 
-	private void sendMessageToPTalk(Long chatId, String message, String dataType, String payload, String filename, String fileId) {
+	private void sendMessageToPTalk(Long chatId, String message, String dataType, String payload, 
+			String filename, String fileId, String caption) {
+		logger.info("Sending document to PTalk");
 		List<Data> datas = new ArrayList<>();
 		Data binaryData = Data.newBuilder()
 				.setKey(dataType)
@@ -384,43 +393,86 @@ public class TelegramBot extends TelegramLongPollingBot{
 					.setValue(fileId).build();
 			datas.add(fileData);
 		}
+		if (caption != "" && caption != null) {
+			Data text= Data.newBuilder()
+					.setKey("caption")
+					.setQuality(Quality.GOOD)
+					.setTypeData(DataType.STRING)
+					.setValue(caption).build();
+			datas.add(text);
+		}
 		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), message, new JSONObject(), datas);	
 	}
-	
+
 	public void sendMessageToUser(ChannelMessageRequest messageRequest) {
 		String chatId = messageRequest.getChannelUniqueName(); 
 		List<Data> dataList = messageRequest.getAdditionalDatasList();
-		String reply = "";
-		String dataType = dataList.stream().filter(e -> e.getKey().equals("typeData")).findFirst().get().getValue();
-		String nomefile = dataList.stream().filter(e -> e.getKey().equals("filename")).findFirst().get().getValue();
-		String fileId = dataList.stream().filter(e -> e.getKey().equals("fileId")).findFirst().get().getValue();
-
-		if (dataType.equals("BASE64DATA")) {
+		if (!dataList.isEmpty()){
+			logger.info("dataList: " + dataList.toString());
+			DataType dataType = dataList.get(0).getTypeData();
+			logger.info("dataType: " + dataType.toString());
+			String mediaType = dataList.get(0).getKey();
+			logger.info("mediaType: " + mediaType);
+			String payload = dataList.get(0).getValue(); 
+			String filePath = dataList.stream().filter(e -> e.getKey().equals("filename")).findFirst().get().getValue();
+			logger.info("filePath: " + filePath);
+			String fileId = dataList.stream().filter(e -> e.getKey().equals("fileId")).findFirst().get().getValue();
+			logger.info("fileId: " + fileId);
+			String caption = "";
+			if (dataList.stream().filter(e -> e.getKey().equals("caption")).findFirst().isPresent())
+				caption = dataList.stream().filter(e -> e.getKey().equals("caption")).findFirst().get().getValue();
+			logger.info("caption: " + caption);
+			Decoder decoder = Base64.getMimeDecoder();
+			decodedFileBytes = decoder.decode(payload);		
+			logger.info("IS decodedFileBytes EQUAL TO fileBytes? " + new String(decodedFileBytes).equals(new String(fileBytes)));
+			
 			try {
-				String payload = dataList.get(0).getValue();  
+				int barPosition = 0;
+				for(int i = filePath.length() - 1; i >=0; i--) {
+					if (filePath.charAt(i) == '/') {
+						barPosition = i;
+						i = -1;
+					}
+				}
+				String filename = filePath.substring(barPosition + 1, filePath.length());
+				 java.io.File file = new java.io.File(filename);
+				 file.setWritable(true);
+				 file.setReadable(true);
+				 file.setExecutable(true);
+					logger.info("filename: " + filename + ", " + file.getName());
+					InputFile inputFile;
+			        try (FileOutputStream outputStream = new FileOutputStream(file)) {
+			            outputStream.write(decodedFileBytes);
+			        } catch (IOException e) {
+			        	logger.severe("ERROR creating outputStream:");
+			            e.printStackTrace();
+			        }
+			        inputFile = new InputFile(file, file.getName());
 
-				Decoder decoder = Base64.getMimeDecoder();
-				byte[] decodedFileBytes = decoder.decode(payload);				
-				InputFile inputFile = new InputFile(new ByteArrayInputStream(decodedFileBytes), nomefile);
 
-				SendDocument responseDocument = new SendDocument();
-				responseDocument.setChatId(chatId);
-				responseDocument.setDocument(inputFile);
-				execute(responseDocument);
+			         
+			        
+		        
+			//InputFile inputFile = new InputFile(new ByteArrayInputStream(decodedFileBytes), filename);
+			logger.info("Sending document to User");
 
-			} catch (TelegramApiException e) {		
-				logger.severe("ERROR WHILE SENDING DOCUMENT: ");
-				e.printStackTrace();
-			}	
+				sendFile(Long.valueOf(chatId), inputFile, caption, mediaType);
+				
+			} catch (NumberFormatException | TelegramApiException e1) {
+				logger.severe("ERROR WHILE SENDING MESSAGE: ");
+				e1.printStackTrace();
+			}
 		} else {
-			reply = messageRequest.getMessage().getValue().replace("ECHO MESSAGE OF:", "You sent: ");
+			logger.info("Sending text to User");
+			String reply = messageRequest.getMessage().getValue().replace("ECHO MESSAGE OF:", "You sent: ");
 			SendMessage sendMessage = new SendMessage();
 			sendMessage.setChatId(chatId);
 			sendMessage.setText(reply);		
 			try {
 				execute(sendMessage);
 			} catch (TelegramApiException e) {		
-				logger.severe("ERROR WHILE SENDING MESSAGE: " + e.getMessage());
+				logger.severe("ERROR WHILE SENDING TEXT MESSAGE: ");
+				e.printStackTrace();
 			}	
 		}
 	}
