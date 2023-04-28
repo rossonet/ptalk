@@ -58,8 +58,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 	private PTalkChannelRuntime pTalkChannelRuntime;
 	@SuppressWarnings("unused")
 	private TelegramConnector telegramConnector; 
-	byte[] fileBytes;
-	byte[] decodedFileBytes;
+	
 	@Override
 	public String getBotUsername() {
 		return System.getenv(BOT_USR_ENV);
@@ -260,18 +259,13 @@ public class TelegramBot extends TelegramLongPollingBot{
 				URL url = new URL("https://api.telegram.org/file/bot" + getBotToken() + "/" + fileName);
 				URLConnection connection = url.openConnection();
 				InputStream inputStream = connection.getInputStream();
-				StringBuilder resultStringBuilder = new StringBuilder();
-				BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-				String line;
-				while ((line = br.readLine()) != null) {
-					resultStringBuilder.append(line).append("\n");
-				}
-				br.close();
-				fileBytes  = resultStringBuilder.toString().getBytes();
+				byte[] targetArray = new byte[inputStream.available()];
 
+				inputStream.read(targetArray);
+				
 				//codifica file
 				Encoder encoder = Base64.getMimeEncoder();
-				String payload = encoder.encodeToString(fileBytes);
+				String payload = encoder.encodeToString(targetArray);
 
 				//invia a PTalk
 				String reply = dataType + ": " + fileName;
@@ -423,8 +417,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 				caption = dataList.stream().filter(e -> e.getKey().equals("caption")).findFirst().get().getValue();
 			logger.info("caption: " + caption);
 			Decoder decoder = Base64.getMimeDecoder();
-			decodedFileBytes = decoder.decode(payload);		
-			logger.info("IS decodedFileBytes EQUAL TO fileBytes? " + new String(decodedFileBytes).equals(new String(fileBytes)));
+			byte[] decodedFileBytes = decoder.decode(payload);		
 			
 			try {
 				int barPosition = 0;
