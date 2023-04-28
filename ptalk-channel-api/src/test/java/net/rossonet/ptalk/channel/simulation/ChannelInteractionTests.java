@@ -22,6 +22,31 @@ public class ChannelInteractionTests {
 
 	private static final int CORE_PORT = 11216;
 
+	private static void closeEngine(FakePTalkEngine engine) {
+		try {
+			engine.close();
+		} catch (final IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	public static void main(final String[] args) {
+		FakePTalkEngine engine = null;
+		try {
+			engine = new FakePTalkEngine(EXECUTOR_SERVICE, ADDRESS, UNIT_PORT, CORE_PORT);
+			System.out.println("Fake engine started, press CTRL + C to exit");
+			while (true) {
+				Thread.sleep(Long.MAX_VALUE);
+			}
+		} catch (final Exception e) {
+			e.printStackTrace();
+		}
+		if (engine != null) {
+			closeEngine(engine);
+		}
+		System.out.println("Fake engine closed");
+	}
+
 	private FakePTalkEngine ptalkEngine = null;
 
 	private final String uniqueName = UUID.randomUUID().toString();

@@ -1,6 +1,6 @@
 package net.rossonet.ptalk.engine.grpc;
 
-import org.joda.time.Instant;
+import java.time.Instant;
 
 import io.grpc.stub.StreamObserver;
 import net.rossonet.ptalk.base.grpc.GenericMessageReply;
@@ -55,7 +55,7 @@ public class GrpcEngineCoreServiceImpl extends RpcCoreV1ImplBase {
 	private RegisterReply prepareReplyWithCertificateSign(RegisterRequest request) {
 		// TODO firmare il csr e completare i dati per la risposta alla registrazione
 		return RegisterReply.newBuilder().setStatusRegistration(StatusValue.STATUS_GOOD)
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setUnitUniqueName(request.getUnitUniqueName()).build();
 	}
 

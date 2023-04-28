@@ -24,6 +24,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'java-library'
 apply plugin: 'distribution'
 apply plugin: 'jacoco'
+apply plugin:'application'
 
 description = "Ptalk Channel API"
 group = rootProject.group
@@ -188,3 +189,7 @@ clean {
   delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/*/grpc/*.java' }
 }   
 
+task execute(type:JavaExec) {
+   main = project.hasProperty("mainClass") ? getProperty("mainClass") : "net.rossonet.ptalk.channel.simulation.ChannelInteractionTests"
+   classpath = sourceSets.test.runtimeClasspath
+}

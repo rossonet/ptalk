@@ -1,12 +1,12 @@
 package net.rossonet.ptalk.engine.grpc;
 
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import org.jeasy.rules.api.Rule;
 import org.jeasy.rules.api.Rules;
-import org.joda.time.Instant;
 import org.json.JSONObject;
 
 import io.grpc.stub.StreamObserver;
@@ -42,7 +42,7 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 		pTalkEngineRuntime.getConfigurationTasksManager().removeRule(request.getRule().getTask(),
 				request.getRule().getRuleUniqueName());
 		final CancelRuleReply reply = CancelRuleReply.newBuilder().setFlowReference(request.getFlowReference())
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setStatus(StatusValue.STATUS_GOOD).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -54,7 +54,7 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 		final net.rossonet.ptalk.base.grpc.Data replyData = pTalkEngineRuntime.getGlobalConfiguration().query(request);
 		final GeneralConfigurationQueryReply reply = GeneralConfigurationQueryReply.newBuilder()
 				.setFlowReference(request.getFlowReference())
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setValue(replyData).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -79,7 +79,7 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 		}
 		final GetRuleReply reply = GetRuleReply.newBuilder().setFlowReference(request.getFlowReference())
 				.setJsonRule(ruleAsJson.toString(0))
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setStatus(StatusValue.STATUS_GOOD).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -102,7 +102,7 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 			}
 			final ListRulesReply reply = ListRulesReply.newBuilder().setFlowReference(request.getFlowReference())
 					.addAllRule(rulesList)
-					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.setStatus(StatusValue.STATUS_GOOD).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();
@@ -117,7 +117,7 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 		final ReplyMemoryQuery replyData = pTalkEngineRuntime.getMemoryManager().query(request);
 		final MemoryContextQueryReply reply = MemoryContextQueryReply.newBuilder()
 				.setFlowReference(request.getFlowReference())
-				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+				.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 				.setContext(replyData.getContext()).addAllDatas(replyData.getDatas()).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
@@ -132,7 +132,7 @@ public class GrpcAbilityServiceImpl extends RpcAbilityCoreV1ImplBase {
 			final RegisterRuleReply reply = RegisterRuleReply.newBuilder().setFlowReference(request.getFlowReference())
 					.setRule(net.rossonet.ptalk.ability.grpc.Rule.newBuilder().setRuleUniqueName(r.getName())
 							.setTask(request.getRule().getTask()))
-					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().getMillis()).build())
+					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.setStatus(StatusValue.STATUS_GOOD).build();
 			responseObserver.onNext(reply);
 			responseObserver.onCompleted();

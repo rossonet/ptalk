@@ -1,0 +1,3 @@
+[submodule "tools/jupyter/examples/huggingface"]
+	path = tools/jupyter/examples/huggingface
+	url = https://github.com/huggingface/notebooks.git

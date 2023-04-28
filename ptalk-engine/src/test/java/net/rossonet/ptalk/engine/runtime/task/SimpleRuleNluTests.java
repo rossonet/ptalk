@@ -13,7 +13,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.rossonet.utils.NetworkHelper;
 
 import com.google.common.io.Resources;
 
@@ -88,10 +90,6 @@ public class SimpleRuleNluTests {
 
 	private static final String TEST_CHANNEL_UNIQUE_NAME = "test-channel";
 
-	private static final int GRPC_UNIT_CHANNEL_TEST_PORT = 8650;
-
-	private static final int GRPC_UNIT_NLU_TEST_PORT = 8655;
-
 	private static final String TEST_NLU_UNIQUE_NAME = "test-nlu";
 
 	private static PTalkEngineRuntime pTalkEngineRuntime = null;
@@ -114,15 +112,24 @@ public class SimpleRuleNluTests {
 
 	private String checkValue = null;
 
+	private int nluUnitPort;
+
+	private int channelUnitPort;
+
+	@BeforeEach
+	public void assignPorts() {
+		nluUnitPort = NetworkHelper.findAvailablePort(5610);
+		channelUnitPort = NetworkHelper.findAvailablePort(5710);
+	}
+
 	private void createNluUnit() throws IOException {
-		server = ServerBuilder.forPort(GRPC_UNIT_NLU_TEST_PORT).addService(new GrpcNluServiceImpl(this)).build();
+		server = ServerBuilder.forPort(nluUnitPort).addService(new GrpcNluServiceImpl(this)).build();
 		server.start();
 		registerNLuUnit();
 	}
 
 	private void createOutputChannel() throws IOException {
-		server = ServerBuilder.forPort(GRPC_UNIT_CHANNEL_TEST_PORT).addService(new GrpcChannelServiceImpl(this))
-				.build();
+		server = ServerBuilder.forPort(channelUnitPort).addService(new GrpcChannelServiceImpl(this)).build();
 		server.start();
 		registerChannelUnit();
 	}
@@ -171,8 +178,7 @@ public class SimpleRuleNluTests {
 	private void registerChannelUnit() {
 		final ManagedChannel mc = getManagedChannel();
 		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.CHANNEL)
-				.setUnitUniqueName(TEST_CHANNEL_UNIQUE_NAME).setHost("127.0.0.1").setPort(GRPC_UNIT_CHANNEL_TEST_PORT)
-				.build();
+				.setUnitUniqueName(TEST_CHANNEL_UNIQUE_NAME).setHost("127.0.0.1").setPort(channelUnitPort).build();
 		RpcCoreV1Grpc.newBlockingStub(mc).register(registerRequest);
 
 	}
@@ -180,7 +186,7 @@ public class SimpleRuleNluTests {
 	private void registerNLuUnit() {
 		final ManagedChannel mc = getManagedChannel();
 		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.NLU)
-				.setUnitUniqueName(TEST_NLU_UNIQUE_NAME).setHost("127.0.0.1").setPort(GRPC_UNIT_NLU_TEST_PORT).build();
+				.setUnitUniqueName(TEST_NLU_UNIQUE_NAME).setHost("127.0.0.1").setPort(nluUnitPort).build();
 		RpcCoreV1Grpc.newBlockingStub(mc).register(registerRequest);
 
 	}

@@ -18,9 +18,9 @@ public class TelegramInteractionTests {
 
 	private static final String ADDRESS = "127.0.0.1";
 
-	private static final int UNIT_PORT = 11254;
+	private static final int UNIT_PORT = 11253;
 
-	private static final int CORE_PORT = 11256;
+	private static final int CORE_PORT = 11253;
 
 	private static final long SLEEP = 2 * 60000; // n minuti
 

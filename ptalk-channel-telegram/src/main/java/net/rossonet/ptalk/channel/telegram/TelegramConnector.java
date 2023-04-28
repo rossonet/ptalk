@@ -17,7 +17,8 @@ import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.CommunicationHandler;
 import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
 
-public class TelegramConnector extends CommunicationHandler implements Closeable{
+
+public class TelegramConnector extends CommunicationHandler implements Closeable {
 
 	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
 	final UnitChannelConfiguration unitConfiguration = new UnitChannelConfiguration();
@@ -60,6 +61,12 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 	}
 
 	@Override
+	public void close() throws IOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
 	protected boolean messageFromPTalkEngine(ChannelMessageRequest message) {
 		String name = message.getChannelUniqueName();
 		String text = message.getMessage().getValue();
@@ -84,4 +91,6 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 			logger.severe("Error starting the server: " + e2.getMessage());
 		}
 	}
+
 }
+
