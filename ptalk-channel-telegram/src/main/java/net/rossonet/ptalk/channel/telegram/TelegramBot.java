@@ -1,13 +1,9 @@
 package net.rossonet.ptalk.channel.telegram;
 
 import java.util.List;
-import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Decoder;
@@ -32,7 +28,6 @@ import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import org.telegram.telegrambots.meta.api.objects.File;
 import org.telegram.telegrambots.meta.api.objects.InputFile;
 
 import net.rossonet.ptalk.base.grpc.Data;
@@ -41,13 +36,8 @@ import net.rossonet.ptalk.base.grpc.DataType;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.ByteArrayOutputStream;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileInputStream;
 
 
 @SuppressWarnings("deprecation")
@@ -58,7 +48,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 	private PTalkChannelRuntime pTalkChannelRuntime;
 	@SuppressWarnings("unused")
 	private TelegramConnector telegramConnector; 
-	
+
 	@Override
 	public String getBotUsername() {
 		return System.getenv(BOT_USR_ENV);
@@ -77,101 +67,6 @@ public class TelegramBot extends TelegramLongPollingBot{
 	public void onClosing() {
 		exe.shutdown();
 	}
-
-	/*	@Override
-	public void onUpdateReceived(Update update) {
-		Message message = update.getMessage();
-		String reply = "";
-		String dataType = "Text";
-		String payload = "";
-		String filename = "";
-		Long chatId = message.getChatId();
-		Message currentMessage = update.getMessage();
-		try {
-			String fileId = "";
-			if (currentMessage.hasAnimation()){
-				dataType = "Animation";
-				Animation animation = currentMessage.getAnimation();
-				fileId = animation.getFileId();				
-				filename = animation.getFileName();
-				reply = "Animation: " + animation.getFileName();
-			} else if (currentMessage.hasAudio()){
-				dataType = "Audio";
-				Audio audio = currentMessage.getAudio();
-				fileId = audio.getFileId();
-				filename = audio.getFileName();
-				reply = "Audio: " + audio.getFileName();
-			} else if (currentMessage.hasDocument()) {
-				dataType = "Document";
-				Document document = currentMessage.getDocument();
-				fileId = document.getFileId();
-				filename = document.getFileName();
-				reply = "Document: " + filename;
-			} else if (currentMessage.hasPhoto()){
-				dataType = "Photo";
-				List<PhotoSize> photo = currentMessage.getPhoto();
-				fileId = photo.get(0).getFileId();
-				filename = photo.get(0).toString();
-				reply = "Photo: " + filename;
-			} else if (currentMessage.hasSticker()){
-				dataType = "Sticker";
-				Sticker sticker = currentMessage.getSticker();
-				fileId = sticker.getFileId();
-				filename = sticker.getSetName();
-				reply = "Sticker: " + sticker.getEmoji();
-			}if (currentMessage.hasVideo()){
-				dataType = "Video";
-				Video video = currentMessage.getVideo();
-				fileId = video.getFileId();
-				filename = video.getFileName();
-				reply = "Video: " + filename;
-			} 
-
-			if (currentMessage.hasText()){
-				String txt = currentMessage.getText();
-				if(reply.equals("")) 
-					reply = "Message " + txt;
-				else 
-					reply += "; Message " + txt;
-			}
-			if(reply.equals("")) reply = "Invalid Message";
-			if (fileId.equals("")) 
-				sendMessageToPTalk(chatId, reply);
-			else {
-				GetFile requestFile = new GetFile();
-				requestFile.setFileId(fileId);
-				File file = execute(requestFile);
-				URL fileURL = new URL(file.getFileUrl(getBotToken()));
-				FileInputStream inputStream = new FileInputStream(fileURL);
-				StringBuilder resultStringBuilder = new StringBuilder();
-				BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-				String line;
-				while ((line = br.readLine()) != null) {
-					resultStringBuilder.append(line).append("\n");
-				}
-				br.close();
-				byte[] fileBytes  = resultStringBuilder.toString().getBytes();
-				//byte[] fileBytes = new URL(file.getFileUrl(getBotToken())).getFile().getBytes();
-				Encoder encoder = Base64.getMimeEncoder();
-				payload = encoder.encodeToString(fileBytes).replace("\n", "").replace("\r", "");
-				sendMessageToPTalk(chatId, reply, dataType, payload, filename, fileId);
-			}  
-		} catch (TelegramApiException e) {
-			logger.severe(e.getMessage());
-		} catch (MalformedURLException e1) {
-			logger.severe(e1.getMessage());
-		} catch (FileNotFoundException e2) {
-			logger.severe(e2.getMessage());
-		} catch (IOException e3) {
-			logger.severe(e3.getMessage());
-		}
-	}*/
-
-
-	// onUpdateReceived deve ricevere il file, scaricarlo, codificarlo ed inviarlo a ptalk (sendMessageToPTalk)
-
-	// sendMessageToUser deve ricevere il messaggio con il file codificato, decodificarlo ed inviarlo all'utente
-
 
 	@Override
 	public void onUpdateReceived(Update update) {
@@ -226,7 +121,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 		}  else	if (message.hasAnimation()){
 			dataType = "Animation";
 			currentId = message.getAnimation().getFileId();
-			
+
 		} else if (message.hasAudio()){
 			dataType = "Audio";
 			currentId = message.getAudio().getFileId();
@@ -253,23 +148,34 @@ public class TelegramBot extends TelegramLongPollingBot{
 		if (!dataType.equals("Text")) {
 			try {
 				//scarica file
-				File  file = execute(new GetFile(currentId));
 
-				if (fileName.equals("")) fileName =  file.getFilePath();
-				URL url = new URL("https://api.telegram.org/file/bot" + getBotToken() + "/" + fileName);
-				URLConnection connection = url.openConnection();
-				InputStream inputStream = connection.getInputStream();
+				GetFile getFile = new GetFile();
+				getFile.setFileId(currentId);
+				fileName = execute(getFile).getFilePath();
+				java.io.File outputFile = new java.io.File(fileName);
+				java.io.File file = downloadFile(fileName, outputFile);
+
+
+				/***************************** invia copia all'utente come verifica
+				InputStream inputStream = new FileInputStream(file);
+				InputFile fileToSend = new InputFile(inputStream, fileName);
+				sendFile(chatId, fileToSend, caption, dataType);
+				inputStream.close();
+				 *****************************/
+
+				InputStream inputStream = new FileInputStream(file);
 				byte[] targetArray = new byte[inputStream.available()];
 
 				inputStream.read(targetArray);
-				
+				inputStream.close();
+
 				//codifica file
 				Encoder encoder = Base64.getMimeEncoder();
 				String payload = encoder.encodeToString(targetArray);
 
 				//invia a PTalk
 				String reply = dataType + ": " + fileName;
-				
+
 				sendMessageToPTalk(chatId, reply, dataType, payload, fileName, currentId, caption);
 
 			} catch (IOException e) {
@@ -418,7 +324,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 			logger.info("caption: " + caption);
 			Decoder decoder = Base64.getMimeDecoder();
 			byte[] decodedFileBytes = decoder.decode(payload);		
-			
+
 			try {
 				int barPosition = 0;
 				for(int i = filePath.length() - 1; i >=0; i--) {
@@ -428,29 +334,24 @@ public class TelegramBot extends TelegramLongPollingBot{
 					}
 				}
 				String filename = filePath.substring(barPosition + 1, filePath.length());
-				 java.io.File file = new java.io.File(filename);
-				 file.setWritable(true);
-				 file.setReadable(true);
-				 file.setExecutable(true);
-					logger.info("filename: " + filename + ", " + file.getName());
-					InputFile inputFile;
-			        try (FileOutputStream outputStream = new FileOutputStream(file)) {
-			            outputStream.write(decodedFileBytes);
-			        } catch (IOException e) {
-			        	logger.severe("ERROR creating outputStream:");
-			            e.printStackTrace();
-			        }
-			        inputFile = new InputFile(file, file.getName());
+				java.io.File file = new java.io.File(filename);
+				file.setWritable(true);
+				file.setReadable(true);
+				file.setExecutable(true);
+				logger.info("filename: " + filename + ", " + file.getName());
+				InputFile inputFile;
+				try (FileOutputStream outputStream = new FileOutputStream(file)) {
+					outputStream.write(decodedFileBytes);
+				} catch (IOException e) {
+					logger.severe("ERROR creating outputStream:");
+					e.printStackTrace();
+				}
+				inputFile = new InputFile(file, file.getName());
 
-
-			         
-			        
-		        
-			//InputFile inputFile = new InputFile(new ByteArrayInputStream(decodedFileBytes), filename);
-			logger.info("Sending document to User");
+				logger.info("Sending document to User");
 
 				sendFile(Long.valueOf(chatId), inputFile, caption, mediaType);
-				
+
 			} catch (NumberFormatException | TelegramApiException e1) {
 				logger.severe("ERROR WHILE SENDING MESSAGE: ");
 				e1.printStackTrace();
@@ -469,15 +370,6 @@ public class TelegramBot extends TelegramLongPollingBot{
 			}	
 		}
 	}
-
-
-
-
-	//https://core.telegram.org/bots/api#sending-files
-	//fare untest che manda i documenti al bot oppure due bot che si mandano i mess a vicenda
-
-
-
 
 	public void setPTalkChannelRuntime(PTalkChannelRuntime pTalkChannelRuntime) {
 		this.pTalkChannelRuntime = pTalkChannelRuntime;

@@ -22,7 +22,7 @@ public class TelegramInteractionTests {
 
 	private static final int CORE_PORT = 11256;
 
-	private static final long SLEEP = 20 * 60000; // n minuti
+	private static final long SLEEP = 5 * 60000; // n minuti
 
 	private FakePTalkEngine ptalkEngine = null;
 
@@ -50,12 +50,14 @@ public class TelegramInteractionTests {
 			telegramConnector.close();			
 			ptalkEngine.close(); 
 		} catch (final Exception a) {
-			logger.severe("Error: " + a.getMessage());
+			logger.severe("Error: ");// + a.getMessage());
+			a.printStackTrace();
 			if (ptalkEngine != null) {
 				try {
 					ptalkEngine.close();
 				} catch (final IOException e) {
-					logger.severe("Error: " + e.getMessage());
+					logger.severe("Error: ");// + e.getMessage());
+					e.printStackTrace();	
 				}
 			}
 		}
