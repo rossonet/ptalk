@@ -16,19 +16,25 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
 import org.telegram.telegrambots.meta.api.methods.send.SendAudio;
+import org.telegram.telegrambots.meta.api.methods.send.SendContact;
 import org.telegram.telegrambots.meta.api.methods.send.SendDocument;
+import org.telegram.telegrambots.meta.api.methods.send.SendLocation;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.send.SendSticker;
+import org.telegram.telegrambots.meta.api.methods.send.SendVenue;
 import org.telegram.telegrambots.meta.api.methods.send.SendVideo;
 import org.telegram.telegrambots.meta.api.methods.send.SendVoice;
+import org.telegram.telegrambots.meta.api.objects.Contact;
 import org.telegram.telegrambots.meta.api.objects.Document;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.Venue;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import org.telegram.telegrambots.meta.api.objects.InputFile;
+import org.telegram.telegrambots.meta.api.objects.Location;
 
 import net.rossonet.ptalk.base.grpc.Data;
 import net.rossonet.ptalk.base.grpc.Quality;
@@ -76,78 +82,75 @@ public class TelegramBot extends TelegramLongPollingBot{
 		String dataType = "Text";
 		String currentId = "";
 		String fileName =  "";
-		//Importa file
+		JSONObject json = new JSONObject();
+		boolean containsFile = false;
 
-		//contact e location sono casi particolari; non esiste file o documento TODO implementarli
-		/*	if (message.hasContact()){
+		if (message.hasContact()){
+			containsFile = false;
 			Contact contact = message.getContact();
 			dataType = "Contact";
-			try {					
-				SendContact sendContact = new SendContact();
-				sendContact.setChatId(chatId);
-				if (contact.getFirstName() != null) sendContact.setFirstName(contact.getFirstName());
-				if (contact.getLastName() != null) sendContact.setLastName(contact.getLastName());
-				if (contact.getPhoneNumber() != null) sendContact.setPhoneNumber(contact.getPhoneNumber());
-				if (contact.getVCard() != null) sendContact.setVCard(contact.getVCard());  //emails
 
-				execute(sendContact);
+			json.put("contact", contact);
 
-			} catch (TelegramApiException e) {
-				e.printStackTrace();
-			} 
+			String reply = dataType + ": " + contact.toString();
+			sendMessageToPTalk(chatId, json, reply);
+
 		} else if (message.hasLocation()){
+			containsFile = false;
 			dataType = "Location";
-			Venue location = message.getVenue();
-			try {					
-				SendVenue sendLocation = new SendVenue();
-				sendLocation.setChatId(chatId);
-				sendLocation.setLatitude(location.getLocation().getLatitude());
-				sendLocation.setLongitude(location.getLocation().getLongitude());
-				sendLocation.setAddress(location.getAddress());
-				sendLocation.setTitle(location.getTitle());
+			Venue venue = message.getVenue();
+			Location location = message.getLocation();
 
-				execute(sendLocation);
+			json.put("location", location);
+			json.put("venue", venue);
 
-			} catch (TelegramApiException e) {
-				logger.severe(e.getMessage());
-			} 
-		} else*/ 
-		if (message.hasDocument()){
+			String reply = dataType + ": " + location.getHeading();
+			sendMessageToPTalk(chatId, json, reply);
+
+		} else if (message.hasDocument()){
+			containsFile = true;
 			dataType = "Document";
 			Document document = message.getDocument();
 			currentId = document.getFileId();
 			fileName = document.getFileName();
+			containsFile = true;
 
 		}  else	if (message.hasAnimation()){
+			containsFile = true;
 			dataType = "Animation";
 			currentId = message.getAnimation().getFileId();
 
 		} else if (message.hasAudio()){
+			containsFile = true;
 			dataType = "Audio";
 			currentId = message.getAudio().getFileId();
 
 		}  else if (message.hasPhoto()){
+			containsFile = true;
 			List<PhotoSize> photoSizes = message.getPhoto();
 			dataType = "Photo";
 			PhotoSize photoSize = photoSizes.get(photoSizes.size() - 1); 
 			currentId = photoSize.getFileId();
 
 		} else if (message.hasSticker()){
+			containsFile = true;
 			dataType = "Sticker";
 			currentId = message.getSticker().getFileId();
 
 		} else if (message.hasVideo()){
+			containsFile = true;
 			dataType = "Video";
 			currentId = message.getVideo().getFileId();
 
 		} else if (message.hasVoice()){
+			containsFile = true;
 			dataType = "Voice";
 			currentId = message.getVoice().getFileId();
+
 		} 
 
-		if (!dataType.equals("Text")) {
+		if (containsFile) {
 			try {
-				//scarica file
 
 				GetFile getFile = new GetFile();
 				getFile.setFileId(currentId);
@@ -169,11 +172,9 @@ public class TelegramBot extends TelegramLongPollingBot{
 				inputStream.read(targetArray);
 				inputStream.close();
 
-				//codifica file
 				Encoder encoder = Base64.getMimeEncoder();
 				String payload = encoder.encodeToString(targetArray);
 
-				//invia a PTalk
 				String reply = dataType + ": " + fileName;
 
 				sendMessageToPTalk(chatId, reply, dataType, payload, fileName, currentId, caption);
@@ -192,6 +193,9 @@ public class TelegramBot extends TelegramLongPollingBot{
 		}
 
 	}
+
+
+
 
 	private void sendFile(Long chatId, InputFile fileToSend, String caption, String mediaType) 
 			throws TelegramApiException {
@@ -262,12 +266,17 @@ public class TelegramBot extends TelegramLongPollingBot{
 
 	}
 
-	private void sendMessageToPTalk(Long chatId, String message) {
+	private void sendMessageToPTalk(Long chatId, String reply) {
 		logger.info("Sending text to PTalk");
-		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), message);		
+		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), reply);		
 	}
 
-	private void sendMessageToPTalk(Long chatId, String message, String dataType, String payload, 
+	private void sendMessageToPTalk(Long chatId, JSONObject json, String reply) {
+		logger.info("Sending json to PTalk");
+		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), reply, json);
+	}
+
+	private void sendMessageToPTalk(Long chatId, String reply, String dataType, String payload, 
 			String filename, String fileId, String caption) {
 		logger.info("Sending document to PTalk");
 		List<Data> datas = new ArrayList<>();
@@ -301,7 +310,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 					.setValue(caption).build();
 			datas.add(text);
 		}
-		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), message, new JSONObject(), datas);	
+		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), reply, new JSONObject(), datas);	
 	}
 
 	public void sendMessageToUser(ChannelMessageRequest messageRequest) {
@@ -356,7 +365,57 @@ public class TelegramBot extends TelegramLongPollingBot{
 				logger.severe("ERROR WHILE SENDING MESSAGE: ");
 				e1.printStackTrace();
 			}
-		} else {
+		} else if (messageRequest.getContextJson() != null 
+				&& messageRequest.getContextJson() != ""){
+			String jsonString = messageRequest.getContextJson();
+			JSONObject json = new JSONObject(jsonString);
+			if (jsonString.contains("contact")) {
+				Contact contact = (Contact) json.get("contact");
+				SendContact sendContact = new SendContact();
+				sendContact.setChatId(chatId);
+				sendContact.setFirstName(contact.getFirstName());
+				sendContact.setLastName(contact.getLastName());
+				sendContact.setPhoneNumber(contact.getPhoneNumber());
+				sendContact.setVCard(contact.getVCard());  //emails
+
+				try {
+					execute(sendContact);
+				} catch (TelegramApiException e) {
+					logger.severe("ERROR sending Contact");
+					e.printStackTrace();
+				}
+			}
+			if (jsonString.contains("location")) {
+				Location location = (Location) json.get("location");
+				Venue venue = (Venue) json.get("venue");
+
+				SendLocation sendLocation = new SendLocation();
+				sendLocation.setChatId(chatId);
+				sendLocation.setLatitude(location.getLatitude());
+				sendLocation.setLongitude(location.getLongitude());
+				sendLocation.setHeading(location.getHeading());
+
+				SendVenue sendVenue = new SendVenue();
+				sendVenue.setAddress(venue.getAddress());
+				sendVenue.setChatId(chatId);
+				sendVenue.setFoursquareId(venue.getFoursquareId());
+				sendVenue.setFoursquareType(venue.getFoursquareType());
+				sendVenue.setGooglePlaceId(venue.getGooglePlaceId());
+				sendVenue.setGooglePlaceType(venue.getGooglePlaceType());
+				sendVenue.setLatitude(venue.getLocation().getLatitude());
+				sendVenue.setLongitude(venue.getLocation().getLongitude());
+				sendVenue.setTitle(venue.getTitle());
+
+				try {
+					execute(sendLocation);
+					execute(sendVenue);
+				} catch (TelegramApiException e) {
+					logger.severe("ERROR sending Location");
+					e.printStackTrace();
+				}
+			}
+
+		} else {			
 			logger.info("Sending text to User");
 			String reply = messageRequest.getMessage().getValue().replace("ECHO MESSAGE OF:", "You sent: ");
 			SendMessage sendMessage = new SendMessage();

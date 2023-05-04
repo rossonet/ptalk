@@ -27,7 +27,7 @@ public class TelegramInteractionTests {
 	private FakePTalkEngine ptalkEngine = null;
 
 	private final String uniqueName = UUID.randomUUID().toString();
-	private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
+	//private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
 	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
 	private TelegramConnector telegramConnector;
 	private PTalkChannelRuntime pTalkChannelRuntime;
