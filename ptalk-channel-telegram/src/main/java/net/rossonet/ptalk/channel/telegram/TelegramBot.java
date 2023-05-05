@@ -90,7 +90,11 @@ public class TelegramBot extends TelegramLongPollingBot{
 			Contact contact = message.getContact();
 			dataType = "Contact";
 
-			json.put("contact", contact);
+			json.put("dataType", dataType);
+			json.put("phoneNumber", contact.getPhoneNumber());
+			json.put("firstName", contact.getFirstName());
+			json.put("lastName", contact.getLastName());
+			json.put("vCard", contact.getVCard());
 
 			String reply = dataType + ": " + contact.toString();
 			sendMessageToPTalk(chatId, json, reply);
@@ -100,11 +104,20 @@ public class TelegramBot extends TelegramLongPollingBot{
 			dataType = "Location";
 			Venue venue = message.getVenue();
 			Location location = message.getLocation();
-
-			json.put("location", location);
-			json.put("venue", venue);
-
-			String reply = dataType + ": " + location.getHeading();
+			String title = "no Title";
+			json.put("dataType", dataType);
+			json.put("latitude", location.getLatitude());
+			json.put("longitude", location.getLongitude());
+			if (venue != null) {
+				json.put("address", venue.getAddress());
+				json.put("title", venue.getTitle());
+				json.put("foursquareId", venue.getFoursquareId());
+				json.put("foursquareType", venue.getFoursquareType());
+				json.put("googlePlaceId", venue.getGooglePlaceId());
+				json.put("googlePlaceType", venue.getGooglePlaceType());
+				title = venue.getTitle();
+			}
+			String reply = dataType + ": " + title;
 			sendMessageToPTalk(chatId, json, reply);
 
 		} else if (message.hasDocument()){
@@ -200,7 +213,6 @@ public class TelegramBot extends TelegramLongPollingBot{
 	private void sendFile(Long chatId, InputFile fileToSend, String caption, String mediaType) 
 			throws TelegramApiException {
 		logger.info("Sending " + mediaType + ": "+ fileToSend.getMediaName() + "..."); 
-		logger.info("fileToSend " + fileToSend.toString());
 		switch (mediaType){
 		case "Audio": 
 			SendAudio sendAudio = new SendAudio();
@@ -263,17 +275,19 @@ public class TelegramBot extends TelegramLongPollingBot{
 			sendMessage.setText("MEDIATYPE ERROR");
 			execute(sendMessage);
 		}
-
+		logger.info("Done.");
 	}
 
 	private void sendMessageToPTalk(Long chatId, String reply) {
 		logger.info("Sending text to PTalk");
 		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), reply);		
+		logger.info("Done.");
 	}
 
 	private void sendMessageToPTalk(Long chatId, JSONObject json, String reply) {
 		logger.info("Sending json to PTalk");
 		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), reply, json);
+		logger.info("Done.");
 	}
 
 	private void sendMessageToPTalk(Long chatId, String reply, String dataType, String payload, 
@@ -311,26 +325,21 @@ public class TelegramBot extends TelegramLongPollingBot{
 			datas.add(text);
 		}
 		pTalkChannelRuntime.sendMessage(String.valueOf(chatId), reply, new JSONObject(), datas);	
+		logger.info("Done.");
 	}
 
 	public void sendMessageToUser(ChannelMessageRequest messageRequest) {
 		String chatId = messageRequest.getChannelUniqueName(); 
 		List<Data> dataList = messageRequest.getAdditionalDatasList();
 		if (!dataList.isEmpty()){
-			logger.info("dataList: " + dataList.toString());
 			DataType dataType = dataList.get(0).getTypeData();
-			logger.info("dataType: " + dataType.toString());
 			String mediaType = dataList.get(0).getKey();
-			logger.info("mediaType: " + mediaType);
 			String payload = dataList.get(0).getValue(); 
 			String filePath = dataList.stream().filter(e -> e.getKey().equals("filename")).findFirst().get().getValue();
-			logger.info("filePath: " + filePath);
 			String fileId = dataList.stream().filter(e -> e.getKey().equals("fileId")).findFirst().get().getValue();
-			logger.info("fileId: " + fileId);
 			String caption = "";
 			if (dataList.stream().filter(e -> e.getKey().equals("caption")).findFirst().isPresent())
 				caption = dataList.stream().filter(e -> e.getKey().equals("caption")).findFirst().get().getValue();
-			logger.info("caption: " + caption);
 			Decoder decoder = Base64.getMimeDecoder();
 			byte[] decodedFileBytes = decoder.decode(payload);		
 
@@ -347,7 +356,6 @@ public class TelegramBot extends TelegramLongPollingBot{
 				file.setWritable(true);
 				file.setReadable(true);
 				file.setExecutable(true);
-				logger.info("filename: " + filename + ", " + file.getName());
 				InputFile inputFile;
 				try (FileOutputStream outputStream = new FileOutputStream(file)) {
 					outputStream.write(decodedFileBytes);
@@ -358,8 +366,8 @@ public class TelegramBot extends TelegramLongPollingBot{
 				inputFile = new InputFile(file, file.getName());
 
 				logger.info("Sending document to User");
-
 				sendFile(Long.valueOf(chatId), inputFile, caption, mediaType);
+				logger.info("Done.");
 
 			} catch (NumberFormatException | TelegramApiException e1) {
 				logger.severe("ERROR WHILE SENDING MESSAGE: ");
@@ -369,48 +377,61 @@ public class TelegramBot extends TelegramLongPollingBot{
 				&& messageRequest.getContextJson() != ""){
 			String jsonString = messageRequest.getContextJson();
 			JSONObject json = new JSONObject(jsonString);
-			if (jsonString.contains("contact")) {
-				Contact contact = (Contact) json.get("contact");
+			String title = " ";
+			if (json.get("dataType").equals("Contact")) {
+				logger.info("Sending Contact...");
+
 				SendContact sendContact = new SendContact();
 				sendContact.setChatId(chatId);
-				sendContact.setFirstName(contact.getFirstName());
-				sendContact.setLastName(contact.getLastName());
-				sendContact.setPhoneNumber(contact.getPhoneNumber());
-				sendContact.setVCard(contact.getVCard());  //emails
+				sendContact.setFirstName(String.valueOf(json.get("firstName")));
+				sendContact.setLastName(String.valueOf(json.get("lastName")));
+				sendContact.setPhoneNumber(String.valueOf(json.get("phoneNumber")));
+				sendContact.setVCard(String.valueOf(json.get("vCard")));  //emails
 
 				try {
 					execute(sendContact);
+					logger.info("Done.");
+
 				} catch (TelegramApiException e) {
-					logger.severe("ERROR sending Contact");
+					logger.severe("ERROR Sending Contact");
 					e.printStackTrace();
 				}
 			}
-			if (jsonString.contains("location")) {
-				Location location = (Location) json.get("location");
-				Venue venue = (Venue) json.get("venue");
-
-				SendLocation sendLocation = new SendLocation();
-				sendLocation.setChatId(chatId);
-				sendLocation.setLatitude(location.getLatitude());
-				sendLocation.setLongitude(location.getLongitude());
-				sendLocation.setHeading(location.getHeading());
+			if (json.get("dataType").equals("Location")) {
+				logger.info("Sending Location...");
 
 				SendVenue sendVenue = new SendVenue();
-				sendVenue.setAddress(venue.getAddress());
 				sendVenue.setChatId(chatId);
-				sendVenue.setFoursquareId(venue.getFoursquareId());
-				sendVenue.setFoursquareType(venue.getFoursquareType());
-				sendVenue.setGooglePlaceId(venue.getGooglePlaceId());
-				sendVenue.setGooglePlaceType(venue.getGooglePlaceType());
-				sendVenue.setLatitude(venue.getLocation().getLatitude());
-				sendVenue.setLongitude(venue.getLocation().getLongitude());
-				sendVenue.setTitle(venue.getTitle());
+				Object lat = json.get("latitude");
+				if (lat != null && lat instanceof Number) {
+					sendVenue.setLatitude(((Number) lat).doubleValue());
+				}
+
+				Object lon = json.get("longitude");
+				if (lon != null && lon instanceof Number) {
+					sendVenue.setLongitude(((Number) lon).doubleValue());
+				}
+
+				if (jsonString.contains("address"))
+					sendVenue.setAddress(json.get("address").toString());
+				if (jsonString.contains("foursquareId"))
+					sendVenue.setFoursquareId(json.get("foursquareId").toString());
+				if (jsonString.contains("foursquareType"))
+					sendVenue.setFoursquareType(json.get("foursquareType").toString());
+				if (jsonString.contains("googlePlaceId"))
+					sendVenue.setGooglePlaceId(json.get("googlePlaceId").toString());
+				if (jsonString.contains("googlePlaceType"))
+					sendVenue.setGooglePlaceType(json.get("googlePlaceType").toString());
+				if (jsonString.contains("title")) 
+					title = json.get("title").toString();
+				sendVenue.setTitle(title);
 
 				try {
-					execute(sendLocation);
 					execute(sendVenue);
+					logger.info("Done.");
+
 				} catch (TelegramApiException e) {
-					logger.severe("ERROR sending Location");
+					logger.severe("ERROR Sending Location");
 					e.printStackTrace();
 				}
 			}
@@ -423,6 +444,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 			sendMessage.setText(reply);		
 			try {
 				execute(sendMessage);
+				logger.info("Done.");
 			} catch (TelegramApiException e) {		
 				logger.severe("ERROR WHILE SENDING TEXT MESSAGE: ");
 				e.printStackTrace();
