@@ -95,7 +95,6 @@ public class TelegramBot extends TelegramLongPollingBot{
 			json.put("firstName", contact.getFirstName());
 			json.put("lastName", contact.getLastName());
 			json.put("vCard", contact.getVCard());
-
 			String reply = dataType + ": " + contact.toString();
 			sendMessageToPTalk(chatId, json, reply);
 
@@ -383,11 +382,15 @@ public class TelegramBot extends TelegramLongPollingBot{
 
 				SendContact sendContact = new SendContact();
 				sendContact.setChatId(chatId);
-				sendContact.setFirstName(String.valueOf(json.get("firstName")));
-				sendContact.setLastName(String.valueOf(json.get("lastName")));
-				sendContact.setPhoneNumber(String.valueOf(json.get("phoneNumber")));
-				sendContact.setVCard(String.valueOf(json.get("vCard")));  //emails
-
+				if (jsonString.contains("firstName"))
+					sendContact.setFirstName(String.valueOf(json.get("firstName")));
+				if (jsonString.contains("lastName"))
+					sendContact.setLastName(String.valueOf(json.get("lastName")));
+				if (jsonString.contains("phoneNumber"))
+					sendContact.setPhoneNumber(String.valueOf(json.get("phoneNumber")));
+				if (jsonString.contains("vCard"))
+					sendContact.setVCard(String.valueOf(json.get("vCard")));  //emails
+				
 				try {
 					execute(sendContact);
 					logger.info("Done.");
