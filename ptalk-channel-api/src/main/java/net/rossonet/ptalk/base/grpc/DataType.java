@@ -52,6 +52,14 @@ public enum DataType
    * <code>BASE64DATA = 10;</code>
    */
   BASE64DATA(10),
+  /**
+   * <code>LOCAL_PATH = 11;</code>
+   */
+  LOCAL_PATH(11),
+  /**
+   * <code>REMOTE_URL = 12;</code>
+   */
+  REMOTE_URL(12),
   UNRECOGNIZED(-1),
   ;
 
@@ -99,6 +107,14 @@ public enum DataType
    * <code>BASE64DATA = 10;</code>
    */
   public static final int BASE64DATA_VALUE = 10;
+  /**
+   * <code>LOCAL_PATH = 11;</code>
+   */
+  public static final int LOCAL_PATH_VALUE = 11;
+  /**
+   * <code>REMOTE_URL = 12;</code>
+   */
+  public static final int REMOTE_URL_VALUE = 12;
 
 
   public final int getNumber() {
@@ -136,6 +152,8 @@ public enum DataType
       case 8: return UNKNOWN;
       case 9: return JSONDATA;
       case 10: return BASE64DATA;
+      case 11: return LOCAL_PATH;
+      case 12: return REMOTE_URL;
       default: return null;
     }
   }

@@ -21,6 +21,10 @@ public enum UnitType
    */
   NLU(40),
   /**
+   * <pre>
+   * ability with all permissions
+   * </pre>
+   *
    * <code>SELF = 80;</code>
    */
   SELF(80),
@@ -40,6 +44,10 @@ public enum UnitType
    */
   public static final int NLU_VALUE = 40;
   /**
+   * <pre>
+   * ability with all permissions
+   * </pre>
+   *
    * <code>SELF = 80;</code>
    */
   public static final int SELF_VALUE = 80;

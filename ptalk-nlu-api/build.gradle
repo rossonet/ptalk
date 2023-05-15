@@ -44,13 +44,16 @@ repositories {
 }
 
 dependencies {
+  api group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
   api "io.grpc:grpc-protobuf:${grpcVersion}"
   api "io.grpc:grpc-stub:${grpcVersion}"
   compileOnly "org.apache.tomcat:annotations-api:6.0.53"
   api "com.google.protobuf:protobuf-java-util:${protobufVersion}"
   api "io.grpc:grpc-netty-shaded:${grpcVersion}"
+  api group: 'org.json', name: 'json', version: '20220924'
+  api 'com.opencsv:opencsv:5.7.1'
   testImplementation "io.grpc:grpc-testing:${grpcVersion}"
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
   testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }

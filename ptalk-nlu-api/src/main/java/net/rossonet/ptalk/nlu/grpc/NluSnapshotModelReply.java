@@ -132,6 +132,10 @@ private static final long serialVersionUID = 0L;
   public static final int MODELSNAPSHOTDATA_FIELD_NUMBER = 4;
   private java.util.List<net.rossonet.ptalk.base.grpc.Data> modelSnapshotData_;
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   @java.lang.Override
@@ -139,6 +143,10 @@ private static final long serialVersionUID = 0L;
     return modelSnapshotData_;
   }
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   @java.lang.Override
@@ -147,6 +155,10 @@ private static final long serialVersionUID = 0L;
     return modelSnapshotData_;
   }
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   @java.lang.Override
@@ -154,6 +166,10 @@ private static final long serialVersionUID = 0L;
     return modelSnapshotData_.size();
   }
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   @java.lang.Override
@@ -161,6 +177,10 @@ private static final long serialVersionUID = 0L;
     return modelSnapshotData_.get(index);
   }
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   @java.lang.Override
@@ -874,6 +894,10 @@ private static final long serialVersionUID = 0L;
         net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> modelSnapshotDataBuilder_;
 
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data> getModelSnapshotDataList() {
@@ -884,6 +908,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public int getModelSnapshotDataCount() {
@@ -894,6 +922,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data getModelSnapshotData(int index) {
@@ -904,6 +936,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder setModelSnapshotData(
@@ -921,6 +957,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder setModelSnapshotData(
@@ -935,6 +975,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder addModelSnapshotData(net.rossonet.ptalk.base.grpc.Data value) {
@@ -951,6 +995,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder addModelSnapshotData(
@@ -968,6 +1016,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder addModelSnapshotData(
@@ -982,6 +1034,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder addModelSnapshotData(
@@ -996,6 +1052,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder addAllModelSnapshotData(
@@ -1011,6 +1071,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder clearModelSnapshotData() {
@@ -1024,6 +1088,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public Builder removeModelSnapshotData(int index) {
@@ -1037,6 +1105,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder getModelSnapshotDataBuilder(
@@ -1044,6 +1116,10 @@ private static final long serialVersionUID = 0L;
       return getModelSnapshotDataFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.DataOrBuilder getModelSnapshotDataOrBuilder(
@@ -1054,6 +1130,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
@@ -1065,6 +1145,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addModelSnapshotDataBuilder() {
@@ -1072,6 +1156,10 @@ private static final long serialVersionUID = 0L;
           net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addModelSnapshotDataBuilder(
@@ -1080,6 +1168,10 @@ private static final long serialVersionUID = 0L;
           index, net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * model dump
+     * </pre>
+     *
      * <code>repeated .base.Data modelSnapshotData = 4;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data.Builder> 

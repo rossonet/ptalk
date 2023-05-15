@@ -49,6 +49,10 @@ private static final long serialVersionUID = 0L;
   public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
   private volatile java.lang.Object flowReference_;
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
@@ -66,6 +70,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
@@ -132,6 +140,10 @@ private static final long serialVersionUID = 0L;
   public static final int TRACEDATA_FIELD_NUMBER = 4;
   private java.util.List<net.rossonet.ptalk.base.grpc.Data> traceData_;
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   @java.lang.Override
@@ -139,6 +151,10 @@ private static final long serialVersionUID = 0L;
     return traceData_;
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   @java.lang.Override
@@ -147,6 +163,10 @@ private static final long serialVersionUID = 0L;
     return traceData_;
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   @java.lang.Override
@@ -154,6 +174,10 @@ private static final long serialVersionUID = 0L;
     return traceData_.size();
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   @java.lang.Override
@@ -161,6 +185,10 @@ private static final long serialVersionUID = 0L;
     return traceData_.get(index);
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   @java.lang.Override
@@ -614,6 +642,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object flowReference_ = "";
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return The flowReference.
      */
@@ -630,6 +662,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return The bytes for flowReference.
      */
@@ -647,6 +683,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @param value The flowReference to set.
      * @return This builder for chaining.
@@ -662,6 +702,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return This builder for chaining.
      */
@@ -672,6 +716,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @param value The bytes for flowReference to set.
      * @return This builder for chaining.
@@ -874,6 +922,10 @@ private static final long serialVersionUID = 0L;
         net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> traceDataBuilder_;
 
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data> getTraceDataList() {
@@ -884,6 +936,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public int getTraceDataCount() {
@@ -894,6 +950,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data getTraceData(int index) {
@@ -904,6 +964,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder setTraceData(
@@ -921,6 +985,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder setTraceData(
@@ -935,6 +1003,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder addTraceData(net.rossonet.ptalk.base.grpc.Data value) {
@@ -951,6 +1023,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder addTraceData(
@@ -968,6 +1044,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder addTraceData(
@@ -982,6 +1062,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder addTraceData(
@@ -996,6 +1080,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder addAllTraceData(
@@ -1011,6 +1099,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder clearTraceData() {
@@ -1024,6 +1116,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public Builder removeTraceData(int index) {
@@ -1037,6 +1133,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder getTraceDataBuilder(
@@ -1044,6 +1144,10 @@ private static final long serialVersionUID = 0L;
       return getTraceDataFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.DataOrBuilder getTraceDataOrBuilder(
@@ -1054,6 +1158,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
@@ -1065,6 +1173,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addTraceDataBuilder() {
@@ -1072,6 +1184,10 @@ private static final long serialVersionUID = 0L;
           net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addTraceDataBuilder(
@@ -1080,6 +1196,10 @@ private static final long serialVersionUID = 0L;
           index, net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 4;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data.Builder> 

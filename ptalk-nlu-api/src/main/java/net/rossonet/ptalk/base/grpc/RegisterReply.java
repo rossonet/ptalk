@@ -141,6 +141,10 @@ private static final long serialVersionUID = 0L;
   public static final int CERTIFICATE_FIELD_NUMBER = 4;
   private volatile java.lang.Object certificate_;
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificate = 4;</code>
    * @return The certificate.
    */
@@ -158,6 +162,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificate = 4;</code>
    * @return The bytes for certificate.
    */
@@ -179,6 +187,10 @@ private static final long serialVersionUID = 0L;
   public static final int CERTIFICATEFULLCHAIN_FIELD_NUMBER = 5;
   private volatile java.lang.Object certificateFullChain_;
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateFullChain = 5;</code>
    * @return The certificateFullChain.
    */
@@ -196,6 +208,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateFullChain = 5;</code>
    * @return The bytes for certificateFullChain.
    */
@@ -247,6 +263,10 @@ private static final long serialVersionUID = 0L;
   public static final int OTPSEED_FIELD_NUMBER = 8;
   private volatile java.lang.Object otpSeed_;
   /**
+   * <pre>
+   * for enforced context
+   * </pre>
+   *
    * <code>string otpSeed = 8;</code>
    * @return The otpSeed.
    */
@@ -264,6 +284,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for enforced context
+   * </pre>
+   *
    * <code>string otpSeed = 8;</code>
    * @return The bytes for otpSeed.
    */
@@ -1217,6 +1241,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object certificate_ = "";
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificate = 4;</code>
      * @return The certificate.
      */
@@ -1233,6 +1261,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificate = 4;</code>
      * @return The bytes for certificate.
      */
@@ -1250,6 +1282,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificate = 4;</code>
      * @param value The certificate to set.
      * @return This builder for chaining.
@@ -1265,6 +1301,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificate = 4;</code>
      * @return This builder for chaining.
      */
@@ -1275,6 +1315,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificate = 4;</code>
      * @param value The bytes for certificate to set.
      * @return This builder for chaining.
@@ -1293,6 +1337,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object certificateFullChain_ = "";
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateFullChain = 5;</code>
      * @return The certificateFullChain.
      */
@@ -1309,6 +1357,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateFullChain = 5;</code>
      * @return The bytes for certificateFullChain.
      */
@@ -1326,6 +1378,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateFullChain = 5;</code>
      * @param value The certificateFullChain to set.
      * @return This builder for chaining.
@@ -1341,6 +1397,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateFullChain = 5;</code>
      * @return This builder for chaining.
      */
@@ -1351,6 +1411,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateFullChain = 5;</code>
      * @param value The bytes for certificateFullChain to set.
      * @return This builder for chaining.
@@ -1454,6 +1518,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object otpSeed_ = "";
     /**
+     * <pre>
+     * for enforced context
+     * </pre>
+     *
      * <code>string otpSeed = 8;</code>
      * @return The otpSeed.
      */
@@ -1470,6 +1538,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for enforced context
+     * </pre>
+     *
      * <code>string otpSeed = 8;</code>
      * @return The bytes for otpSeed.
      */
@@ -1487,6 +1559,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for enforced context
+     * </pre>
+     *
      * <code>string otpSeed = 8;</code>
      * @param value The otpSeed to set.
      * @return This builder for chaining.
@@ -1502,6 +1578,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for enforced context
+     * </pre>
+     *
      * <code>string otpSeed = 8;</code>
      * @return This builder for chaining.
      */
@@ -1512,6 +1592,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for enforced context
+     * </pre>
+     *
      * <code>string otpSeed = 8;</code>
      * @param value The bytes for otpSeed to set.
      * @return This builder for chaining.

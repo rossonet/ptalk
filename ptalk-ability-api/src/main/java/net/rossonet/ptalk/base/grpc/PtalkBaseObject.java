@@ -146,23 +146,24 @@ public final class PtalkBaseObject {
       "*\202\001\n\013LogSeverity\022\013\n\007DEFAULT\020\000\022\t\n\005DEBUG\020d" +
       "\022\t\n\004INFO\020\310\001\022\013\n\006NOTICE\020\254\002\022\014\n\007WARNING\020\220\003\022\n" +
       "\n\005ERROR\020\364\003\022\r\n\010CRITICAL\020\330\004\022\n\n\005ALERT\020\274\005\022\016\n" +
-      "\tEMERGENCY\020\240\006*\224\001\n\010DataType\022\n\n\006STRING\020\000\022\010" +
+      "\tEMERGENCY\020\240\006*\264\001\n\010DataType\022\n\n\006STRING\020\000\022\010" +
       "\n\004CHAR\020\001\022\t\n\005INT32\020\002\022\t\n\005INT64\020\003\022\t\n\005FLOAT\020" +
       "\004\022\n\n\006DOUBLE\020\005\022\013\n\007BOOLEAN\020\006\022\r\n\tTIMESTAMP\020" +
       "\007\022\013\n\007UNKNOWN\020\010\022\014\n\010JSONDATA\020\t\022\016\n\nBASE64DA" +
-      "TA\020\n*@\n\007Quality\022\023\n\017QUALITY_UNKNOWN\020\000\022\t\n\004" +
-      "GOOD\020\310\001\022\010\n\003BAD\020\220\003\022\013\n\006CACHED\020\350\007*7\n\010UnitTy" +
-      "pe\022\013\n\007ABILITY\020\000\022\013\n\007CHANNEL\020\024\022\007\n\003NLU\020(\022\010\n" +
-      "\004SELF\020P2\342\001\n\tRpcCoreV1\0228\n\010Register\022\025.base" +
-      ".RegisterRequest\032\023.base.RegisterReply\"\000\022" +
-      "\'\n\003Log\022\020.base.LogRequest\032\014.base.Status\"\000" +
-      "\022-\n\006Health\022\023.base.HealthRequest\032\014.base.S" +
-      "tatus\"\000\022C\n\007Message\022\033.base.GenericMessage" +
-      "Request\032\031.base.GenericMessageReply\"\0002U\n\016" +
-      "RpcSlaveUnitV1\022C\n\007Message\022\033.base.Generic" +
-      "MessageRequest\032\031.base.GenericMessageRepl" +
-      "y\"\000B1\n\034net.rossonet.ptalk.base.grpcB\017Pta" +
-      "lkBaseObjectP\001b\006proto3"
+      "TA\020\n\022\016\n\nLOCAL_PATH\020\013\022\016\n\nREMOTE_URL\020\014*@\n\007" +
+      "Quality\022\023\n\017QUALITY_UNKNOWN\020\000\022\t\n\004GOOD\020\310\001\022" +
+      "\010\n\003BAD\020\220\003\022\013\n\006CACHED\020\350\007*7\n\010UnitType\022\013\n\007AB" +
+      "ILITY\020\000\022\013\n\007CHANNEL\020\024\022\007\n\003NLU\020(\022\010\n\004SELF\020P2" +
+      "\342\001\n\tRpcCoreV1\0228\n\010Register\022\025.base.Registe" +
+      "rRequest\032\023.base.RegisterReply\"\000\022\'\n\003Log\022\020" +
+      ".base.LogRequest\032\014.base.Status\"\000\022-\n\006Heal" +
+      "th\022\023.base.HealthRequest\032\014.base.Status\"\000\022" +
+      "C\n\007Message\022\033.base.GenericMessageRequest\032" +
+      "\031.base.GenericMessageReply\"\0002U\n\016RpcSlave" +
+      "UnitV1\022C\n\007Message\022\033.base.GenericMessageR" +
+      "equest\032\031.base.GenericMessageReply\"\000B1\n\034n" +
+      "et.rossonet.ptalk.base.grpcB\017PtalkBaseOb" +
+      "jectP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
