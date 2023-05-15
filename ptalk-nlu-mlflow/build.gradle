@@ -8,13 +8,8 @@ buildscript {
   dependencies {
     classpath "com.gorylenko.gradle-git-properties:gradle-git-properties:2.4.0"
     classpath 'de.undercouch:gradle-download-task:5.4.0'
-    classpath 'gradle.plugin.com.github.jengelman.gradle.plugins:shadow:7.0.0'
-    classpath 'com.netflix.nebula:gradle-ospackage-plugin:8.4.1'
+    classpath "com.palantir.gradle.docker:gradle-docker:0.34.0"
   }
-}
-
-plugins {
-   id 'org.graalvm.buildtools.native' version '0.9.20'
 }
 
 apply plugin: 'java'
@@ -26,18 +21,16 @@ apply plugin: 'maven-publish'
 apply plugin: 'java-library'
 apply plugin: 'distribution'
 apply plugin: 'jacoco'
-apply plugin: 'com.github.johnrengelman.shadow'
-apply plugin: "nebula.rpm"
-apply plugin: 'nebula.deb'
+apply plugin: 'com.palantir.docker'
 apply plugin: 'application'
 
-description = "Ptalk Terminal Client Console - bottegaio"
+description = "Ptalk NLU MLFLow plugin"
 group = rootProject.group
 version = rootProject.version
 
 ext {
   sourceCompatibility = 1.8
-  packageName = 'ptalk-console-bottegaio'
+  packageName = 'ptalk-nlu-mlflow'
 }
 
 repositories {
@@ -46,17 +39,16 @@ repositories {
 }
 
 dependencies {
-  // TODO includere command-line-to-action
-  // TODO includere savumerkki
-  implementation project(':ptalk-channel-grpc')
-  implementation group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
-  implementation group: 'org.json', name: 'json', version: '20230227'
-  implementation group: 'org.yaml', name: 'snakeyaml', version: '1.30'
-  implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
-  implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+  api project(':ptalk-nlu-api')
+  api 'com.ibm.watson:ibm-watson:10.1.0'
+  api group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
+  api group: 'org.json', name: 'json', version: '20230227'
+  api group: 'org.yaml', name: 'snakeyaml', version: '1.30'
+  api group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+  api group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+  api group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
+  api group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
   testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }
@@ -131,9 +123,8 @@ publishing {
   }
 }
 
-
 signing {
-    sign publishing.publications.mavenJava
+  sign publishing.publications.mavenJava
 }
 
 gitProperties {
@@ -156,30 +147,17 @@ javadoc{
   failOnError=true
 }
 
-jar {
-  manifest {
-    attributes 'Main-Class': 'net.rossonet.ptalk.MainApp'
-  }
+docker {
+  name "rossonet.net/${project.name}:latest"
+  dockerfile file('Dockerfile_gradle')
+  files "$buildDir/distributions/${project.name}-${version}.tar"
+}
+
+task buildDocker() {
+  buildDocker.dependsOn("distTar")
+  buildDocker.finalizedBy("docker")
 }
 
 application {
   mainClass = 'net.rossonet.ptalk.MainApp'
 }
-
-graalvmNative {
-    toolchainDetection = false
-    binaries {
-        main {
-            verbose = true
-            sharedLibrary = false
-            //buildArgs.add("--initialize-at-build-time=org.slf4j.LoggerFactory")
-            //buildArgs.add("--initialize-at-build-time=org.slf4j.simple.SimpleLogger")
-            //buildArgs.add("--initialize-at-build-time=org.slf4j.impl.StaticLoggerBinder")
-            buildArgs.add("--trace-object-instantiation=com.sun.jmx.mbeanserver.JmxMBeanServer")
-            buildArgs.add("--initialize-at-build-time=org.apache.logging.log4j")
-            buildArgs.add("--initialize-at-build-time=io.grpc.netty.shaded.io.netty.channel.AbstractChannel")
-            buildArgs.add("--initialize-at-build-time=org.apache.logging.slf4j")
-        }
-    }
-}
-

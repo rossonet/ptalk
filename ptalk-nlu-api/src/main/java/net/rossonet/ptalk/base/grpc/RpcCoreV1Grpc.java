@@ -209,7 +209,7 @@ public final class RpcCoreV1Grpc {
 
     /**
      * <pre>
-     *health from unit
+     * health from unit
      * </pre>
      */
     public void health(net.rossonet.ptalk.base.grpc.HealthRequest request,
@@ -218,6 +218,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public void message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.GenericMessageReply> responseObserver) {
@@ -296,7 +299,7 @@ public final class RpcCoreV1Grpc {
 
     /**
      * <pre>
-     *health from unit
+     * health from unit
      * </pre>
      */
     public void health(net.rossonet.ptalk.base.grpc.HealthRequest request,
@@ -306,6 +309,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public void message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.GenericMessageReply> responseObserver) {
@@ -350,7 +356,7 @@ public final class RpcCoreV1Grpc {
 
     /**
      * <pre>
-     *health from unit
+     * health from unit
      * </pre>
      */
     public net.rossonet.ptalk.base.grpc.Status health(net.rossonet.ptalk.base.grpc.HealthRequest request) {
@@ -359,6 +365,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public net.rossonet.ptalk.base.grpc.GenericMessageReply message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -404,7 +413,7 @@ public final class RpcCoreV1Grpc {
 
     /**
      * <pre>
-     *health from unit
+     * health from unit
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> health(
@@ -414,6 +423,9 @@ public final class RpcCoreV1Grpc {
     }
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.GenericMessageReply> message(
         net.rossonet.ptalk.base.grpc.GenericMessageRequest request) {

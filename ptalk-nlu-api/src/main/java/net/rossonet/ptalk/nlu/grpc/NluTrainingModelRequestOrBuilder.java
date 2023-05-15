@@ -174,4 +174,16 @@ public interface NluTrainingModelRequestOrBuilder extends
    * <code>.base.Timestamp timestamp = 10;</code>
    */
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
+
+  /**
+   * <code>string trainingEngine = 11;</code>
+   * @return The trainingEngine.
+   */
+  java.lang.String getTrainingEngine();
+  /**
+   * <code>string trainingEngine = 11;</code>
+   * @return The bytes for trainingEngine.
+   */
+  com.google.protobuf.ByteString
+      getTrainingEngineBytes();
 }

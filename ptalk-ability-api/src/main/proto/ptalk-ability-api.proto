@@ -34,6 +34,7 @@ message AbilityMessageReply {
 message Rule {
   string ruleUniqueName = 1;
   string task = 2;
+  repeated string contexts = 3;
 }
 
 message CancelRuleRequest {
@@ -79,6 +80,7 @@ message RegisterRuleReply {
 
 message ListRulesRequest {
   string flowReference = 1;
+  string filter = 2;
   base.Timestamp timestamp = 3;
 }
 
@@ -132,8 +134,10 @@ message MemoryContextQueryReply {
 }
 
 enum MemoryAction {
-  REPLACE = 0;
-  ADD = 1;
+  MEMORY_REPLACE = 0;
+  MEMORY_ADD = 1;
+  MEMORY_ADD_OR_REPLACE = 2;
+  MEMORY_DELETE = 3;
 }
 
 message MemoryContextManagementRequest {
@@ -160,8 +164,8 @@ message GeneralConfigurationQueryReply {
 }
 
 enum ConfigurationAction {
-  ADD_OR_REPLACE = 0;
-  DELETE = 1;
+  CONFIGURATION_ADD_OR_REPLACE = 0;
+  CONFIGURATION_DELETE = 1;
 }
 
 message GeneralConfigurationManagementRequest {

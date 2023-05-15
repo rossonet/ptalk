@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private ListRulesRequest() {
     flowReference_ = "";
+    filter_ = "";
   }
 
   @java.lang.Override
@@ -82,6 +83,44 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int FILTER_FIELD_NUMBER = 2;
+  private volatile java.lang.Object filter_;
+  /**
+   * <code>string filter = 2;</code>
+   * @return The filter.
+   */
+  @java.lang.Override
+  public java.lang.String getFilter() {
+    java.lang.Object ref = filter_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      filter_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string filter = 2;</code>
+   * @return The bytes for filter.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getFilterBytes() {
+    java.lang.Object ref = filter_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      filter_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   public static final int TIMESTAMP_FIELD_NUMBER = 3;
   private net.rossonet.ptalk.base.grpc.Timestamp timestamp_;
   /**
@@ -125,6 +164,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, flowReference_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(filter_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, filter_);
+    }
     if (timestamp_ != null) {
       output.writeMessage(3, getTimestamp());
     }
@@ -139,6 +181,9 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, flowReference_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(filter_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, filter_);
     }
     if (timestamp_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -161,6 +206,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getFlowReference()
         .equals(other.getFlowReference())) return false;
+    if (!getFilter()
+        .equals(other.getFilter())) return false;
     if (hasTimestamp() != other.hasTimestamp()) return false;
     if (hasTimestamp()) {
       if (!getTimestamp()
@@ -179,6 +226,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + FLOWREFERENCE_FIELD_NUMBER;
     hash = (53 * hash) + getFlowReference().hashCode();
+    hash = (37 * hash) + FILTER_FIELD_NUMBER;
+    hash = (53 * hash) + getFilter().hashCode();
     if (hasTimestamp()) {
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + getTimestamp().hashCode();
@@ -313,6 +362,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       flowReference_ = "";
 
+      filter_ = "";
+
       if (timestampBuilder_ == null) {
         timestamp_ = null;
       } else {
@@ -346,6 +397,7 @@ private static final long serialVersionUID = 0L;
     public net.rossonet.ptalk.ability.grpc.ListRulesRequest buildPartial() {
       net.rossonet.ptalk.ability.grpc.ListRulesRequest result = new net.rossonet.ptalk.ability.grpc.ListRulesRequest(this);
       result.flowReference_ = flowReference_;
+      result.filter_ = filter_;
       if (timestampBuilder_ == null) {
         result.timestamp_ = timestamp_;
       } else {
@@ -403,6 +455,10 @@ private static final long serialVersionUID = 0L;
         flowReference_ = other.flowReference_;
         onChanged();
       }
+      if (!other.getFilter().isEmpty()) {
+        filter_ = other.filter_;
+        onChanged();
+      }
       if (other.hasTimestamp()) {
         mergeTimestamp(other.getTimestamp());
       }
@@ -437,6 +493,11 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 10
+            case 18: {
+              filter_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 18
             case 26: {
               input.readMessage(
                   getTimestampFieldBuilder().getBuilder(),
@@ -532,6 +593,82 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       flowReference_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object filter_ = "";
+    /**
+     * <code>string filter = 2;</code>
+     * @return The filter.
+     */
+    public java.lang.String getFilter() {
+      java.lang.Object ref = filter_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        filter_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string filter = 2;</code>
+     * @return The bytes for filter.
+     */
+    public com.google.protobuf.ByteString
+        getFilterBytes() {
+      java.lang.Object ref = filter_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        filter_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string filter = 2;</code>
+     * @param value The filter to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFilter(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      filter_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string filter = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFilter() {
+      
+      filter_ = getDefaultInstance().getFilter();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string filter = 2;</code>
+     * @param value The bytes for filter to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFilterBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      filter_ = value;
       onChanged();
       return this;
     }

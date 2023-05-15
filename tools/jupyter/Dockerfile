@@ -10,7 +10,12 @@ RUN conda install -y -c conda-forge streamlit
 RUN conda install -y -c conda-forge librosa
 RUN conda install -y -c anaconda nltk
 RUN conda install -y -c conda-forge grpcio grpcio-tools
-RUN conda install -y -c conda-forge matplotlib seaborn bokeh
+RUN conda install -y -c conda-forge matplotlib
+RUN conda install -y -c conda-forge seaborn
+RUN conda install -y -c conda-forge openai
+RUN conda install -y -c conda-forge ibm-watson
+RUN conda install -y -c conda-forge scapy
+RUN conda install -y -c conda-forge bokeh
 RUN pip install git+https://github.com/openai/whisper.git
 RUN conda update ffmpeg
 USER root

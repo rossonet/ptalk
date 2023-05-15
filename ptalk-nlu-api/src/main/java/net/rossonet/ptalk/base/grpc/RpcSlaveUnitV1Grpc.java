@@ -95,6 +95,9 @@ public final class RpcSlaveUnitV1Grpc {
   public static abstract class RpcSlaveUnitV1ImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public void message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.GenericMessageReply> responseObserver) {
@@ -129,6 +132,9 @@ public final class RpcSlaveUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public void message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.GenericMessageReply> responseObserver) {
@@ -152,6 +158,9 @@ public final class RpcSlaveUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public net.rossonet.ptalk.base.grpc.GenericMessageReply message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -174,6 +183,9 @@ public final class RpcSlaveUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * generic message, not covered by the other RPCs
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.GenericMessageReply> message(
         net.rossonet.ptalk.base.grpc.GenericMessageRequest request) {

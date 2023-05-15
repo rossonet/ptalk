@@ -63,6 +63,8 @@ enum DataType {
   UNKNOWN = 8;
   JSONDATA = 9;
   BASE64DATA = 10;
+  LOCAL_PATH = 11;
+  REMOTE_URL = 12;
 }
 
 enum Quality {
@@ -76,61 +78,64 @@ enum UnitType {
   ABILITY = 0;
   CHANNEL = 20;
   NLU = 40;
-  SELF = 80;
+  SELF = 80; // ability with all permissions
 }
 
+// generic data used in other messages.
 message Data {
-  string key = 1;
+  string key = 1;     // the variable name
   string value = 2;
-  DataType typeData = 3;
+  DataType typeData = 3;     // data type are the basic type plus json for structured data and base64 for binary
   Timestamp timestamp = 4;
-  string displayName = 5;
-  string shortDescription = 6;
-  string description = 7;
-  Quality quality = 8;
-  int32 priority = 9;
-  int64 weight = 10;
+  string displayName = 5;    // for human interface [OPTIONAL]
+  string shortDescription = 6;    // for human interface [OPTIONAL]
+  string description = 7;    // for human interface [OPTIONAL]
+  Quality quality = 8;    // for IIoT context [OPTIONAL]
+  int32 priority = 9;    // for QoS context [OPTIONAL]
+  int64 weight = 10;    // for AI context [OPTIONAL]
 }
 
+// a tree of tags
 message Tag {
   string tag = 1;
-  string displayName = 2;
-  string shortDescription = 3;
-  string description = 4;
+  string displayName = 2;    // for human interface [OPTIONAL]
+  string shortDescription = 3;    // for human interface [OPTIONAL]
+  string description = 4;    // for human interface [OPTIONAL]
   string tagFather = 5;
 }
 
 message GenericMessageRequest {
-  string flowReference = 1;
-  string messageReference = 2;
-  repeated Data additionalDatas = 3;
-  repeated Tag tags = 4;
+  string flowReference = 1;   // the flow related to this message
+  string messageReference = 2;  // the unique reference for this message
+  repeated Data additionalDatas = 3;    // array of data
+  repeated Tag tags = 4;      // array of tags
   Timestamp timestamp = 5;
 }
 
 message GenericMessageReply {
-  string flowReference = 1;
-  string messageReference = 2;
-  StatusValue generalStatus = 3;
-  repeated Data additionalDatas = 4;
-  repeated Tag tags = 5;
+  string flowReference = 1;   // the flow related to this message
+  string messageReference = 2;  // the unique reference for this message, should be equals to the request code
+  StatusValue generalStatus = 3;   // the status of the elaboration process that generates this reply
+  repeated Data additionalDatas = 4;    // array of data
+  repeated Tag tags = 5;      // array of tags
   Timestamp timestamp = 6;
 }
 
+// register unit (ability, channel or nlu) to ptalk engine
 message RegisterRequest {
   string unitUniqueName = 1;
   UnitType unitType = 2;
-  string displayName = 3;
+  string displayName = 3;    // for human interface [OPTIONAL]
   string host = 4;
   int32 port = 5;
-  string shortDescription = 6;
-  string description = 7;
+  string shortDescription = 6;    // for human interface [OPTIONAL]
+  string description = 7;    // for human interface [OPTIONAL]
   string jsonHealth = 8;
-  string certificateCrt = 9;
+  string certificateCrt = 9;    // for cryptographic communication
   repeated string capabilities = 10;
   repeated Data additionalDatas = 11;
   repeated Tag tags = 12;
-  string selfSuperAbilityCode = 13;  // OTP code if the unit is Homunculus
+  string selfSuperAbilityCode = 13;  // OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
   Timestamp timestamp = 14;
 }
 
@@ -138,11 +143,11 @@ message RegisterReply {
   string unitUniqueName = 1;
   int32 monitoringFrequency = 2;
   string globalJsonConfig = 3;
-  string certificate = 4;
-  string certificateFullChain = 5;
+  string certificate = 4;    // for cryptographic communication
+  string certificateFullChain = 5;    // for cryptographic communication
   StatusValue statusRegistration = 6;
   int64 timestampRegistration = 7;
-  string otpSeed = 8;
+  string otpSeed = 8;   // for enforced context
   repeated Data additionalDatas = 9;
   repeated Tag tags = 10;
   Timestamp timestamp = 11;
@@ -182,11 +187,13 @@ service RpcCoreV1 {
   rpc Register (RegisterRequest) returns (RegisterReply) {}
   // log from unit
   rpc Log (LogRequest) returns (Status) {}
-  //health from unit
+  // health from unit
   rpc Health (HealthRequest) returns (Status) {}
+  // generic message, not covered by the other RPCs
   rpc Message (GenericMessageRequest) returns (GenericMessageReply) {}
 }
 
 service RpcSlaveUnitV1 {
+  // generic message, not covered by the other RPCs
   rpc Message (GenericMessageRequest) returns (GenericMessageReply) {}
 }

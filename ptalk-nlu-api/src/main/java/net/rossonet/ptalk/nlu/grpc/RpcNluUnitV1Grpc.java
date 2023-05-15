@@ -250,6 +250,9 @@ public final class RpcNluUnitV1Grpc {
   public static abstract class RpcNluUnitV1ImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * elaborate a request in sync way
+     * </pre>
      */
     public void callSync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluMessageReply> responseObserver) {
@@ -257,6 +260,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * train request async, the reply will be send later
+     * </pre>
      */
     public void trainModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
@@ -264,6 +270,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * list all models in this unit
+     * </pre>
      */
     public void listModels(net.rossonet.ptalk.nlu.grpc.NluListModelsRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluListModelsReply> responseObserver) {
@@ -271,6 +280,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * delete a model from this unit
+     * </pre>
      */
     public void deleteModel(net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluDeleteModelReply> responseObserver) {
@@ -278,6 +290,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * freeze a state of a model end generate a snapshot (OPTIONAL)
+     * </pre>
      */
     public void snapshotModel(net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluSnapshotModelReply> responseObserver) {
@@ -285,6 +300,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * restore  a model from a snapshot (OPTIONAL)
+     * </pre>
      */
     public void restoreModel(net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluRestoreModelReply> responseObserver) {
@@ -354,6 +372,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * elaborate a request in sync way
+     * </pre>
      */
     public void callSync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluMessageReply> responseObserver) {
@@ -362,6 +383,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * train request async, the reply will be send later
+     * </pre>
      */
     public void trainModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
@@ -370,6 +394,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * list all models in this unit
+     * </pre>
      */
     public void listModels(net.rossonet.ptalk.nlu.grpc.NluListModelsRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluListModelsReply> responseObserver) {
@@ -378,6 +405,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * delete a model from this unit
+     * </pre>
      */
     public void deleteModel(net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluDeleteModelReply> responseObserver) {
@@ -386,6 +416,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * freeze a state of a model end generate a snapshot (OPTIONAL)
+     * </pre>
      */
     public void snapshotModel(net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluSnapshotModelReply> responseObserver) {
@@ -394,6 +427,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * restore  a model from a snapshot (OPTIONAL)
+     * </pre>
      */
     public void restoreModel(net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluRestoreModelReply> responseObserver) {
@@ -417,6 +453,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * elaborate a request in sync way
+     * </pre>
      */
     public net.rossonet.ptalk.nlu.grpc.NluMessageReply callSync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -424,6 +463,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * train request async, the reply will be send later
+     * </pre>
      */
     public net.rossonet.ptalk.base.grpc.Status trainModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -431,6 +473,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * list all models in this unit
+     * </pre>
      */
     public net.rossonet.ptalk.nlu.grpc.NluListModelsReply listModels(net.rossonet.ptalk.nlu.grpc.NluListModelsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -438,6 +483,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * delete a model from this unit
+     * </pre>
      */
     public net.rossonet.ptalk.nlu.grpc.NluDeleteModelReply deleteModel(net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -445,6 +493,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * freeze a state of a model end generate a snapshot (OPTIONAL)
+     * </pre>
      */
     public net.rossonet.ptalk.nlu.grpc.NluSnapshotModelReply snapshotModel(net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -452,6 +503,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * restore  a model from a snapshot (OPTIONAL)
+     * </pre>
      */
     public net.rossonet.ptalk.nlu.grpc.NluRestoreModelReply restoreModel(net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -474,6 +528,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * elaborate a request in sync way
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.nlu.grpc.NluMessageReply> callSync(
         net.rossonet.ptalk.nlu.grpc.NluMessageRequest request) {
@@ -482,6 +539,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * train request async, the reply will be send later
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.base.grpc.Status> trainModelAsync(
         net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request) {
@@ -490,6 +550,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * list all models in this unit
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.nlu.grpc.NluListModelsReply> listModels(
         net.rossonet.ptalk.nlu.grpc.NluListModelsRequest request) {
@@ -498,6 +561,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * delete a model from this unit
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.nlu.grpc.NluDeleteModelReply> deleteModel(
         net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest request) {
@@ -506,6 +572,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * freeze a state of a model end generate a snapshot (OPTIONAL)
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.nlu.grpc.NluSnapshotModelReply> snapshotModel(
         net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest request) {
@@ -514,6 +583,9 @@ public final class RpcNluUnitV1Grpc {
     }
 
     /**
+     * <pre>
+     * restore  a model from a snapshot (OPTIONAL)
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<net.rossonet.ptalk.nlu.grpc.NluRestoreModelReply> restoreModel(
         net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest request) {

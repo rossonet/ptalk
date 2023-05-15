@@ -30,4 +30,29 @@ public interface RuleOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTaskBytes();
+
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @return A list containing the contexts.
+   */
+  java.util.List<java.lang.String>
+      getContextsList();
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @return The count of contexts.
+   */
+  int getContextsCount();
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @param index The index of the element to return.
+   * @return The contexts at the given index.
+   */
+  java.lang.String getContexts(int index);
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the contexts at the given index.
+   */
+  com.google.protobuf.ByteString
+      getContextsBytes(int index);
 }

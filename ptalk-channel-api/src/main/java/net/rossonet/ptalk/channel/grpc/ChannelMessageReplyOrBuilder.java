@@ -8,11 +8,19 @@ public interface ChannelMessageReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
   java.lang.String getFlowReference();
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
@@ -46,24 +54,44 @@ public interface ChannelMessageReplyOrBuilder extends
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.Data> 
       getTraceDataList();
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   net.rossonet.ptalk.base.grpc.Data getTraceData(int index);
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   int getTraceDataCount();
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
       getTraceDataOrBuilderList();
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 4;</code>
    */
   net.rossonet.ptalk.base.grpc.DataOrBuilder getTraceDataOrBuilder(

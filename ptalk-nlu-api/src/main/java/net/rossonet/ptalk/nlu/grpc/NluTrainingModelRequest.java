@@ -23,6 +23,7 @@ private static final long serialVersionUID = 0L;
     testData_ = java.util.Collections.emptyList();
     trainingSecret_ = java.util.Collections.emptyList();
     testSecret_ = java.util.Collections.emptyList();
+    trainingEngine_ = "";
   }
 
   @java.lang.Override
@@ -387,6 +388,44 @@ private static final long serialVersionUID = 0L;
     return getTimestamp();
   }
 
+  public static final int TRAININGENGINE_FIELD_NUMBER = 11;
+  private volatile java.lang.Object trainingEngine_;
+  /**
+   * <code>string trainingEngine = 11;</code>
+   * @return The trainingEngine.
+   */
+  @java.lang.Override
+  public java.lang.String getTrainingEngine() {
+    java.lang.Object ref = trainingEngine_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      trainingEngine_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string trainingEngine = 11;</code>
+   * @return The bytes for trainingEngine.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getTrainingEngineBytes() {
+    java.lang.Object ref = trainingEngine_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      trainingEngine_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -430,6 +469,9 @@ private static final long serialVersionUID = 0L;
     }
     if (timestamp_ != null) {
       output.writeMessage(10, getTimestamp());
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(trainingEngine_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, trainingEngine_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -477,6 +519,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(10, getTimestamp());
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(trainingEngine_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, trainingEngine_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -518,6 +563,8 @@ private static final long serialVersionUID = 0L;
       if (!getTimestamp()
           .equals(other.getTimestamp())) return false;
     }
+    if (!getTrainingEngine()
+        .equals(other.getTrainingEngine())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -561,6 +608,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
       hash = (53 * hash) + getTimestamp().hashCode();
     }
+    hash = (37 * hash) + TRAININGENGINE_FIELD_NUMBER;
+    hash = (53 * hash) + getTrainingEngine().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -737,6 +786,8 @@ private static final long serialVersionUID = 0L;
         timestamp_ = null;
         timestampBuilder_ = null;
       }
+      trainingEngine_ = "";
+
       return this;
     }
 
@@ -814,6 +865,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.timestamp_ = timestampBuilder_.build();
       }
+      result.trainingEngine_ = trainingEngine_;
       onBuilt();
       return result;
     }
@@ -987,6 +1039,10 @@ private static final long serialVersionUID = 0L;
       if (other.hasTimestamp()) {
         mergeTimestamp(other.getTimestamp());
       }
+      if (!other.getTrainingEngine().isEmpty()) {
+        trainingEngine_ = other.trainingEngine_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -1099,6 +1155,11 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 82
+            case 90: {
+              trainingEngine_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 90
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -2571,6 +2632,82 @@ private static final long serialVersionUID = 0L;
         timestamp_ = null;
       }
       return timestampBuilder_;
+    }
+
+    private java.lang.Object trainingEngine_ = "";
+    /**
+     * <code>string trainingEngine = 11;</code>
+     * @return The trainingEngine.
+     */
+    public java.lang.String getTrainingEngine() {
+      java.lang.Object ref = trainingEngine_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        trainingEngine_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string trainingEngine = 11;</code>
+     * @return The bytes for trainingEngine.
+     */
+    public com.google.protobuf.ByteString
+        getTrainingEngineBytes() {
+      java.lang.Object ref = trainingEngine_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        trainingEngine_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string trainingEngine = 11;</code>
+     * @param value The trainingEngine to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTrainingEngine(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      trainingEngine_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string trainingEngine = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTrainingEngine() {
+      
+      trainingEngine_ = getDefaultInstance().getTrainingEngine();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string trainingEngine = 11;</code>
+     * @param value The bytes for trainingEngine to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTrainingEngineBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      trainingEngine_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -8,11 +8,19 @@ public interface GenericMessageReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
   java.lang.String getFlowReference();
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
@@ -20,11 +28,19 @@ public interface GenericMessageReplyOrBuilder extends
       getFlowReferenceBytes();
 
   /**
+   * <pre>
+   * the unique reference for this message, should be equals to the request code
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The messageReference.
    */
   java.lang.String getMessageReference();
   /**
+   * <pre>
+   * the unique reference for this message, should be equals to the request code
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The bytes for messageReference.
    */
@@ -32,59 +48,107 @@ public interface GenericMessageReplyOrBuilder extends
       getMessageReferenceBytes();
 
   /**
+   * <pre>
+   * the status of the elaboration process that generates this reply
+   * </pre>
+   *
    * <code>.base.StatusValue generalStatus = 3;</code>
    * @return The enum numeric value on the wire for generalStatus.
    */
   int getGeneralStatusValue();
   /**
+   * <pre>
+   * the status of the elaboration process that generates this reply
+   * </pre>
+   *
    * <code>.base.StatusValue generalStatus = 3;</code>
    * @return The generalStatus.
    */
   net.rossonet.ptalk.base.grpc.StatusValue getGeneralStatus();
 
   /**
+   * <pre>
+   * array of data
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 4;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.Data> 
       getAdditionalDatasList();
   /**
+   * <pre>
+   * array of data
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 4;</code>
    */
   net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index);
   /**
+   * <pre>
+   * array of data
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 4;</code>
    */
   int getAdditionalDatasCount();
   /**
+   * <pre>
+   * array of data
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 4;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
       getAdditionalDatasOrBuilderList();
   /**
+   * <pre>
+   * array of data
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 4;</code>
    */
   net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
       int index);
 
   /**
+   * <pre>
+   * array of tags
+   * </pre>
+   *
    * <code>repeated .base.Tag tags = 5;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.Tag> 
       getTagsList();
   /**
+   * <pre>
+   * array of tags
+   * </pre>
+   *
    * <code>repeated .base.Tag tags = 5;</code>
    */
   net.rossonet.ptalk.base.grpc.Tag getTags(int index);
   /**
+   * <pre>
+   * array of tags
+   * </pre>
+   *
    * <code>repeated .base.Tag tags = 5;</code>
    */
   int getTagsCount();
   /**
+   * <pre>
+   * array of tags
+   * </pre>
+   *
    * <code>repeated .base.Tag tags = 5;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.TagOrBuilder> 
       getTagsOrBuilderList();
   /**
+   * <pre>
+   * array of tags
+   * </pre>
+   *
    * <code>repeated .base.Tag tags = 5;</code>
    */
   net.rossonet.ptalk.base.grpc.TagOrBuilder getTagsOrBuilder(

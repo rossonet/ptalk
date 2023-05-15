@@ -8,11 +8,19 @@ public interface DataOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * the variable name
+   * </pre>
+   *
    * <code>string key = 1;</code>
    * @return The key.
    */
   java.lang.String getKey();
   /**
+   * <pre>
+   * the variable name
+   * </pre>
+   *
    * <code>string key = 1;</code>
    * @return The bytes for key.
    */
@@ -32,11 +40,19 @@ public interface DataOrBuilder extends
       getValueBytes();
 
   /**
+   * <pre>
+   * data type are the basic type plus json for structured data and base64 for binary
+   * </pre>
+   *
    * <code>.base.DataType typeData = 3;</code>
    * @return The enum numeric value on the wire for typeData.
    */
   int getTypeDataValue();
   /**
+   * <pre>
+   * data type are the basic type plus json for structured data and base64 for binary
+   * </pre>
+   *
    * <code>.base.DataType typeData = 3;</code>
    * @return The typeData.
    */
@@ -58,11 +74,19 @@ public interface DataOrBuilder extends
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 5;</code>
    * @return The displayName.
    */
   java.lang.String getDisplayName();
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 5;</code>
    * @return The bytes for displayName.
    */
@@ -70,11 +94,19 @@ public interface DataOrBuilder extends
       getDisplayNameBytes();
 
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The shortDescription.
    */
   java.lang.String getShortDescription();
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The bytes for shortDescription.
    */
@@ -82,11 +114,19 @@ public interface DataOrBuilder extends
       getShortDescriptionBytes();
 
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The description.
    */
   java.lang.String getDescription();
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The bytes for description.
    */
@@ -94,23 +134,39 @@ public interface DataOrBuilder extends
       getDescriptionBytes();
 
   /**
+   * <pre>
+   * for IIoT context [OPTIONAL]
+   * </pre>
+   *
    * <code>.base.Quality quality = 8;</code>
    * @return The enum numeric value on the wire for quality.
    */
   int getQualityValue();
   /**
+   * <pre>
+   * for IIoT context [OPTIONAL]
+   * </pre>
+   *
    * <code>.base.Quality quality = 8;</code>
    * @return The quality.
    */
   net.rossonet.ptalk.base.grpc.Quality getQuality();
 
   /**
+   * <pre>
+   * for QoS context [OPTIONAL]
+   * </pre>
+   *
    * <code>int32 priority = 9;</code>
    * @return The priority.
    */
   int getPriority();
 
   /**
+   * <pre>
+   * for AI context [OPTIONAL]
+   * </pre>
+   *
    * <code>int64 weight = 10;</code>
    * @return The weight.
    */

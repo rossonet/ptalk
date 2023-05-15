@@ -24,13 +24,13 @@ apply plugin: 'jacoco'
 apply plugin: 'com.palantir.docker'
 apply plugin: 'application'
 
-description = "Ptalk Kubernetes Operator"
+description = "Ptalk channel Kaleyra"
 group = rootProject.group
 version = rootProject.version
 
 ext {
   sourceCompatibility = 1.8
-  packageName = 'ptalk-operator'
+  packageName = 'ptalk-channel-kaleyra'
 }
 
 repositories {
@@ -39,13 +39,9 @@ repositories {
 }
 
 dependencies {
-  implementation project(':ptalk-ability-api')
-  implementation group: 'io.javaoperatorsdk', name: 'operator-framework', version: '3.0.3'
-  annotationProcessor "io.javaoperatorsdk:operator-framework:3.0.3"
-  annotationProcessor 'io.fabric8:crd-generator-apt:5.12.2'
-  implementation 'org.apache.commons:commons-compress:1.21' // per passaggio file tramite API k8s
-  implementation 'org.takes:takes:1.24.4'
-  implementation 'javax.validation:validation-api:2.0.1.Final'
+  implementation project(':ptalk-channel-api')
+  implementation 'com.google.code.gson:gson:2.8.9'
+  implementation 'com.google.inject:guice:5.0.1'
   implementation group: 'net.rossonet.commons', name: 'rossonet-helper', version: '0.3.1'
   implementation group: 'org.json', name: 'json', version: '20230227'
   implementation group: 'org.yaml', name: 'snakeyaml', version: '1.30'
@@ -53,7 +49,8 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
   implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.20.0'
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+  testImplementation project(':ptalk-engine')
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
   testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }
@@ -151,6 +148,7 @@ javadoc{
   destinationDir = file("${rootProject.buildDir}/docs/javadoc/${project.name}/")
   failOnError=true
 }
+
 
 docker {
   name "rossonet.net/${project.name}:latest"

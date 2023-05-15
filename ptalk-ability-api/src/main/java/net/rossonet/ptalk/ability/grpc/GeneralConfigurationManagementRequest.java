@@ -197,7 +197,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, flowReference_);
     }
-    if (action_ != net.rossonet.ptalk.ability.grpc.ConfigurationAction.ADD_OR_REPLACE.getNumber()) {
+    if (action_ != net.rossonet.ptalk.ability.grpc.ConfigurationAction.CONFIGURATION_ADD_OR_REPLACE.getNumber()) {
       output.writeEnum(2, action_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(key_)) {
@@ -218,7 +218,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(flowReference_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, flowReference_);
     }
-    if (action_ != net.rossonet.ptalk.ability.grpc.ConfigurationAction.ADD_OR_REPLACE.getNumber()) {
+    if (action_ != net.rossonet.ptalk.ability.grpc.ConfigurationAction.CONFIGURATION_ADD_OR_REPLACE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, action_);
     }

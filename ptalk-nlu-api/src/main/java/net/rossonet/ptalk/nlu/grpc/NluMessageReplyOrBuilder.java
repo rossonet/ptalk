@@ -8,11 +8,19 @@ public interface NluMessageReplyOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
   java.lang.String getFlowReference();
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
@@ -20,11 +28,19 @@ public interface NluMessageReplyOrBuilder extends
       getFlowReferenceBytes();
 
   /**
+   * <pre>
+   * in case this request is related to a channel message, here we have the channelUniqueMessageId
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The messageReference.
    */
   java.lang.String getMessageReference();
   /**
+   * <pre>
+   * in case this request is related to a channel message, here we have the channelUniqueMessageId
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The bytes for messageReference.
    */
@@ -32,11 +48,19 @@ public interface NluMessageReplyOrBuilder extends
       getMessageReferenceBytes();
 
   /**
+   * <pre>
+   * context in original format
+   * </pre>
+   *
    * <code>string originContext = 3;</code>
    * @return The originContext.
    */
   java.lang.String getOriginContext();
   /**
+   * <pre>
+   * context in original format
+   * </pre>
+   *
    * <code>string originContext = 3;</code>
    * @return The bytes for originContext.
    */
@@ -44,26 +68,46 @@ public interface NluMessageReplyOrBuilder extends
       getOriginContextBytes();
 
   /**
+   * <pre>
+   * the model that generated this reply
+   * </pre>
+   *
    * <code>.nlu.NluModel model = 4;</code>
    * @return Whether the model field is set.
    */
   boolean hasModel();
   /**
+   * <pre>
+   * the model that generated this reply
+   * </pre>
+   *
    * <code>.nlu.NluModel model = 4;</code>
    * @return The model.
    */
   net.rossonet.ptalk.nlu.grpc.NluModel getModel();
   /**
+   * <pre>
+   * the model that generated this reply
+   * </pre>
+   *
    * <code>.nlu.NluModel model = 4;</code>
    */
   net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder();
 
   /**
+   * <pre>
+   * the core engine task that will process this reply
+   * </pre>
+   *
    * <code>string task = 5;</code>
    * @return The task.
    */
   java.lang.String getTask();
   /**
+   * <pre>
+   * the core engine task that will process this reply
+   * </pre>
+   *
    * <code>string task = 5;</code>
    * @return The bytes for task.
    */
@@ -71,26 +115,46 @@ public interface NluMessageReplyOrBuilder extends
       getTaskBytes();
 
   /**
+   * <pre>
+   * the base reply
+   * </pre>
+   *
    * <code>.base.Data reply = 6;</code>
    * @return Whether the reply field is set.
    */
   boolean hasReply();
   /**
+   * <pre>
+   * the base reply
+   * </pre>
+   *
    * <code>.base.Data reply = 6;</code>
    * @return The reply.
    */
   net.rossonet.ptalk.base.grpc.Data getReply();
   /**
+   * <pre>
+   * the base reply
+   * </pre>
+   *
    * <code>.base.Data reply = 6;</code>
    */
   net.rossonet.ptalk.base.grpc.DataOrBuilder getReplyOrBuilder();
 
   /**
+   * <pre>
+   * context in json format
+   * </pre>
+   *
    * <code>string contextJson = 7;</code>
    * @return The contextJson.
    */
   java.lang.String getContextJson();
   /**
+   * <pre>
+   * context in json format
+   * </pre>
+   *
    * <code>string contextJson = 7;</code>
    * @return The bytes for contextJson.
    */
@@ -109,24 +173,44 @@ public interface NluMessageReplyOrBuilder extends
   net.rossonet.ptalk.base.grpc.StatusValue getStatus();
 
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.Data> 
       getAdditionalDatasList();
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index);
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   int getAdditionalDatasCount();
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
       getAdditionalDatasOrBuilderList();
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
@@ -172,6 +256,10 @@ public interface NluMessageReplyOrBuilder extends
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 
   /**
+   * <pre>
+   * enable or disable trace log function
+   * </pre>
+   *
    * <code>bool traceLog = 12;</code>
    * @return The traceLog.
    */

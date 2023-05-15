@@ -8,11 +8,19 @@ public interface NluModelOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * optional
+   * </pre>
+   *
    * <code>string requiredCapability = 1;</code>
    * @return The requiredCapability.
    */
   java.lang.String getRequiredCapability();
   /**
+   * <pre>
+   * optional
+   * </pre>
+   *
    * <code>string requiredCapability = 1;</code>
    * @return The bytes for requiredCapability.
    */
@@ -20,11 +28,19 @@ public interface NluModelOrBuilder extends
       getRequiredCapabilityBytes();
 
   /**
+   * <pre>
+   * unique name of the model
+   * </pre>
+   *
    * <code>string model = 2;</code>
    * @return The model.
    */
   java.lang.String getModel();
   /**
+   * <pre>
+   * unique name of the model
+   * </pre>
+   *
    * <code>string model = 2;</code>
    * @return The bytes for model.
    */
@@ -32,14 +48,82 @@ public interface NluModelOrBuilder extends
       getModelBytes();
 
   /**
+   * <pre>
+   * version of the model, this field can be used to call different version on the same agent
+   * </pre>
+   *
    * <code>string modelVersion = 3;</code>
    * @return The modelVersion.
    */
   java.lang.String getModelVersion();
   /**
+   * <pre>
+   * version of the model, this field can be used to call different version on the same agent
+   * </pre>
+   *
    * <code>string modelVersion = 3;</code>
    * @return The bytes for modelVersion.
    */
   com.google.protobuf.ByteString
       getModelVersionBytes();
+
+  /**
+   * <pre>
+   * description of a model’s inputs and outputs
+   * </pre>
+   *
+   * <code>string jsonModelSignature = 4;</code>
+   * @return The jsonModelSignature.
+   */
+  java.lang.String getJsonModelSignature();
+  /**
+   * <pre>
+   * description of a model’s inputs and outputs
+   * </pre>
+   *
+   * <code>string jsonModelSignature = 4;</code>
+   * @return The bytes for jsonModelSignature.
+   */
+  com.google.protobuf.ByteString
+      getJsonModelSignatureBytes();
+
+  /**
+   * <pre>
+   * example of a valid model input
+   * </pre>
+   *
+   * <code>string inputExample = 5;</code>
+   * @return The inputExample.
+   */
+  java.lang.String getInputExample();
+  /**
+   * <pre>
+   * example of a valid model input
+   * </pre>
+   *
+   * <code>string inputExample = 5;</code>
+   * @return The bytes for inputExample.
+   */
+  com.google.protobuf.ByteString
+      getInputExampleBytes();
+
+  /**
+   * <pre>
+   * example of a valid model output
+   * </pre>
+   *
+   * <code>string outputExample = 6;</code>
+   * @return The outputExample.
+   */
+  java.lang.String getOutputExample();
+  /**
+   * <pre>
+   * example of a valid model output
+   * </pre>
+   *
+   * <code>string outputExample = 6;</code>
+   * @return The bytes for outputExample.
+   */
+  com.google.protobuf.ByteString
+      getOutputExampleBytes();
 }

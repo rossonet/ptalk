@@ -9,24 +9,24 @@ package net.rossonet.ptalk.ability.grpc;
 public enum ConfigurationAction
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>ADD_OR_REPLACE = 0;</code>
+   * <code>CONFIGURATION_ADD_OR_REPLACE = 0;</code>
    */
-  ADD_OR_REPLACE(0),
+  CONFIGURATION_ADD_OR_REPLACE(0),
   /**
-   * <code>DELETE = 1;</code>
+   * <code>CONFIGURATION_DELETE = 1;</code>
    */
-  DELETE(1),
+  CONFIGURATION_DELETE(1),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>ADD_OR_REPLACE = 0;</code>
+   * <code>CONFIGURATION_ADD_OR_REPLACE = 0;</code>
    */
-  public static final int ADD_OR_REPLACE_VALUE = 0;
+  public static final int CONFIGURATION_ADD_OR_REPLACE_VALUE = 0;
   /**
-   * <code>DELETE = 1;</code>
+   * <code>CONFIGURATION_DELETE = 1;</code>
    */
-  public static final int DELETE_VALUE = 1;
+  public static final int CONFIGURATION_DELETE_VALUE = 1;
 
 
   public final int getNumber() {
@@ -53,8 +53,8 @@ public enum ConfigurationAction
    */
   public static ConfigurationAction forNumber(int value) {
     switch (value) {
-      case 0: return ADD_OR_REPLACE;
-      case 1: return DELETE;
+      case 0: return CONFIGURATION_ADD_OR_REPLACE;
+      case 1: return CONFIGURATION_DELETE;
       default: return null;
     }
   }
