@@ -105,12 +105,6 @@ task prepareEclipseImport() {
   dependsOn ":ptalk-ability-api:generateProto"
 }
 
-task buildBottegaioTerminalClient() {
-  group "Bottegaio Terminal Client"
-  description 'Build Bottegaio Terminal Client in fat jar format'
-  dependsOn ":ptalk-bottegaio-console:shadowJar"
-}
-
 gradle.taskGraph.beforeTask { Task task ->
   copy {
     from 'ptalk-base-api/ptalk-base-api.proto'

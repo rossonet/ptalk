@@ -25,6 +25,8 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import net.rossonet.ptalk.base.grpc.Data;
+import net.rossonet.ptalk.base.grpc.DataType;
+import net.rossonet.ptalk.base.grpc.Quality;
 import net.rossonet.ptalk.base.grpc.RegisterRequest;
 import net.rossonet.ptalk.base.grpc.RpcCoreV1Grpc;
 import net.rossonet.ptalk.base.grpc.StatusValue;
@@ -40,6 +42,8 @@ import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.nlu.grpc.NluListModelsReply;
 import net.rossonet.ptalk.nlu.grpc.NluListModelsRequest;
+import net.rossonet.ptalk.nlu.grpc.NluMessageReply;
+import net.rossonet.ptalk.nlu.grpc.NluMessageRequest;
 import net.rossonet.ptalk.nlu.grpc.NluModel;
 import net.rossonet.ptalk.nlu.grpc.RpcNluUnitV1Grpc.RpcNluUnitV1ImplBase;
 
@@ -63,7 +67,7 @@ public class SimpleRuleNluTests {
 					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.build());
 			responseObserver.onCompleted();
-			assertEquals("OK " + simpleRuleTests.getCheckValue(), request.getMessage().getValue());
+			assertEquals("NLU REPLY NLU CLASS 123", request.getMessage().getValue());
 			simpleRuleTests.setComplete(true);
 		}
 
@@ -75,6 +79,24 @@ public class SimpleRuleNluTests {
 
 		public GrpcNluServiceImpl(SimpleRuleNluTests simpleRuleTests) {
 			this.simpleRuleTests = simpleRuleTests;
+		}
+
+		@Override
+		public void callSync(NluMessageRequest request, StreamObserver<NluMessageReply> responseObserver) {
+			System.out.println("--- NLU QUERY ---\n" + request.toString());
+			try {
+				final String reply = "NLU CLASS 123";
+				final Data contentReply = Data.newBuilder().setKey("nlu_reply").setQuality(Quality.GOOD)
+						.setTypeData(DataType.STRING).setValue(reply).build();
+				responseObserver.onNext(NluMessageReply.newBuilder().setFlowReference(request.getFlowReference())
+						.setStatus(StatusValue.STATUS_GOOD).setReply(contentReply)
+						.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
+						.build());
+				responseObserver.onCompleted();
+				simpleRuleTests.setComplete(true);
+			} catch (final Exception a) {
+				responseObserver.onError(a);
+			}
 		}
 
 		@Override

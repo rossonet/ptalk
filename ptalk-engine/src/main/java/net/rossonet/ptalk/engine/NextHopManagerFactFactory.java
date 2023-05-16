@@ -6,7 +6,7 @@ import java.util.Map;
 
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
-import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHopManagerFact;
 
 public class NextHopManagerFactFactory implements PTalkFactFactory {
 

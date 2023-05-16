@@ -28,7 +28,7 @@ public class ExtensionsManagerFactFactory implements PTalkFactFactory {
 		if (facts.containsKey(rulesEngineTask.getTraceId())) {
 			return facts.get(rulesEngineTask.getTraceId());
 		} else {
-			final ExtensionsManagerFact f = new ExtensionsManagerFact(rulesEngineTask.getTraceId());
+			final ExtensionsManagerFact f = new ExtensionsManagerFact(rulesEngineTask);
 			facts.put(rulesEngineTask.getTraceId(), f);
 			return f;
 		}

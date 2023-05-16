@@ -8,6 +8,7 @@ import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.ai.AiManagerFact;
 
+// ML locale
 public class AiManagerFactFactory implements PTalkFactFactory {
 
 	private final Map<String, AiManagerFact> facts = new HashMap<>();

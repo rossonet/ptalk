@@ -1,14 +1,17 @@
 package net.rossonet.ptalk.engine.runtime.fact.channel;
 
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
 
-public class InputMessageFact extends MemoryData<InputMessageFact> {
+public class InputMessageFact extends MemoryData<InputMessageFact> implements PTalkFact {
 
 	private static final long serialVersionUID = -1027676770315866823L;
 	private final ChannelMessageRequest request;
+	private final String traceId;
 
-	public InputMessageFact(ChannelMessageRequest request) {
+	public InputMessageFact(String traceId, ChannelMessageRequest request) {
+		this.traceId = traceId;
 		this.request = request;
 	}
 
@@ -22,6 +25,11 @@ public class InputMessageFact extends MemoryData<InputMessageFact> {
 
 	public String getMessageValue() {
 		return request.getMessage().getValue();
+	}
+
+	@Override
+	public String getTraceId() {
+		return traceId;
 	}
 
 	public boolean isTraceEnable() {

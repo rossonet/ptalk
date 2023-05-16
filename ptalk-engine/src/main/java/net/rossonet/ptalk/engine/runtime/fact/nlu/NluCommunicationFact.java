@@ -22,8 +22,8 @@ public class NluCommunicationFact implements PTalkFact {
 		return pTalkEngineRuntime.getNluCommunicationFactFactory().query(model, input);
 	}
 
-	public NluReplyFact query(String model, String message) {
-		return query(model, NluRequestFact.fromMessage(message));
+	public NluReplyFact query(String model, String traceId, String message) {
+		return query(model, NluRequestFact.fromMessage(traceId, message));
 	}
 
 }

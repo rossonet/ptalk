@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.rossonet.ptalk.base.grpc.Timestamp;
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
 import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.nlu.grpc.TrainingLineLog;
 
-public class NluTrainingModelReplyFact extends MemoryData<NluTrainingModelReply> {
+public class NluTrainingModelReplyFact extends MemoryData<NluTrainingModelReply> implements PTalkFact {
 
 	private static final long serialVersionUID = -431676829283917362L;
 	private final String flowReference;
@@ -25,7 +26,10 @@ public class NluTrainingModelReplyFact extends MemoryData<NluTrainingModelReply>
 
 	private final List<LineLog> testLogs = new ArrayList<>();
 
-	public NluTrainingModelReplyFact(NluTrainingModelReply request) {
+	private final String traceId;
+
+	public NluTrainingModelReplyFact(String traceId, NluTrainingModelReply request) {
+		this.traceId = traceId;
 		this.flowReference = request.getFlowReference();
 		this.model = request.getModel().getModel();
 		this.capability = request.getModel().getRequiredCapability();
@@ -68,6 +72,11 @@ public class NluTrainingModelReplyFact extends MemoryData<NluTrainingModelReply>
 		return timestamp;
 	}
 
+	@Override
+	public String getTraceId() {
+		return traceId;
+	}
+
 	public List<LineLog> getTrainingLogs() {
 		return trainingLogs;
 	}
@@ -90,5 +99,4 @@ public class NluTrainingModelReplyFact extends MemoryData<NluTrainingModelReply>
 		builder.append("]");
 		return builder.toString();
 	}
-
 }

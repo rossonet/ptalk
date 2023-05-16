@@ -19,7 +19,7 @@
         "name": "query NLU",
         "description": "send message string to nlu",
         "priority": 6,
-        "actions": ["nlu_reply = nlu_communication.query(\"test_model\", \"trace_123\", message_fact.getMessageValue()); extensions_manager.addFact(\"nlu_reply\", nlu_reply);"]
+        "actions": ["nlu_reply = nlu_communication.query(\"test_model\", \"trace_123\", message_fact.getMessageValue()); extensions_manager.println(extensions_manager.getType(nlu_reply)); extensions_manager.addFact(\"nlu_reply\", nlu_reply);"]
       },
       {
         "condition": "true",

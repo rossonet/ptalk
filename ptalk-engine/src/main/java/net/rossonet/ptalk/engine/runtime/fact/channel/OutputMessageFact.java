@@ -4,9 +4,10 @@ import java.util.UUID;
 
 import net.rossonet.ptalk.base.grpc.Data;
 import net.rossonet.ptalk.channel.grpc.ChannelMessageRequest;
+import net.rossonet.ptalk.engine.runtime.fact.PTalkFact;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
 
-public class OutputMessageFact extends MemoryData<OutputMessageFact> {
+public class OutputMessageFact extends MemoryData<OutputMessageFact> implements PTalkFact {
 
 	private static final long serialVersionUID = -4363439337218687662L;
 	private final String traceId;
@@ -33,6 +34,7 @@ public class OutputMessageFact extends MemoryData<OutputMessageFact> {
 		return message;
 	}
 
+	@Override
 	public String getTraceId() {
 		return traceId;
 	}

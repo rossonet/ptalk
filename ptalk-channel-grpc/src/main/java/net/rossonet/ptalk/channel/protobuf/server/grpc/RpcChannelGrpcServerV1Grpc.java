@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.53.0)",
+    value = "by gRPC proto compiler (version 1.54.0)",
     comments = "Source: ptalk-channel-grpc-api.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class RpcChannelGrpcServerV1Grpc {
@@ -154,59 +154,46 @@ public final class RpcChannelGrpcServerV1Grpc {
 
   /**
    */
-  public static abstract class RpcChannelGrpcServerV1ImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      */
-    public void callSync(net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest request,
+    default void callSync(net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallSyncMethod(), responseObserver);
     }
 
     /**
      */
-    public void callAsync(net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest request,
+    default void callAsync(net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.channel.protobuf.server.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallAsyncMethod(), responseObserver);
     }
 
     /**
      */
-    public void replyCallAsync(net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply request,
+    default void replyCallAsync(net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.channel.protobuf.server.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReplyCallAsyncMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getCallSyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest,
-                net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply>(
-                  this, METHODID_CALL_SYNC)))
-          .addMethod(
-            getCallAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest,
-                net.rossonet.ptalk.channel.protobuf.server.grpc.Status>(
-                  this, METHODID_CALL_ASYNC)))
-          .addMethod(
-            getReplyCallAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply,
-                net.rossonet.ptalk.channel.protobuf.server.grpc.Status>(
-                  this, METHODID_REPLY_CALL_ASYNC)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service RpcChannelGrpcServerV1.
    */
-  public static final class RpcChannelGrpcServerV1Stub extends io.grpc.stub.AbstractAsyncStub<RpcChannelGrpcServerV1Stub> {
+  public static abstract class RpcChannelGrpcServerV1ImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return RpcChannelGrpcServerV1Grpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service RpcChannelGrpcServerV1.
+   */
+  public static final class RpcChannelGrpcServerV1Stub
+      extends io.grpc.stub.AbstractAsyncStub<RpcChannelGrpcServerV1Stub> {
     private RpcChannelGrpcServerV1Stub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -244,8 +231,10 @@ public final class RpcChannelGrpcServerV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service RpcChannelGrpcServerV1.
    */
-  public static final class RpcChannelGrpcServerV1BlockingStub extends io.grpc.stub.AbstractBlockingStub<RpcChannelGrpcServerV1BlockingStub> {
+  public static final class RpcChannelGrpcServerV1BlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<RpcChannelGrpcServerV1BlockingStub> {
     private RpcChannelGrpcServerV1BlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -280,8 +269,10 @@ public final class RpcChannelGrpcServerV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service RpcChannelGrpcServerV1.
    */
-  public static final class RpcChannelGrpcServerV1FutureStub extends io.grpc.stub.AbstractFutureStub<RpcChannelGrpcServerV1FutureStub> {
+  public static final class RpcChannelGrpcServerV1FutureStub
+      extends io.grpc.stub.AbstractFutureStub<RpcChannelGrpcServerV1FutureStub> {
     private RpcChannelGrpcServerV1FutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -327,10 +318,10 @@ public final class RpcChannelGrpcServerV1Grpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final RpcChannelGrpcServerV1ImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(RpcChannelGrpcServerV1ImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -365,6 +356,32 @@ public final class RpcChannelGrpcServerV1Grpc {
           throw new AssertionError();
       }
     }
+  }
+
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getCallSyncMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest,
+              net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply>(
+                service, METHODID_CALL_SYNC)))
+        .addMethod(
+          getCallAsyncMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.channel.protobuf.server.grpc.MessageRequest,
+              net.rossonet.ptalk.channel.protobuf.server.grpc.Status>(
+                service, METHODID_CALL_ASYNC)))
+        .addMethod(
+          getReplyCallAsyncMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.channel.protobuf.server.grpc.MessageReply,
+              net.rossonet.ptalk.channel.protobuf.server.grpc.Status>(
+                service, METHODID_REPLY_CALL_ASYNC)))
+        .build();
   }
 
   private static abstract class RpcChannelGrpcServerV1BaseDescriptorSupplier

@@ -100,7 +100,7 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 	public NluReplyFact query(String model, NluRequestFact input) {
 		final String uniqueName = selectOneNluUnit(getModelMap().get(model));
 		final NluMessageReply nluReply = cacheBlockingStub.get(uniqueName).callSync(input.getNluMessageRequest(model));
-		return new NluReplyFact(nluReply);
+		return new NluReplyFact(input.getTraceId(), nluReply);
 	}
 
 	public void registerUnit(RegisterRequest request) {

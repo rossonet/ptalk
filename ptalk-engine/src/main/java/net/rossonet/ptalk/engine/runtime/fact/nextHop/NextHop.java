@@ -1,4 +1,4 @@
-package net.rossonet.ptalk.engine.runtime.fact.NextHop;
+package net.rossonet.ptalk.engine.runtime.fact.nextHop;
 
 public class NextHop {
 

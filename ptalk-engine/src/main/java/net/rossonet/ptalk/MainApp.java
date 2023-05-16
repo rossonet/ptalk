@@ -2,6 +2,8 @@ package net.rossonet.ptalk;
 
 import java.util.logging.Logger;
 
+import org.rossonet.utils.LogHelper;
+
 import net.rossonet.ptalk.engine.GlobalConfiguration;
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
@@ -19,9 +21,10 @@ public class MainApp {
 	public static void main(final String[] args) {
 		final GlobalConfiguration configuration = GlobalConfiguration.getNewBuilder().build();
 		try {
+			logger.info("starting engine with configuration\n" + configuration);
 			pTalkEngineRuntime = new PTalkEngineRuntime(configuration);
 		} catch (final TaskManagerException e) {
-			e.printStackTrace();
+			logger.severe(LogHelper.stackTraceToString(e));
 		}
 		runAppUntilStop();
 	}
@@ -36,7 +39,7 @@ public class MainApp {
 					pTalkEngineRuntime.wait();
 				}
 			} catch (final Exception e) {
-				e.printStackTrace();
+				logger.severe(LogHelper.stackTraceToString(e));
 			}
 		}
 		logger.info("system shutdown completed");
