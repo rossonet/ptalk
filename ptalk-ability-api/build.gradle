@@ -29,7 +29,7 @@ description = "Ptalk Ability API"
 group = rootProject.group
 version = rootProject.version
 
-def grpcVersion = '1.54.0'
+def grpcVersion = '1.55.1'
 def protobufVersion = '3.21.7'
 def protocVersion = protobufVersion
 
