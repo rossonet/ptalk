@@ -12,6 +12,8 @@ import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluTrainingModelReplyFact;
 
+//TODO integrare il contesto nella gestione
+// gestione della memoria di contesto
 public class MemoryManager {
 
 	private final PTalkEngineRuntime pTalkEngineRuntime;

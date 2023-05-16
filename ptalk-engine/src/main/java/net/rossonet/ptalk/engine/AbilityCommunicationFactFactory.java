@@ -12,6 +12,7 @@ import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.ability.AbilityCommunicationFact;
 
+// interfaccia verso le unit ability
 public class AbilityCommunicationFactFactory implements PTalkFactFactory {
 
 	private final Map<String, AbilityCommunicationFact> facts = new HashMap<>();
@@ -43,13 +44,12 @@ public class AbilityCommunicationFactFactory implements PTalkFactFactory {
 		return pTalkEngineRuntime;
 	}
 
-	public void registerUnit(RegisterRequest request) {
-		getRegisterUnit().put(request.getUnitUniqueName(),
-				new UnitRegistered(request));
-	}
-
 	private ReplicatedMap<String, UnitRegistered> getRegisterUnit() {
 		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getRegisterAbilityRepository();
+	}
+
+	public void registerUnit(RegisterRequest request) {
+		getRegisterUnit().put(request.getUnitUniqueName(), new UnitRegistered(request));
 	}
 
 	@Override

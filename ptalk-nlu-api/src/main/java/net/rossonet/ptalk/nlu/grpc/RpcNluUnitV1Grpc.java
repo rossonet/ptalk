@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.53.0)",
+    value = "by gRPC proto compiler (version 1.54.0)",
     comments = "Source: ptalk-nlu-api.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class RpcNluUnitV1Grpc {
@@ -247,14 +247,14 @@ public final class RpcNluUnitV1Grpc {
 
   /**
    */
-  public static abstract class RpcNluUnitV1ImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      * <pre>
      * elaborate a request in sync way
      * </pre>
      */
-    public void callSync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request,
+    default void callSync(net.rossonet.ptalk.nlu.grpc.NluMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluMessageReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCallSyncMethod(), responseObserver);
     }
@@ -264,7 +264,7 @@ public final class RpcNluUnitV1Grpc {
      * train request async, the reply will be send later
      * </pre>
      */
-    public void trainModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request,
+    default void trainModelAsync(net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTrainModelAsyncMethod(), responseObserver);
     }
@@ -274,7 +274,7 @@ public final class RpcNluUnitV1Grpc {
      * list all models in this unit
      * </pre>
      */
-    public void listModels(net.rossonet.ptalk.nlu.grpc.NluListModelsRequest request,
+    default void listModels(net.rossonet.ptalk.nlu.grpc.NluListModelsRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluListModelsReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListModelsMethod(), responseObserver);
     }
@@ -284,7 +284,7 @@ public final class RpcNluUnitV1Grpc {
      * delete a model from this unit
      * </pre>
      */
-    public void deleteModel(net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest request,
+    default void deleteModel(net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluDeleteModelReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteModelMethod(), responseObserver);
     }
@@ -294,7 +294,7 @@ public final class RpcNluUnitV1Grpc {
      * freeze a state of a model end generate a snapshot (OPTIONAL)
      * </pre>
      */
-    public void snapshotModel(net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest request,
+    default void snapshotModel(net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluSnapshotModelReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSnapshotModelMethod(), responseObserver);
     }
@@ -304,62 +304,28 @@ public final class RpcNluUnitV1Grpc {
      * restore  a model from a snapshot (OPTIONAL)
      * </pre>
      */
-    public void restoreModel(net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest request,
+    default void restoreModel(net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.nlu.grpc.NluRestoreModelReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRestoreModelMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getCallSyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluMessageRequest,
-                net.rossonet.ptalk.nlu.grpc.NluMessageReply>(
-                  this, METHODID_CALL_SYNC)))
-          .addMethod(
-            getTrainModelAsyncMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_TRAIN_MODEL_ASYNC)))
-          .addMethod(
-            getListModelsMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluListModelsRequest,
-                net.rossonet.ptalk.nlu.grpc.NluListModelsReply>(
-                  this, METHODID_LIST_MODELS)))
-          .addMethod(
-            getDeleteModelMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest,
-                net.rossonet.ptalk.nlu.grpc.NluDeleteModelReply>(
-                  this, METHODID_DELETE_MODEL)))
-          .addMethod(
-            getSnapshotModelMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest,
-                net.rossonet.ptalk.nlu.grpc.NluSnapshotModelReply>(
-                  this, METHODID_SNAPSHOT_MODEL)))
-          .addMethod(
-            getRestoreModelMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest,
-                net.rossonet.ptalk.nlu.grpc.NluRestoreModelReply>(
-                  this, METHODID_RESTORE_MODEL)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service RpcNluUnitV1.
    */
-  public static final class RpcNluUnitV1Stub extends io.grpc.stub.AbstractAsyncStub<RpcNluUnitV1Stub> {
+  public static abstract class RpcNluUnitV1ImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return RpcNluUnitV1Grpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service RpcNluUnitV1.
+   */
+  public static final class RpcNluUnitV1Stub
+      extends io.grpc.stub.AbstractAsyncStub<RpcNluUnitV1Stub> {
     private RpcNluUnitV1Stub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -439,8 +405,10 @@ public final class RpcNluUnitV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service RpcNluUnitV1.
    */
-  public static final class RpcNluUnitV1BlockingStub extends io.grpc.stub.AbstractBlockingStub<RpcNluUnitV1BlockingStub> {
+  public static final class RpcNluUnitV1BlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<RpcNluUnitV1BlockingStub> {
     private RpcNluUnitV1BlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -514,8 +482,10 @@ public final class RpcNluUnitV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service RpcNluUnitV1.
    */
-  public static final class RpcNluUnitV1FutureStub extends io.grpc.stub.AbstractFutureStub<RpcNluUnitV1FutureStub> {
+  public static final class RpcNluUnitV1FutureStub
+      extends io.grpc.stub.AbstractFutureStub<RpcNluUnitV1FutureStub> {
     private RpcNluUnitV1FutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -606,10 +576,10 @@ public final class RpcNluUnitV1Grpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final RpcNluUnitV1ImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(RpcNluUnitV1ImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -656,6 +626,53 @@ public final class RpcNluUnitV1Grpc {
           throw new AssertionError();
       }
     }
+  }
+
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getCallSyncMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.nlu.grpc.NluMessageRequest,
+              net.rossonet.ptalk.nlu.grpc.NluMessageReply>(
+                service, METHODID_CALL_SYNC)))
+        .addMethod(
+          getTrainModelAsyncMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.nlu.grpc.NluTrainingModelRequest,
+              net.rossonet.ptalk.base.grpc.Status>(
+                service, METHODID_TRAIN_MODEL_ASYNC)))
+        .addMethod(
+          getListModelsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.nlu.grpc.NluListModelsRequest,
+              net.rossonet.ptalk.nlu.grpc.NluListModelsReply>(
+                service, METHODID_LIST_MODELS)))
+        .addMethod(
+          getDeleteModelMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.nlu.grpc.NluDeleteModelRequest,
+              net.rossonet.ptalk.nlu.grpc.NluDeleteModelReply>(
+                service, METHODID_DELETE_MODEL)))
+        .addMethod(
+          getSnapshotModelMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.nlu.grpc.NluSnapshotModelRequest,
+              net.rossonet.ptalk.nlu.grpc.NluSnapshotModelReply>(
+                service, METHODID_SNAPSHOT_MODEL)))
+        .addMethod(
+          getRestoreModelMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.nlu.grpc.NluRestoreModelRequest,
+              net.rossonet.ptalk.nlu.grpc.NluRestoreModelReply>(
+                service, METHODID_RESTORE_MODEL)))
+        .build();
   }
 
   private static abstract class RpcNluUnitV1BaseDescriptorSupplier

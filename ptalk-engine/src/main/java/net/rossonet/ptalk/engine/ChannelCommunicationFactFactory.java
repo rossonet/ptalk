@@ -17,6 +17,7 @@ import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
 import net.rossonet.ptalk.engine.runtime.fact.channel.ChannelCommunicationFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
 
+// channel management ( send and retrieve messages )
 public class ChannelCommunicationFactFactory implements PTalkFactFactory {
 
 	private final Map<String, ChannelCommunicationFact> facts = new HashMap<>();

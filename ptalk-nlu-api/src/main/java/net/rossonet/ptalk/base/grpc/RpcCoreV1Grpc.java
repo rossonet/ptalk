@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.53.0)",
+    value = "by gRPC proto compiler (version 1.54.0)",
     comments = "Source: ptalk-base-api.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class RpcCoreV1Grpc {
@@ -185,14 +185,14 @@ public final class RpcCoreV1Grpc {
 
   /**
    */
-  public static abstract class RpcCoreV1ImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      * <pre>
      * register unit (ability, channel or nlu) to ptalk engine
      * </pre>
      */
-    public void register(net.rossonet.ptalk.base.grpc.RegisterRequest request,
+    default void register(net.rossonet.ptalk.base.grpc.RegisterRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.RegisterReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterMethod(), responseObserver);
     }
@@ -202,7 +202,7 @@ public final class RpcCoreV1Grpc {
      * log from unit
      * </pre>
      */
-    public void log(net.rossonet.ptalk.base.grpc.LogRequest request,
+    default void log(net.rossonet.ptalk.base.grpc.LogRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLogMethod(), responseObserver);
     }
@@ -212,7 +212,7 @@ public final class RpcCoreV1Grpc {
      * health from unit
      * </pre>
      */
-    public void health(net.rossonet.ptalk.base.grpc.HealthRequest request,
+    default void health(net.rossonet.ptalk.base.grpc.HealthRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthMethod(), responseObserver);
     }
@@ -222,48 +222,28 @@ public final class RpcCoreV1Grpc {
      * generic message, not covered by the other RPCs
      * </pre>
      */
-    public void message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request,
+    default void message(net.rossonet.ptalk.base.grpc.GenericMessageRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.base.grpc.GenericMessageReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMessageMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getRegisterMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.base.grpc.RegisterRequest,
-                net.rossonet.ptalk.base.grpc.RegisterReply>(
-                  this, METHODID_REGISTER)))
-          .addMethod(
-            getLogMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.base.grpc.LogRequest,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_LOG)))
-          .addMethod(
-            getHealthMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.base.grpc.HealthRequest,
-                net.rossonet.ptalk.base.grpc.Status>(
-                  this, METHODID_HEALTH)))
-          .addMethod(
-            getMessageMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.base.grpc.GenericMessageRequest,
-                net.rossonet.ptalk.base.grpc.GenericMessageReply>(
-                  this, METHODID_MESSAGE)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service RpcCoreV1.
    */
-  public static final class RpcCoreV1Stub extends io.grpc.stub.AbstractAsyncStub<RpcCoreV1Stub> {
+  public static abstract class RpcCoreV1ImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return RpcCoreV1Grpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service RpcCoreV1.
+   */
+  public static final class RpcCoreV1Stub
+      extends io.grpc.stub.AbstractAsyncStub<RpcCoreV1Stub> {
     private RpcCoreV1Stub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -321,8 +301,10 @@ public final class RpcCoreV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service RpcCoreV1.
    */
-  public static final class RpcCoreV1BlockingStub extends io.grpc.stub.AbstractBlockingStub<RpcCoreV1BlockingStub> {
+  public static final class RpcCoreV1BlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<RpcCoreV1BlockingStub> {
     private RpcCoreV1BlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -376,8 +358,10 @@ public final class RpcCoreV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service RpcCoreV1.
    */
-  public static final class RpcCoreV1FutureStub extends io.grpc.stub.AbstractFutureStub<RpcCoreV1FutureStub> {
+  public static final class RpcCoreV1FutureStub
+      extends io.grpc.stub.AbstractFutureStub<RpcCoreV1FutureStub> {
     private RpcCoreV1FutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -444,10 +428,10 @@ public final class RpcCoreV1Grpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final RpcCoreV1ImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(RpcCoreV1ImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -486,6 +470,39 @@ public final class RpcCoreV1Grpc {
           throw new AssertionError();
       }
     }
+  }
+
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getRegisterMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.base.grpc.RegisterRequest,
+              net.rossonet.ptalk.base.grpc.RegisterReply>(
+                service, METHODID_REGISTER)))
+        .addMethod(
+          getLogMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.base.grpc.LogRequest,
+              net.rossonet.ptalk.base.grpc.Status>(
+                service, METHODID_LOG)))
+        .addMethod(
+          getHealthMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.base.grpc.HealthRequest,
+              net.rossonet.ptalk.base.grpc.Status>(
+                service, METHODID_HEALTH)))
+        .addMethod(
+          getMessageMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.base.grpc.GenericMessageRequest,
+              net.rossonet.ptalk.base.grpc.GenericMessageReply>(
+                service, METHODID_MESSAGE)))
+        .build();
   }
 
   private static abstract class RpcCoreV1BaseDescriptorSupplier

@@ -32,7 +32,7 @@ public abstract class CommunicationHandler extends RpcNluUnitV1ImplBase {
 
 	@Override
 	public void callSync(NluMessageRequest request, StreamObserver<NluMessageReply> responseObserver) {
-		System.out.println("--- NLU QUERY ---\n" + request.toString());
+		// System.out.println("--- NLU QUERY ---\n" + request.toString());
 		try {
 			final BaseNluReply reply = callSync(request);
 			if (reply.isCompleted()) {

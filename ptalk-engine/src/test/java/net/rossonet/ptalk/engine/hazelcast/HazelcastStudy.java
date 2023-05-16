@@ -36,12 +36,12 @@ public class HazelcastStudy {
 	private static HazelcastInstance hzServer = null;
 
 	@AfterAll
-	private static void closeServer() {
+	public static void closeServer() {
 		hzServer.shutdown();
 	}
 
 	@BeforeAll
-	private static void runServer() {
+	public static void runServer() {
 		final Config clusterConfig = new Config();
 		clusterConfig.setClusterName("dev");
 		clusterConfig.getNetworkConfig().setPort(5777);
@@ -56,12 +56,12 @@ public class HazelcastStudy {
 	private final String hazelcastEndpoint = "127.0.0.1:5777";
 
 	@AfterEach
-	private void closeConnection() {
+	public void closeConnection() {
 		hz.shutdown();
 	}
 
 	@BeforeEach
-	private void connectToHazelcast() {
+	public void connectToHazelcast() {
 		final ClientConfig clientConfig = new ClientConfig();
 		clientConfig.setClusterName("dev");
 		clientConfig.getNetworkConfig().addAddress(hazelcastEndpoint);
