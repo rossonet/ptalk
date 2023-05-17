@@ -301,7 +301,7 @@ class RulesEngineTask implements Task {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	// @SuppressWarnings("unchecked")
 	private void postFire() throws TaskManagerException {
 		if (executionStatus != ExecutionStatus.MAIN_EXECUTION_COMPLETED) {
 			throw new BadTaskOrderExecution("try to fire post rules in a task with status " + executionStatus.name());

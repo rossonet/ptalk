@@ -5,8 +5,11 @@ import java.io.FileWriter;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.json.JSONObject;
+import org.junit.jupiter.api.Test;
+import org.rossonet.utils.LogHelper;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
@@ -14,6 +17,7 @@ import com.opencsv.CSVWriter;
 public class CsvWorks {
 
 	private static final int CHARS_IN_TRASCRIPTION = 200;
+	private static final Logger logger = Logger.getLogger(CsvWorks.class.getName());
 
 	// @Test
 	public void openCsvFile() throws Exception {
@@ -46,6 +50,16 @@ public class CsvWorks {
 			System.out.println(sb.toString());
 
 		}
+	}
+
+	@Test
+	public void testExceptionError() {
+		try {
+			final int a = 6 / 0;
+		} catch (final Exception a) {
+			logger.severe(LogHelper.stackTraceToString(a, 4));
+		}
+
 	}
 
 	public void writeLineByLine(List<String[]> lines, Path path) throws Exception {

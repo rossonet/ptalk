@@ -23,6 +23,8 @@ import net.rossonet.ptalk.engine.runtime.fact.channel.InputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHop;
 import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHopSchedulerType;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluReplyFact;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluRequestFact;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluTrainingModelReplyFact;
 import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.utils.JsonHelper;
@@ -196,6 +198,11 @@ public class PTalkEngineRuntime {
 
 	public boolean isRunning() {
 		return lifecycleStatus.equals(LifecycleStatus.RUNNING);
+	}
+
+	public NluReplyFact queryNlu(NluRequestFact request) {
+		getMemoryManager().registerQueryNlu(request);
+		return getNluCommunicationFactFactory().query(request);
 	}
 
 	public void replaceJsonConfiguration(JSONObject jsonConfiguration) throws TaskManagerException {

@@ -4,6 +4,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
@@ -17,6 +18,8 @@ import net.rossonet.ptalk.engine.parameter.UnitRegisteredSerializer;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
 
 public class HazelcastInstanceBuilder implements Closeable {
+
+	private static final Logger logger = Logger.getLogger(HazelcastInstanceBuilder.class.getName());
 
 	private static final int HAZELCAST_CLUSTER_PORT = 5777;
 
@@ -147,6 +150,7 @@ public class HazelcastInstanceBuilder implements Closeable {
 
 	private void runServer() {
 		final Config clusterConfig = getConfig();
+		logger.info("run Hazelcast server with config " + clusterConfig);
 		hazelcastServer = Hazelcast.newHazelcastInstance(clusterConfig);
 	}
 
