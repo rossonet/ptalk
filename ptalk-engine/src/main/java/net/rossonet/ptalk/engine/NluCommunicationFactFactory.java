@@ -97,10 +97,10 @@ public class NluCommunicationFactFactory implements PTalkFactFactory {
 		return pTalkEngineRuntime.getHazelcastInstanceBuilder().getRegisterNluRepository();
 	}
 
-	public NluReplyFact query(String model, NluRequestFact input) {
-		final String uniqueName = selectOneNluUnit(getModelMap().get(model));
-		final NluMessageReply nluReply = cacheBlockingStub.get(uniqueName).callSync(input.getNluMessageRequest(model));
-		return new NluReplyFact(input.getTraceId(), nluReply);
+	public NluReplyFact query(NluRequestFact nluQuery) {
+		final String uniqueName = selectOneNluUnit(getModelMap().get(nluQuery.getModel()));
+		final NluMessageReply nluReply = cacheBlockingStub.get(uniqueName).callSync(nluQuery.getNluMessageRequest());
+		return new NluReplyFact(nluQuery.getTraceId(), nluReply);
 	}
 
 	public void registerUnit(RegisterRequest request) {

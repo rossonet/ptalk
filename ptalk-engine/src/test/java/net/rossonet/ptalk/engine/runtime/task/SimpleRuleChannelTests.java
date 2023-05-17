@@ -8,6 +8,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,6 +86,26 @@ public class SimpleRuleChannelTests {
 
 	private String checkValue = null;
 
+	private ManagedChannel mc;
+
+	@Test
+	public void channelTestIteraction() throws TaskManagerException, IOException, InterruptedException {
+		loadSingleRule();
+		final RpcChannelCoreV1BlockingStub inputChannel = getInputChannel();
+		createOutputChannel();
+		checkValue = UUID.randomUUID().toString();
+		final ChannelMessageRequest request = ChannelMessageRequest.newBuilder()
+				.setChannelUniqueMessageId(UUID.randomUUID().toString()).setChannelUniqueName(TEST_CHANNEL_UNIQUE_NAME)
+				.setMessage(Data.newBuilder().setValue(checkValue).build()).build();
+		final ChannelMessageReply reply = inputChannel.callSync(request);
+		System.out.println(reply.toString());
+		mc.shutdown();
+		mc.awaitTermination(30, TimeUnit.SECONDS);
+		server.shutdown();
+		server.awaitTermination(30, TimeUnit.SECONDS);
+		assertTrue(complete);
+	}
+
 	private void createOutputChannel() throws IOException {
 		server = ServerBuilder.forPort(GRPC_UNIT_TEST_PORT).addService(new GrpcChannelServiceImpl(this)).build();
 		server.start();
@@ -101,8 +122,8 @@ public class SimpleRuleChannelTests {
 	}
 
 	private ManagedChannel getManagedChannel() {
-		final ManagedChannel mc = ManagedChannelBuilder
-				.forAddress("127.0.0.1", GlobalConfiguration.DEFAULT_GRPC_SERVER_PORT).usePlaintext().build();
+		mc = ManagedChannelBuilder.forAddress("127.0.0.1", GlobalConfiguration.DEFAULT_GRPC_SERVER_PORT).usePlaintext()
+				.build();
 		return mc;
 	}
 
@@ -113,22 +134,7 @@ public class SimpleRuleChannelTests {
 		// System.out.println("\n\n" + configuration + "\n\n");
 		pTalkEngineRuntime.replaceJsonConfiguration(configuration);
 		final JSONObject json = pTalkEngineRuntime.getJsonConfiguration();
-		// System.out.println(json.toString(2));
-	}
-
-	@Test
-	public void loadSingleRuleConfiguration() throws TaskManagerException, IOException {
-		loadSingleRule();
-		final RpcChannelCoreV1BlockingStub inputChannel = getInputChannel();
-		createOutputChannel();
-		checkValue = UUID.randomUUID().toString();
-		final ChannelMessageRequest request = ChannelMessageRequest.newBuilder()
-				.setChannelUniqueMessageId(UUID.randomUUID().toString()).setChannelUniqueName(TEST_CHANNEL_UNIQUE_NAME)
-				.setMessage(Data.newBuilder().setValue(checkValue).build()).build();
-		final ChannelMessageReply reply = inputChannel.callSync(request);
-		System.out.println(reply.toString());
-		server.shutdown();
-		assertTrue(complete);
+		System.out.println(json.toString(2));
 	}
 
 	private void registerChannelUnit() {

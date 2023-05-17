@@ -10,6 +10,7 @@ import net.rossonet.ptalk.engine.grpc.ReplyMemoryQuery;
 import net.rossonet.ptalk.engine.runtime.fact.channel.InputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryData;
+import net.rossonet.ptalk.engine.runtime.fact.nlu.NluRequestFact;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluTrainingModelReplyFact;
 
 //TODO integrare il contesto nella gestione
@@ -42,6 +43,11 @@ public class MemoryManager {
 
 	public void registerOutputMessage(OutputMessageFact outputMessageFact) {
 		getMemoryMap().put(Instant.now().toEpochMilli(), outputMessageFact);
+
+	}
+
+	public void registerQueryNlu(NluRequestFact request) {
+		getMemoryMap().put(Instant.now().toEpochMilli(), request);
 
 	}
 

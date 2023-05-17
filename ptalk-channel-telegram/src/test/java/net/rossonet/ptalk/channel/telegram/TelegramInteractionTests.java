@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 import org.junit.jupiter.api.Test;
 
-import net.rossonet.ptalk.base.grpc.LifecycleStatus;
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
 import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
 import net.rossonet.ptalk.channel.simulation.FakePTalkEngine;
@@ -21,7 +20,7 @@ public class TelegramInteractionTests {
 
 	private static final int UNIT_PORT = 11253;
 
-	private static final int CORE_PORT = 11253;
+	private static final int CORE_PORT = 11254;
 
 	private static final long SLEEP = 5 * 60000; // n minuti
 
@@ -29,9 +28,6 @@ public class TelegramInteractionTests {
 
 	private FakePTalkEngine ptalkEngine = null;
 	private final String uniqueName = UUID.randomUUID().toString();
-
-	//private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
-	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
 
 	private TelegramConnector telegramConnector;
 	private PTalkChannelRuntime pTalkChannelRuntime;
@@ -51,8 +47,8 @@ public class TelegramInteractionTests {
 			telegramConnector.setChannelRuntime(pTalkChannelRuntime);
 
 			Thread.sleep(SLEEP);
-			telegramConnector.close();			
-			ptalkEngine.close(); 
+			telegramConnector.close();
+			ptalkEngine.close();
 		} catch (final Exception a) {
 			logger.severe("Error: ");// + a.getMessage());
 			a.printStackTrace();
@@ -61,7 +57,7 @@ public class TelegramInteractionTests {
 					ptalkEngine.close();
 				} catch (final IOException e) {
 					logger.severe("Error: ");// + e.getMessage());
-					e.printStackTrace();	
+					e.printStackTrace();
 				}
 			}
 

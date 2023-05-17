@@ -8,6 +8,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -138,6 +139,10 @@ public class SimpleRuleNluTests {
 
 	private int channelUnitPort;
 
+	private ManagedChannel channelUnit;
+
+	private ManagedChannel nluUnit;
+
 	@BeforeEach
 	public void assignPorts() {
 		nluUnitPort = NetworkHelper.findAvailablePort(5610);
@@ -178,11 +183,31 @@ public class SimpleRuleNluTests {
 		// System.out.println("\n\n" + configuration + "\n\n");
 		pTalkEngineRuntime.replaceJsonConfiguration(configuration);
 		final JSONObject json = pTalkEngineRuntime.getJsonConfiguration();
-		// System.out.println(json.toString(2));
+		System.out.println(json.toString(2));
+	}
+
+	private void registerChannelUnit() {
+		channelUnit = getManagedChannel();
+		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.CHANNEL)
+				.setUnitUniqueName(TEST_CHANNEL_UNIQUE_NAME).setHost("127.0.0.1").setPort(channelUnitPort).build();
+		RpcCoreV1Grpc.newBlockingStub(channelUnit).register(registerRequest);
+
+	}
+
+	private void registerNLuUnit() {
+		nluUnit = getManagedChannel();
+		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.NLU)
+				.setUnitUniqueName(TEST_NLU_UNIQUE_NAME).setHost("127.0.0.1").setPort(nluUnitPort).build();
+		RpcCoreV1Grpc.newBlockingStub(nluUnit).register(registerRequest);
+
+	}
+
+	public void setComplete(boolean complete) {
+		this.complete = complete;
 	}
 
 	@Test
-	public void loadSingleRuleConfiguration() throws TaskManagerException, IOException {
+	public void simpleNluQueryTest() throws TaskManagerException, IOException, InterruptedException {
 		loadSingleRule();
 		final RpcChannelCoreV1BlockingStub inputChannel = getInputChannel();
 		createOutputChannel();
@@ -193,28 +218,13 @@ public class SimpleRuleNluTests {
 				.setMessage(Data.newBuilder().setValue(checkValue).build()).build();
 		final ChannelMessageReply reply = inputChannel.callSync(request);
 		System.out.println(reply.toString());
+		channelUnit.shutdown();
+		channelUnit.awaitTermination(30, TimeUnit.SECONDS);
+		nluUnit.shutdown();
+		nluUnit.awaitTermination(30, TimeUnit.SECONDS);
 		server.shutdown();
+		server.awaitTermination(30, TimeUnit.SECONDS);
 		assertTrue(complete);
-	}
-
-	private void registerChannelUnit() {
-		final ManagedChannel mc = getManagedChannel();
-		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.CHANNEL)
-				.setUnitUniqueName(TEST_CHANNEL_UNIQUE_NAME).setHost("127.0.0.1").setPort(channelUnitPort).build();
-		RpcCoreV1Grpc.newBlockingStub(mc).register(registerRequest);
-
-	}
-
-	private void registerNLuUnit() {
-		final ManagedChannel mc = getManagedChannel();
-		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.NLU)
-				.setUnitUniqueName(TEST_NLU_UNIQUE_NAME).setHost("127.0.0.1").setPort(nluUnitPort).build();
-		RpcCoreV1Grpc.newBlockingStub(mc).register(registerRequest);
-
-	}
-
-	public void setComplete(boolean complete) {
-		this.complete = complete;
 	}
 
 }
