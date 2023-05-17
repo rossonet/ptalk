@@ -33,8 +33,11 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 		try {
 			closed = telegramBot.execute(new Close());
 			telegramBot.onClosing();
-		} catch (final TelegramApiException e1) {
-			logger.severe("Error stopping bot: " + e1.getMessage());
+
+		} catch (TelegramApiException e1) {
+			logger.severe("Error stopping bot: ");// + e1.getMessage());
+			e1.printStackTrace();
+
 		}
 		if (closed) {
 			logger.info("Bot Stopped.");
@@ -58,8 +61,11 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 				} else {
 					logger.info("Server NOT stopped!");
 				}
-			} catch (final InterruptedException e) {
-				logger.severe("Error waiting for server termination: " + e.getMessage());
+
+			} catch (InterruptedException e) {
+				logger.severe("Error waiting for server termination: ");// + e.getMessage());
+				e.printStackTrace();
+
 			}
 		} else {
 			logger.severe("Server is null!");
@@ -85,10 +91,14 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 			logger.info("Bot Successfully Connected");
 			telegramBot.setPTalkChannelRuntime(pTalkChannelRuntime);
 			telegramBot.setTelegramConnector(this);
-		} catch (final TelegramApiRequestException e1) {
-			logger.severe("Error starting the server: " + e1.getMessage());
-		} catch (final Exception e2) {
-			logger.severe("Error starting the server: " + e2.getMessage());
+
+		} catch (TelegramApiRequestException e1) {
+			logger.severe("Error starting the server: " );//+ e1.getMessage());   
+			e1.printStackTrace();
+		} catch (Exception e2) {
+			logger.severe("Error starting the server: ");// + e2.getMessage());
+			e2.printStackTrace();
+
 		}
 	}
 
