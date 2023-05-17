@@ -19,13 +19,13 @@ import net.rossonet.ptalk.engine.exceptions.LoadingTaskRulesException;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.engine.parameter.ExecutionParameters;
 import net.rossonet.ptalk.engine.runtime.callable.RulesEngineRunnerCallable;
-import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
-import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopManagerFact;
 import net.rossonet.ptalk.engine.runtime.fact.ability.AbilityCommunicationFact;
 import net.rossonet.ptalk.engine.runtime.fact.ai.AiManagerFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.ChannelCommunicationFact;
 import net.rossonet.ptalk.engine.runtime.fact.extensions.ExtensionsManagerFact;
 import net.rossonet.ptalk.engine.runtime.fact.memory.MemoryManagerFact;
+import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHop;
+import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHopManagerFact;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluCommunicationFact;
 import net.rossonet.ptalk.engine.runtime.fact.superManager.SuperManagerFact;
 

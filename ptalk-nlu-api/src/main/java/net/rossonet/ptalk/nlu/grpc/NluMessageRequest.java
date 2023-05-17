@@ -53,6 +53,10 @@ private static final long serialVersionUID = 0L;
   public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
   private volatile java.lang.Object flowReference_;
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
@@ -70,6 +74,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
@@ -91,6 +99,10 @@ private static final long serialVersionUID = 0L;
   public static final int MESSAGEREFERENCE_FIELD_NUMBER = 2;
   private volatile java.lang.Object messageReference_;
   /**
+   * <pre>
+   * in case this request is related to a channel message, here we have the channelUniqueMessageId
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The messageReference.
    */
@@ -108,6 +120,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * in case this request is related to a channel message, here we have the channelUniqueMessageId
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The bytes for messageReference.
    */
@@ -129,6 +145,10 @@ private static final long serialVersionUID = 0L;
   public static final int ORIGINCONTEXT_FIELD_NUMBER = 3;
   private volatile java.lang.Object originContext_;
   /**
+   * <pre>
+   * context in original format
+   * </pre>
+   *
    * <code>string originContext = 3;</code>
    * @return The originContext.
    */
@@ -146,6 +166,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * context in original format
+   * </pre>
+   *
    * <code>string originContext = 3;</code>
    * @return The bytes for originContext.
    */
@@ -167,6 +191,10 @@ private static final long serialVersionUID = 0L;
   public static final int MODEL_FIELD_NUMBER = 4;
   private net.rossonet.ptalk.nlu.grpc.NluModel model_;
   /**
+   * <pre>
+   * the target model
+   * </pre>
+   *
    * <code>.nlu.NluModel model = 4;</code>
    * @return Whether the model field is set.
    */
@@ -175,6 +203,10 @@ private static final long serialVersionUID = 0L;
     return model_ != null;
   }
   /**
+   * <pre>
+   * the target model
+   * </pre>
+   *
    * <code>.nlu.NluModel model = 4;</code>
    * @return The model.
    */
@@ -183,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return model_ == null ? net.rossonet.ptalk.nlu.grpc.NluModel.getDefaultInstance() : model_;
   }
   /**
+   * <pre>
+   * the target model
+   * </pre>
+   *
    * <code>.nlu.NluModel model = 4;</code>
    */
   @java.lang.Override
@@ -193,6 +229,10 @@ private static final long serialVersionUID = 0L;
   public static final int REPLYTASK_FIELD_NUMBER = 5;
   private volatile java.lang.Object replyTask_;
   /**
+   * <pre>
+   * the core engine task to reply to
+   * </pre>
+   *
    * <code>string replyTask = 5;</code>
    * @return The replyTask.
    */
@@ -210,6 +250,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * the core engine task to reply to
+   * </pre>
+   *
    * <code>string replyTask = 5;</code>
    * @return The bytes for replyTask.
    */
@@ -231,6 +275,10 @@ private static final long serialVersionUID = 0L;
   public static final int MESSAGE_FIELD_NUMBER = 6;
   private net.rossonet.ptalk.base.grpc.Data message_;
   /**
+   * <pre>
+   * the base text message
+   * </pre>
+   *
    * <code>.base.Data message = 6;</code>
    * @return Whether the message field is set.
    */
@@ -239,6 +287,10 @@ private static final long serialVersionUID = 0L;
     return message_ != null;
   }
   /**
+   * <pre>
+   * the base text message
+   * </pre>
+   *
    * <code>.base.Data message = 6;</code>
    * @return The message.
    */
@@ -247,6 +299,10 @@ private static final long serialVersionUID = 0L;
     return message_ == null ? net.rossonet.ptalk.base.grpc.Data.getDefaultInstance() : message_;
   }
   /**
+   * <pre>
+   * the base text message
+   * </pre>
+   *
    * <code>.base.Data message = 6;</code>
    */
   @java.lang.Override
@@ -257,6 +313,10 @@ private static final long serialVersionUID = 0L;
   public static final int CONTEXTJSON_FIELD_NUMBER = 7;
   private volatile java.lang.Object contextJson_;
   /**
+   * <pre>
+   * context in json format
+   * </pre>
+   *
    * <code>string contextJson = 7;</code>
    * @return The contextJson.
    */
@@ -274,6 +334,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * context in json format
+   * </pre>
+   *
    * <code>string contextJson = 7;</code>
    * @return The bytes for contextJson.
    */
@@ -295,6 +359,10 @@ private static final long serialVersionUID = 0L;
   public static final int ADDITIONALDATAS_FIELD_NUMBER = 8;
   private java.util.List<net.rossonet.ptalk.base.grpc.Data> additionalDatas_;
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 8;</code>
    */
   @java.lang.Override
@@ -302,6 +370,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_;
   }
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 8;</code>
    */
   @java.lang.Override
@@ -310,6 +382,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_;
   }
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 8;</code>
    */
   @java.lang.Override
@@ -317,6 +393,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_.size();
   }
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 8;</code>
    */
   @java.lang.Override
@@ -324,6 +404,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_.get(index);
   }
   /**
+   * <pre>
+   * array of additional datas
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 8;</code>
    */
   @java.lang.Override
@@ -401,6 +485,10 @@ private static final long serialVersionUID = 0L;
   public static final int TRACELOG_FIELD_NUMBER = 11;
   private boolean traceLog_;
   /**
+   * <pre>
+   * enable or disable trace log function
+   * </pre>
+   *
    * <code>bool traceLog = 11;</code>
    * @return The traceLog.
    */
@@ -1086,6 +1174,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object flowReference_ = "";
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return The flowReference.
      */
@@ -1102,6 +1194,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return The bytes for flowReference.
      */
@@ -1119,6 +1215,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @param value The flowReference to set.
      * @return This builder for chaining.
@@ -1134,6 +1234,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return This builder for chaining.
      */
@@ -1144,6 +1248,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @param value The bytes for flowReference to set.
      * @return This builder for chaining.
@@ -1162,6 +1270,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object messageReference_ = "";
     /**
+     * <pre>
+     * in case this request is related to a channel message, here we have the channelUniqueMessageId
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @return The messageReference.
      */
@@ -1178,6 +1290,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * in case this request is related to a channel message, here we have the channelUniqueMessageId
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @return The bytes for messageReference.
      */
@@ -1195,6 +1311,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * in case this request is related to a channel message, here we have the channelUniqueMessageId
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @param value The messageReference to set.
      * @return This builder for chaining.
@@ -1210,6 +1330,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * in case this request is related to a channel message, here we have the channelUniqueMessageId
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @return This builder for chaining.
      */
@@ -1220,6 +1344,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * in case this request is related to a channel message, here we have the channelUniqueMessageId
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @param value The bytes for messageReference to set.
      * @return This builder for chaining.
@@ -1238,6 +1366,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object originContext_ = "";
     /**
+     * <pre>
+     * context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @return The originContext.
      */
@@ -1254,6 +1386,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @return The bytes for originContext.
      */
@@ -1271,6 +1407,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @param value The originContext to set.
      * @return This builder for chaining.
@@ -1286,6 +1426,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @return This builder for chaining.
      */
@@ -1296,6 +1440,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @param value The bytes for originContext to set.
      * @return This builder for chaining.
@@ -1316,6 +1464,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         net.rossonet.ptalk.nlu.grpc.NluModel, net.rossonet.ptalk.nlu.grpc.NluModel.Builder, net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder> modelBuilder_;
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      * @return Whether the model field is set.
      */
@@ -1323,6 +1475,10 @@ private static final long serialVersionUID = 0L;
       return modelBuilder_ != null || model_ != null;
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      * @return The model.
      */
@@ -1334,6 +1490,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      */
     public Builder setModel(net.rossonet.ptalk.nlu.grpc.NluModel value) {
@@ -1350,6 +1510,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      */
     public Builder setModel(
@@ -1364,6 +1528,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      */
     public Builder mergeModel(net.rossonet.ptalk.nlu.grpc.NluModel value) {
@@ -1382,6 +1550,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      */
     public Builder clearModel() {
@@ -1396,6 +1568,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      */
     public net.rossonet.ptalk.nlu.grpc.NluModel.Builder getModelBuilder() {
@@ -1404,6 +1580,10 @@ private static final long serialVersionUID = 0L;
       return getModelFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      */
     public net.rossonet.ptalk.nlu.grpc.NluModelOrBuilder getModelOrBuilder() {
@@ -1415,6 +1595,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the target model
+     * </pre>
+     *
      * <code>.nlu.NluModel model = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1433,6 +1617,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object replyTask_ = "";
     /**
+     * <pre>
+     * the core engine task to reply to
+     * </pre>
+     *
      * <code>string replyTask = 5;</code>
      * @return The replyTask.
      */
@@ -1449,6 +1637,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the core engine task to reply to
+     * </pre>
+     *
      * <code>string replyTask = 5;</code>
      * @return The bytes for replyTask.
      */
@@ -1466,6 +1658,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the core engine task to reply to
+     * </pre>
+     *
      * <code>string replyTask = 5;</code>
      * @param value The replyTask to set.
      * @return This builder for chaining.
@@ -1481,6 +1677,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the core engine task to reply to
+     * </pre>
+     *
      * <code>string replyTask = 5;</code>
      * @return This builder for chaining.
      */
@@ -1491,6 +1691,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the core engine task to reply to
+     * </pre>
+     *
      * <code>string replyTask = 5;</code>
      * @param value The bytes for replyTask to set.
      * @return This builder for chaining.
@@ -1511,6 +1715,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> messageBuilder_;
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      * @return Whether the message field is set.
      */
@@ -1518,6 +1726,10 @@ private static final long serialVersionUID = 0L;
       return messageBuilder_ != null || message_ != null;
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      * @return The message.
      */
@@ -1529,6 +1741,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      */
     public Builder setMessage(net.rossonet.ptalk.base.grpc.Data value) {
@@ -1545,6 +1761,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      */
     public Builder setMessage(
@@ -1559,6 +1779,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      */
     public Builder mergeMessage(net.rossonet.ptalk.base.grpc.Data value) {
@@ -1577,6 +1801,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      */
     public Builder clearMessage() {
@@ -1591,6 +1819,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder getMessageBuilder() {
@@ -1599,6 +1831,10 @@ private static final long serialVersionUID = 0L;
       return getMessageFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      */
     public net.rossonet.ptalk.base.grpc.DataOrBuilder getMessageOrBuilder() {
@@ -1610,6 +1846,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the base text message
+     * </pre>
+     *
      * <code>.base.Data message = 6;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1628,6 +1868,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object contextJson_ = "";
     /**
+     * <pre>
+     * context in json format
+     * </pre>
+     *
      * <code>string contextJson = 7;</code>
      * @return The contextJson.
      */
@@ -1644,6 +1888,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * context in json format
+     * </pre>
+     *
      * <code>string contextJson = 7;</code>
      * @return The bytes for contextJson.
      */
@@ -1661,6 +1909,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * context in json format
+     * </pre>
+     *
      * <code>string contextJson = 7;</code>
      * @param value The contextJson to set.
      * @return This builder for chaining.
@@ -1676,6 +1928,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * context in json format
+     * </pre>
+     *
      * <code>string contextJson = 7;</code>
      * @return This builder for chaining.
      */
@@ -1686,6 +1942,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * context in json format
+     * </pre>
+     *
      * <code>string contextJson = 7;</code>
      * @param value The bytes for contextJson to set.
      * @return This builder for chaining.
@@ -1715,6 +1975,10 @@ private static final long serialVersionUID = 0L;
         net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> additionalDatasBuilder_;
 
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data> getAdditionalDatasList() {
@@ -1725,6 +1989,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public int getAdditionalDatasCount() {
@@ -1735,6 +2003,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index) {
@@ -1745,6 +2017,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder setAdditionalDatas(
@@ -1762,6 +2038,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder setAdditionalDatas(
@@ -1776,6 +2056,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder addAdditionalDatas(net.rossonet.ptalk.base.grpc.Data value) {
@@ -1792,6 +2076,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder addAdditionalDatas(
@@ -1809,6 +2097,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder addAdditionalDatas(
@@ -1823,6 +2115,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder addAdditionalDatas(
@@ -1837,6 +2133,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder addAllAdditionalDatas(
@@ -1852,6 +2152,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder clearAdditionalDatas() {
@@ -1865,6 +2169,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public Builder removeAdditionalDatas(int index) {
@@ -1878,6 +2186,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder getAdditionalDatasBuilder(
@@ -1885,6 +2197,10 @@ private static final long serialVersionUID = 0L;
       return getAdditionalDatasFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
@@ -1895,6 +2211,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
@@ -1906,6 +2226,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addAdditionalDatasBuilder() {
@@ -1913,6 +2237,10 @@ private static final long serialVersionUID = 0L;
           net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addAdditionalDatasBuilder(
@@ -1921,6 +2249,10 @@ private static final long serialVersionUID = 0L;
           index, net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * array of additional datas
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 8;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data.Builder> 
@@ -2303,6 +2635,10 @@ private static final long serialVersionUID = 0L;
 
     private boolean traceLog_ ;
     /**
+     * <pre>
+     * enable or disable trace log function
+     * </pre>
+     *
      * <code>bool traceLog = 11;</code>
      * @return The traceLog.
      */
@@ -2311,6 +2647,10 @@ private static final long serialVersionUID = 0L;
       return traceLog_;
     }
     /**
+     * <pre>
+     * enable or disable trace log function
+     * </pre>
+     *
      * <code>bool traceLog = 11;</code>
      * @param value The traceLog to set.
      * @return This builder for chaining.
@@ -2322,6 +2662,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * enable or disable trace log function
+     * </pre>
+     *
      * <code>bool traceLog = 11;</code>
      * @return This builder for chaining.
      */

@@ -19,14 +19,14 @@
         "name": "query NLU",
         "description": "send message string to nlu",
         "priority": 6,
-        "actions": ["nlu_reply = nlu_communication.query(\"test_model\", message_fact.getMessageValue());"]
+        "actions": ["nlu_reply = nlu_communication.query(\"test_model\", \"trace_123\", message_fact.getMessageValue()); extensions_manager.addFact(\"nlu_reply\", nlu_reply);"]
       },
       {
         "condition": "true",
         "name": "reply to message",
         "description": "when receive a message, print the content",
         "priority": 9,
-        "actions": ["channel_communication.sendMessage(message_fact, \"NLU REPLY \" + nlu_reply.getMessageValue());"]
+        "actions": ["channel_communication.sendMessage(message_fact.getChannelUniqueName(), \"NLU REPLY \" + nlu_reply.getMessageValue());"]
       }],
 
     "name": "input channel rule test"

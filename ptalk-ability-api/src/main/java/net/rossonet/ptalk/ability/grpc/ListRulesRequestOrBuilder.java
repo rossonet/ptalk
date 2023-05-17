@@ -20,6 +20,18 @@ public interface ListRulesRequestOrBuilder extends
       getFlowReferenceBytes();
 
   /**
+   * <code>string filter = 2;</code>
+   * @return The filter.
+   */
+  java.lang.String getFilter();
+  /**
+   * <code>string filter = 2;</code>
+   * @return The bytes for filter.
+   */
+  com.google.protobuf.ByteString
+      getFilterBytes();
+
+  /**
    * <code>.base.Timestamp timestamp = 3;</code>
    * @return Whether the timestamp field is set.
    */

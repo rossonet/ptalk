@@ -63,7 +63,7 @@ public class SimpleRuleChannelTests {
 
 	private static final String TEST_CHANNEL_UNIQUE_NAME = "test-channel";
 
-	private static final int GRPC_UNIT_TEST_PORT = 8650;
+	private static final int GRPC_UNIT_TEST_PORT = 8250;
 
 	private static PTalkEngineRuntime pTalkEngineRuntime = null;
 

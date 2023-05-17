@@ -94,81 +94,84 @@ public final class PtalkNluApi {
   static {
     java.lang.String[] descriptorData = {
       "\n\023ptalk-nlu-api.proto\022\003nlu\032\024ptalk-base-a" +
-      "pi.proto\"K\n\010NluModel\022\032\n\022requiredCapabili" +
-      "ty\030\001 \001(\t\022\r\n\005model\030\002 \001(\t\022\024\n\014modelVersion\030" +
-      "\003 \001(\t\"X\n\017TrainingLineLog\022\"\n\ttimestamp\030\001 " +
-      "\001(\0132\017.base.Timestamp\022\020\n\010logLevel\030\002 \001(\t\022\017" +
-      "\n\007message\030\003 \001(\t\"\262\002\n\021NluMessageRequest\022\025\n" +
-      "\rflowReference\030\001 \001(\t\022\030\n\020messageReference" +
-      "\030\002 \001(\t\022\025\n\roriginContext\030\003 \001(\t\022\034\n\005model\030\004" +
-      " \001(\0132\r.nlu.NluModel\022\021\n\treplyTask\030\005 \001(\t\022\033" +
-      "\n\007message\030\006 \001(\0132\n.base.Data\022\023\n\013contextJs" +
-      "on\030\007 \001(\t\022#\n\017additionalDatas\030\010 \003(\0132\n.base" +
-      ".Data\022\027\n\004tags\030\t \003(\0132\t.base.Tag\022\"\n\ttimest" +
-      "amp\030\n \001(\0132\017.base.Timestamp\022\020\n\010traceLog\030\013" +
-      " \001(\010\"\314\002\n\017NluMessageReply\022\025\n\rflowReferenc" +
-      "e\030\001 \001(\t\022\030\n\020messageReference\030\002 \001(\t\022\025\n\rori" +
-      "ginContext\030\003 \001(\t\022\034\n\005model\030\004 \001(\0132\r.nlu.Nl" +
-      "uModel\022\014\n\004task\030\005 \001(\t\022\031\n\005reply\030\006 \001(\0132\n.ba" +
-      "se.Data\022\023\n\013contextJson\030\007 \001(\t\022!\n\006status\030\010" +
-      " \001(\0162\021.base.StatusValue\022#\n\017additionalDat" +
-      "as\030\t \003(\0132\n.base.Data\022\027\n\004tags\030\n \003(\0132\t.bas" +
-      "e.Tag\022\"\n\ttimestamp\030\013 \001(\0132\017.base.Timestam" +
-      "p\022\020\n\010traceLog\030\014 \001(\010\"\264\002\n\027NluTrainingModel" +
-      "Request\022\025\n\rflowReference\030\001 \001(\t\022\034\n\005model\030" +
-      "\002 \001(\0132\r.nlu.NluModel\022\023\n\013trainingJob\030\003 \001(" +
-      "\t\022\017\n\007testJob\030\004 \001(\t\022 \n\014trainingData\030\005 \003(\013" +
-      "2\n.base.Data\022\034\n\010testData\030\006 \003(\0132\n.base.Da" +
-      "ta\022\"\n\016trainingSecret\030\007 \003(\0132\n.base.Data\022\036" +
-      "\n\ntestSecret\030\010 \003(\0132\n.base.Data\022\026\n\016timeou" +
-      "tMinutes\030\t \001(\005\022\"\n\ttimestamp\030\n \001(\0132\017.base" +
-      ".Timestamp\"\215\002\n\025NluTrainingModelReply\022\025\n\r" +
-      "flowReference\030\001 \001(\t\022\034\n\005model\030\002 \001(\0132\r.nlu" +
-      ".NluModel\022!\n\006status\030\003 \001(\0162\021.base.StatusV" +
-      "alue\022\024\n\014trainingTime\030\004 \001(\003\022\020\n\010testTime\030\005" +
-      " \001(\003\022)\n\013trainingLog\030\006 \003(\0132\024.nlu.Training" +
-      "LineLog\022%\n\007testLog\030\007 \003(\0132\024.nlu.TrainingL" +
-      "ineLog\022\"\n\ttimestamp\030\010 \001(\0132\017.base.Timesta" +
-      "mp\"Q\n\024NluListModelsRequest\022\025\n\rflowRefere" +
-      "nce\030\001 \001(\t\022\"\n\ttimestamp\030\002 \001(\0132\017.base.Time" +
-      "stamp\"\220\001\n\022NluListModelsReply\022\025\n\rflowRefe" +
-      "rence\030\001 \001(\t\022\034\n\005model\030\002 \003(\0132\r.nlu.NluMode" +
-      "l\022!\n\006status\030\003 \001(\0162\021.base.StatusValue\022\"\n\t" +
-      "timestamp\030\004 \001(\0132\017.base.Timestamp\"p\n\025NluD" +
-      "eleteModelRequest\022\025\n\rflowReference\030\001 \001(\t" +
-      "\022\034\n\005model\030\002 \001(\0132\r.nlu.NluModel\022\"\n\ttimest" +
-      "amp\030\003 \001(\0132\017.base.Timestamp\"s\n\023NluDeleteM" +
-      "odelReply\022\025\n\rflowReference\030\001 \001(\t\022!\n\006stat" +
-      "us\030\002 \001(\0162\021.base.StatusValue\022\"\n\ttimestamp" +
-      "\030\003 \001(\0132\017.base.Timestamp\"r\n\027NluSnapshotMo" +
-      "delRequest\022\025\n\rflowReference\030\001 \001(\t\022\034\n\005mod" +
-      "el\030\002 \001(\0132\r.nlu.NluModel\022\"\n\ttimestamp\030\003 \001" +
-      "(\0132\017.base.Timestamp\"\234\001\n\025NluSnapshotModel" +
-      "Reply\022\025\n\rflowReference\030\001 \001(\t\022!\n\006status\030\002" +
-      " \001(\0162\021.base.StatusValue\022\"\n\ttimestamp\030\003 \001" +
-      "(\0132\017.base.Timestamp\022%\n\021modelSnapshotData" +
-      "\030\004 \003(\0132\n.base.Data\"\230\001\n\026NluRestoreModelRe" +
-      "quest\022\025\n\rflowReference\030\001 \001(\t\022\034\n\005model\030\002 " +
-      "\001(\0132\r.nlu.NluModel\022\"\n\ttimestamp\030\003 \001(\0132\017." +
-      "base.Timestamp\022%\n\021modelSnapshotData\030\004 \003(" +
-      "\0132\n.base.Data\"t\n\024NluRestoreModelReply\022\025\n" +
-      "\rflowReference\030\001 \001(\t\022!\n\006status\030\002 \001(\0162\021.b" +
-      "ase.StatusValue\022\"\n\ttimestamp\030\003 \001(\0132\017.bas" +
-      "e.Timestamp2U\n\014RpcNluCoreV1\022E\n\027ReplyTrai" +
-      "ningModelAsync\022\032.nlu.NluTrainingModelRep" +
-      "ly\032\014.base.Status\"\0002\255\003\n\014RpcNluUnitV1\022:\n\010C" +
-      "allSync\022\026.nlu.NluMessageRequest\032\024.nlu.Nl" +
-      "uMessageReply\"\000\022?\n\017TrainModelAsync\022\034.nlu" +
-      ".NluTrainingModelRequest\032\014.base.Status\"\000" +
-      "\022B\n\nListModels\022\031.nlu.NluListModelsReques" +
-      "t\032\027.nlu.NluListModelsReply\"\000\022E\n\013DeleteMo" +
-      "del\022\032.nlu.NluDeleteModelRequest\032\030.nlu.Nl" +
-      "uDeleteModelReply\"\000\022K\n\rSnapshotModel\022\034.n" +
-      "lu.NluSnapshotModelRequest\032\032.nlu.NluSnap" +
-      "shotModelReply\"\000\022H\n\014RestoreModel\022\033.nlu.N" +
-      "luRestoreModelRequest\032\031.nlu.NluRestoreMo" +
-      "delReply\"\000B,\n\033net.rossonet.ptalk.nlu.grp" +
-      "cB\013PtalkNluApiP\001b\006proto3"
+      "pi.proto\"\224\001\n\010NluModel\022\032\n\022requiredCapabil" +
+      "ity\030\001 \001(\t\022\r\n\005model\030\002 \001(\t\022\024\n\014modelVersion" +
+      "\030\003 \001(\t\022\032\n\022jsonModelSignature\030\004 \001(\t\022\024\n\014in" +
+      "putExample\030\005 \001(\t\022\025\n\routputExample\030\006 \001(\t\"" +
+      "X\n\017TrainingLineLog\022\"\n\ttimestamp\030\001 \001(\0132\017." +
+      "base.Timestamp\022\020\n\010logLevel\030\002 \001(\t\022\017\n\007mess" +
+      "age\030\003 \001(\t\"\262\002\n\021NluMessageRequest\022\025\n\rflowR" +
+      "eference\030\001 \001(\t\022\030\n\020messageReference\030\002 \001(\t" +
+      "\022\025\n\roriginContext\030\003 \001(\t\022\034\n\005model\030\004 \001(\0132\r" +
+      ".nlu.NluModel\022\021\n\treplyTask\030\005 \001(\t\022\033\n\007mess" +
+      "age\030\006 \001(\0132\n.base.Data\022\023\n\013contextJson\030\007 \001" +
+      "(\t\022#\n\017additionalDatas\030\010 \003(\0132\n.base.Data\022" +
+      "\027\n\004tags\030\t \003(\0132\t.base.Tag\022\"\n\ttimestamp\030\n " +
+      "\001(\0132\017.base.Timestamp\022\020\n\010traceLog\030\013 \001(\010\"\314" +
+      "\002\n\017NluMessageReply\022\025\n\rflowReference\030\001 \001(" +
+      "\t\022\030\n\020messageReference\030\002 \001(\t\022\025\n\roriginCon" +
+      "text\030\003 \001(\t\022\034\n\005model\030\004 \001(\0132\r.nlu.NluModel" +
+      "\022\014\n\004task\030\005 \001(\t\022\031\n\005reply\030\006 \001(\0132\n.base.Dat" +
+      "a\022\023\n\013contextJson\030\007 \001(\t\022!\n\006status\030\010 \001(\0162\021" +
+      ".base.StatusValue\022#\n\017additionalDatas\030\t \003" +
+      "(\0132\n.base.Data\022\027\n\004tags\030\n \003(\0132\t.base.Tag\022" +
+      "\"\n\ttimestamp\030\013 \001(\0132\017.base.Timestamp\022\020\n\010t" +
+      "raceLog\030\014 \001(\010\"\314\002\n\027NluTrainingModelReques" +
+      "t\022\025\n\rflowReference\030\001 \001(\t\022\034\n\005model\030\002 \001(\0132" +
+      "\r.nlu.NluModel\022\023\n\013trainingJob\030\003 \001(\t\022\017\n\007t" +
+      "estJob\030\004 \001(\t\022 \n\014trainingData\030\005 \003(\0132\n.bas" +
+      "e.Data\022\034\n\010testData\030\006 \003(\0132\n.base.Data\022\"\n\016" +
+      "trainingSecret\030\007 \003(\0132\n.base.Data\022\036\n\ntest" +
+      "Secret\030\010 \003(\0132\n.base.Data\022\026\n\016timeoutMinut" +
+      "es\030\t \001(\005\022\"\n\ttimestamp\030\n \001(\0132\017.base.Times" +
+      "tamp\022\026\n\016trainingEngine\030\013 \001(\t\"\215\002\n\025NluTrai" +
+      "ningModelReply\022\025\n\rflowReference\030\001 \001(\t\022\034\n" +
+      "\005model\030\002 \001(\0132\r.nlu.NluModel\022!\n\006status\030\003 " +
+      "\001(\0162\021.base.StatusValue\022\024\n\014trainingTime\030\004" +
+      " \001(\003\022\020\n\010testTime\030\005 \001(\003\022)\n\013trainingLog\030\006 " +
+      "\003(\0132\024.nlu.TrainingLineLog\022%\n\007testLog\030\007 \003" +
+      "(\0132\024.nlu.TrainingLineLog\022\"\n\ttimestamp\030\010 " +
+      "\001(\0132\017.base.Timestamp\"Q\n\024NluListModelsReq" +
+      "uest\022\025\n\rflowReference\030\001 \001(\t\022\"\n\ttimestamp" +
+      "\030\002 \001(\0132\017.base.Timestamp\"\220\001\n\022NluListModel" +
+      "sReply\022\025\n\rflowReference\030\001 \001(\t\022\034\n\005model\030\002" +
+      " \003(\0132\r.nlu.NluModel\022!\n\006status\030\003 \001(\0162\021.ba" +
+      "se.StatusValue\022\"\n\ttimestamp\030\004 \001(\0132\017.base" +
+      ".Timestamp\"p\n\025NluDeleteModelRequest\022\025\n\rf" +
+      "lowReference\030\001 \001(\t\022\034\n\005model\030\002 \001(\0132\r.nlu." +
+      "NluModel\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Times" +
+      "tamp\"s\n\023NluDeleteModelReply\022\025\n\rflowRefer" +
+      "ence\030\001 \001(\t\022!\n\006status\030\002 \001(\0162\021.base.Status" +
+      "Value\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestam" +
+      "p\"r\n\027NluSnapshotModelRequest\022\025\n\rflowRefe" +
+      "rence\030\001 \001(\t\022\034\n\005model\030\002 \001(\0132\r.nlu.NluMode" +
+      "l\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp\"\234\001" +
+      "\n\025NluSnapshotModelReply\022\025\n\rflowReference" +
+      "\030\001 \001(\t\022!\n\006status\030\002 \001(\0162\021.base.StatusValu" +
+      "e\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp\022%\n" +
+      "\021modelSnapshotData\030\004 \003(\0132\n.base.Data\"\230\001\n" +
+      "\026NluRestoreModelRequest\022\025\n\rflowReference" +
+      "\030\001 \001(\t\022\034\n\005model\030\002 \001(\0132\r.nlu.NluModel\022\"\n\t" +
+      "timestamp\030\003 \001(\0132\017.base.Timestamp\022%\n\021mode" +
+      "lSnapshotData\030\004 \003(\0132\n.base.Data\"t\n\024NluRe" +
+      "storeModelReply\022\025\n\rflowReference\030\001 \001(\t\022!" +
+      "\n\006status\030\002 \001(\0162\021.base.StatusValue\022\"\n\ttim" +
+      "estamp\030\003 \001(\0132\017.base.Timestamp2U\n\014RpcNluC" +
+      "oreV1\022E\n\027ReplyTrainingModelAsync\022\032.nlu.N" +
+      "luTrainingModelReply\032\014.base.Status\"\0002\255\003\n" +
+      "\014RpcNluUnitV1\022:\n\010CallSync\022\026.nlu.NluMessa" +
+      "geRequest\032\024.nlu.NluMessageReply\"\000\022?\n\017Tra" +
+      "inModelAsync\022\034.nlu.NluTrainingModelReque" +
+      "st\032\014.base.Status\"\000\022B\n\nListModels\022\031.nlu.N" +
+      "luListModelsRequest\032\027.nlu.NluListModelsR" +
+      "eply\"\000\022E\n\013DeleteModel\022\032.nlu.NluDeleteMod" +
+      "elRequest\032\030.nlu.NluDeleteModelReply\"\000\022K\n" +
+      "\rSnapshotModel\022\034.nlu.NluSnapshotModelReq" +
+      "uest\032\032.nlu.NluSnapshotModelReply\"\000\022H\n\014Re" +
+      "storeModel\022\033.nlu.NluRestoreModelRequest\032" +
+      "\031.nlu.NluRestoreModelReply\"\000B,\n\033net.ross" +
+      "onet.ptalk.nlu.grpcB\013PtalkNluApiP\001b\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -180,7 +183,7 @@ public final class PtalkNluApi {
     internal_static_nlu_NluModel_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluModel_descriptor,
-        new java.lang.String[] { "RequiredCapability", "Model", "ModelVersion", });
+        new java.lang.String[] { "RequiredCapability", "Model", "ModelVersion", "JsonModelSignature", "InputExample", "OutputExample", });
     internal_static_nlu_TrainingLineLog_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_nlu_TrainingLineLog_fieldAccessorTable = new
@@ -204,7 +207,7 @@ public final class PtalkNluApi {
     internal_static_nlu_NluTrainingModelRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_nlu_NluTrainingModelRequest_descriptor,
-        new java.lang.String[] { "FlowReference", "Model", "TrainingJob", "TestJob", "TrainingData", "TestData", "TrainingSecret", "TestSecret", "TimeoutMinutes", "Timestamp", });
+        new java.lang.String[] { "FlowReference", "Model", "TrainingJob", "TestJob", "TrainingData", "TestData", "TrainingSecret", "TestSecret", "TimeoutMinutes", "Timestamp", "TrainingEngine", });
     internal_static_nlu_NluTrainingModelReply_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_nlu_NluTrainingModelReply_fieldAccessorTable = new

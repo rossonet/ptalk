@@ -50,24 +50,44 @@ public interface NluRestoreModelRequestOrBuilder extends
   net.rossonet.ptalk.base.grpc.TimestampOrBuilder getTimestampOrBuilder();
 
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   java.util.List<net.rossonet.ptalk.base.grpc.Data> 
       getModelSnapshotDataList();
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   net.rossonet.ptalk.base.grpc.Data getModelSnapshotData(int index);
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   int getModelSnapshotDataCount();
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
       getModelSnapshotDataOrBuilderList();
   /**
+   * <pre>
+   * model dump
+   * </pre>
+   *
    * <code>repeated .base.Data modelSnapshotData = 4;</code>
    */
   net.rossonet.ptalk.base.grpc.DataOrBuilder getModelSnapshotDataOrBuilder(

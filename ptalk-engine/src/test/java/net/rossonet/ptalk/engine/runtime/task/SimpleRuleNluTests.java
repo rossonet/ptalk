@@ -13,7 +13,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.rossonet.utils.NetworkHelper;
 
 import com.google.common.io.Resources;
 
@@ -23,6 +25,8 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import net.rossonet.ptalk.base.grpc.Data;
+import net.rossonet.ptalk.base.grpc.DataType;
+import net.rossonet.ptalk.base.grpc.Quality;
 import net.rossonet.ptalk.base.grpc.RegisterRequest;
 import net.rossonet.ptalk.base.grpc.RpcCoreV1Grpc;
 import net.rossonet.ptalk.base.grpc.StatusValue;
@@ -38,6 +42,8 @@ import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
 import net.rossonet.ptalk.nlu.grpc.NluListModelsReply;
 import net.rossonet.ptalk.nlu.grpc.NluListModelsRequest;
+import net.rossonet.ptalk.nlu.grpc.NluMessageReply;
+import net.rossonet.ptalk.nlu.grpc.NluMessageRequest;
 import net.rossonet.ptalk.nlu.grpc.NluModel;
 import net.rossonet.ptalk.nlu.grpc.RpcNluUnitV1Grpc.RpcNluUnitV1ImplBase;
 
@@ -61,7 +67,7 @@ public class SimpleRuleNluTests {
 					.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
 					.build());
 			responseObserver.onCompleted();
-			assertEquals("OK " + simpleRuleTests.getCheckValue(), request.getMessage().getValue());
+			assertEquals("NLU REPLY NLU CLASS 123", request.getMessage().getValue());
 			simpleRuleTests.setComplete(true);
 		}
 
@@ -76,6 +82,24 @@ public class SimpleRuleNluTests {
 		}
 
 		@Override
+		public void callSync(NluMessageRequest request, StreamObserver<NluMessageReply> responseObserver) {
+			System.out.println("--- NLU QUERY ---\n" + request.toString());
+			try {
+				final String reply = "NLU CLASS 123";
+				final Data contentReply = Data.newBuilder().setKey("nlu_reply").setQuality(Quality.GOOD)
+						.setTypeData(DataType.STRING).setValue(reply).build();
+				responseObserver.onNext(NluMessageReply.newBuilder().setFlowReference(request.getFlowReference())
+						.setStatus(StatusValue.STATUS_GOOD).setReply(contentReply)
+						.setTimestamp(Timestamp.newBuilder().setMilliSeconds(Instant.now().toEpochMilli()).build())
+						.build());
+				responseObserver.onCompleted();
+				simpleRuleTests.setComplete(true);
+			} catch (final Exception a) {
+				responseObserver.onError(a);
+			}
+		}
+
+		@Override
 		public void listModels(NluListModelsRequest request, StreamObserver<NluListModelsReply> responseObserver) {
 			final NluModel model = NluModel.newBuilder().setModel("test_model").build();
 			final NluListModelsReply modelsReply = NluListModelsReply.newBuilder().addModel(model).build();
@@ -87,10 +111,6 @@ public class SimpleRuleNluTests {
 	}
 
 	private static final String TEST_CHANNEL_UNIQUE_NAME = "test-channel";
-
-	private static final int GRPC_UNIT_CHANNEL_TEST_PORT = 8650;
-
-	private static final int GRPC_UNIT_NLU_TEST_PORT = 8655;
 
 	private static final String TEST_NLU_UNIQUE_NAME = "test-nlu";
 
@@ -114,15 +134,24 @@ public class SimpleRuleNluTests {
 
 	private String checkValue = null;
 
+	private int nluUnitPort;
+
+	private int channelUnitPort;
+
+	@BeforeEach
+	public void assignPorts() {
+		nluUnitPort = NetworkHelper.findAvailablePort(5610);
+		channelUnitPort = NetworkHelper.findAvailablePort(5710);
+	}
+
 	private void createNluUnit() throws IOException {
-		server = ServerBuilder.forPort(GRPC_UNIT_NLU_TEST_PORT).addService(new GrpcNluServiceImpl(this)).build();
+		server = ServerBuilder.forPort(nluUnitPort).addService(new GrpcNluServiceImpl(this)).build();
 		server.start();
 		registerNLuUnit();
 	}
 
 	private void createOutputChannel() throws IOException {
-		server = ServerBuilder.forPort(GRPC_UNIT_CHANNEL_TEST_PORT).addService(new GrpcChannelServiceImpl(this))
-				.build();
+		server = ServerBuilder.forPort(channelUnitPort).addService(new GrpcChannelServiceImpl(this)).build();
 		server.start();
 		registerChannelUnit();
 	}
@@ -171,8 +200,7 @@ public class SimpleRuleNluTests {
 	private void registerChannelUnit() {
 		final ManagedChannel mc = getManagedChannel();
 		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.CHANNEL)
-				.setUnitUniqueName(TEST_CHANNEL_UNIQUE_NAME).setHost("127.0.0.1").setPort(GRPC_UNIT_CHANNEL_TEST_PORT)
-				.build();
+				.setUnitUniqueName(TEST_CHANNEL_UNIQUE_NAME).setHost("127.0.0.1").setPort(channelUnitPort).build();
 		RpcCoreV1Grpc.newBlockingStub(mc).register(registerRequest);
 
 	}
@@ -180,7 +208,7 @@ public class SimpleRuleNluTests {
 	private void registerNLuUnit() {
 		final ManagedChannel mc = getManagedChannel();
 		final RegisterRequest registerRequest = RegisterRequest.newBuilder().setUnitType(UnitType.NLU)
-				.setUnitUniqueName(TEST_NLU_UNIQUE_NAME).setHost("127.0.0.1").setPort(GRPC_UNIT_NLU_TEST_PORT).build();
+				.setUnitUniqueName(TEST_NLU_UNIQUE_NAME).setHost("127.0.0.1").setPort(nluUnitPort).build();
 		RpcCoreV1Grpc.newBlockingStub(mc).register(registerRequest);
 
 	}

@@ -4,6 +4,10 @@
 package net.rossonet.ptalk.base.grpc;
 
 /**
+ * <pre>
+ * generic data used in other messages.
+ * </pre>
+ *
  * Protobuf type {@code base.Data}
  */
 public final class Data extends
@@ -53,6 +57,10 @@ private static final long serialVersionUID = 0L;
   public static final int KEY_FIELD_NUMBER = 1;
   private volatile java.lang.Object key_;
   /**
+   * <pre>
+   * the variable name
+   * </pre>
+   *
    * <code>string key = 1;</code>
    * @return The key.
    */
@@ -70,6 +78,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * the variable name
+   * </pre>
+   *
    * <code>string key = 1;</code>
    * @return The bytes for key.
    */
@@ -129,6 +141,10 @@ private static final long serialVersionUID = 0L;
   public static final int TYPEDATA_FIELD_NUMBER = 3;
   private int typeData_;
   /**
+   * <pre>
+   * data type are the basic type plus json for structured data and base64 for binary
+   * </pre>
+   *
    * <code>.base.DataType typeData = 3;</code>
    * @return The enum numeric value on the wire for typeData.
    */
@@ -136,6 +152,10 @@ private static final long serialVersionUID = 0L;
     return typeData_;
   }
   /**
+   * <pre>
+   * data type are the basic type plus json for structured data and base64 for binary
+   * </pre>
+   *
    * <code>.base.DataType typeData = 3;</code>
    * @return The typeData.
    */
@@ -174,6 +194,10 @@ private static final long serialVersionUID = 0L;
   public static final int DISPLAYNAME_FIELD_NUMBER = 5;
   private volatile java.lang.Object displayName_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 5;</code>
    * @return The displayName.
    */
@@ -191,6 +215,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 5;</code>
    * @return The bytes for displayName.
    */
@@ -212,6 +240,10 @@ private static final long serialVersionUID = 0L;
   public static final int SHORTDESCRIPTION_FIELD_NUMBER = 6;
   private volatile java.lang.Object shortDescription_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The shortDescription.
    */
@@ -229,6 +261,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The bytes for shortDescription.
    */
@@ -250,6 +286,10 @@ private static final long serialVersionUID = 0L;
   public static final int DESCRIPTION_FIELD_NUMBER = 7;
   private volatile java.lang.Object description_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The description.
    */
@@ -267,6 +307,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The bytes for description.
    */
@@ -288,6 +332,10 @@ private static final long serialVersionUID = 0L;
   public static final int QUALITY_FIELD_NUMBER = 8;
   private int quality_;
   /**
+   * <pre>
+   * for IIoT context [OPTIONAL]
+   * </pre>
+   *
    * <code>.base.Quality quality = 8;</code>
    * @return The enum numeric value on the wire for quality.
    */
@@ -295,6 +343,10 @@ private static final long serialVersionUID = 0L;
     return quality_;
   }
   /**
+   * <pre>
+   * for IIoT context [OPTIONAL]
+   * </pre>
+   *
    * <code>.base.Quality quality = 8;</code>
    * @return The quality.
    */
@@ -307,6 +359,10 @@ private static final long serialVersionUID = 0L;
   public static final int PRIORITY_FIELD_NUMBER = 9;
   private int priority_;
   /**
+   * <pre>
+   * for QoS context [OPTIONAL]
+   * </pre>
+   *
    * <code>int32 priority = 9;</code>
    * @return The priority.
    */
@@ -318,6 +374,10 @@ private static final long serialVersionUID = 0L;
   public static final int WEIGHT_FIELD_NUMBER = 10;
   private long weight_;
   /**
+   * <pre>
+   * for AI context [OPTIONAL]
+   * </pre>
+   *
    * <code>int64 weight = 10;</code>
    * @return The weight.
    */
@@ -580,6 +640,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * generic data used in other messages.
+   * </pre>
+   *
    * Protobuf type {@code base.Data}
    */
   public static final class Builder extends
@@ -855,6 +919,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object key_ = "";
     /**
+     * <pre>
+     * the variable name
+     * </pre>
+     *
      * <code>string key = 1;</code>
      * @return The key.
      */
@@ -871,6 +939,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the variable name
+     * </pre>
+     *
      * <code>string key = 1;</code>
      * @return The bytes for key.
      */
@@ -888,6 +960,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the variable name
+     * </pre>
+     *
      * <code>string key = 1;</code>
      * @param value The key to set.
      * @return This builder for chaining.
@@ -903,6 +979,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the variable name
+     * </pre>
+     *
      * <code>string key = 1;</code>
      * @return This builder for chaining.
      */
@@ -913,6 +993,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the variable name
+     * </pre>
+     *
      * <code>string key = 1;</code>
      * @param value The bytes for key to set.
      * @return This builder for chaining.
@@ -1007,6 +1091,10 @@ private static final long serialVersionUID = 0L;
 
     private int typeData_ = 0;
     /**
+     * <pre>
+     * data type are the basic type plus json for structured data and base64 for binary
+     * </pre>
+     *
      * <code>.base.DataType typeData = 3;</code>
      * @return The enum numeric value on the wire for typeData.
      */
@@ -1014,6 +1102,10 @@ private static final long serialVersionUID = 0L;
       return typeData_;
     }
     /**
+     * <pre>
+     * data type are the basic type plus json for structured data and base64 for binary
+     * </pre>
+     *
      * <code>.base.DataType typeData = 3;</code>
      * @param value The enum numeric value on the wire for typeData to set.
      * @return This builder for chaining.
@@ -1025,6 +1117,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * data type are the basic type plus json for structured data and base64 for binary
+     * </pre>
+     *
      * <code>.base.DataType typeData = 3;</code>
      * @return The typeData.
      */
@@ -1035,6 +1131,10 @@ private static final long serialVersionUID = 0L;
       return result == null ? net.rossonet.ptalk.base.grpc.DataType.UNRECOGNIZED : result;
     }
     /**
+     * <pre>
+     * data type are the basic type plus json for structured data and base64 for binary
+     * </pre>
+     *
      * <code>.base.DataType typeData = 3;</code>
      * @param value The typeData to set.
      * @return This builder for chaining.
@@ -1049,6 +1149,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * data type are the basic type plus json for structured data and base64 for binary
+     * </pre>
+     *
      * <code>.base.DataType typeData = 3;</code>
      * @return This builder for chaining.
      */
@@ -1180,6 +1284,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object displayName_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 5;</code>
      * @return The displayName.
      */
@@ -1196,6 +1304,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 5;</code>
      * @return The bytes for displayName.
      */
@@ -1213,6 +1325,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 5;</code>
      * @param value The displayName to set.
      * @return This builder for chaining.
@@ -1228,6 +1344,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 5;</code>
      * @return This builder for chaining.
      */
@@ -1238,6 +1358,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 5;</code>
      * @param value The bytes for displayName to set.
      * @return This builder for chaining.
@@ -1256,6 +1380,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object shortDescription_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @return The shortDescription.
      */
@@ -1272,6 +1400,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @return The bytes for shortDescription.
      */
@@ -1289,6 +1421,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @param value The shortDescription to set.
      * @return This builder for chaining.
@@ -1304,6 +1440,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @return This builder for chaining.
      */
@@ -1314,6 +1454,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @param value The bytes for shortDescription to set.
      * @return This builder for chaining.
@@ -1332,6 +1476,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object description_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @return The description.
      */
@@ -1348,6 +1496,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @return The bytes for description.
      */
@@ -1365,6 +1517,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @param value The description to set.
      * @return This builder for chaining.
@@ -1380,6 +1536,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @return This builder for chaining.
      */
@@ -1390,6 +1550,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @param value The bytes for description to set.
      * @return This builder for chaining.
@@ -1408,6 +1572,10 @@ private static final long serialVersionUID = 0L;
 
     private int quality_ = 0;
     /**
+     * <pre>
+     * for IIoT context [OPTIONAL]
+     * </pre>
+     *
      * <code>.base.Quality quality = 8;</code>
      * @return The enum numeric value on the wire for quality.
      */
@@ -1415,6 +1583,10 @@ private static final long serialVersionUID = 0L;
       return quality_;
     }
     /**
+     * <pre>
+     * for IIoT context [OPTIONAL]
+     * </pre>
+     *
      * <code>.base.Quality quality = 8;</code>
      * @param value The enum numeric value on the wire for quality to set.
      * @return This builder for chaining.
@@ -1426,6 +1598,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for IIoT context [OPTIONAL]
+     * </pre>
+     *
      * <code>.base.Quality quality = 8;</code>
      * @return The quality.
      */
@@ -1436,6 +1612,10 @@ private static final long serialVersionUID = 0L;
       return result == null ? net.rossonet.ptalk.base.grpc.Quality.UNRECOGNIZED : result;
     }
     /**
+     * <pre>
+     * for IIoT context [OPTIONAL]
+     * </pre>
+     *
      * <code>.base.Quality quality = 8;</code>
      * @param value The quality to set.
      * @return This builder for chaining.
@@ -1450,6 +1630,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for IIoT context [OPTIONAL]
+     * </pre>
+     *
      * <code>.base.Quality quality = 8;</code>
      * @return This builder for chaining.
      */
@@ -1462,6 +1646,10 @@ private static final long serialVersionUID = 0L;
 
     private int priority_ ;
     /**
+     * <pre>
+     * for QoS context [OPTIONAL]
+     * </pre>
+     *
      * <code>int32 priority = 9;</code>
      * @return The priority.
      */
@@ -1470,6 +1658,10 @@ private static final long serialVersionUID = 0L;
       return priority_;
     }
     /**
+     * <pre>
+     * for QoS context [OPTIONAL]
+     * </pre>
+     *
      * <code>int32 priority = 9;</code>
      * @param value The priority to set.
      * @return This builder for chaining.
@@ -1481,6 +1673,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for QoS context [OPTIONAL]
+     * </pre>
+     *
      * <code>int32 priority = 9;</code>
      * @return This builder for chaining.
      */
@@ -1493,6 +1689,10 @@ private static final long serialVersionUID = 0L;
 
     private long weight_ ;
     /**
+     * <pre>
+     * for AI context [OPTIONAL]
+     * </pre>
+     *
      * <code>int64 weight = 10;</code>
      * @return The weight.
      */
@@ -1501,6 +1701,10 @@ private static final long serialVersionUID = 0L;
       return weight_;
     }
     /**
+     * <pre>
+     * for AI context [OPTIONAL]
+     * </pre>
+     *
      * <code>int64 weight = 10;</code>
      * @param value The weight to set.
      * @return This builder for chaining.
@@ -1512,6 +1716,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for AI context [OPTIONAL]
+     * </pre>
+     *
      * <code>int64 weight = 10;</code>
      * @return This builder for chaining.
      */

@@ -11,27 +11,27 @@ import "ptalk-base-api.proto";
 package channel;
 
 message ChannelMessageRequest {
-  string flowReference = 1;
-  string messageReference = 2;
-  string originContext = 3;
-  string channelUniqueName = 4;
-  string channelUniqueMessageId = 5;
-  string replyTask = 6;
-  base.Data message = 7;
-  string contextJson = 8;
-  repeated base.Data additionalDatas = 9;
+  string flowReference = 1;      // the flow related to this message
+  string messageReference = 2;       // in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+  string originContext = 3;    // should be the NLU related context in original format
+  string channelUniqueName = 4;     // unique name of the target for this message. It is the unique name of the remote interlocutor
+  string channelUniqueMessageId = 5;        // the unique id of this message
+  string replyTask = 6;      // the core engine task to elaborate the message. It is optional
+  base.Data message = 7;      // the textual message
+  string contextJson = 8;    // should be related to the NLU context in json format
+  repeated base.Data additionalDatas = 9;     // should be the media attachments in base64 format
   repeated base.Tag tags = 10;
-  int32 priority = 11;
-  bool traceLog = 12;
+  int32 priority = 11;    // for QoS context [OPTIONAL]
+  bool traceLog = 12;    // enable or disable trace log function
   base.Timestamp timestamp = 13;
-  repeated base.Data traceData = 14;
+  repeated base.Data traceData = 14;    // array of trace data generated if the trace log function is enabled [OPTIONAL]
 }
 
 message ChannelMessageReply {
-  string flowReference = 1;
+  string flowReference = 1;      // the flow related to this message
   base.StatusValue status = 2;
   base.Timestamp timestamp = 3;
-  repeated base.Data traceData = 4;
+  repeated base.Data traceData = 4;    // array of trace data generated if the trace log function is enabled [OPTIONAL]
 }
 
 service RpcChannelCoreV1 {

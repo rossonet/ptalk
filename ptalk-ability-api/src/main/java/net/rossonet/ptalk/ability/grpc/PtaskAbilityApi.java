@@ -151,115 +151,118 @@ public final class PtaskAbilityApi {
       "s\030\005 \001(\0162\021.base.StatusValue\022#\n\017additional" +
       "Datas\030\006 \003(\0132\n.base.Data\022\027\n\004tags\030\007 \003(\0132\t." +
       "base.Tag\022\"\n\ttimestamp\030\010 \001(\0132\017.base.Times" +
-      "tamp\",\n\004Rule\022\026\n\016ruleUniqueName\030\001 \001(\t\022\014\n\004" +
-      "task\030\002 \001(\t\"k\n\021CancelRuleRequest\022\025\n\rflowR" +
-      "eference\030\001 \001(\t\022\033\n\004rule\030\002 \001(\0132\r.ability.R" +
-      "ule\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp\"" +
-      "o\n\017CancelRuleReply\022\025\n\rflowReference\030\001 \001(" +
-      "\t\022!\n\006status\030\002 \001(\0162\021.base.StatusValue\022\"\n\t" +
-      "timestamp\030\003 \001(\0132\017.base.Timestamp\"h\n\016GetR" +
-      "uleRequest\022\025\n\rflowReference\030\001 \001(\t\022\033\n\004rul" +
-      "e\030\002 \001(\0132\r.ability.Rule\022\"\n\ttimestamp\030\003 \001(" +
-      "\0132\017.base.Timestamp\"~\n\014GetRuleReply\022\025\n\rfl" +
-      "owReference\030\001 \001(\t\022\020\n\010jsonRule\030\002 \001(\t\022!\n\006s" +
-      "tatus\030\003 \001(\0162\021.base.StatusValue\022\"\n\ttimest" +
-      "amp\030\004 \001(\0132\017.base.Timestamp\"\275\001\n\023RegisterR" +
-      "uleRequest\022\025\n\rflowReference\030\001 \001(\t\022\033\n\004rul" +
-      "e\030\002 \001(\0132\r.ability.Rule\022\020\n\010jsonRule\030\003 \001(\t" +
-      "\022#\n\017additionalDatas\030\004 \003(\0132\n.base.Data\022\027\n" +
-      "\004tags\030\005 \003(\0132\t.base.Tag\022\"\n\ttimestamp\030\006 \001(" +
-      "\0132\017.base.Timestamp\"\216\001\n\021RegisterRuleReply" +
-      "\022\025\n\rflowReference\030\001 \001(\t\022\033\n\004rule\030\002 \001(\0132\r." +
-      "ability.Rule\022!\n\006status\030\003 \001(\0162\021.base.Stat" +
-      "usValue\022\"\n\ttimestamp\030\004 \001(\0132\017.base.Timest" +
-      "amp\"M\n\020ListRulesRequest\022\025\n\rflowReference" +
-      "\030\001 \001(\t\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timesta" +
-      "mp\"\213\001\n\016ListRulesReply\022\025\n\rflowReference\030\001" +
-      " \001(\t\022\033\n\004rule\030\002 \003(\0132\r.ability.Rule\022!\n\006sta" +
-      "tus\030\003 \001(\0162\021.base.StatusValue\022\"\n\ttimestam" +
-      "p\030\004 \001(\0132\017.base.Timestamp\"z\n\030DumpConfigur" +
-      "ationRequest\022\025\n\rflowReference\030\001 \001(\t\022#\n\017a" +
-      "dditionalDatas\030\002 \003(\0132\n.base.Data\022\"\n\ttime" +
-      "stamp\030\003 \001(\0132\017.base.Timestamp\"\266\001\n\026DumpCon" +
-      "figurationReply\022\025\n\rflowReference\030\001 \001(\t\022#" +
-      "\n\017additionalDatas\030\002 \003(\0132\n.base.Data\022\"\n\tt" +
-      "imestamp\030\003 \001(\0132\017.base.Timestamp\022!\n\006statu" +
-      "s\030\004 \001(\0162\021.base.StatusValue\022\031\n\021configurat" +
-      "ionJson\030\005 \001(\t\"\225\001\n\030PushConfigurationReque" +
-      "st\022\025\n\rflowReference\030\001 \001(\t\022#\n\017additionalD" +
-      "atas\030\002 \003(\0132\n.base.Data\022\"\n\ttimestamp\030\003 \001(" +
-      "\0132\017.base.Timestamp\022\031\n\021configurationJson\030" +
-      "\004 \001(\t\"\233\001\n\026PushConfigurationReply\022\025\n\rflow" +
-      "Reference\030\001 \001(\t\022#\n\017additionalDatas\030\002 \003(\013" +
-      "2\n.base.Data\022\"\n\ttimestamp\030\003 \001(\0132\017.base.T" +
-      "imestamp\022!\n\006status\030\004 \001(\0162\021.base.StatusVa" +
-      "lue\"g\n\031MemoryContextQueryRequest\022\025\n\rflow" +
-      "Reference\030\001 \001(\t\022\017\n\007context\030\002 \001(\t\022\"\n\ttime" +
-      "stamp\030\003 \001(\0132\017.base.Timestamp\"\243\001\n\027MemoryC" +
-      "ontextQueryReply\022\025\n\rflowReference\030\001 \001(\t\022" +
-      "\017\n\007context\030\002 \001(\t\022\031\n\005datas\030\003 \003(\0132\n.base.D" +
-      "ata\022\"\n\ttimestamp\030\004 \001(\0132\017.base.Timestamp\022" +
-      "!\n\006status\030\005 \001(\0162\021.base.StatusValue\"s\n\036Me" +
-      "moryContextManagementRequest\022\017\n\007context\030" +
-      "\001 \001(\t\022%\n\006action\030\002 \001(\0162\025.ability.MemoryAc" +
-      "tion\022\031\n\005datas\030\003 \003(\0132\n.base.Data\"A\n\034Memor" +
-      "yContextManagementReply\022!\n\006status\030\001 \001(\0162" +
-      "\021.base.StatusValue\"j\n GeneralConfigurati" +
-      "onQueryRequest\022\025\n\rflowReference\030\001 \001(\t\022\013\n" +
-      "\003key\030\002 \001(\t\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Tim" +
-      "estamp\"v\n\036GeneralConfigurationQueryReply" +
-      "\022\025\n\rflowReference\030\001 \001(\t\022\031\n\005value\030\002 \001(\0132\n" +
-      ".base.Data\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Tim" +
-      "estamp\"\210\001\n%GeneralConfigurationManagemen" +
-      "tRequest\022\025\n\rflowReference\030\001 \001(\t\022,\n\006actio" +
-      "n\030\002 \001(\0162\034.ability.ConfigurationAction\022\013\n" +
-      "\003key\030\003 \001(\t\022\r\n\005value\030\004 \001(\t\"H\n#GeneralConf" +
-      "igurationManagementReply\022!\n\006status\030\001 \001(\016" +
-      "2\021.base.StatusValue*$\n\014MemoryAction\022\013\n\007R" +
-      "EPLACE\020\000\022\007\n\003ADD\020\001*5\n\023ConfigurationAction" +
-      "\022\022\n\016ADD_OR_REPLACE\020\000\022\n\n\006DELETE\020\0012\356\003\n\020Rpc" +
-      "AbilityCoreV1\022J\n\014RegisterRule\022\034.ability." +
-      "RegisterRuleRequest\032\032.ability.RegisterRu" +
-      "leReply\"\000\022D\n\nCancelRule\022\032.ability.Cancel" +
-      "RuleRequest\032\030.ability.CancelRuleReply\"\000\022" +
-      "A\n\tListRules\022\031.ability.ListRulesRequest\032" +
-      "\027.ability.ListRulesReply\"\000\022;\n\007GetRule\022\027." +
-      "ability.GetRuleRequest\032\025.ability.GetRule" +
-      "Reply\"\000\022U\n\013MemoryQuery\022\".ability.MemoryC" +
-      "ontextQueryRequest\032 .ability.MemoryConte" +
-      "xtQueryReply\"\000\022q\n\031GeneralConfigurationQu" +
-      "ery\022).ability.GeneralConfigurationQueryR" +
-      "equest\032\'.ability.GeneralConfigurationQue" +
-      "ryReply\"\0002^\n\020RpcAbilityUnitV1\022J\n\010CallSyn" +
-      "c\022\036.ability.AbilityMessageRequest\032\034.abil" +
-      "ity.AbilityMessageReply\"\0002\366\007\n\025RpcSuperAb" +
-      "ilityCoreV1\022Y\n\021PushConfiguration\022!.abili" +
-      "ty.PushConfigurationRequest\032\037.ability.Pu" +
-      "shConfigurationReply\"\000\022Y\n\021DumpConfigurat" +
-      "ion\022!.ability.DumpConfigurationRequest\032\037" +
-      ".ability.DumpConfigurationReply\"\000\022M\n\017Reg" +
-      "isterPreRule\022\034.ability.RegisterRuleReque" +
-      "st\032\032.ability.RegisterRuleReply\"\000\022G\n\rCanc" +
-      "elPreRule\022\032.ability.CancelRuleRequest\032\030." +
-      "ability.CancelRuleReply\"\000\022D\n\014ListPreRule" +
-      "s\022\031.ability.ListRulesRequest\032\027.ability.L" +
-      "istRulesReply\"\000\022>\n\nGetPreRule\022\027.ability." +
-      "GetRuleRequest\032\025.ability.GetRuleReply\"\000\022" +
-      "N\n\020RegisterPostRule\022\034.ability.RegisterRu" +
-      "leRequest\032\032.ability.RegisterRuleReply\"\000\022" +
-      "H\n\016CancelPostRule\022\032.ability.CancelRuleRe" +
-      "quest\032\030.ability.CancelRuleReply\"\000\022E\n\rLis" +
-      "tPostRules\022\031.ability.ListRulesRequest\032\027." +
-      "ability.ListRulesReply\"\000\022?\n\013GetPostRule\022" +
+      "tamp\">\n\004Rule\022\026\n\016ruleUniqueName\030\001 \001(\t\022\014\n\004" +
+      "task\030\002 \001(\t\022\020\n\010contexts\030\003 \003(\t\"k\n\021CancelRu" +
+      "leRequest\022\025\n\rflowReference\030\001 \001(\t\022\033\n\004rule" +
+      "\030\002 \001(\0132\r.ability.Rule\022\"\n\ttimestamp\030\003 \001(\013" +
+      "2\017.base.Timestamp\"o\n\017CancelRuleReply\022\025\n\r" +
+      "flowReference\030\001 \001(\t\022!\n\006status\030\002 \001(\0162\021.ba" +
+      "se.StatusValue\022\"\n\ttimestamp\030\003 \001(\0132\017.base" +
+      ".Timestamp\"h\n\016GetRuleRequest\022\025\n\rflowRefe" +
+      "rence\030\001 \001(\t\022\033\n\004rule\030\002 \001(\0132\r.ability.Rule" +
+      "\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp\"~\n\014" +
+      "GetRuleReply\022\025\n\rflowReference\030\001 \001(\t\022\020\n\010j" +
+      "sonRule\030\002 \001(\t\022!\n\006status\030\003 \001(\0162\021.base.Sta" +
+      "tusValue\022\"\n\ttimestamp\030\004 \001(\0132\017.base.Times" +
+      "tamp\"\275\001\n\023RegisterRuleRequest\022\025\n\rflowRefe" +
+      "rence\030\001 \001(\t\022\033\n\004rule\030\002 \001(\0132\r.ability.Rule" +
+      "\022\020\n\010jsonRule\030\003 \001(\t\022#\n\017additionalDatas\030\004 " +
+      "\003(\0132\n.base.Data\022\027\n\004tags\030\005 \003(\0132\t.base.Tag" +
+      "\022\"\n\ttimestamp\030\006 \001(\0132\017.base.Timestamp\"\216\001\n" +
+      "\021RegisterRuleReply\022\025\n\rflowReference\030\001 \001(" +
+      "\t\022\033\n\004rule\030\002 \001(\0132\r.ability.Rule\022!\n\006status" +
+      "\030\003 \001(\0162\021.base.StatusValue\022\"\n\ttimestamp\030\004" +
+      " \001(\0132\017.base.Timestamp\"]\n\020ListRulesReques" +
+      "t\022\025\n\rflowReference\030\001 \001(\t\022\016\n\006filter\030\002 \001(\t" +
+      "\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp\"\213\001\n" +
+      "\016ListRulesReply\022\025\n\rflowReference\030\001 \001(\t\022\033" +
+      "\n\004rule\030\002 \003(\0132\r.ability.Rule\022!\n\006status\030\003 " +
+      "\001(\0162\021.base.StatusValue\022\"\n\ttimestamp\030\004 \001(" +
+      "\0132\017.base.Timestamp\"z\n\030DumpConfigurationR" +
+      "equest\022\025\n\rflowReference\030\001 \001(\t\022#\n\017additio" +
+      "nalDatas\030\002 \003(\0132\n.base.Data\022\"\n\ttimestamp\030" +
+      "\003 \001(\0132\017.base.Timestamp\"\266\001\n\026DumpConfigura" +
+      "tionReply\022\025\n\rflowReference\030\001 \001(\t\022#\n\017addi" +
+      "tionalDatas\030\002 \003(\0132\n.base.Data\022\"\n\ttimesta" +
+      "mp\030\003 \001(\0132\017.base.Timestamp\022!\n\006status\030\004 \001(" +
+      "\0162\021.base.StatusValue\022\031\n\021configurationJso" +
+      "n\030\005 \001(\t\"\225\001\n\030PushConfigurationRequest\022\025\n\r" +
+      "flowReference\030\001 \001(\t\022#\n\017additionalDatas\030\002" +
+      " \003(\0132\n.base.Data\022\"\n\ttimestamp\030\003 \001(\0132\017.ba" +
+      "se.Timestamp\022\031\n\021configurationJson\030\004 \001(\t\"" +
+      "\233\001\n\026PushConfigurationReply\022\025\n\rflowRefere" +
+      "nce\030\001 \001(\t\022#\n\017additionalDatas\030\002 \003(\0132\n.bas" +
+      "e.Data\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timesta" +
+      "mp\022!\n\006status\030\004 \001(\0162\021.base.StatusValue\"g\n" +
+      "\031MemoryContextQueryRequest\022\025\n\rflowRefere" +
+      "nce\030\001 \001(\t\022\017\n\007context\030\002 \001(\t\022\"\n\ttimestamp\030" +
+      "\003 \001(\0132\017.base.Timestamp\"\243\001\n\027MemoryContext" +
+      "QueryReply\022\025\n\rflowReference\030\001 \001(\t\022\017\n\007con" +
+      "text\030\002 \001(\t\022\031\n\005datas\030\003 \003(\0132\n.base.Data\022\"\n" +
+      "\ttimestamp\030\004 \001(\0132\017.base.Timestamp\022!\n\006sta" +
+      "tus\030\005 \001(\0162\021.base.StatusValue\"s\n\036MemoryCo" +
+      "ntextManagementRequest\022\017\n\007context\030\001 \001(\t\022" +
+      "%\n\006action\030\002 \001(\0162\025.ability.MemoryAction\022\031" +
+      "\n\005datas\030\003 \003(\0132\n.base.Data\"A\n\034MemoryConte" +
+      "xtManagementReply\022!\n\006status\030\001 \001(\0162\021.base" +
+      ".StatusValue\"j\n GeneralConfigurationQuer" +
+      "yRequest\022\025\n\rflowReference\030\001 \001(\t\022\013\n\003key\030\002" +
+      " \001(\t\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp" +
+      "\"v\n\036GeneralConfigurationQueryReply\022\025\n\rfl" +
+      "owReference\030\001 \001(\t\022\031\n\005value\030\002 \001(\0132\n.base." +
+      "Data\022\"\n\ttimestamp\030\003 \001(\0132\017.base.Timestamp" +
+      "\"\210\001\n%GeneralConfigurationManagementReque" +
+      "st\022\025\n\rflowReference\030\001 \001(\t\022,\n\006action\030\002 \001(" +
+      "\0162\034.ability.ConfigurationAction\022\013\n\003key\030\003" +
+      " \001(\t\022\r\n\005value\030\004 \001(\t\"H\n#GeneralConfigurat" +
+      "ionManagementReply\022!\n\006status\030\001 \001(\0162\021.bas" +
+      "e.StatusValue*`\n\014MemoryAction\022\022\n\016MEMORY_" +
+      "REPLACE\020\000\022\016\n\nMEMORY_ADD\020\001\022\031\n\025MEMORY_ADD_" +
+      "OR_REPLACE\020\002\022\021\n\rMEMORY_DELETE\020\003*Q\n\023Confi" +
+      "gurationAction\022 \n\034CONFIGURATION_ADD_OR_R" +
+      "EPLACE\020\000\022\030\n\024CONFIGURATION_DELETE\020\0012\356\003\n\020R" +
+      "pcAbilityCoreV1\022J\n\014RegisterRule\022\034.abilit" +
+      "y.RegisterRuleRequest\032\032.ability.Register" +
+      "RuleReply\"\000\022D\n\nCancelRule\022\032.ability.Canc" +
+      "elRuleRequest\032\030.ability.CancelRuleReply\"" +
+      "\000\022A\n\tListRules\022\031.ability.ListRulesReques" +
+      "t\032\027.ability.ListRulesReply\"\000\022;\n\007GetRule\022" +
       "\027.ability.GetRuleRequest\032\025.ability.GetRu" +
-      "leReply\"\000\022d\n\020MemoryManagement\022\'.ability." +
-      "MemoryContextManagementRequest\032%.ability" +
-      ".MemoryContextManagementReply\"\000\022\200\001\n\036Gene" +
-      "ralConfigurationManagement\022..ability.Gen" +
-      "eralConfigurationManagementRequest\032,.abi" +
-      "lity.GeneralConfigurationManagementReply" +
-      "\"\000B4\n\037net.rossonet.ptalk.ability.grpcB\017P" +
-      "taskAbilityApiP\001b\006proto3"
+      "leReply\"\000\022U\n\013MemoryQuery\022\".ability.Memor" +
+      "yContextQueryRequest\032 .ability.MemoryCon" +
+      "textQueryReply\"\000\022q\n\031GeneralConfiguration" +
+      "Query\022).ability.GeneralConfigurationQuer" +
+      "yRequest\032\'.ability.GeneralConfigurationQ" +
+      "ueryReply\"\0002^\n\020RpcAbilityUnitV1\022J\n\010CallS" +
+      "ync\022\036.ability.AbilityMessageRequest\032\034.ab" +
+      "ility.AbilityMessageReply\"\0002\366\007\n\025RpcSuper" +
+      "AbilityCoreV1\022Y\n\021PushConfiguration\022!.abi" +
+      "lity.PushConfigurationRequest\032\037.ability." +
+      "PushConfigurationReply\"\000\022Y\n\021DumpConfigur" +
+      "ation\022!.ability.DumpConfigurationRequest" +
+      "\032\037.ability.DumpConfigurationReply\"\000\022M\n\017R" +
+      "egisterPreRule\022\034.ability.RegisterRuleReq" +
+      "uest\032\032.ability.RegisterRuleReply\"\000\022G\n\rCa" +
+      "ncelPreRule\022\032.ability.CancelRuleRequest\032" +
+      "\030.ability.CancelRuleReply\"\000\022D\n\014ListPreRu" +
+      "les\022\031.ability.ListRulesRequest\032\027.ability" +
+      ".ListRulesReply\"\000\022>\n\nGetPreRule\022\027.abilit" +
+      "y.GetRuleRequest\032\025.ability.GetRuleReply\"" +
+      "\000\022N\n\020RegisterPostRule\022\034.ability.Register" +
+      "RuleRequest\032\032.ability.RegisterRuleReply\"" +
+      "\000\022H\n\016CancelPostRule\022\032.ability.CancelRule" +
+      "Request\032\030.ability.CancelRuleReply\"\000\022E\n\rL" +
+      "istPostRules\022\031.ability.ListRulesRequest\032" +
+      "\027.ability.ListRulesReply\"\000\022?\n\013GetPostRul" +
+      "e\022\027.ability.GetRuleRequest\032\025.ability.Get" +
+      "RuleReply\"\000\022d\n\020MemoryManagement\022\'.abilit" +
+      "y.MemoryContextManagementRequest\032%.abili" +
+      "ty.MemoryContextManagementReply\"\000\022\200\001\n\036Ge" +
+      "neralConfigurationManagement\022..ability.G" +
+      "eneralConfigurationManagementRequest\032,.a" +
+      "bility.GeneralConfigurationManagementRep" +
+      "ly\"\000B4\n\037net.rossonet.ptalk.ability.grpcB" +
+      "\017PtaskAbilityApiP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -283,7 +286,7 @@ public final class PtaskAbilityApi {
     internal_static_ability_Rule_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_Rule_descriptor,
-        new java.lang.String[] { "RuleUniqueName", "Task", });
+        new java.lang.String[] { "RuleUniqueName", "Task", "Contexts", });
     internal_static_ability_CancelRuleRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_ability_CancelRuleRequest_fieldAccessorTable = new
@@ -325,7 +328,7 @@ public final class PtaskAbilityApi {
     internal_static_ability_ListRulesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ability_ListRulesRequest_descriptor,
-        new java.lang.String[] { "FlowReference", "Timestamp", });
+        new java.lang.String[] { "FlowReference", "Filter", "Timestamp", });
     internal_static_ability_ListRulesReply_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_ability_ListRulesReply_fieldAccessorTable = new

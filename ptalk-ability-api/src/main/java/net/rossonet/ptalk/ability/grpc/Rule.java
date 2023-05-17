@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private Rule() {
     ruleUniqueName_ = "";
     task_ = "";
+    contexts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -121,6 +122,41 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int CONTEXTS_FIELD_NUMBER = 3;
+  private com.google.protobuf.LazyStringList contexts_;
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @return A list containing the contexts.
+   */
+  public com.google.protobuf.ProtocolStringList
+      getContextsList() {
+    return contexts_;
+  }
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @return The count of contexts.
+   */
+  public int getContextsCount() {
+    return contexts_.size();
+  }
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @param index The index of the element to return.
+   * @return The contexts at the given index.
+   */
+  public java.lang.String getContexts(int index) {
+    return contexts_.get(index);
+  }
+  /**
+   * <code>repeated string contexts = 3;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the contexts at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getContextsBytes(int index) {
+    return contexts_.getByteString(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -141,6 +177,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(task_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, task_);
     }
+    for (int i = 0; i < contexts_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, contexts_.getRaw(i));
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -155,6 +194,14 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(task_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, task_);
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < contexts_.size(); i++) {
+        dataSize += computeStringSizeNoTag(contexts_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getContextsList().size();
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -175,6 +222,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getRuleUniqueName())) return false;
     if (!getTask()
         .equals(other.getTask())) return false;
+    if (!getContextsList()
+        .equals(other.getContextsList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -190,6 +239,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getRuleUniqueName().hashCode();
     hash = (37 * hash) + TASK_FIELD_NUMBER;
     hash = (53 * hash) + getTask().hashCode();
+    if (getContextsCount() > 0) {
+      hash = (37 * hash) + CONTEXTS_FIELD_NUMBER;
+      hash = (53 * hash) + getContextsList().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -322,6 +375,8 @@ private static final long serialVersionUID = 0L;
 
       task_ = "";
 
+      contexts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -348,8 +403,14 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public net.rossonet.ptalk.ability.grpc.Rule buildPartial() {
       net.rossonet.ptalk.ability.grpc.Rule result = new net.rossonet.ptalk.ability.grpc.Rule(this);
+      int from_bitField0_ = bitField0_;
       result.ruleUniqueName_ = ruleUniqueName_;
       result.task_ = task_;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        contexts_ = contexts_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.contexts_ = contexts_;
       onBuilt();
       return result;
     }
@@ -406,6 +467,16 @@ private static final long serialVersionUID = 0L;
         task_ = other.task_;
         onChanged();
       }
+      if (!other.contexts_.isEmpty()) {
+        if (contexts_.isEmpty()) {
+          contexts_ = other.contexts_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureContextsIsMutable();
+          contexts_.addAll(other.contexts_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -442,6 +513,12 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 18
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+              ensureContextsIsMutable();
+              contexts_.add(s);
+              break;
+            } // case 26
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -457,6 +534,7 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int bitField0_;
 
     private java.lang.Object ruleUniqueName_ = "";
     /**
@@ -606,6 +684,116 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       task_ = value;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringList contexts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureContextsIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        contexts_ = new com.google.protobuf.LazyStringArrayList(contexts_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @return A list containing the contexts.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getContextsList() {
+      return contexts_.getUnmodifiableView();
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @return The count of contexts.
+     */
+    public int getContextsCount() {
+      return contexts_.size();
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @param index The index of the element to return.
+     * @return The contexts at the given index.
+     */
+    public java.lang.String getContexts(int index) {
+      return contexts_.get(index);
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the contexts at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getContextsBytes(int index) {
+      return contexts_.getByteString(index);
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @param index The index to set the value at.
+     * @param value The contexts to set.
+     * @return This builder for chaining.
+     */
+    public Builder setContexts(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureContextsIsMutable();
+      contexts_.set(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @param value The contexts to add.
+     * @return This builder for chaining.
+     */
+    public Builder addContexts(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureContextsIsMutable();
+      contexts_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @param values The contexts to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllContexts(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureContextsIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, contexts_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearContexts() {
+      contexts_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string contexts = 3;</code>
+     * @param value The bytes of the contexts to add.
+     * @return This builder for chaining.
+     */
+    public Builder addContextsBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureContextsIsMutable();
+      contexts_.add(value);
       onChanged();
       return this;
     }

@@ -9,24 +9,40 @@ package net.rossonet.ptalk.ability.grpc;
 public enum MemoryAction
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>REPLACE = 0;</code>
+   * <code>MEMORY_REPLACE = 0;</code>
    */
-  REPLACE(0),
+  MEMORY_REPLACE(0),
   /**
-   * <code>ADD = 1;</code>
+   * <code>MEMORY_ADD = 1;</code>
    */
-  ADD(1),
+  MEMORY_ADD(1),
+  /**
+   * <code>MEMORY_ADD_OR_REPLACE = 2;</code>
+   */
+  MEMORY_ADD_OR_REPLACE(2),
+  /**
+   * <code>MEMORY_DELETE = 3;</code>
+   */
+  MEMORY_DELETE(3),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>REPLACE = 0;</code>
+   * <code>MEMORY_REPLACE = 0;</code>
    */
-  public static final int REPLACE_VALUE = 0;
+  public static final int MEMORY_REPLACE_VALUE = 0;
   /**
-   * <code>ADD = 1;</code>
+   * <code>MEMORY_ADD = 1;</code>
    */
-  public static final int ADD_VALUE = 1;
+  public static final int MEMORY_ADD_VALUE = 1;
+  /**
+   * <code>MEMORY_ADD_OR_REPLACE = 2;</code>
+   */
+  public static final int MEMORY_ADD_OR_REPLACE_VALUE = 2;
+  /**
+   * <code>MEMORY_DELETE = 3;</code>
+   */
+  public static final int MEMORY_DELETE_VALUE = 3;
 
 
   public final int getNumber() {
@@ -53,8 +69,10 @@ public enum MemoryAction
    */
   public static MemoryAction forNumber(int value) {
     switch (value) {
-      case 0: return REPLACE;
-      case 1: return ADD;
+      case 0: return MEMORY_REPLACE;
+      case 1: return MEMORY_ADD;
+      case 2: return MEMORY_ADD_OR_REPLACE;
+      case 3: return MEMORY_DELETE;
       default: return null;
     }
   }

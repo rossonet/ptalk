@@ -9,7 +9,7 @@ import org.jeasy.rules.api.RulesEngineListener;
 
 import net.rossonet.ptalk.engine.PTalkEngineRuntime;
 import net.rossonet.ptalk.engine.exceptions.TaskManagerException;
-import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
+import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHop;
 
 public interface Task extends AutoCloseable, RuleListener, RulesEngineListener {
 

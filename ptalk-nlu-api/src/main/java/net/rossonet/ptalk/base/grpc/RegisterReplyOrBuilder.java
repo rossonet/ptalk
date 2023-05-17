@@ -38,11 +38,19 @@ public interface RegisterReplyOrBuilder extends
       getGlobalJsonConfigBytes();
 
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificate = 4;</code>
    * @return The certificate.
    */
   java.lang.String getCertificate();
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificate = 4;</code>
    * @return The bytes for certificate.
    */
@@ -50,11 +58,19 @@ public interface RegisterReplyOrBuilder extends
       getCertificateBytes();
 
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateFullChain = 5;</code>
    * @return The certificateFullChain.
    */
   java.lang.String getCertificateFullChain();
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateFullChain = 5;</code>
    * @return The bytes for certificateFullChain.
    */
@@ -79,11 +95,19 @@ public interface RegisterReplyOrBuilder extends
   long getTimestampRegistration();
 
   /**
+   * <pre>
+   * for enforced context
+   * </pre>
+   *
    * <code>string otpSeed = 8;</code>
    * @return The otpSeed.
    */
   java.lang.String getOtpSeed();
   /**
+   * <pre>
+   * for enforced context
+   * </pre>
+   *
    * <code>string otpSeed = 8;</code>
    * @return The bytes for otpSeed.
    */

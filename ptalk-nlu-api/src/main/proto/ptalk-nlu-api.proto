@@ -10,10 +10,14 @@ import "ptalk-base-api.proto";
 
 package nlu;
 
+// any nlu agent can have many models, to better identify this models
 message NluModel {
-  string requiredCapability = 1;
-  string model = 2;
-  string modelVersion = 3;
+  string requiredCapability = 1;    // optional
+  string model = 2;            // unique name of the model
+  string modelVersion = 3;    // version of the model, this field can be used to call different version on the same agent
+  string jsonModelSignature = 4; // description of a model’s inputs and outputs
+  string inputExample = 5; // example of a valid model input
+  string outputExample = 6; // example of a valid model output
 }
 
 message TrainingLineLog {
@@ -23,32 +27,32 @@ message TrainingLineLog {
 }
 
 message NluMessageRequest {
-  string flowReference = 1;
-  string messageReference = 2;
-  string originContext = 3;
-  NluModel model = 4;
-  string replyTask = 5;
-  base.Data message = 6;
-  string contextJson = 7;
-  repeated base.Data additionalDatas = 8;
+  string flowReference = 1;      // the flow related to this message
+  string messageReference = 2;       // in case this request is related to a channel message, here we have the channelUniqueMessageId
+  string originContext = 3;         // context in original format
+  NluModel model = 4;              // the target model
+  string replyTask = 5;             // the core engine task to reply to
+  base.Data message = 6;			// the base text message
+  string contextJson = 7;         // context in json format
+  repeated base.Data additionalDatas = 8;   // array of additional datas
   repeated base.Tag tags = 9;
   base.Timestamp timestamp = 10;
-  bool traceLog = 11;
+  bool traceLog = 11;    // enable or disable trace log function
 }
 
 message NluMessageReply {
-  string flowReference = 1;
-  string messageReference = 2;
-  string originContext = 3;
-  NluModel model = 4;
-  string task = 5;
-  base.Data reply = 6;
-  string contextJson = 7;
+  string flowReference = 1;      // the flow related to this message
+  string messageReference = 2;      // in case this request is related to a channel message, here we have the channelUniqueMessageId
+  string originContext = 3;       // context in original format
+  NluModel model = 4;             // the model that generated this reply
+  string task = 5;                 // the core engine task that will process this reply
+  base.Data reply = 6;       // the base reply
+  string contextJson = 7;        // context in json format
   base.StatusValue status = 8;
-  repeated base.Data additionalDatas = 9;
+  repeated base.Data additionalDatas = 9;   // array of additional datas
   repeated base.Tag tags = 10;
   base.Timestamp timestamp = 11;
-  bool traceLog = 12;
+  bool traceLog = 12;    // enable or disable trace log function
 }
 
 message NluTrainingModelRequest {
@@ -62,6 +66,7 @@ message NluTrainingModelRequest {
   repeated base.Data testSecret = 8;
   int32 timeoutMinutes = 9;
   base.Timestamp timestamp = 10;
+  string trainingEngine = 11;
 }
 
 message NluTrainingModelReply {
@@ -109,14 +114,14 @@ message NluSnapshotModelReply {
   string flowReference = 1;
   base.StatusValue status = 2;
   base.Timestamp timestamp = 3;
-  repeated base.Data modelSnapshotData = 4;
+  repeated base.Data modelSnapshotData = 4; // model dump
 }
 
 message NluRestoreModelRequest {
   string flowReference = 1;
   NluModel model = 2;
   base.Timestamp timestamp = 3;
-  repeated base.Data modelSnapshotData = 4;
+  repeated base.Data modelSnapshotData = 4; // model dump
 }
 
 message NluRestoreModelReply {
@@ -130,11 +135,17 @@ service RpcNluCoreV1 {
 }
 
 service RpcNluUnitV1 {
+  // elaborate a request in sync way
   rpc CallSync (NluMessageRequest) returns (NluMessageReply) {}
+  // train request async, the reply will be send later
   rpc TrainModelAsync (NluTrainingModelRequest) returns (base.Status) {}
+  // list all models in this unit
   rpc ListModels (NluListModelsRequest) returns (NluListModelsReply) {}
+  // delete a model from this unit
   rpc DeleteModel (NluDeleteModelRequest) returns (NluDeleteModelReply) {}
+  // freeze a state of a model end generate a snapshot (OPTIONAL)
   rpc SnapshotModel (NluSnapshotModelRequest) returns (NluSnapshotModelReply) {}
+  // restore  a model from a snapshot (OPTIONAL)
   rpc RestoreModel (NluRestoreModelRequest) returns (NluRestoreModelReply) {}
 }
 

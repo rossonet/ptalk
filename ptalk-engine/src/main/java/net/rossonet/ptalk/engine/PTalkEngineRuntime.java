@@ -19,10 +19,10 @@ import net.rossonet.ptalk.engine.grpc.GrpcCoreService;
 import net.rossonet.ptalk.engine.runtime.NextHopRuntimeEngine;
 import net.rossonet.ptalk.engine.runtime.Task;
 import net.rossonet.ptalk.engine.runtime.fact.PTalkFactFactory;
-import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHop;
-import net.rossonet.ptalk.engine.runtime.fact.NextHop.NextHopSchedulerType;
 import net.rossonet.ptalk.engine.runtime.fact.channel.InputMessageFact;
 import net.rossonet.ptalk.engine.runtime.fact.channel.OutputMessageFact;
+import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHop;
+import net.rossonet.ptalk.engine.runtime.fact.nextHop.NextHopSchedulerType;
 import net.rossonet.ptalk.engine.runtime.fact.nlu.NluTrainingModelReplyFact;
 import net.rossonet.ptalk.nlu.grpc.NluTrainingModelReply;
 import net.rossonet.ptalk.utils.JsonHelper;
@@ -95,6 +95,7 @@ public class PTalkEngineRuntime {
 		nextHopRuntimeEngine = new NextHopRuntimeEngine(this);
 		try {
 			grpcCoreService.start();
+			executionLogger.coreServerStarted(this);
 		} catch (final IOException e) {
 			throw new RuntimeEngineException("fault starting GRPC server", e);
 		}
@@ -102,7 +103,8 @@ public class PTalkEngineRuntime {
 	}
 
 	public void channelMessage(ChannelMessageRequest request) throws TaskManagerException {
-		final Fact<InputMessageFact> inputMessageFact = new Fact<>(MESSAGE_FACT, new InputMessageFact(request));
+		final Fact<InputMessageFact> inputMessageFact = new Fact<>(MESSAGE_FACT,
+				new InputMessageFact(request.getChannelUniqueMessageId(), request));
 		getMemoryManager().registerInputMessage(inputMessageFact.getValue());
 		final Facts facts = new Facts();
 		facts.add(inputMessageFact);
@@ -208,7 +210,8 @@ public class PTalkEngineRuntime {
 	}
 
 	public void replyFromNluTrainingRequest(NluTrainingModelReply request) {
-		getMemoryManager().registerReplyNluTraining(new NluTrainingModelReplyFact(request));
+		getMemoryManager().registerReplyNluTraining(new NluTrainingModelReplyFact(
+				request.getModel().getModel() + "[" + request.getModel().getModelVersion() + "]", request));
 		getNluCommunicationFactFactory().replyFromNluTrainingRequest(request);
 	}
 

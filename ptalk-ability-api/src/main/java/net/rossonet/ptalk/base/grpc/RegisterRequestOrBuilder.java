@@ -31,11 +31,19 @@ public interface RegisterRequestOrBuilder extends
   net.rossonet.ptalk.base.grpc.UnitType getUnitType();
 
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 3;</code>
    * @return The displayName.
    */
   java.lang.String getDisplayName();
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 3;</code>
    * @return The bytes for displayName.
    */
@@ -61,11 +69,19 @@ public interface RegisterRequestOrBuilder extends
   int getPort();
 
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The shortDescription.
    */
   java.lang.String getShortDescription();
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The bytes for shortDescription.
    */
@@ -73,11 +89,19 @@ public interface RegisterRequestOrBuilder extends
       getShortDescriptionBytes();
 
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The description.
    */
   java.lang.String getDescription();
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The bytes for description.
    */
@@ -97,11 +121,19 @@ public interface RegisterRequestOrBuilder extends
       getJsonHealthBytes();
 
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateCrt = 9;</code>
    * @return The certificateCrt.
    */
   java.lang.String getCertificateCrt();
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateCrt = 9;</code>
    * @return The bytes for certificateCrt.
    */
@@ -183,7 +215,7 @@ public interface RegisterRequestOrBuilder extends
 
   /**
    * <pre>
-   * OTP code if the unit is Homunculus
+   * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
    * </pre>
    *
    * <code>string selfSuperAbilityCode = 13;</code>
@@ -192,7 +224,7 @@ public interface RegisterRequestOrBuilder extends
   java.lang.String getSelfSuperAbilityCode();
   /**
    * <pre>
-   * OTP code if the unit is Homunculus
+   * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
    * </pre>
    *
    * <code>string selfSuperAbilityCode = 13;</code>

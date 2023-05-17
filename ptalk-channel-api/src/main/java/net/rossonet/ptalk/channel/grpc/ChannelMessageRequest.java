@@ -56,6 +56,10 @@ private static final long serialVersionUID = 0L;
   public static final int FLOWREFERENCE_FIELD_NUMBER = 1;
   private volatile java.lang.Object flowReference_;
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The flowReference.
    */
@@ -73,6 +77,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * the flow related to this message
+   * </pre>
+   *
    * <code>string flowReference = 1;</code>
    * @return The bytes for flowReference.
    */
@@ -94,6 +102,10 @@ private static final long serialVersionUID = 0L;
   public static final int MESSAGEREFERENCE_FIELD_NUMBER = 2;
   private volatile java.lang.Object messageReference_;
   /**
+   * <pre>
+   * in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The messageReference.
    */
@@ -111,6 +123,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+   * </pre>
+   *
    * <code>string messageReference = 2;</code>
    * @return The bytes for messageReference.
    */
@@ -132,6 +148,10 @@ private static final long serialVersionUID = 0L;
   public static final int ORIGINCONTEXT_FIELD_NUMBER = 3;
   private volatile java.lang.Object originContext_;
   /**
+   * <pre>
+   * should be the NLU related context in original format
+   * </pre>
+   *
    * <code>string originContext = 3;</code>
    * @return The originContext.
    */
@@ -149,6 +169,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * should be the NLU related context in original format
+   * </pre>
+   *
    * <code>string originContext = 3;</code>
    * @return The bytes for originContext.
    */
@@ -170,6 +194,10 @@ private static final long serialVersionUID = 0L;
   public static final int CHANNELUNIQUENAME_FIELD_NUMBER = 4;
   private volatile java.lang.Object channelUniqueName_;
   /**
+   * <pre>
+   * unique name of the target for this message. It is the unique name of the remote interlocutor
+   * </pre>
+   *
    * <code>string channelUniqueName = 4;</code>
    * @return The channelUniqueName.
    */
@@ -187,6 +215,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * unique name of the target for this message. It is the unique name of the remote interlocutor
+   * </pre>
+   *
    * <code>string channelUniqueName = 4;</code>
    * @return The bytes for channelUniqueName.
    */
@@ -208,6 +240,10 @@ private static final long serialVersionUID = 0L;
   public static final int CHANNELUNIQUEMESSAGEID_FIELD_NUMBER = 5;
   private volatile java.lang.Object channelUniqueMessageId_;
   /**
+   * <pre>
+   * the unique id of this message
+   * </pre>
+   *
    * <code>string channelUniqueMessageId = 5;</code>
    * @return The channelUniqueMessageId.
    */
@@ -225,6 +261,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * the unique id of this message
+   * </pre>
+   *
    * <code>string channelUniqueMessageId = 5;</code>
    * @return The bytes for channelUniqueMessageId.
    */
@@ -246,6 +286,10 @@ private static final long serialVersionUID = 0L;
   public static final int REPLYTASK_FIELD_NUMBER = 6;
   private volatile java.lang.Object replyTask_;
   /**
+   * <pre>
+   * the core engine task to elaborate the message. It is optional
+   * </pre>
+   *
    * <code>string replyTask = 6;</code>
    * @return The replyTask.
    */
@@ -263,6 +307,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * the core engine task to elaborate the message. It is optional
+   * </pre>
+   *
    * <code>string replyTask = 6;</code>
    * @return The bytes for replyTask.
    */
@@ -284,6 +332,10 @@ private static final long serialVersionUID = 0L;
   public static final int MESSAGE_FIELD_NUMBER = 7;
   private net.rossonet.ptalk.base.grpc.Data message_;
   /**
+   * <pre>
+   * the textual message
+   * </pre>
+   *
    * <code>.base.Data message = 7;</code>
    * @return Whether the message field is set.
    */
@@ -292,6 +344,10 @@ private static final long serialVersionUID = 0L;
     return message_ != null;
   }
   /**
+   * <pre>
+   * the textual message
+   * </pre>
+   *
    * <code>.base.Data message = 7;</code>
    * @return The message.
    */
@@ -300,6 +356,10 @@ private static final long serialVersionUID = 0L;
     return message_ == null ? net.rossonet.ptalk.base.grpc.Data.getDefaultInstance() : message_;
   }
   /**
+   * <pre>
+   * the textual message
+   * </pre>
+   *
    * <code>.base.Data message = 7;</code>
    */
   @java.lang.Override
@@ -310,6 +370,10 @@ private static final long serialVersionUID = 0L;
   public static final int CONTEXTJSON_FIELD_NUMBER = 8;
   private volatile java.lang.Object contextJson_;
   /**
+   * <pre>
+   * should be related to the NLU context in json format
+   * </pre>
+   *
    * <code>string contextJson = 8;</code>
    * @return The contextJson.
    */
@@ -327,6 +391,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * should be related to the NLU context in json format
+   * </pre>
+   *
    * <code>string contextJson = 8;</code>
    * @return The bytes for contextJson.
    */
@@ -348,6 +416,10 @@ private static final long serialVersionUID = 0L;
   public static final int ADDITIONALDATAS_FIELD_NUMBER = 9;
   private java.util.List<net.rossonet.ptalk.base.grpc.Data> additionalDatas_;
   /**
+   * <pre>
+   * should be the media attachments in base64 format
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   @java.lang.Override
@@ -355,6 +427,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_;
   }
   /**
+   * <pre>
+   * should be the media attachments in base64 format
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   @java.lang.Override
@@ -363,6 +439,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_;
   }
   /**
+   * <pre>
+   * should be the media attachments in base64 format
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   @java.lang.Override
@@ -370,6 +450,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_.size();
   }
   /**
+   * <pre>
+   * should be the media attachments in base64 format
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   @java.lang.Override
@@ -377,6 +461,10 @@ private static final long serialVersionUID = 0L;
     return additionalDatas_.get(index);
   }
   /**
+   * <pre>
+   * should be the media attachments in base64 format
+   * </pre>
+   *
    * <code>repeated .base.Data additionalDatas = 9;</code>
    */
   @java.lang.Override
@@ -428,6 +516,10 @@ private static final long serialVersionUID = 0L;
   public static final int PRIORITY_FIELD_NUMBER = 11;
   private int priority_;
   /**
+   * <pre>
+   * for QoS context [OPTIONAL]
+   * </pre>
+   *
    * <code>int32 priority = 11;</code>
    * @return The priority.
    */
@@ -439,6 +531,10 @@ private static final long serialVersionUID = 0L;
   public static final int TRACELOG_FIELD_NUMBER = 12;
   private boolean traceLog_;
   /**
+   * <pre>
+   * enable or disable trace log function
+   * </pre>
+   *
    * <code>bool traceLog = 12;</code>
    * @return The traceLog.
    */
@@ -476,6 +572,10 @@ private static final long serialVersionUID = 0L;
   public static final int TRACEDATA_FIELD_NUMBER = 14;
   private java.util.List<net.rossonet.ptalk.base.grpc.Data> traceData_;
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 14;</code>
    */
   @java.lang.Override
@@ -483,6 +583,10 @@ private static final long serialVersionUID = 0L;
     return traceData_;
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 14;</code>
    */
   @java.lang.Override
@@ -491,6 +595,10 @@ private static final long serialVersionUID = 0L;
     return traceData_;
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 14;</code>
    */
   @java.lang.Override
@@ -498,6 +606,10 @@ private static final long serialVersionUID = 0L;
     return traceData_.size();
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 14;</code>
    */
   @java.lang.Override
@@ -505,6 +617,10 @@ private static final long serialVersionUID = 0L;
     return traceData_.get(index);
   }
   /**
+   * <pre>
+   * array of trace data generated if the trace log function is enabled [OPTIONAL]
+   * </pre>
+   *
    * <code>repeated .base.Data traceData = 14;</code>
    */
   @java.lang.Override
@@ -1287,6 +1403,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object flowReference_ = "";
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return The flowReference.
      */
@@ -1303,6 +1423,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return The bytes for flowReference.
      */
@@ -1320,6 +1444,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @param value The flowReference to set.
      * @return This builder for chaining.
@@ -1335,6 +1463,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @return This builder for chaining.
      */
@@ -1345,6 +1477,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the flow related to this message
+     * </pre>
+     *
      * <code>string flowReference = 1;</code>
      * @param value The bytes for flowReference to set.
      * @return This builder for chaining.
@@ -1363,6 +1499,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object messageReference_ = "";
     /**
+     * <pre>
+     * in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @return The messageReference.
      */
@@ -1379,6 +1519,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @return The bytes for messageReference.
      */
@@ -1396,6 +1540,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @param value The messageReference to set.
      * @return This builder for chaining.
@@ -1411,6 +1559,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @return This builder for chaining.
      */
@@ -1421,6 +1573,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * in case of a reply related to a specific message, here we have the channelUniqueMessageId related
+     * </pre>
+     *
      * <code>string messageReference = 2;</code>
      * @param value The bytes for messageReference to set.
      * @return This builder for chaining.
@@ -1439,6 +1595,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object originContext_ = "";
     /**
+     * <pre>
+     * should be the NLU related context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @return The originContext.
      */
@@ -1455,6 +1615,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be the NLU related context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @return The bytes for originContext.
      */
@@ -1472,6 +1636,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be the NLU related context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @param value The originContext to set.
      * @return This builder for chaining.
@@ -1487,6 +1655,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the NLU related context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @return This builder for chaining.
      */
@@ -1497,6 +1669,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the NLU related context in original format
+     * </pre>
+     *
      * <code>string originContext = 3;</code>
      * @param value The bytes for originContext to set.
      * @return This builder for chaining.
@@ -1515,6 +1691,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object channelUniqueName_ = "";
     /**
+     * <pre>
+     * unique name of the target for this message. It is the unique name of the remote interlocutor
+     * </pre>
+     *
      * <code>string channelUniqueName = 4;</code>
      * @return The channelUniqueName.
      */
@@ -1531,6 +1711,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * unique name of the target for this message. It is the unique name of the remote interlocutor
+     * </pre>
+     *
      * <code>string channelUniqueName = 4;</code>
      * @return The bytes for channelUniqueName.
      */
@@ -1548,6 +1732,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * unique name of the target for this message. It is the unique name of the remote interlocutor
+     * </pre>
+     *
      * <code>string channelUniqueName = 4;</code>
      * @param value The channelUniqueName to set.
      * @return This builder for chaining.
@@ -1563,6 +1751,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * unique name of the target for this message. It is the unique name of the remote interlocutor
+     * </pre>
+     *
      * <code>string channelUniqueName = 4;</code>
      * @return This builder for chaining.
      */
@@ -1573,6 +1765,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * unique name of the target for this message. It is the unique name of the remote interlocutor
+     * </pre>
+     *
      * <code>string channelUniqueName = 4;</code>
      * @param value The bytes for channelUniqueName to set.
      * @return This builder for chaining.
@@ -1591,6 +1787,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object channelUniqueMessageId_ = "";
     /**
+     * <pre>
+     * the unique id of this message
+     * </pre>
+     *
      * <code>string channelUniqueMessageId = 5;</code>
      * @return The channelUniqueMessageId.
      */
@@ -1607,6 +1807,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the unique id of this message
+     * </pre>
+     *
      * <code>string channelUniqueMessageId = 5;</code>
      * @return The bytes for channelUniqueMessageId.
      */
@@ -1624,6 +1828,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the unique id of this message
+     * </pre>
+     *
      * <code>string channelUniqueMessageId = 5;</code>
      * @param value The channelUniqueMessageId to set.
      * @return This builder for chaining.
@@ -1639,6 +1847,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the unique id of this message
+     * </pre>
+     *
      * <code>string channelUniqueMessageId = 5;</code>
      * @return This builder for chaining.
      */
@@ -1649,6 +1861,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the unique id of this message
+     * </pre>
+     *
      * <code>string channelUniqueMessageId = 5;</code>
      * @param value The bytes for channelUniqueMessageId to set.
      * @return This builder for chaining.
@@ -1667,6 +1883,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object replyTask_ = "";
     /**
+     * <pre>
+     * the core engine task to elaborate the message. It is optional
+     * </pre>
+     *
      * <code>string replyTask = 6;</code>
      * @return The replyTask.
      */
@@ -1683,6 +1903,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the core engine task to elaborate the message. It is optional
+     * </pre>
+     *
      * <code>string replyTask = 6;</code>
      * @return The bytes for replyTask.
      */
@@ -1700,6 +1924,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the core engine task to elaborate the message. It is optional
+     * </pre>
+     *
      * <code>string replyTask = 6;</code>
      * @param value The replyTask to set.
      * @return This builder for chaining.
@@ -1715,6 +1943,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the core engine task to elaborate the message. It is optional
+     * </pre>
+     *
      * <code>string replyTask = 6;</code>
      * @return This builder for chaining.
      */
@@ -1725,6 +1957,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the core engine task to elaborate the message. It is optional
+     * </pre>
+     *
      * <code>string replyTask = 6;</code>
      * @param value The bytes for replyTask to set.
      * @return This builder for chaining.
@@ -1745,6 +1981,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> messageBuilder_;
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      * @return Whether the message field is set.
      */
@@ -1752,6 +1992,10 @@ private static final long serialVersionUID = 0L;
       return messageBuilder_ != null || message_ != null;
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      * @return The message.
      */
@@ -1763,6 +2007,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      */
     public Builder setMessage(net.rossonet.ptalk.base.grpc.Data value) {
@@ -1779,6 +2027,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      */
     public Builder setMessage(
@@ -1793,6 +2045,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      */
     public Builder mergeMessage(net.rossonet.ptalk.base.grpc.Data value) {
@@ -1811,6 +2067,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      */
     public Builder clearMessage() {
@@ -1825,6 +2085,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder getMessageBuilder() {
@@ -1833,6 +2097,10 @@ private static final long serialVersionUID = 0L;
       return getMessageFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      */
     public net.rossonet.ptalk.base.grpc.DataOrBuilder getMessageOrBuilder() {
@@ -1844,6 +2112,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * the textual message
+     * </pre>
+     *
      * <code>.base.Data message = 7;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1862,6 +2134,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object contextJson_ = "";
     /**
+     * <pre>
+     * should be related to the NLU context in json format
+     * </pre>
+     *
      * <code>string contextJson = 8;</code>
      * @return The contextJson.
      */
@@ -1878,6 +2154,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be related to the NLU context in json format
+     * </pre>
+     *
      * <code>string contextJson = 8;</code>
      * @return The bytes for contextJson.
      */
@@ -1895,6 +2175,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be related to the NLU context in json format
+     * </pre>
+     *
      * <code>string contextJson = 8;</code>
      * @param value The contextJson to set.
      * @return This builder for chaining.
@@ -1910,6 +2194,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be related to the NLU context in json format
+     * </pre>
+     *
      * <code>string contextJson = 8;</code>
      * @return This builder for chaining.
      */
@@ -1920,6 +2208,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be related to the NLU context in json format
+     * </pre>
+     *
      * <code>string contextJson = 8;</code>
      * @param value The bytes for contextJson to set.
      * @return This builder for chaining.
@@ -1949,6 +2241,10 @@ private static final long serialVersionUID = 0L;
         net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> additionalDatasBuilder_;
 
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data> getAdditionalDatasList() {
@@ -1959,6 +2255,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public int getAdditionalDatasCount() {
@@ -1969,6 +2269,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data getAdditionalDatas(int index) {
@@ -1979,6 +2283,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder setAdditionalDatas(
@@ -1996,6 +2304,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder setAdditionalDatas(
@@ -2010,6 +2322,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder addAdditionalDatas(net.rossonet.ptalk.base.grpc.Data value) {
@@ -2026,6 +2342,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder addAdditionalDatas(
@@ -2043,6 +2363,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder addAdditionalDatas(
@@ -2057,6 +2381,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder addAdditionalDatas(
@@ -2071,6 +2399,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder addAllAdditionalDatas(
@@ -2086,6 +2418,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder clearAdditionalDatas() {
@@ -2099,6 +2435,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public Builder removeAdditionalDatas(int index) {
@@ -2112,6 +2452,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder getAdditionalDatasBuilder(
@@ -2119,6 +2463,10 @@ private static final long serialVersionUID = 0L;
       return getAdditionalDatasFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public net.rossonet.ptalk.base.grpc.DataOrBuilder getAdditionalDatasOrBuilder(
@@ -2129,6 +2477,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
@@ -2140,6 +2492,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addAdditionalDatasBuilder() {
@@ -2147,6 +2503,10 @@ private static final long serialVersionUID = 0L;
           net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addAdditionalDatasBuilder(
@@ -2155,6 +2515,10 @@ private static final long serialVersionUID = 0L;
           index, net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * should be the media attachments in base64 format
+     * </pre>
+     *
      * <code>repeated .base.Data additionalDatas = 9;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data.Builder> 
@@ -2418,6 +2782,10 @@ private static final long serialVersionUID = 0L;
 
     private int priority_ ;
     /**
+     * <pre>
+     * for QoS context [OPTIONAL]
+     * </pre>
+     *
      * <code>int32 priority = 11;</code>
      * @return The priority.
      */
@@ -2426,6 +2794,10 @@ private static final long serialVersionUID = 0L;
       return priority_;
     }
     /**
+     * <pre>
+     * for QoS context [OPTIONAL]
+     * </pre>
+     *
      * <code>int32 priority = 11;</code>
      * @param value The priority to set.
      * @return This builder for chaining.
@@ -2437,6 +2809,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for QoS context [OPTIONAL]
+     * </pre>
+     *
      * <code>int32 priority = 11;</code>
      * @return This builder for chaining.
      */
@@ -2449,6 +2825,10 @@ private static final long serialVersionUID = 0L;
 
     private boolean traceLog_ ;
     /**
+     * <pre>
+     * enable or disable trace log function
+     * </pre>
+     *
      * <code>bool traceLog = 12;</code>
      * @return The traceLog.
      */
@@ -2457,6 +2837,10 @@ private static final long serialVersionUID = 0L;
       return traceLog_;
     }
     /**
+     * <pre>
+     * enable or disable trace log function
+     * </pre>
+     *
      * <code>bool traceLog = 12;</code>
      * @param value The traceLog to set.
      * @return This builder for chaining.
@@ -2468,6 +2852,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * enable or disable trace log function
+     * </pre>
+     *
      * <code>bool traceLog = 12;</code>
      * @return This builder for chaining.
      */
@@ -2610,6 +2998,10 @@ private static final long serialVersionUID = 0L;
         net.rossonet.ptalk.base.grpc.Data, net.rossonet.ptalk.base.grpc.Data.Builder, net.rossonet.ptalk.base.grpc.DataOrBuilder> traceDataBuilder_;
 
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data> getTraceDataList() {
@@ -2620,6 +3012,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public int getTraceDataCount() {
@@ -2630,6 +3026,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data getTraceData(int index) {
@@ -2640,6 +3040,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder setTraceData(
@@ -2657,6 +3061,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder setTraceData(
@@ -2671,6 +3079,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder addTraceData(net.rossonet.ptalk.base.grpc.Data value) {
@@ -2687,6 +3099,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder addTraceData(
@@ -2704,6 +3120,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder addTraceData(
@@ -2718,6 +3138,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder addTraceData(
@@ -2732,6 +3156,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder addAllTraceData(
@@ -2747,6 +3175,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder clearTraceData() {
@@ -2760,6 +3192,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public Builder removeTraceData(int index) {
@@ -2773,6 +3209,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder getTraceDataBuilder(
@@ -2780,6 +3220,10 @@ private static final long serialVersionUID = 0L;
       return getTraceDataFieldBuilder().getBuilder(index);
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public net.rossonet.ptalk.base.grpc.DataOrBuilder getTraceDataOrBuilder(
@@ -2790,6 +3234,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public java.util.List<? extends net.rossonet.ptalk.base.grpc.DataOrBuilder> 
@@ -2801,6 +3249,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addTraceDataBuilder() {
@@ -2808,6 +3260,10 @@ private static final long serialVersionUID = 0L;
           net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public net.rossonet.ptalk.base.grpc.Data.Builder addTraceDataBuilder(
@@ -2816,6 +3272,10 @@ private static final long serialVersionUID = 0L;
           index, net.rossonet.ptalk.base.grpc.Data.getDefaultInstance());
     }
     /**
+     * <pre>
+     * array of trace data generated if the trace log function is enabled [OPTIONAL]
+     * </pre>
+     *
      * <code>repeated .base.Data traceData = 14;</code>
      */
     public java.util.List<net.rossonet.ptalk.base.grpc.Data.Builder> 

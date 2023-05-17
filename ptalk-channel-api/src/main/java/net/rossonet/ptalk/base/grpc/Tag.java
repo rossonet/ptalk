@@ -4,6 +4,10 @@
 package net.rossonet.ptalk.base.grpc;
 
 /**
+ * <pre>
+ * a tree of tags
+ * </pre>
+ *
  * Protobuf type {@code base.Tag}
  */
 public final class Tag extends
@@ -89,6 +93,10 @@ private static final long serialVersionUID = 0L;
   public static final int DISPLAYNAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object displayName_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 2;</code>
    * @return The displayName.
    */
@@ -106,6 +114,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 2;</code>
    * @return The bytes for displayName.
    */
@@ -127,6 +139,10 @@ private static final long serialVersionUID = 0L;
   public static final int SHORTDESCRIPTION_FIELD_NUMBER = 3;
   private volatile java.lang.Object shortDescription_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 3;</code>
    * @return The shortDescription.
    */
@@ -144,6 +160,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 3;</code>
    * @return The bytes for shortDescription.
    */
@@ -165,6 +185,10 @@ private static final long serialVersionUID = 0L;
   public static final int DESCRIPTION_FIELD_NUMBER = 4;
   private volatile java.lang.Object description_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 4;</code>
    * @return The description.
    */
@@ -182,6 +206,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 4;</code>
    * @return The bytes for description.
    */
@@ -433,6 +461,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * a tree of tags
+   * </pre>
+   *
    * Protobuf type {@code base.Tag}
    */
   public static final class Builder extends
@@ -719,6 +751,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object displayName_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 2;</code>
      * @return The displayName.
      */
@@ -735,6 +771,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 2;</code>
      * @return The bytes for displayName.
      */
@@ -752,6 +792,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 2;</code>
      * @param value The displayName to set.
      * @return This builder for chaining.
@@ -767,6 +811,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 2;</code>
      * @return This builder for chaining.
      */
@@ -777,6 +825,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 2;</code>
      * @param value The bytes for displayName to set.
      * @return This builder for chaining.
@@ -795,6 +847,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object shortDescription_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 3;</code>
      * @return The shortDescription.
      */
@@ -811,6 +867,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 3;</code>
      * @return The bytes for shortDescription.
      */
@@ -828,6 +888,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 3;</code>
      * @param value The shortDescription to set.
      * @return This builder for chaining.
@@ -843,6 +907,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 3;</code>
      * @return This builder for chaining.
      */
@@ -853,6 +921,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 3;</code>
      * @param value The bytes for shortDescription to set.
      * @return This builder for chaining.
@@ -871,6 +943,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object description_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 4;</code>
      * @return The description.
      */
@@ -887,6 +963,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 4;</code>
      * @return The bytes for description.
      */
@@ -904,6 +984,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 4;</code>
      * @param value The description to set.
      * @return This builder for chaining.
@@ -919,6 +1003,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 4;</code>
      * @return This builder for chaining.
      */
@@ -929,6 +1017,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 4;</code>
      * @param value The bytes for description to set.
      * @return This builder for chaining.

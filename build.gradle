@@ -105,12 +105,6 @@ task prepareEclipseImport() {
   dependsOn ":ptalk-ability-api:generateProto"
 }
 
-task buildBottegaioTerminalClient() {
-  group "Bottegaio Terminal Client"
-  description 'Build Bottegaio Terminal Client in fat jar format'
-  dependsOn ":ptalk-bottegaio-console:shadowJar"
-}
-
 gradle.taskGraph.beforeTask { Task task ->
   copy {
     from 'ptalk-base-api/ptalk-base-api.proto'
@@ -129,6 +123,10 @@ gradle.taskGraph.beforeTask { Task task ->
 task copyProtosToJupyter() {
   group "GRPC ProtoBuf"
   description 'Copy proto file to Jupyter directories'
+  copy {
+    from 'ptalk-base-api/ptalk-base-api.proto'
+    into 'tools/jupyter/base/'
+  }
   copy {
     from 'ptalk-base-api/ptalk-base-api.proto'
     into 'tools/jupyter/channel/'
@@ -154,8 +152,8 @@ task copyProtosToJupyter() {
     into 'tools/jupyter/ability/'
   }
    copy {
-    from 'ptalk-channel-grpc/src/main/proto/ptalk-channel-grpc.proto'
-    into 'tools/jupyter/grpc-client/'
+    from 'ptalk-channel-grpc/src/main/proto/ptalk-channel-grpc-api.proto'
+    into 'tools/jupyter/channel-grpc/'
   }
 }
 

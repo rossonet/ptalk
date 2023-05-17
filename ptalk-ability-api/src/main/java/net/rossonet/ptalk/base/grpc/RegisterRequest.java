@@ -4,6 +4,10 @@
 package net.rossonet.ptalk.base.grpc;
 
 /**
+ * <pre>
+ * register unit (ability, channel or nlu) to ptalk engine
+ * </pre>
+ *
  * Protobuf type {@code base.RegisterRequest}
  */
 public final class RegisterRequest extends
@@ -115,6 +119,10 @@ private static final long serialVersionUID = 0L;
   public static final int DISPLAYNAME_FIELD_NUMBER = 3;
   private volatile java.lang.Object displayName_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 3;</code>
    * @return The displayName.
    */
@@ -132,6 +140,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string displayName = 3;</code>
    * @return The bytes for displayName.
    */
@@ -202,6 +214,10 @@ private static final long serialVersionUID = 0L;
   public static final int SHORTDESCRIPTION_FIELD_NUMBER = 6;
   private volatile java.lang.Object shortDescription_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The shortDescription.
    */
@@ -219,6 +235,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string shortDescription = 6;</code>
    * @return The bytes for shortDescription.
    */
@@ -240,6 +260,10 @@ private static final long serialVersionUID = 0L;
   public static final int DESCRIPTION_FIELD_NUMBER = 7;
   private volatile java.lang.Object description_;
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The description.
    */
@@ -257,6 +281,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for human interface [OPTIONAL]
+   * </pre>
+   *
    * <code>string description = 7;</code>
    * @return The bytes for description.
    */
@@ -316,6 +344,10 @@ private static final long serialVersionUID = 0L;
   public static final int CERTIFICATECRT_FIELD_NUMBER = 9;
   private volatile java.lang.Object certificateCrt_;
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateCrt = 9;</code>
    * @return The certificateCrt.
    */
@@ -333,6 +365,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * for cryptographic communication
+   * </pre>
+   *
    * <code>string certificateCrt = 9;</code>
    * @return The bytes for certificateCrt.
    */
@@ -470,7 +506,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object selfSuperAbilityCode_;
   /**
    * <pre>
-   * OTP code if the unit is Homunculus
+   * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
    * </pre>
    *
    * <code>string selfSuperAbilityCode = 13;</code>
@@ -491,7 +527,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * OTP code if the unit is Homunculus
+   * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
    * </pre>
    *
    * <code>string selfSuperAbilityCode = 13;</code>
@@ -843,6 +879,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * register unit (ability, channel or nlu) to ptalk engine
+   * </pre>
+   *
    * Protobuf type {@code base.RegisterRequest}
    */
   public static final class Builder extends
@@ -1397,6 +1437,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object displayName_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 3;</code>
      * @return The displayName.
      */
@@ -1413,6 +1457,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 3;</code>
      * @return The bytes for displayName.
      */
@@ -1430,6 +1478,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 3;</code>
      * @param value The displayName to set.
      * @return This builder for chaining.
@@ -1445,6 +1497,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 3;</code>
      * @return This builder for chaining.
      */
@@ -1455,6 +1511,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string displayName = 3;</code>
      * @param value The bytes for displayName to set.
      * @return This builder for chaining.
@@ -1580,6 +1640,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object shortDescription_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @return The shortDescription.
      */
@@ -1596,6 +1660,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @return The bytes for shortDescription.
      */
@@ -1613,6 +1681,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @param value The shortDescription to set.
      * @return This builder for chaining.
@@ -1628,6 +1700,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @return This builder for chaining.
      */
@@ -1638,6 +1714,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string shortDescription = 6;</code>
      * @param value The bytes for shortDescription to set.
      * @return This builder for chaining.
@@ -1656,6 +1736,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object description_ = "";
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @return The description.
      */
@@ -1672,6 +1756,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @return The bytes for description.
      */
@@ -1689,6 +1777,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @param value The description to set.
      * @return This builder for chaining.
@@ -1704,6 +1796,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @return This builder for chaining.
      */
@@ -1714,6 +1810,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for human interface [OPTIONAL]
+     * </pre>
+     *
      * <code>string description = 7;</code>
      * @param value The bytes for description to set.
      * @return This builder for chaining.
@@ -1808,6 +1908,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object certificateCrt_ = "";
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateCrt = 9;</code>
      * @return The certificateCrt.
      */
@@ -1824,6 +1928,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateCrt = 9;</code>
      * @return The bytes for certificateCrt.
      */
@@ -1841,6 +1949,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateCrt = 9;</code>
      * @param value The certificateCrt to set.
      * @return This builder for chaining.
@@ -1856,6 +1968,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateCrt = 9;</code>
      * @return This builder for chaining.
      */
@@ -1866,6 +1982,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * for cryptographic communication
+     * </pre>
+     *
      * <code>string certificateCrt = 9;</code>
      * @param value The bytes for certificateCrt to set.
      * @return This builder for chaining.
@@ -2475,7 +2595,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object selfSuperAbilityCode_ = "";
     /**
      * <pre>
-     * OTP code if the unit is Homunculus
+     * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
      * </pre>
      *
      * <code>string selfSuperAbilityCode = 13;</code>
@@ -2495,7 +2615,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * OTP code if the unit is Homunculus
+     * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
      * </pre>
      *
      * <code>string selfSuperAbilityCode = 13;</code>
@@ -2516,7 +2636,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * OTP code if the unit is Homunculus
+     * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
      * </pre>
      *
      * <code>string selfSuperAbilityCode = 13;</code>
@@ -2535,7 +2655,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * OTP code if the unit is Homunculus
+     * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
      * </pre>
      *
      * <code>string selfSuperAbilityCode = 13;</code>
@@ -2549,7 +2669,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * OTP code if the unit is Homunculus
+     * OTP code if the unit is Homunculus ( super Ability ) and the context is enforced
      * </pre>
      *
      * <code>string selfSuperAbilityCode = 13;</code>

@@ -5,7 +5,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 /**
  */
 @javax.annotation.Generated(
-    value = "by gRPC proto compiler (version 1.53.0)",
+    value = "by gRPC proto compiler (version 1.54.0)",
     comments = "Source: ptalk-ability-api.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class RpcAbilityCoreV1Grpc {
@@ -247,101 +247,67 @@ public final class RpcAbilityCoreV1Grpc {
 
   /**
    */
-  public static abstract class RpcAbilityCoreV1ImplBase implements io.grpc.BindableService {
+  public interface AsyncService {
 
     /**
      */
-    public void registerRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request,
+    default void registerRule(net.rossonet.ptalk.ability.grpc.RegisterRuleRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.RegisterRuleReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRegisterRuleMethod(), responseObserver);
     }
 
     /**
      */
-    public void cancelRule(net.rossonet.ptalk.ability.grpc.CancelRuleRequest request,
+    default void cancelRule(net.rossonet.ptalk.ability.grpc.CancelRuleRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.CancelRuleReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCancelRuleMethod(), responseObserver);
     }
 
     /**
      */
-    public void listRules(net.rossonet.ptalk.ability.grpc.ListRulesRequest request,
+    default void listRules(net.rossonet.ptalk.ability.grpc.ListRulesRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.ListRulesReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListRulesMethod(), responseObserver);
     }
 
     /**
      */
-    public void getRule(net.rossonet.ptalk.ability.grpc.GetRuleRequest request,
+    default void getRule(net.rossonet.ptalk.ability.grpc.GetRuleRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GetRuleReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetRuleMethod(), responseObserver);
     }
 
     /**
      */
-    public void memoryQuery(net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest request,
+    default void memoryQuery(net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getMemoryQueryMethod(), responseObserver);
     }
 
     /**
      */
-    public void generalConfigurationQuery(net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest request,
+    default void generalConfigurationQuery(net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest request,
         io.grpc.stub.StreamObserver<net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGeneralConfigurationQueryMethod(), responseObserver);
-    }
-
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getRegisterRuleMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
-                net.rossonet.ptalk.ability.grpc.RegisterRuleReply>(
-                  this, METHODID_REGISTER_RULE)))
-          .addMethod(
-            getCancelRuleMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.CancelRuleRequest,
-                net.rossonet.ptalk.ability.grpc.CancelRuleReply>(
-                  this, METHODID_CANCEL_RULE)))
-          .addMethod(
-            getListRulesMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.ListRulesRequest,
-                net.rossonet.ptalk.ability.grpc.ListRulesReply>(
-                  this, METHODID_LIST_RULES)))
-          .addMethod(
-            getGetRuleMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.GetRuleRequest,
-                net.rossonet.ptalk.ability.grpc.GetRuleReply>(
-                  this, METHODID_GET_RULE)))
-          .addMethod(
-            getMemoryQueryMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest,
-                net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply>(
-                  this, METHODID_MEMORY_QUERY)))
-          .addMethod(
-            getGeneralConfigurationQueryMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest,
-                net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply>(
-                  this, METHODID_GENERAL_CONFIGURATION_QUERY)))
-          .build();
     }
   }
 
   /**
+   * Base class for the server implementation of the service RpcAbilityCoreV1.
    */
-  public static final class RpcAbilityCoreV1Stub extends io.grpc.stub.AbstractAsyncStub<RpcAbilityCoreV1Stub> {
+  public static abstract class RpcAbilityCoreV1ImplBase
+      implements io.grpc.BindableService, AsyncService {
+
+    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+      return RpcAbilityCoreV1Grpc.bindService(this);
+    }
+  }
+
+  /**
+   * A stub to allow clients to do asynchronous rpc calls to service RpcAbilityCoreV1.
+   */
+  public static final class RpcAbilityCoreV1Stub
+      extends io.grpc.stub.AbstractAsyncStub<RpcAbilityCoreV1Stub> {
     private RpcAbilityCoreV1Stub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -403,8 +369,10 @@ public final class RpcAbilityCoreV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do synchronous rpc calls to service RpcAbilityCoreV1.
    */
-  public static final class RpcAbilityCoreV1BlockingStub extends io.grpc.stub.AbstractBlockingStub<RpcAbilityCoreV1BlockingStub> {
+  public static final class RpcAbilityCoreV1BlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<RpcAbilityCoreV1BlockingStub> {
     private RpcAbilityCoreV1BlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -460,8 +428,10 @@ public final class RpcAbilityCoreV1Grpc {
   }
 
   /**
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service RpcAbilityCoreV1.
    */
-  public static final class RpcAbilityCoreV1FutureStub extends io.grpc.stub.AbstractFutureStub<RpcAbilityCoreV1FutureStub> {
+  public static final class RpcAbilityCoreV1FutureStub
+      extends io.grpc.stub.AbstractFutureStub<RpcAbilityCoreV1FutureStub> {
     private RpcAbilityCoreV1FutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
@@ -534,10 +504,10 @@ public final class RpcAbilityCoreV1Grpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final RpcAbilityCoreV1ImplBase serviceImpl;
+    private final AsyncService serviceImpl;
     private final int methodId;
 
-    MethodHandlers(RpcAbilityCoreV1ImplBase serviceImpl, int methodId) {
+    MethodHandlers(AsyncService serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -584,6 +554,53 @@ public final class RpcAbilityCoreV1Grpc {
           throw new AssertionError();
       }
     }
+  }
+
+  public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
+    return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+        .addMethod(
+          getRegisterRuleMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.ability.grpc.RegisterRuleRequest,
+              net.rossonet.ptalk.ability.grpc.RegisterRuleReply>(
+                service, METHODID_REGISTER_RULE)))
+        .addMethod(
+          getCancelRuleMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.ability.grpc.CancelRuleRequest,
+              net.rossonet.ptalk.ability.grpc.CancelRuleReply>(
+                service, METHODID_CANCEL_RULE)))
+        .addMethod(
+          getListRulesMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.ability.grpc.ListRulesRequest,
+              net.rossonet.ptalk.ability.grpc.ListRulesReply>(
+                service, METHODID_LIST_RULES)))
+        .addMethod(
+          getGetRuleMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.ability.grpc.GetRuleRequest,
+              net.rossonet.ptalk.ability.grpc.GetRuleReply>(
+                service, METHODID_GET_RULE)))
+        .addMethod(
+          getMemoryQueryMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.ability.grpc.MemoryContextQueryRequest,
+              net.rossonet.ptalk.ability.grpc.MemoryContextQueryReply>(
+                service, METHODID_MEMORY_QUERY)))
+        .addMethod(
+          getGeneralConfigurationQueryMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryRequest,
+              net.rossonet.ptalk.ability.grpc.GeneralConfigurationQueryReply>(
+                service, METHODID_GENERAL_CONFIGURATION_QUERY)))
+        .build();
   }
 
   private static abstract class RpcAbilityCoreV1BaseDescriptorSupplier

@@ -4,6 +4,10 @@
 package net.rossonet.ptalk.nlu.grpc;
 
 /**
+ * <pre>
+ * any nlu agent can have many models, to better identify this models
+ * </pre>
+ *
  * Protobuf type {@code nlu.NluModel}
  */
 public final class NluModel extends
@@ -19,6 +23,9 @@ private static final long serialVersionUID = 0L;
     requiredCapability_ = "";
     model_ = "";
     modelVersion_ = "";
+    jsonModelSignature_ = "";
+    inputExample_ = "";
+    outputExample_ = "";
   }
 
   @java.lang.Override
@@ -49,6 +56,10 @@ private static final long serialVersionUID = 0L;
   public static final int REQUIREDCAPABILITY_FIELD_NUMBER = 1;
   private volatile java.lang.Object requiredCapability_;
   /**
+   * <pre>
+   * optional
+   * </pre>
+   *
    * <code>string requiredCapability = 1;</code>
    * @return The requiredCapability.
    */
@@ -66,6 +77,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * optional
+   * </pre>
+   *
    * <code>string requiredCapability = 1;</code>
    * @return The bytes for requiredCapability.
    */
@@ -87,6 +102,10 @@ private static final long serialVersionUID = 0L;
   public static final int MODEL_FIELD_NUMBER = 2;
   private volatile java.lang.Object model_;
   /**
+   * <pre>
+   * unique name of the model
+   * </pre>
+   *
    * <code>string model = 2;</code>
    * @return The model.
    */
@@ -104,6 +123,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * unique name of the model
+   * </pre>
+   *
    * <code>string model = 2;</code>
    * @return The bytes for model.
    */
@@ -125,6 +148,10 @@ private static final long serialVersionUID = 0L;
   public static final int MODELVERSION_FIELD_NUMBER = 3;
   private volatile java.lang.Object modelVersion_;
   /**
+   * <pre>
+   * version of the model, this field can be used to call different version on the same agent
+   * </pre>
+   *
    * <code>string modelVersion = 3;</code>
    * @return The modelVersion.
    */
@@ -142,6 +169,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * version of the model, this field can be used to call different version on the same agent
+   * </pre>
+   *
    * <code>string modelVersion = 3;</code>
    * @return The bytes for modelVersion.
    */
@@ -154,6 +185,144 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       modelVersion_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int JSONMODELSIGNATURE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object jsonModelSignature_;
+  /**
+   * <pre>
+   * description of a model’s inputs and outputs
+   * </pre>
+   *
+   * <code>string jsonModelSignature = 4;</code>
+   * @return The jsonModelSignature.
+   */
+  @java.lang.Override
+  public java.lang.String getJsonModelSignature() {
+    java.lang.Object ref = jsonModelSignature_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      jsonModelSignature_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * description of a model’s inputs and outputs
+   * </pre>
+   *
+   * <code>string jsonModelSignature = 4;</code>
+   * @return The bytes for jsonModelSignature.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getJsonModelSignatureBytes() {
+    java.lang.Object ref = jsonModelSignature_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      jsonModelSignature_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int INPUTEXAMPLE_FIELD_NUMBER = 5;
+  private volatile java.lang.Object inputExample_;
+  /**
+   * <pre>
+   * example of a valid model input
+   * </pre>
+   *
+   * <code>string inputExample = 5;</code>
+   * @return The inputExample.
+   */
+  @java.lang.Override
+  public java.lang.String getInputExample() {
+    java.lang.Object ref = inputExample_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      inputExample_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * example of a valid model input
+   * </pre>
+   *
+   * <code>string inputExample = 5;</code>
+   * @return The bytes for inputExample.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getInputExampleBytes() {
+    java.lang.Object ref = inputExample_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      inputExample_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int OUTPUTEXAMPLE_FIELD_NUMBER = 6;
+  private volatile java.lang.Object outputExample_;
+  /**
+   * <pre>
+   * example of a valid model output
+   * </pre>
+   *
+   * <code>string outputExample = 6;</code>
+   * @return The outputExample.
+   */
+  @java.lang.Override
+  public java.lang.String getOutputExample() {
+    java.lang.Object ref = outputExample_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      outputExample_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * example of a valid model output
+   * </pre>
+   *
+   * <code>string outputExample = 6;</code>
+   * @return The bytes for outputExample.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getOutputExampleBytes() {
+    java.lang.Object ref = outputExample_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      outputExample_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -183,6 +352,15 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(modelVersion_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, modelVersion_);
     }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jsonModelSignature_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, jsonModelSignature_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(inputExample_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, inputExample_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outputExample_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, outputExample_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -200,6 +378,15 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(modelVersion_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, modelVersion_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(jsonModelSignature_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, jsonModelSignature_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(inputExample_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, inputExample_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(outputExample_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, outputExample_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -222,6 +409,12 @@ private static final long serialVersionUID = 0L;
         .equals(other.getModel())) return false;
     if (!getModelVersion()
         .equals(other.getModelVersion())) return false;
+    if (!getJsonModelSignature()
+        .equals(other.getJsonModelSignature())) return false;
+    if (!getInputExample()
+        .equals(other.getInputExample())) return false;
+    if (!getOutputExample()
+        .equals(other.getOutputExample())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -239,6 +432,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getModel().hashCode();
     hash = (37 * hash) + MODELVERSION_FIELD_NUMBER;
     hash = (53 * hash) + getModelVersion().hashCode();
+    hash = (37 * hash) + JSONMODELSIGNATURE_FIELD_NUMBER;
+    hash = (53 * hash) + getJsonModelSignature().hashCode();
+    hash = (37 * hash) + INPUTEXAMPLE_FIELD_NUMBER;
+    hash = (53 * hash) + getInputExample().hashCode();
+    hash = (37 * hash) + OUTPUTEXAMPLE_FIELD_NUMBER;
+    hash = (53 * hash) + getOutputExample().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -335,6 +534,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * any nlu agent can have many models, to better identify this models
+   * </pre>
+   *
    * Protobuf type {@code nlu.NluModel}
    */
   public static final class Builder extends
@@ -373,6 +576,12 @@ private static final long serialVersionUID = 0L;
 
       modelVersion_ = "";
 
+      jsonModelSignature_ = "";
+
+      inputExample_ = "";
+
+      outputExample_ = "";
+
       return this;
     }
 
@@ -402,6 +611,9 @@ private static final long serialVersionUID = 0L;
       result.requiredCapability_ = requiredCapability_;
       result.model_ = model_;
       result.modelVersion_ = modelVersion_;
+      result.jsonModelSignature_ = jsonModelSignature_;
+      result.inputExample_ = inputExample_;
+      result.outputExample_ = outputExample_;
       onBuilt();
       return result;
     }
@@ -462,6 +674,18 @@ private static final long serialVersionUID = 0L;
         modelVersion_ = other.modelVersion_;
         onChanged();
       }
+      if (!other.getJsonModelSignature().isEmpty()) {
+        jsonModelSignature_ = other.jsonModelSignature_;
+        onChanged();
+      }
+      if (!other.getInputExample().isEmpty()) {
+        inputExample_ = other.inputExample_;
+        onChanged();
+      }
+      if (!other.getOutputExample().isEmpty()) {
+        outputExample_ = other.outputExample_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -503,6 +727,21 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 26
+            case 34: {
+              jsonModelSignature_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 34
+            case 42: {
+              inputExample_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 42
+            case 50: {
+              outputExample_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 50
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -521,6 +760,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object requiredCapability_ = "";
     /**
+     * <pre>
+     * optional
+     * </pre>
+     *
      * <code>string requiredCapability = 1;</code>
      * @return The requiredCapability.
      */
@@ -537,6 +780,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * optional
+     * </pre>
+     *
      * <code>string requiredCapability = 1;</code>
      * @return The bytes for requiredCapability.
      */
@@ -554,6 +801,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * optional
+     * </pre>
+     *
      * <code>string requiredCapability = 1;</code>
      * @param value The requiredCapability to set.
      * @return This builder for chaining.
@@ -569,6 +820,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * optional
+     * </pre>
+     *
      * <code>string requiredCapability = 1;</code>
      * @return This builder for chaining.
      */
@@ -579,6 +834,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * optional
+     * </pre>
+     *
      * <code>string requiredCapability = 1;</code>
      * @param value The bytes for requiredCapability to set.
      * @return This builder for chaining.
@@ -597,6 +856,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object model_ = "";
     /**
+     * <pre>
+     * unique name of the model
+     * </pre>
+     *
      * <code>string model = 2;</code>
      * @return The model.
      */
@@ -613,6 +876,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * unique name of the model
+     * </pre>
+     *
      * <code>string model = 2;</code>
      * @return The bytes for model.
      */
@@ -630,6 +897,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * unique name of the model
+     * </pre>
+     *
      * <code>string model = 2;</code>
      * @param value The model to set.
      * @return This builder for chaining.
@@ -645,6 +916,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * unique name of the model
+     * </pre>
+     *
      * <code>string model = 2;</code>
      * @return This builder for chaining.
      */
@@ -655,6 +930,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * unique name of the model
+     * </pre>
+     *
      * <code>string model = 2;</code>
      * @param value The bytes for model to set.
      * @return This builder for chaining.
@@ -673,6 +952,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object modelVersion_ = "";
     /**
+     * <pre>
+     * version of the model, this field can be used to call different version on the same agent
+     * </pre>
+     *
      * <code>string modelVersion = 3;</code>
      * @return The modelVersion.
      */
@@ -689,6 +972,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * version of the model, this field can be used to call different version on the same agent
+     * </pre>
+     *
      * <code>string modelVersion = 3;</code>
      * @return The bytes for modelVersion.
      */
@@ -706,6 +993,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * version of the model, this field can be used to call different version on the same agent
+     * </pre>
+     *
      * <code>string modelVersion = 3;</code>
      * @param value The modelVersion to set.
      * @return This builder for chaining.
@@ -721,6 +1012,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * version of the model, this field can be used to call different version on the same agent
+     * </pre>
+     *
      * <code>string modelVersion = 3;</code>
      * @return This builder for chaining.
      */
@@ -731,6 +1026,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * version of the model, this field can be used to call different version on the same agent
+     * </pre>
+     *
      * <code>string modelVersion = 3;</code>
      * @param value The bytes for modelVersion to set.
      * @return This builder for chaining.
@@ -743,6 +1042,294 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       modelVersion_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object jsonModelSignature_ = "";
+    /**
+     * <pre>
+     * description of a model’s inputs and outputs
+     * </pre>
+     *
+     * <code>string jsonModelSignature = 4;</code>
+     * @return The jsonModelSignature.
+     */
+    public java.lang.String getJsonModelSignature() {
+      java.lang.Object ref = jsonModelSignature_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jsonModelSignature_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * description of a model’s inputs and outputs
+     * </pre>
+     *
+     * <code>string jsonModelSignature = 4;</code>
+     * @return The bytes for jsonModelSignature.
+     */
+    public com.google.protobuf.ByteString
+        getJsonModelSignatureBytes() {
+      java.lang.Object ref = jsonModelSignature_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jsonModelSignature_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * description of a model’s inputs and outputs
+     * </pre>
+     *
+     * <code>string jsonModelSignature = 4;</code>
+     * @param value The jsonModelSignature to set.
+     * @return This builder for chaining.
+     */
+    public Builder setJsonModelSignature(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      jsonModelSignature_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * description of a model’s inputs and outputs
+     * </pre>
+     *
+     * <code>string jsonModelSignature = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearJsonModelSignature() {
+      
+      jsonModelSignature_ = getDefaultInstance().getJsonModelSignature();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * description of a model’s inputs and outputs
+     * </pre>
+     *
+     * <code>string jsonModelSignature = 4;</code>
+     * @param value The bytes for jsonModelSignature to set.
+     * @return This builder for chaining.
+     */
+    public Builder setJsonModelSignatureBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      jsonModelSignature_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object inputExample_ = "";
+    /**
+     * <pre>
+     * example of a valid model input
+     * </pre>
+     *
+     * <code>string inputExample = 5;</code>
+     * @return The inputExample.
+     */
+    public java.lang.String getInputExample() {
+      java.lang.Object ref = inputExample_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        inputExample_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * example of a valid model input
+     * </pre>
+     *
+     * <code>string inputExample = 5;</code>
+     * @return The bytes for inputExample.
+     */
+    public com.google.protobuf.ByteString
+        getInputExampleBytes() {
+      java.lang.Object ref = inputExample_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        inputExample_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * example of a valid model input
+     * </pre>
+     *
+     * <code>string inputExample = 5;</code>
+     * @param value The inputExample to set.
+     * @return This builder for chaining.
+     */
+    public Builder setInputExample(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      inputExample_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * example of a valid model input
+     * </pre>
+     *
+     * <code>string inputExample = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearInputExample() {
+      
+      inputExample_ = getDefaultInstance().getInputExample();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * example of a valid model input
+     * </pre>
+     *
+     * <code>string inputExample = 5;</code>
+     * @param value The bytes for inputExample to set.
+     * @return This builder for chaining.
+     */
+    public Builder setInputExampleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      inputExample_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object outputExample_ = "";
+    /**
+     * <pre>
+     * example of a valid model output
+     * </pre>
+     *
+     * <code>string outputExample = 6;</code>
+     * @return The outputExample.
+     */
+    public java.lang.String getOutputExample() {
+      java.lang.Object ref = outputExample_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        outputExample_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * example of a valid model output
+     * </pre>
+     *
+     * <code>string outputExample = 6;</code>
+     * @return The bytes for outputExample.
+     */
+    public com.google.protobuf.ByteString
+        getOutputExampleBytes() {
+      java.lang.Object ref = outputExample_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        outputExample_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * example of a valid model output
+     * </pre>
+     *
+     * <code>string outputExample = 6;</code>
+     * @param value The outputExample to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutputExample(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      outputExample_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * example of a valid model output
+     * </pre>
+     *
+     * <code>string outputExample = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOutputExample() {
+      
+      outputExample_ = getDefaultInstance().getOutputExample();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * example of a valid model output
+     * </pre>
+     *
+     * <code>string outputExample = 6;</code>
+     * @param value The bytes for outputExample to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutputExampleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      outputExample_ = value;
       onChanged();
       return this;
     }

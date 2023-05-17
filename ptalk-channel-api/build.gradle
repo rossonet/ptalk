@@ -24,12 +24,13 @@ apply plugin: 'maven-publish'
 apply plugin: 'java-library'
 apply plugin: 'distribution'
 apply plugin: 'jacoco'
+apply plugin:'application'
 
 description = "Ptalk Channel API"
 group = rootProject.group
 version = rootProject.version
 
-def grpcVersion = '1.53.0'
+def grpcVersion = '1.54.0'
 def protobufVersion = '3.21.7'
 def protocVersion = protobufVersion
 
@@ -51,7 +52,7 @@ dependencies {
   api "io.grpc:grpc-netty-shaded:${grpcVersion}"
   api group: 'org.json', name: 'json', version: '20220924'
   testImplementation "io.grpc:grpc-testing:${grpcVersion}"
-  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
   testImplementation group: 'com.ginsberg', name: 'junit5-system-exit', version: '1.1.2'
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }
@@ -188,3 +189,7 @@ clean {
   delete fileTree(projectDir) { include 'src/main/java/net/rossonet/ptalk/*/grpc/*.java' }
 }   
 
+task execute(type:JavaExec) {
+   main = project.hasProperty("mainClass") ? getProperty("mainClass") : "net.rossonet.ptalk.channel.simulation.ChannelInteractionTests"
+   classpath = sourceSets.test.runtimeClasspath
+}
