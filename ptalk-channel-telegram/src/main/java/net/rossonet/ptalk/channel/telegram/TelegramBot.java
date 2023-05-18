@@ -45,7 +45,6 @@ import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
 
-
 @SuppressWarnings("deprecation")
 public class TelegramBot extends TelegramLongPollingBot{
 	public static final String BOT_USR_ENV = "BOT_USERNAME";
@@ -158,7 +157,6 @@ public class TelegramBot extends TelegramLongPollingBot{
 			containsFile = true;
 			dataType = "Voice";
 			currentId = message.getVoice().getFileId();
-
 		} 
 
 		if (containsFile) {
@@ -169,7 +167,6 @@ public class TelegramBot extends TelegramLongPollingBot{
 				fileName = execute(getFile).getFilePath();
 				java.io.File outputFile = new java.io.File(fileName);
 				java.io.File file = downloadFile(fileName, outputFile);
-
 
 				/***************************** invia copia all'utente come verifica
 				InputStream inputStream = new FileInputStream(file);
@@ -190,24 +187,16 @@ public class TelegramBot extends TelegramLongPollingBot{
 				String reply = dataType + ": " + fileName;
 
 				sendMessageToPTalk(chatId, reply, dataType, payload, fileName, currentId, caption);
-
 			} catch (IOException e) {
-				logger.severe("IOException Importing File: " + fileName);
-				e.printStackTrace();
-			} catch (TelegramApiException e) {
-				logger.severe("TelegramApiException Importing File: " + fileName);
-				e.printStackTrace();
-			}
+				logger.severe("Error Importing File: " + fileName + "\n" + LogHelper.stackTraceToString(e));
+				} catch (TelegramApiException e) {
+				logger.severe("Error Importing File: " + fileName + "\n" + LogHelper.stackTraceToString(e));			}
 		}
 
 		if (message.hasText()){
 			sendMessageToPTalk(chatId, message.getText());
 		}
-
 	}
-
-
-
 
 	private void sendFile(Long chatId, InputFile fileToSend, String caption, String mediaType) 
 			throws TelegramApiException {
@@ -291,7 +280,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 
 	private void sendMessageToPTalk(Long chatId, String reply, String dataType, String payload, 
 			String filename, String fileId, String caption) {
-		logger.info("Sending document to PTalk");
+		logger.info("Sending document to PTalk...");
 		List<Data> datas = new ArrayList<>();
 		Data binaryData = Data.newBuilder()
 				.setKey(dataType)
@@ -359,18 +348,16 @@ public class TelegramBot extends TelegramLongPollingBot{
 				try (FileOutputStream outputStream = new FileOutputStream(file)) {
 					outputStream.write(decodedFileBytes);
 				} catch (IOException e) {
-					logger.severe("ERROR creating outputStream:");
-					e.printStackTrace();
+					logger.severe("ERROR creating outputStream: \n" + LogHelper.stackTraceToString(e));
 				}
 				inputFile = new InputFile(file, file.getName());
 
-				logger.info("Sending document to User");
+				logger.info("Sending document to User...");
 				sendFile(Long.valueOf(chatId), inputFile, caption, mediaType);
 				logger.info("Done.");
 
 			} catch (NumberFormatException | TelegramApiException e1) {
-				logger.severe("ERROR WHILE SENDING MESSAGE: ");
-				e1.printStackTrace();
+				logger.severe("ERROR WHILE SENDING MESSAGE: \n" + LogHelper.stackTraceToString(e1));
 			}
 		} else if (messageRequest.getContextJson() != null 
 				&& messageRequest.getContextJson() != ""){
@@ -396,8 +383,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 					logger.info("Done.");
 
 				} catch (TelegramApiException e) {
-					logger.severe("ERROR Sending Contact");
-					e.printStackTrace();
+					logger.severe("ERROR Sending Contact \n" + LogHelper.stackTraceToString(e));
 				}
 			}
 			if (json.get("dataType").equals("Location")) {
@@ -434,13 +420,12 @@ public class TelegramBot extends TelegramLongPollingBot{
 					logger.info("Done.");
 
 				} catch (TelegramApiException e) {
-					logger.severe("ERROR Sending Location");
-					e.printStackTrace();
+					logger.severe("ERROR Sending Location \n" + LogHelper.stackTraceToString(e));
 				}
 			}
 
 		} else {			
-			logger.info("Sending text to User");
+			logger.info("Sending text to User...");
 			String reply = messageRequest.getMessage().getValue().replace("ECHO MESSAGE OF:", "You sent: ");
 			SendMessage sendMessage = new SendMessage();
 			sendMessage.setChatId(chatId);
@@ -449,8 +434,7 @@ public class TelegramBot extends TelegramLongPollingBot{
 				execute(sendMessage);
 				logger.info("Done.");
 			} catch (TelegramApiException e) {		
-				logger.severe("ERROR WHILE SENDING TEXT MESSAGE: ");
-				e.printStackTrace();
+				logger.severe("ERROR WHILE SENDING TEXT MESSAGE: \n" + LogHelper.stackTraceToString(e));
 			}	
 		}
 	}

@@ -7,6 +7,8 @@ import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import org.junit.jupiter.api.Test;
+import org.rossonet.utils.LogHelper;
+
 import net.rossonet.ptalk.channel.implementation.PTalkChannelRuntime;
 import net.rossonet.ptalk.channel.implementation.UnitChannelConfiguration;
 import net.rossonet.ptalk.channel.simulation.FakePTalkEngine;
@@ -26,7 +28,6 @@ public class TelegramInteractionTests {
 	private FakePTalkEngine ptalkEngine = null;
 
 	private final String uniqueName = UUID.randomUUID().toString();
-	//private LifecycleStatus lifecycleStatus = LifecycleStatus.INIT;
 	private static final Logger logger = Logger.getLogger(TelegramConnector.class.getName());
 	private TelegramConnector telegramConnector;
 	private PTalkChannelRuntime pTalkChannelRuntime;
@@ -49,14 +50,12 @@ public class TelegramInteractionTests {
 			telegramConnector.close();			
 			ptalkEngine.close(); 
 		} catch (final Exception a) {
-			logger.severe("Error: ");// + a.getMessage());
-			a.printStackTrace();
+			logger.severe("Error: \n" + LogHelper.stackTraceToString(a));
 			if (ptalkEngine != null) {
 				try {
 					ptalkEngine.close();
 				} catch (final IOException e) {
-					logger.severe("Error: ");// + e.getMessage());
-					e.printStackTrace();	
+					logger.severe("Error: \n" + LogHelper.stackTraceToString(e));
 				}
 			}
 		}
@@ -79,9 +78,9 @@ public class TelegramInteractionTests {
 			telegramConnector.close();
 			ptalkEngine.close(); 
 		}catch (IOException e1) {
-			logger.severe("Error: " + e1.getMessage());
+			logger.severe("Error: \n" + LogHelper.stackTraceToString(e1));
 		} catch (Exception e) {
-			logger.severe("Error: " + e.getMessage());
+			logger.severe("Error: \n" + LogHelper.stackTraceToString(e));
 		}
 	}	
 }
