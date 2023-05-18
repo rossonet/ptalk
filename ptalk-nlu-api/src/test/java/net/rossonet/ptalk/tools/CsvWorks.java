@@ -46,7 +46,7 @@ public class CsvWorks {
 				}
 				counter++;
 			}
-			writeLineByLine(datas, Path.of("/home/andrea/Scaricati/nlu_example_input.csv"));
+			//writeLineByLine(datas, Path.of("/home/andrea/Scaricati/nlu_example_input.csv"));
 			System.out.println(sb.toString());
 
 		}
