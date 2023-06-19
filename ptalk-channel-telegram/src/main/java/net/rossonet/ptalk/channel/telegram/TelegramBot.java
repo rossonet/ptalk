@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.logging.Logger;
 
 import org.json.JSONObject;
+import org.rossonet.utils.LogHelper;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.GetFile;
 import org.telegram.telegrambots.meta.api.methods.send.SendAnimation;
@@ -66,6 +67,10 @@ public class TelegramBot extends TelegramLongPollingBot{
 
 	public ExecutorService getExecutor() {
 		return exe;
+	}
+	
+	public boolean isTerminated() {
+		return exe.isTerminated();
 	}
 
 	@Override

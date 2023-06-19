@@ -4,6 +4,7 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import org.rossonet.utils.LogHelper;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.updates.Close;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -28,15 +29,9 @@ public class TelegramConnector extends CommunicationHandler implements Closeable
 
 	@Override
 	public void close() throws IOException {
-		Boolean closed = false;
 		logger.info("Stopping Bot, please wait...");
-		try {
-			closed = telegramBot.execute(new Close());
-			telegramBot.onClosing();
-		} catch (TelegramApiException e1) {
-			logger.severe("Error stopping bot: \n" + LogHelper.stackTraceToString(e1));
-		}
-		if (closed) logger.info("Bot Stopped.");
+		telegramBot.onClosing();
+		if (telegramBot.isTerminated()) logger.info("Bot Stopped.");
 		else logger.info("Bot NOT Stopped!");
 		logger.info("Stopping Session, please wait...");
 		botSession.stop();
